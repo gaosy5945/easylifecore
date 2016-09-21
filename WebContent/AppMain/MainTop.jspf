@@ -1,0 +1,150 @@
+<%@ page contentType="text/html; charset=GBK" %>
+<%@page import="com.amarsoft.awe.res.AppManager"%>
+<script type='text/javascript' src='<%=sWebRootPath%>/Frame/resources/js/jquery/plugins/jquery.bgiframe.js'></script>
+<link rel="stylesheet" href="<%=sWebRootPath%>/Frame/page/resources/css/menu.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%><%=sSkinPath%>/css/menu.css">
+<script type="text/javascript">if(screen.availWidth<1050) document.write('<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/AppMain/resources/css/1024.css">');</script>
+<%
+String sAppID =  CurPage.getParameter("AppID");
+if(StringX.isSpace(sAppID)) sAppID = AppManager.getMainAppID();
+%>
+<script type="text/javascript">
+	function openMenu(sMenuName, sUrl, sParas, sAccessType){
+		if(sAccessType == "20"){ // 动态
+			sParas += "&_SYSTEM_MENU_FALG=0";
+			for(var i = 0; i < frames.length; i++){
+				if(typeof frames[i].addTabItem == "function"){
+					frames[i].addTabItem(sMenuName, sUrl, sParas);
+					return;
+				}
+			}
+			AsControl.OpenView("/AppMain/MenuRedirector.jsp", "AppID=<%=sAppID%>&Title="+sMenuName+"&Url="+sUrl+"&Paras="+sParas.replace(/\&/g, "~"), "_self");
+			return;
+		}
+		AsControl.OpenView(sUrl, "AppID=<%=sAppID%>&"+sParas, "_self"); // 经典
+	}
+
+	function ModifyPass(){
+		// 主动修改密码，转到修改密码页面告知密码正常
+		AsControl.PopPage("/AppMain/ModifyPassword.jsp","PasswordState=0","dialogHeight=480px;dialogWidth=800px;resizable=no;scrollbars=no;status:yes;maximize:no;help:no;");
+    }
+
+ 	function sessionOut(){
+ 		if(confirm("确认退出本系统吗？"))
+ 			OpenComp("SignOut","/AppMain/SignOut.jsp","","_top","");
+	}
+
+ 	function goHome(){
+		OpenComp("Main","/Main.jsp","ToDestroyAllComponent=Y","_top","");
+	}
+
+ 	function saveSkin(path){
+ 		var sReturn = AsControl.RunJsp("/AppConfig/OrgUserManage/ReloadSkin.jsp", "Path="+path);
+ 		if(!sReturn){
+ 			reloadSelf();
+ 		}else{
+ 			alert(sReturn);
+ 		}
+ 	}
+ 	
+	$(function(){
+		$(".slidedown").bind("mouseleave", function(){
+			var slidedown = this;
+			slidedown.time = setTimeout(function(){
+				$(slidedown).stop();
+				$(slidedown).slideUp(100);
+			}, 150);
+		});
+		$("#main_right_btn a[forid]").bind("mouseover", function(){
+			var slidedown = document.getElementById(this.getAttribute("forid"));
+			var time = setTimeout(function(){
+				if($(slidedown).is(":empty")) return;
+				clearTimeout(slidedown.time);
+				$(slidedown).slideDown(100);
+			}, 500);
+			$(this).bind("mouseleave", function(e){
+				clearTimeout(time);
+				$(this).unbind("mouseleave");
+				if(e.clientY < $(slidedown).offset().top){
+					slidedown.time = setTimeout(function(){
+						$(slidedown).stop();
+						$(slidedown).slideUp(100);
+					}, 150);
+				}
+			});
+		});
+	});
+</script>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  	<%if(!"/Frame/skins/classic".equals(sSkinPath)){%>
+  	<td valign="top" width="1"><div class="logo"></div></td>
+	<%}%>
+	<%@ include file="/AppMain/Menu.jspf" %>
+  	<%if(!"/Frame/skins/classic".equals(sSkinPath)){%>
+ 	<td valign="middle" width="1">
+ 		<div class="tecbg" style="text-align: center;">
+ 			<span id="main_right_btn" class="main_right_btn">
+	<%}else{%>
+  </tr>
+  <tr>
+	<td colspan="2" valign="top">
+		<div id="main_right_btn" class="bank_menus logo" style="width:560px;height:20px;margin-top:8px;padding-left:73px;">
+  	<%}%>
+			<a class="home" href="javascript:void(0);" onclick="goHome();return false;" style="padding-left:20px;" hidefocus>主页</a><%
+  			if(!AppManager.getMainAppID().equals(sAppID)){
+	  		%><a class="systems" forid="othersys" href="javascript:void(0);" hidefocus onclick="return false;"><%=AppManager.getAppName(sAppID)%></a><%}
+  			ArrayList<com.amarsoft.awe.res.model.SkinItem> _skin_items = com.amarsoft.awe.res.model.SkinItem.getFixSkins();
+  			if(_skin_items.size() > 1){
+  			%><a class="skin" forid="otherskin" hidefocus href="javascript:void(0);" onclick="return false;">皮肤</a><%}
+  			%><a class="user" forid="userinfo" hidefocus href="javascript:void(0);" onclick="return false;">我的信息</a><%
+  			%><a class="signout" hidefocus href="javascript:void(0);" onclick="sessionOut();return false;">安全退出</a><%
+  			%>
+		<%if(!"/Frame/skins/classic".equals(sSkinPath)){%>
+		</span>
+		<%}%>
+		</div>
+	</td>
+</tr> 
+</table>
+<div id="othersys" class="slidedown"><%
+ArrayList<com.amarsoft.awe.res.model.AppItem> appItemList = AppManager.getUserAppList(CurUser);
+for (com.amarsoft.awe.res.model.AppItem appItem : appItemList){
+	if(sAppID.equals(appItem.getAppID())) continue;
+	String sStyle = "";
+	if(!com.amarsoft.are.lang.StringX.isSpace(appItem.getMiniIcon()))
+		sStyle = " style=\"background-image:url("+sWebRootPath+appItem.getMiniIcon()+");\"";
+%><a<%=sStyle%> hidefocus href="javascript:void(0);" onclick="AsControl.OpenComp('/AppMain/CommonEntry.jsp', 'AppID=<%=appItem.getAppID()%>', '_top');return false;"><span><%=appItem.getAppName()%></span>
+</a><%}
+%></div>
+<div id="otherskin" class="slidedown othersilidedown"><%
+for (com.amarsoft.awe.res.model.SkinItem _skin_item : _skin_items){
+%><a class="changestyle"
+	 hidefocus
+	 href="javascript:void(0);"
+	 title="<%=_skin_item.getRemark()%>"<%
+if(_skin_item.getPath().equals(CurUser.getSkin().getPath())){%>
+	 style="background:url(<%=sWebRootPath%><%=_skin_item.getPath()%>/Ayes.gif) no-repeat;color:#6192b8;"
+	 onmouseover="javascript:$(this).css('background-image', 'url(<%=sWebRootPath%><%=_skin_item.getPath()%>/Ayeshover.gif)');"
+	 onmouseout="javascript:$(this).css('background-image', 'url(<%=sWebRootPath%><%=_skin_item.getPath()%>/Ayes.gif)');"<%
+}else{%>
+	 style="background:url(<%=sWebRootPath%><%=_skin_item.getPath()%>/A.gif) no-repeat"
+	 onmouseover="javascript:$(this).css('background-image', 'url(<%=sWebRootPath%><%=_skin_item.getPath()%>/Ahover.gif)');"
+	 onmouseout="javascript:$(this).css('background-image', 'url(<%=sWebRootPath%><%=_skin_item.getPath()%>/A.gif)');"
+	 onclick="saveSkin('<%=_skin_item.getPath()%>'); return false;"<%
+}%>><span><%=_skin_item.getName()%>风格主题</span></a><%}
+%></div>
+<div id="userinfo" class="slidedown">
+	<table width="100%">
+		<tr><td class="userfilder">当前机构: </td><td><%=CurUser.getOrgID()%>-<%=CurUser.getOrgName()%></td></tr>
+		<tr><td class="userfilder">当前用户: </td><td><%=CurUser.getUserID()%>-<%=CurUser.getUserName()%></td></tr>
+		<tr><td class="userfilder">Email: </td><td><input onchange="$('#SaveUserInfo').show()" onfocus="this.className='focus';" onblur="this.className=''"/></td></tr>
+		<tr><td class="userfilder">手机号: </td><td><input onchange="$('#SaveUserInfo').show()" onfocus="this.className='focus';" onblur="this.className=''"/></td></tr>
+		<tr><td class="userfilder">办公电话: </td><td><input onchange="$('#SaveUserInfo').show()" onfocus="this.className='focus';" onblur="this.className=''"/></td></tr>
+		<tr><td align="center" colspan="2">
+		<span id="SaveUserInfo" style="display: none;"><%=new Button("保存", "保存修改信息", "alert('保存修改信息！')", "", "noneIcon").getHtmlText()%></span>
+		<%=new Button("修改密码", "", "ModifyPass()").getHtmlText()%>
+		</td></tr>
+	</table>
+</div>
+<iframe style="display:none;" name=myrefresh0 frameborder=0 width=1 height=1 src="<%=sWebRootPath%>/Frame/page/sys/SessionClose.jsp" ></iframe>

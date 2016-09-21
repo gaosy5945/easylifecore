@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.coll" >
+		<class name="COLL_REPAYMENT_SCHEDULE" label="还款承诺信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="COLLECTIONTASKSERIALNO" label="催收任务编号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="REPAYAMOUNT" label="承诺还款金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="REPAYDATE" label="承诺还款日期" type="STRING" length="10"/>
+				<attribute name="MEMO" label="备注" type="STRING" length="400"/>
+				<attribute name="INPUTDATE" label="承诺日期" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="STATUS" label="状态(CodeNo:IsInUse)" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="COLL_REPAYMENT_SCHEDULE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="COLL_TASK" label="催收信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="OPERATEUSERID" label="执行人" type="STRING" length="32"/>
+				<attribute name="OPERATEORGID" label="执行机构" type="STRING" length="32"/>
+				<attribute name="OPERATEDATE" label="执行日期" type="STRING" length="10"/>
+				<attribute name="CREATETYPE" label="创建类型（CodeNo:CollectCreateType）" type="STRING" length="10"/>
+				<attribute name="COLLECTIONLEVEL" label="优先级（CodeNo:CollectionLevel）" type="STRING" length="10"/>
+				<attribute name="COLLECTIONMETHOD" label="催收方式（CodeNo:CollectMethod）" type="STRING" length="10"/>
+				<attribute name="REASON" label="催收原因（CodeNo:CollectReason）" type="STRING" length="10"/>
+				<attribute name="STATUS" label="状态（CodeNo:CollectionStatus）" type="STRING" length="10"/>
+				<attribute name="COLLECTIONRESULT" label="催收结果（CodeNo:CollectionResult）" type="STRING" length="10"/>
+				<attribute name="EXPLANATIONCODE" label="客户解释（CodeNo:CollectionCustoemrReason)" type="STRING" length="10"/>
+				<attribute name="EXPLANATION" label="客户解释" type="STRING" length="400"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="PRINCIPALAMOUNT" label="本金金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="INTERESTAMOUNT" label="利息金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="FINEAMOUNT" label="罚息金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="COMPOUNDAMOUNT" label="复利金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="REMARK" label="备注说明" type="STRING" length="400"/>
+				<attribute name="TASKBATCHNO" label="催收任务批次" type="STRING" length="40"/>
+				<attribute name="MANUALTYPE" label="人工干预类型（CodeNo:ManualType）" type="STRING" length="10"/>
+				<attribute name="MANUAL" label="人工干预描述" type="STRING" length="400"/>
+				<attribute name="ENTRUSTDATE" label="委案日期" type="STRING" length="10"/>
+				<attribute name="ENTRUSTENDDATE" label="结案日期" type="STRING" length="10"/>
+				<attribute name="DECISIONSTATUS" label="决策催收状态(CodeNo:DecisionStatus)" type="STRING" length="10"/>
+				<attribute name="DECISIONRESON" label="决策催收原因(CodeNo:DecisionReson)" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="COLL_TASK" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="COLL_TASK_PROCESS" label="催收过程信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="TASKSERIALNO" label="催收任务编号" type="STRING" length="40"/>
+				<attribute name="PROCESSDATE" label="处理日期" type="STRING" length="10"/>
+				<attribute name="PROCESSUSERID" label="处理人" type="STRING" length="32"/>
+				<attribute name="PROCESSORGID" label="处理机构" type="STRING" length="32"/>
+				<attribute name="CONTACTMETHOD" label="催收方式（CodeNo:CollectMethod）" type="STRING" length="10"/>
+				<attribute name="CONTACTTELNO" label="联系电话" type="STRING" length="40"/>
+				<attribute name="EXPLANATIONCODE" label="客户解释(CodeNo:CollectionCustomerReason)" type="STRING" length="10"/>
+				<attribute name="EXPLANATION" label="客户解释" type="STRING" length="400"/>
+				<attribute name="CONTACTRESULT" label="催收结果（CodeNo:CollectResult）" type="STRING" length="10"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="CONTACTORNAME" label="联系人名称" type="STRING" length="40"/>
+				<attribute name="REMARK" label="备注说明" type="STRING" length="400"/>
+				<attribute name="CONTACTORTYPE" label="催收对象(CodeNo:CollectionContactorType)" type="STRING" length="10"/>
+				<attribute name="COLLADDRESS" label="外访地址" type="STRING" length="200"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="COLL_TASK_PROCESS" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+	</package>
+</jbo>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>  <!-- LOAN DATABASE -->
+  <Resource
+	     name="jdbc/als"
+	     auth="Container"
+	     type="javax.sql.DataSource"
+	     maxActive="100"
+	     maxIdle="30"
+	     maxWait="10000"
+	     username="cfs"
+	     password="cfs"
+	     driverClassName="com.mysql.jdbc.Driver"
+	     url="jdbc:mysql://192.168.10.127:3306/cfs_old?useUnicode=true&amp;characterEncoding=utf8" />
+</Context>
+

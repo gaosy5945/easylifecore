@@ -1,0 +1,18 @@
+<%
+	/**
+	 *judge whether from MainMenu
+	 */
+	String sMainMenuFlag = CurPage.getParameter("_SYSTEM_MENU_FALG");
+	if(sMainMenuFlag == null) sMainMenuFlag = "1";
+	boolean bFormMainMenu = sMainMenuFlag.equals("1");
+%>
+<title><%=PG_TITLE%></title>
+<table  id="main_top" style="width: 100%;border: 0;" cellspacing="0" cellpadding="0"><%if(bFormMainMenu){%>
+<tr><td valign="bottom" class="mytop myclassictop"><%@include file="/AppMain/MainTop.jspf"%></td></tr>
+<%}%></table>
+<div id="main_bottom" style="overflow: hidden; height: 100%; width: 100%;"><%@ include file="/Frame/page/jspf/include/jsp_view.jspf"%></div>
+<script type="text/javascript">
+	$(window).resize(function(){
+		$("#main_bottom").height($("body").height()-$("#main_top").height());
+	}).resize();
+</script>

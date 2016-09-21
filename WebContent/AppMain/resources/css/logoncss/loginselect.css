@@ -1,0 +1,55 @@
+body{
+	background:url(../images/loginselect/body_bg.jpg) repeat-y;
+	overflow: hidden;
+}
+.main{
+	margin-left:21%; margin-top:8%;
+}
+.sblock{
+	float:left; height:160px; background:red; width:125px
+}
+a.select {
+	width:125px; height:125px; margin-left:15px;
+	float:left; text-decoration:none; outline: none;
+	text-align:center; color:#333; font-size:12px;padding-top:55px
+}
+a.selectme {
+	background:url(../images/loginselect/normo.gif) no-repeat;
+}
+a:hover.selectme{
+	background:url(../images/loginselect/mouseon.gif) no-repeat; color:#ff6600;
+}
+a.select.selectit{
+	background:url(../images/loginselect/select.gif) no-repeat;
+}
+.yesgo {
+	width:900px; margin-top:80px; float:left
+}
+a.yesgobtn {
+	width:189px; height:55px; float:left; cursor:pointer;
+	background:url(../images/loginselect/no.gif) no-repeat;
+}
+a.yesgobtn.okgo {
+	background:url(../images/loginselect/yes.gif) no-repeat;
+}
+a.backhome{
+	height:12px; padding-top:43px; margin-left:10px;
+	text-align:center; color:#333; font-size:12px;
+	float:left; text-decoration:none;
+}
+a:hover.backhome{
+	color:#ff6600;
+}
+
+.loadimgall,.loadimga,.loadimgb,.loadimgc,.loadimgd,.loadimge,.loadimgf{width:300px;height:300px; position: absolute; left:3000px}
+.loadimga{background:url(../images/loginselect/body_bg.jpg) repeat-y;}
+.loadimgb{background:url(../images/loginselect/normo.gif) no-repeat;}
+.loadimgc{background:url(../images/loginselect/mouseon.gif) no-repeat;}
+.loadimgd{background:url(../images/loginselect/select.gif) no-repeat;}
+.loadimge{background:url(../images/loginselect/no.gif) no-repeat;}
+.loadimgf{background:url(../images/loginselect/yes.gif) no-repeat;}
+
+
+
+
+

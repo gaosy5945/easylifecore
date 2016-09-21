@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GB2312"?>
+<SkinConfig Version="1.0.0.0">
+	<!-- 
+	path="/Frame/skins/..." 底层样例皮肤
+	path="/AppMain/skins/..." 产品扩展皮肤
+	-->
+	<skin name="标准" path="/Frame/skins/normal" remark="ALS7风格" />
+	<skin name="科技" path="/AppMain/skins/technology" remark="Win7 风格" />
+	<skin name="经典" path="/Frame/skins/classic" remark="ALS6风格" />
+</SkinConfig>

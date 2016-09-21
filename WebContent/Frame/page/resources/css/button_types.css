@@ -1,0 +1,127 @@
+/*sys*/
+a.inline_button.sys {
+	height: 22px;
+	line-height: 22px;
+}
+a.inline_button.sys, a:link.inline_button.sys, a:visited.inline_button.sys {
+	color:#5A5A5A;
+}
+a:hover.inline_button.sys{
+	color:#873B00;
+}
+a:active.inline_button.sys{
+	color:#444;
+}
+a.inline_button.sys .left {
+	background: url(../images/button/button_bg.png) no-repeat 0 -63px;
+}
+a.inline_button.sys .center {
+	background: url(../images/button/button_bg.png) no-repeat -14px -63px;
+}
+a.inline_button.sys .right {
+	background: url(../images/button/button_bg.png) no-repeat -7px -63px;
+}
+a:hover.inline_button.sys .left {
+	background: url(../images/button/button_bg.png) no-repeat 0 -85px;
+}
+a:hover.inline_button.sys .center {
+	background: url(../images/button/button_bg.png) no-repeat -14px -85px;
+}
+a:hover.inline_button.sys .right {
+	background: url(../images/button/button_bg.png) no-repeat -7px -85px;
+}
+a:active.inline_button.sys .left {
+	background: url(../images/button/button_bg.png) no-repeat 0 -63px;
+}
+a:active.inline_button.sys .center {
+	background: url(../images/button/button_bg.png) no-repeat -14px -63px;
+}
+a:active.inline_button.sys .right {
+	background: url(../images/button/button_bg.png) no-repeat -7px -63px;
+}
+/*high*/
+a.inline_button.high {
+	height: 23px;
+	line-height: 23px;
+}
+a.inline_button.high, a:link.inline_button.high, a:visited.inline_button.high {
+	color:#fff;
+}
+a:hover.inline_button.high{
+	color:#213c69;
+}
+a:active.inline_button.high{
+	color:#444;
+}
+a.inline_button.high .left {
+	width: 14px;
+	background: url(../images/button/button_bg.png) no-repeat 0 -110px;
+}
+a.inline_button.high .center {
+	background: url(../images/button/button_bg.png) no-repeat -28px -110px;
+}
+a.inline_button.high .right {
+	width: 14px;
+	background: url(../images/button/button_bg.png) no-repeat -14px -110px;
+}
+a:hover.inline_button.high .left {
+	background: url(../images/button/button_bg.png) no-repeat 0 -136px;
+}
+a:hover.inline_button.high .center {
+	background: url(../images/button/button_bg.png) no-repeat -28px -136px;
+}
+a:hover.inline_button.high .right {
+	background: url(../images/button/button_bg.png) no-repeat -14px -136px;
+}
+a:active.inline_button.high .left {
+	background: url(../images/button/button_bg.png) no-repeat 0 -162px;
+}
+a:active.inline_button.high .center {
+	background: url(../images/button/button_bg.png) no-repeat -28px -162px;
+}
+a:active.inline_button.high .right {
+	background: url(../images/button/button_bg.png) no-repeat -14px -162px;
+}
+/*high2*/
+a.inline_button.high2 {
+	height: 23px;
+	line-height: 23px;
+}
+a.inline_button.high2, a:link.inline_button.high2, a:visited.inline_button.high2 {
+	color:#fff;
+}
+a:hover.inline_button.high2{
+	color: #21693e;
+}
+a:active.inline_button.high2{
+	color: #444;
+}
+a.inline_button.high2 .left {
+	width: 14px;
+	background: url(../images/button/button_bg.png) no-repeat 0 -188px;
+}
+a.inline_button.high2 .center {
+	background: url(../images/button/button_bg.png) no-repeat -28px -188px;
+}
+a.inline_button.high2 .right {
+	width: 14px;
+	background: url(../images/button/button_bg.png) no-repeat -14px -188px;
+}
+a:hover.inline_button.high2 .left {
+	background: url(../images/button/button_bg.png) no-repeat 0 -214px;
+}
+a:hover.inline_button.high2 .center {
+	background: url(../images/button/button_bg.png) no-repeat -28px -214px;
+}
+a:hover.inline_button.high2 .right {
+	background: url(../images/button/button_bg.png) no-repeat -14px -214px;
+}
+a:active.inline_button.high2 .left {
+	background: url(../images/button/button_bg.png) no-repeat 0 -240px;
+}
+a:active.inline_button.high2 .center {
+	background: url(../images/button/button_bg.png) no-repeat -28px -240px;
+}
+a:active.inline_button.high2 .right {
+	background: url(../images/button/button_bg.png) no-repeat -14px -240px;
+}

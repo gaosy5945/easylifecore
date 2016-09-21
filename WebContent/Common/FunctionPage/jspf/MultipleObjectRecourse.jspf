@@ -1,0 +1,47 @@
+<!-- 头文件的必须资源,IncludeBegin中未包含的资源信息-->
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/Frame/page/resources/css/widget.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%><%=sSkinPath%>/css/widget.css">
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/as_widget.js"></script>
+<!-- 头文件的必须资源,IncludeBegin中未包含的资源信息-->
+<script>var G_FromFormatDoc = false;</script>
+<!-- Info 必须的资源-->
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/jquery/plugins/jquery.validate.min-1.8.1.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/jquery/plugins/jquery.validate.extend.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/as_contextmenu.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/as_webcalendar.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/ow/as_dw_autocomplete.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/ow/as_dw_common.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/ow/as_dw_info.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/Frame/page/resources/css/date.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/Frame/page/resources/css/ow/autocomplete.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/Frame/page/resources/css/ow/info.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/Frame/page/resources/css/ow/info_pradio.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%><%=sSkinPath%>/css/ow/info.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%><%=sSkinPath%>/css/ow/info_pradio.css">
+<!-- Info 必须的资源-->
+<!-- List 必须的资源-->
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/resources/css/ow/color.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%><%=sSkinPath%>/css/ow/color.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/as_stringbuffer.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/ow/as_dw_list_table.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/ow/as_dw_list_drag.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/ow/as_dw_list_page.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/ow/as_dw_list.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/Frame/page/resources/css/ow/list.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%><%=sSkinPath%>/css/ow/list.css">
+<script type="text/javascript" src="<%=sWebRootPath%>/Common/OW/js/as_dw_list_filter.js"></script>
+<!-- List 必须的资源-->
+
+<!-- 重写的资源-->
+<script type="text/javascript" src="<%=sWebRootPath%>/Common/FunctionPage/js/MultipleObjectWindow_Info.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Common/FunctionPage/js/MultipleObjectWindow_List.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Common/FunctionPage/js/MultipleObjectWindow.js"></script>
+<!-- 重写的资源-->
+
+
+<!-- List必须的元素 -->
+<div id="TableFilter_AREA" style="width:100%;display:none;"></div>
+<div id="TableFilter" class="list_filter_div" style="width:100%;display:none;"></div>
+<div id="TableFilter_DIV_PARENT" style="width:100%;display:none;"></div>
+<!-- List必须的元素 -->
+<form name="listvalid" id="listvalid"><hidden name="element_listvalid" id="element_listvalid"></form>

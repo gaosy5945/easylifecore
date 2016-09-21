@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<title>消息询问</title>
+<style type="text/css">
+html {
+	height: 100%;
+	width: 100%;
+}
+body {
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	background: buttonface;
+	font-size: 16px;
+	padding: 0;
+	margin: 0;
+}
+</style>
+</head>
+<body onunload="if(typeof top.returnValue == 'undefined') top.returnValue = false;">
+	<table width="100%" height="100%" cellspacing="0" cellpadding="0" >
+		<tr height="100%">
+			<td colspan="2" align="center" valign="middle" >
+				<div id="msg"></div>
+			</td>
+		</tr>
+		<tr style="height: 50px;">
+			<td align="center" valign="middle">
+				<button id="true" onclick="top.returnValue=true;top.close();" style="padding:0 20px;" ></button>
+			</td>
+			<td align="center" valign="middle">
+				<button id="false" onclick="top.returnValue=false;top.close();" style="padding:0 20px;"></button>
+			</td>
+		</tr>
+	</table>
+</body>
+<script type="text/javascript">
+	var win = top.opener;
+	if(!win) win = top.dialogArguments;
+	var params = win.confirm.argument;
+	document.getElementById("msg").innerHTML = params["msg"];
+	document.getElementById("true").innerHTML = params["true"];
+	document.getElementById("false").innerHTML = params["false"];
+	setTimeout(function(){
+		document.getElementById("true").focus();
+	}, 1);
+	
+	/**
+	 * 改造confirm使用
+	 * @param msg 字符串询问消息
+	 * @param trueBt 返回true按钮名称
+	 * @param falseBt 返回false按钮名称
+	 * @param width 窗口宽度
+	 * @param height 窗口高度
+	 */
+	function confirm(msg, trueBt, falseBt, width, height){
+		if(isNaN(width) || width < 200) width = 300;
+		if(isNaN(height) || height < 150) height = 150;
+		if(!trueBt) trueBt = "确定";
+		if(!falseBt) falseBt = "取消";
+		confirm.argument = {"msg":msg,"true":trueBt,"false":falseBt};
+		return window.showModalDialog(sWebRootPath+"/Frame/page/control/Confirm.html", self, "dialogWidth:"+width+"px;dialogHeight:"+height+"px;dialogLeft:"+(screen.availWidth-width)/2+"px;dialogTop:"+(screen.availHeight-height)/2+"px;resizable:yes;maximize:no;help:no;status:no;menubar:no;");
+	}
+</script>
+</html>

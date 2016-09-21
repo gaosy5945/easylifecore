@@ -1,0 +1,1326 @@
+<?xml version="1.0" encoding="GB18030" ?>
+<jbo>
+	<package name="ow.app" label="申请信息">
+		<class name="Consumer_Loan_Apply" label="消费贷款申请" style="Info">
+			<attributes>
+				<attribute name="SerialNo" label="申请流水" type="STRING"
+					length="40" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.SerialNo" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="{#ObjectNo}" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="CustomerID" label="客户编号" type="STRING"
+					length="40" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.CustomerID" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.CustomerID" />
+					</extendProperties>
+				</attribute>
+				<attribute name="CustomerName" label="客户名称" type="STRING"
+					length="80" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.CustomerName" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="ContractArtificialNo" label="授信合同号" type="STRING"
+					length="40" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.ContractArtificialNo" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="BusinessType" label="基础产品" type="STRING"
+					length="10" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.BusinessType" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="OccurDate" label="申请日期" type="STRING"
+					length="0" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Date" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.OccurDate" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.OccurDate" />
+					</extendProperties>
+				</attribute>
+				<attribute name="ProductID" label="方案产品" type="STRING"
+					length="40" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.ProductID" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.ProductID" />
+					</extendProperties>
+				</attribute>
+				<attribute name="ProductIDName" label="方案产品" type="STRING"
+					length="0" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value"
+							value="com.amarsoft.app.als.sys.tools.SYSNameManager.getProductName(ProductID)" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value"
+							value="com.amarsoft.app.als.sys.tools.SYSNameManager.getProductName(ProductID)" />
+					</extendProperties>
+				</attribute>
+				<attribute name="BusinessTypeName" label="基础产品" type="STRING"
+					length="0" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value"
+							value="NameManager.getBusinessName(BusinessType)" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="BusinessSubType" label="业务分类类型" type="STRING"
+					length="0" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Radiobox" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="Code" />
+						<property name="ui.codeString" value="BusinessSubType" />
+						<property name="query.sql.value" value="O.BusinessSubType" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="02" />
+						<property name="save.value" value="O.BusinessSubType" />
+					</extendProperties>
+				</attribute>
+				<attribute name="BusinessPriority" label="优先级" type="STRING"
+					length="0" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Radiobox" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="Code" />
+						<property name="ui.codeString" value="BusinessPriority" />
+						<property name="query.sql.value" value="O.BusinessPriority" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.BusinessPriority" />
+					</extendProperties>
+				</attribute>
+				<attribute name="RevolveFlag" label="循环标示" type="STRING"
+					length="0" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Radiobox" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="Code" />
+						<property name="ui.codeString" value="CreditRevolveFlag" />
+						<property name="query.sql.value" value="O.RevolveFlag" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.RevolveFlag" />
+					</extendProperties>
+				</attribute>
+				<attribute name="NonstdIndicator" label="特殊业务标识" type="STRING"
+					length="0" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Radiobox" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="onClick()" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="JBO" />
+						<property name="ui.codeString"
+							value="jbo.sys.CODE_LIBRARY,ItemNo,ItemName,CodeNo='NonstandardIndicator' and itemNo in('01','02') and isinuse = '1'" />
+						<property name="query.sql.value" value="O.NonstdIndicator" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.NonstdIndicator" />
+					</extendProperties>
+				</attribute>
+				<attribute name="ExceptReason" label="例外贷款原因" type="STRING"
+					length="200" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Textarea" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="SelectExceptCreditReason()" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="style={height:100px;width:300px}" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="2" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.ExceptReason" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.ExceptReason" />
+					</extendProperties>
+				</attribute>
+				<attribute name="BusinessTermUnit" label="额度期限单位" type="STRING"
+					length="0" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Select" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="Code" />
+						<property name="ui.codeString" value="TermUnit" />
+						<property name="query.sql.value" value="O.BusinessTermUnit" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.BusinessTermUnit" />
+					</extendProperties>
+				</attribute>
+				<attribute name="MATURITYDATE" label="额度到期日" type="STRING"
+					length="10" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Date" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="onChange()" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.MATURITYDATE" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.MATURITYDATE" />
+					</extendProperties>
+				</attribute>
+				<attribute name="BusinessTermYear" label="额度期限" type="NUMBER"
+					length="2" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="3" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="年" />
+						<property name="ui.htmlStyle" value="style={Width:20px}" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="onChange()" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value"
+							value="com.amarsoft.app.als.sys.tools.SYSNameManager.Month2Year(BusinessTerm)" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="check.minValue" value="" />
+						<property name="check.maxValue" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value"
+							value="com.amarsoft.app.als.sys.tools.SYSNameManager.Month2Year(BusinessTerm)" />
+					</extendProperties>
+				</attribute>
+				<attribute name="BusinessTermMonth" label="null" type="NUMBER"
+					length="2" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="3" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="月" />
+						<property name="ui.htmlStyle" value="style={Width:20px}" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="-1" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="onChange()" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value"
+							value="com.amarsoft.app.als.sys.tools.SYSNameManager.Month2YearMod(BusinessTerm)" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="check.minValue" value="" />
+						<property name="check.maxValue" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value"
+							value="com.amarsoft.app.als.sys.tools.SYSNameManager.Month2YearMod(BusinessTerm)" />
+					</extendProperties>
+				</attribute>
+				<attribute name="Month" label="月" type="NUMBER" length="0"
+					required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="3" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="style={Width:0px}" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="-1" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="check.minValue" value="" />
+						<property name="check.maxValue" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="''" />
+					</extendProperties>
+				</attribute>
+				<attribute name="BusinessTerm" label="额度期限" type="NUMBER"
+					length="3" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="3" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="月" />
+						<property name="ui.htmlStyle" value="style={Width:40px}" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.BusinessTerm" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="check.minValue" value="" />
+						<property name="check.maxValue" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.BusinessTerm" />
+					</extendProperties>
+				</attribute>
+				<attribute name="BusinessTermDay" label="null" type="NUMBER"
+					length="2" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="3" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="天" />
+						<property name="ui.htmlStyle" value="style={Width:20px}" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="-1" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="BusinessTermDay" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="check.minValue" value="" />
+						<property name="check.maxValue" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="BusinessTermDay" />
+					</extendProperties>
+				</attribute>
+				<attribute name="Day" label="天" type="NUMBER" length="0"
+					required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="3" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="style={Width:0px}" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="-1" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="check.minValue" value="" />
+						<property name="check.maxValue" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="''" />
+					</extendProperties>
+				</attribute>
+				<attribute name="BusinessCurrency" label="币种" type="STRING"
+					length="0" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Select" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="Code" />
+						<property name="ui.codeString" value="Currency" />
+						<property name="query.sql.value" value="O.BusinessCurrency" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.BusinessCurrency" />
+					</extendProperties>
+				</attribute>
+				<attribute name="BusinessSum" label="额度金额" type="NUMBER"
+					length="0" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="3" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="元" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.BusinessSum" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="check.minValue" value="" />
+						<property name="check.maxValue" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="VouchType" label="担保方式" type="STRING"
+					length="0" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Select" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="Code" />
+						<property name="ui.codeString" value="VouchType" />
+						<property name="query.sql.value" value="O.VouchType" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.VouchType" />
+					</extendProperties>
+				</attribute>
+				<attribute name="VouchTypeName" label="担保方式" type="STRING"
+					length="0" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value"
+							value="com.amarsoft.app.als.common.util.NameHelper.getMultiCodeItemName('VouchType',VouchType)" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="AccountingOrgID" label="额度机构" type="STRING"
+					length="32" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.AccountingOrgID" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.AccountingOrgID" />
+					</extendProperties>
+				</attribute>
+				<attribute name="AccountingOrgName" label="额度机构" type="STRING"
+					length="0" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value" value="NameManager.getOrgName(AccountingOrgID)" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="PurposeType" label="贷款用途" type="STRING"
+					length="10" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Select" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="JBO" />
+						<property name="ui.codeString"
+							value="jbo.sys.CODE_LIBRARY,ItemNo,ItemName,CodeNo='CreditPurposeType' and ItemNo in('1','3','4','5','6','9','8')" />
+						<property name="query.sql.value" value="O.PurposeType" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.PurposeType" />
+					</extendProperties>
+				</attribute>
+				<attribute name="PurposeTypeName" label="贷款用途" type="STRING"
+					length="0" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton"
+							value="setObjectValuePretreat('SelectCode','CodeNo,CreditPurposeType','@PurposeType@0@PurposeTypeName@1')" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="2" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value" value="NameManager.getItemName('CreditPurposeType', PurposeType)" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="PurposeDescription" label="用途描述" type="STRING"
+					length="300" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Textarea" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="style={height:100px;width:300px}" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="2" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.PurposeDescription" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.PurposeDescription" />
+					</extendProperties>
+				</attribute>
+				<attribute name="SystemChannelFlag" label="进件来源" type="STRING"
+					length="0" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Radiobox" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="2" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="Code" />
+						<property name="ui.codeString" value="SystemChannelFlag" />
+						<property name="query.sql.value" value="O.SystemChannelFlag" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.SystemChannelFlag" />
+					</extendProperties>
+				</attribute>
+				<attribute name="MarketChannelFlag" label="业务受理场所" type="STRING"
+					length="0" required="true">
+					<extendProperties>
+						<property name="ui.editType" value="Radiobox" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="true" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="2" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="Code" />
+						<property name="ui.codeString" value="MarketChannelFlag" />
+						<property name="query.sql.value" value="O.MarketChannelFlag" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="O.MarketChannelFlag" />
+					</extendProperties>
+				</attribute>
+				<attribute name="OperateUserID" label="经办人" type="STRING"
+					length="32" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.OperateUserID" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="OperateUserName" label="经办人" type="STRING"
+					length="0" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value" value="NameManager.getUserName(OperateUserID)" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="OperateOrgID" label="经办机构" type="STRING"
+					length="32" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.OperateOrgID" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="OperateOrgName" label="经办机构" type="STRING"
+					length="0" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value" value="NameManager.getOrgName(OperateOrgID)" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="InputUserID" label="登记人" type="STRING"
+					length="32" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.InputUserID" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="InputUserName" label="登记人" type="STRING"
+					length="0" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value" value="NameManager.getUserName(InputUserID)" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="InputOrgID" label="登记机构" type="STRING"
+					length="32" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.InputOrgID" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="InputOrgName" label="登记机构" type="STRING"
+					length="0" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="" />
+						<property name="query.java.value" value="NameManager.getOrgName(InputOrgID)" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="InputDate" label="登记日期" type="STRING"
+					length="10" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.InputDate" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="UpdateDate" label="更新日期" type="STRING"
+					length="10" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="true" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.UpdateDate" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="TempSaveFlag" label="暂存标示" type="STRING"
+					length="10" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="" />
+						<property name="ui.span" value="" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="O.TempSaveFlag" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="" />
+					</extendProperties>
+				</attribute>
+				<attribute name="CISerialNo" label="额度编号" type="STRING"
+					length="40" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="0" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="CI.SerialNo" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="CI.SerialNo" />
+					</extendProperties>
+				</attribute>
+				<attribute name="ACT" label="账户信息" type="SUBOW" length="0"
+					required="false">
+				</attribute>
+				<attribute name="Status" label="额度状态" type="STRING"
+					length="10" required="false">
+					<extendProperties>
+						<property name="ui.editType" value="Text" />
+						<property name="ui.align" value="1" />
+						<property name="ui.visible" value="false" />
+						<property name="ui.readonly" value="false" />
+						<property name="ui.innerButton" value="" />
+						<property name="ui.unit" value="" />
+						<property name="ui.htmlStyle" value="" />
+						<property name="ui.groupid" value="0010" />
+						<property name="ui.span" value="2" />
+						<property name="ui.tips" value="" />
+						<property name="ui.onclick" value="" />
+						<property name="ui.onchange" value="" />
+						<property name="ui.codeType" value="" />
+						<property name="ui.codeString" value="" />
+						<property name="query.sql.value" value="CI.Status" />
+						<property name="query.java.value" value="" />
+						<property name="check.validator" value="" />
+						<property name="check.methodType" value="" />
+						<property name="check.method" value="" />
+						<property name="check.errorMessage" value="" />
+						<property name="save.defaultValue" value="" />
+						<property name="save.value" value="CI.Status" />
+					</extendProperties>
+				</attribute>
+			</attributes>
+
+			<groups>
+				<group name="BASIC" label="基本信息" attributes="" />
+				<group name="RPT" label="还款信息" attributes="" />
+				<group name="RAT" label="利率信息" attributes="" />
+			</groups>
+
+			<inputParameters>
+				<parameter name="ObjectType" label="对象类型" type="STRING"
+					length="40" required="false" />
+				<parameter name="ObjectNo" label="对象编号" type="STRING"
+					length="40" required="false" />
+			</inputParameters>
+
+			<actions>
+				<action name="init" classname="">
+					<execute name="ObjectNo" label="对象编号" parametermap="{}"
+						methodType="jbosql" method="select * from " />
+				</action>
+
+				<action name="check" classname="">
+					<execute name="" label="对象编号" expressiontype="" expression="">
+						<rule name="" label="对象编号" value=""
+							script="{ApplyType.value=01}{ApplyType.visable=1}{ApplyType.required=1}" />
+					</execute>
+				</action>
+
+				<action name="query" classname="">
+					<execute name="query" label="主查询语句" methodType="jbosql"
+						jboClassName="jbo.app.BUSINESS_APPLY" method="from O where O.SerialNo=:BASerialNo"
+						parameter="BASerialNo={#Input.ObjectNo}" />
+				</action>
+				<action name="create" classname="" />
+				<action name="save" classname="">
+					<execute name="" bizObjectClass="" attributeMap="{}" />
+				</action>
+				<action name="delete" classname="">
+					<execute name="" />
+				</action>
+			</actions>
+
+			<extendProperties>
+				<property name="businessProcessor" value="" />
+				<property name="htmlGenerator" value="" />
+				<property name="jsfile" value="" />
+			</extendProperties>
+		</class>
+
+	</package>
+</jbo>

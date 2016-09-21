@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Instance>
+     <Messages>
+	     
+	     <!-- esb公用的(req)Header部分(IMessage)-->
+     	<Message ID="req_Header" Tag="ReqHeader" NameSpace = "s"  SelectSQL=""  Description="员工信息">
+	       <Field No="1" FieldTag="Mac" NameSpace = "d"  ValueSource="Default" TableField="" DefaultValue="#Constants.Mac" Description="Mac字段"  DataType="String" Length="16" IsRequire = "N"/>
+	       <Field No="2" FieldTag="MacOrgId" NameSpace = "d"  ValueSource="Default" TableField="" DefaultValue="#Constants.MacOrgId" Description="Mac机构号"  DataType="string" 	Length="20" IsRequire = "N"/>
+	       <Field No="3" FieldTag="MsgId" NameSpace = "d"  ValueSource="Default" TableField="" DefaultValue="#Constants.MsgId" Description="服务消息ID"  DataType="string" 	Length="36" IsRequire = "Y"/>
+	       <Field No="4" FieldTag="SourceSysId" NameSpace = "d"  ValueSource="Default" TableField="" DefaultValue="#Constants.SourceSysId" Description="服务源发起系统ID"  DataType="string"	Length="10" IsRequire = "Y"/>
+	       <Field No="5" FieldTag="ConsumerId" NameSpace = "d"  ValueSource="Default" TableField="" DefaultValue="#Constants.ConsumerId" Description="服务调用方系统ID"  DataType="string" Length="10" IsRequire = "Y"/>
+	       <Field No="6" FieldTag="ServiceAdr" NameSpace = "d"  ValueSource="Default" TableField="" DefaultValue="#Constants.ServiceAdr" Description="服务地址"  DataType="string" 	Length="128" IsRequire = "Y"/>
+	       <Field No="7" FieldTag="ServiceAction" NameSpace = "d"  ValueSource="Default" TableField="" DefaultValue="#Constants.ServiceAction" Description="服务方法"  DataType="string" 	Length="128" IsRequire = "Y"/>
+	       <Field No="8" FieldTag="ReplyAdr" NameSpace = "d"  ValueSource="Default" TableField="" DefaultValue="#Constants.ReplyAdr" Description="服务响应地址"  DataType="string" 	Length="128" IsRequire = "N"/>
+	       <Field No="9" FieldTag="ExtendContent" NameSpace = "d"  ValueSource="Default" TableField="" DefaultValue="#Constants.ExtendContent" Description="扩展内容"  DataType="string"	Length="128" IsRequire = "N"/>
+	     </Message>
+		
+		<!-- esb公用的(req)Body中的Header部分(IMessage) -->
+	     <Message ID="req_Body_header" Tag="ReqSvcHeader" NameSpace = "s"  SelectSQL=""  Description="员工信息">
+	        <Field No="1" FieldTag="TranDate" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TranDate" Description="交易日期"  DataType="String" Length="8" IsRequire = "Y"/>
+	        <Field No="2" FieldTag="TranTime" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TranTime" Description="交易时间"  DataType="string" 	Length="9" IsRequire = "Y"/>
+	        <Field No="3" FieldTag="TranTellerNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TranTellerNo" Description="交易柜员"  DataType="string" 	Length="8" IsRequire = "N"/>
+	        <Field No="4" FieldTag="TranSeqNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TranSeqNo" Description="交易流水号"  DataType="string" 	Length="6" IsRequire = "Y"/>
+	        <Field No="5" FieldTag="ConsumerId" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.ConsumerId" Description="调用方系统ID"  DataType="string" 	Length="10" IsRequire = "Y"/>
+	        <Field No="6" FieldTag="GlobalSeqNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.GlobalSeqNo" Description="全局流水号"  DataType="string" 	Length="26" IsRequire = "Y"/>
+	        <Field No="7" FieldTag="SourceSysId" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.SourceSysId" Description="源发起系统ID"  DataType="string" 	Length="10" IsRequire = "N"/>
+	        <Field No="8" FieldTag="BranchId" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.BranchId" Description="机构代码"  DataType="string" 	Length="6" IsRequire = "N"/>
+	        <Field No="9" FieldTag="TerminalCode" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TerminalCode" Description="终端号"  DataType="string" 	Length="20" IsRequire = "N"/>
+	        <Field No="10" FieldTag="CityCode" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.CityCode" Description="城市代码"  DataType="string" 	Length="6" IsRequire = "N"/>
+	        <Field No="11" FieldTag="AuthrTellerNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.AuthrTellerNo" Description="授权柜员"  DataType="string" 	Length="8" IsRequire = "N"/>
+	        <Field No="12" FieldTag="AuthrPwd" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.AuthrPwd" Description="授权密码"  DataType="string"	Length="16" IsRequire = "N"/>
+	        <Field No="13" FieldTag="AuthrCardFlag" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.AuthrCardFlag" Description="授权柜员有无卡标志"  DataType="string" 	Length="1" IsRequire = "N"/>
+	        <Field No="14" FieldTag="AuthrCardNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.AuthrCardNo" Description="授权柜员卡序号"  DataType="string" Length="2" IsRequire = "N"/>
+	        <Field No="15" FieldTag="LangCode" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.LangCode" Description="用户语言"  DataType="string" Length="5" IsRequire = "N"/>
+	        <Field No="16" FieldTag="TranCode" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TranCode" Description="交易码"  DataType="string" Length="4" IsRequire = "N"/>
+	        <Field No="17" FieldTag="PIN" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.PIN" Description="PIN种子"  DataType="string" 	Length="16" IsRequire = "N"/>
+	        <Field No="18" FieldTag="KeyVersionNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.KeyVersionNo" Description="密钥版本号"  DataType="string" 	Length="10" IsRequire = "N"/>
+	        <Field No="19" FieldTag="SysOffset1" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.SysOffset1" Description="系统偏移1"  DataType="string" 	Length="5" IsRequire = "N"/>
+	        <Field No="20" FieldTag="SysOffset2" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.SysOffset2" Description="系统偏移2"  DataType="string" 	Length="5" IsRequire = "N"/>
+	        <Field No="21" FieldTag="TargetAdr" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TargetAdr" Description="目标地址"  DataType="string" 	Length="8" IsRequire = "N"/>
+	        <Field No="22" FieldTag="SourceAdr" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.SourceAdr" Description="源地址"  DataType="string" 	Length="8" IsRequire = "N"/>
+	        <Field No="23" FieldTag="MsgEndFlag" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.MsgEndFlag" Description="信息结束标志"  DataType="string" 	Length="1" IsRequire = "N"/>
+	        <Field No="24" FieldTag="MsgSeqNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.MsgSeqNo" Description="报文序号"  DataType="string" Length="5" IsRequire = "N"/>
+	        <Field No="25" FieldTag="SubTranCode" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.SubTranCode" Description="交易子码"  DataType="string" Length="2" IsRequire = "N"/>
+	        <Field No="26" FieldTag="TranMode" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TranMode" Description="交易模式"  DataType="string" Length="1" IsRequire = "N"/>
+	        <Field No="27" FieldTag="TranSerialNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TranSerialNo" Description="交易序号"  DataType="string" Length="10" IsRequire = "N"/>
+	     </Message>
+	     
+	     <!-- esb流程部分公用的(req)Body中的Header部分(IMessage) -->
+	     <Message ID="bpmp_reqsvcheader" Tag="ReqSvcHeader" NameSpace = "s"  SelectSQL=""  Description="员工信息">
+	        <Field No="1" FieldTag="TranDate" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TranDate" Description="交易日期"  DataType="String" Length="8" IsRequire = "Y"/>
+	        <Field No="2" FieldTag="TranTime" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TranTime" Description="交易时间"  DataType="string" 	Length="9" IsRequire = "Y"/>
+	        <Field No="3" FieldTag="TranTellerNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TranTellerNo" Description="交易柜员"  DataType="string" 	Length="8" IsRequire = "N"/>
+	        <Field No="4" FieldTag="TranSeqNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TranSeqNo" Description="交易流水号"  DataType="string" 	Length="26" IsRequire = "Y"/>
+	        <Field No="5" FieldTag="ConsumerId" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.ConsumerId" Description="调用方系统ID"  DataType="string" 	Length="10" IsRequire = "Y"/>
+	        <Field No="6" FieldTag="GlobalSeqNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.GlobalSeqNo" Description="全局流水号"  DataType="string" 	Length="26" IsRequire = "Y"/>
+	        <Field No="7" FieldTag="SourceSysId" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.SourceSysId" Description="源发起系统ID"  DataType="string" 	Length="10" IsRequire = "N"/>
+	        <Field No="8" FieldTag="BranchId" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.BranchId" Description="机构代码"  DataType="string" 	Length="6" IsRequire = "N"/>
+	        <Field No="9" FieldTag="TerminalCode" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.TerminalCode" Description="终端号"  DataType="string" 	Length="20" IsRequire = "N"/>
+	        <Field No="10" FieldTag="UserId" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.UserId" Description="用户ID"  DataType="string" 	Length="32" IsRequire = "N"/>
+	        <Field No="11" FieldTag="OrgId" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.OrgId" Description="用户所属机构"  DataType="string" 	Length="40" IsRequire = "N"/>
+	     </Message>
+	     
+	     
+	     
+	   <!-- esb公用的(rsp)Header部分(OMessage) -->
+	   <Message ID="rsp_Header" Tag="RspHeader" NameSpace="s" SelectSQL="" Description="esb公用的RspHeader部分">
+	   		<Field No="1" FieldTag="Mac" NameSpace="d" ValueSource="Default" TableField="" DefaultValue="#Constants.Mac" Description="Mac字段" DataType="String" Length="16" IsRequire="N"/>
+	   		<Field No="2" FieldTag="MacOrgId" NameSpace="d" ValueSource="Default" TableField="" DefaultValue="#Constants.MacOrgId" Description="Mac机构号" DataType="String" Length="20" IsRequire="N"/>
+	   		<Field No="3" FieldTag="MsgId" NameSpace="d" ValueSource="Default" TableField="" DefaultValue="#Constants.MsgId" Description="服务消息ID" DataType="String" Length="36" IsRequire="Y"/>
+	   		<Field No="4" FieldTag="TargetSysId" NameSpace="d" ValueSource="Default" TableField="" DefaultValue="#Constants.TargetSysId" Description="服务目标系统ID" DataType="String" Length="10" IsRequire="Y"/>
+	   		<Field No="5" FieldTag="RelatedMsgId" NameSpace="d" ValueSource="Default" TableField="" DefaultValue="#Constants.RelatedMsgId" Description="关联消息ID" DataType="String" Length="36" IsRequire="N"/>
+	   		<Field No="6" FieldTag="ServiceAdr" NameSpace="d" ValueSource="Default" TableField="" DefaultValue="#Constants.ServiceAdr" Description="服务地址" DataType="String" Length="128" IsRequire="N"/>
+	   		<Field No="7" FieldTag="ServiceAction" NameSpace="d" ValueSource="Default" TableField="" DefaultValue="#Constants.ServiceAction" Description="服务方法" DataType="String" Length="128" IsRequire="N"/>
+	   		<Field No="8" FieldTag="ExtendContent" NameSpace="d" ValueSource="Default" TableField="" DefaultValue="#Constants.ExtendContent" Description="扩展内容" DataType="String" Length="128" IsRequire="N"/>
+	   </Message>
+	   
+	   <!-- esb公用的(rsp)Body中的Header部分(OMessage) -->
+	   <Message ID="rsp_Body_header" Tag="RspSvcHeader" NameSpace="s" SelectSQL="" Description="esb公用的Body中的Header部分">
+	   		<Field No="1" FieldTag="TranDate" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.TranDate" Description="交易日期" DataType="string" Length="8" IsRequire="Y"/>
+	   		<Field No="2" FieldTag="TranTime" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.TranTime" Description="交易时间" DataType="string" Length="9" IsRequire="Y"/>
+	   		<Field No="3" FieldTag="BackendSeqNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.BackendSeqNo" Description="后台流水号" DataType="string" Length="26" IsRequire="Y"/>
+	   		<Field No="4" FieldTag="BackendSysId" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.ConsumerId" Description="后台系统ID" DataType="string" Length="10" IsRequire="Y"/>
+	   		<Field No="5" FieldTag="GlobalSeqNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.GlobalSeqNo" Description="全局流水号" DataType="string" Length="26" IsRequire="N"/>
+	   		<Field No="6" FieldTag="ReturnCode" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.ReturnCode" Description="服务返回代码" DataType="string" Length="12" IsRequire="Y"/>
+	   		<Field No="7" FieldTag="ReturnMsg" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.ReturnMsg" Description="服务返回信息" DataType="string" Length="255" IsRequire="Y"/>
+	   		<Field No="8" FieldTag="LangCode" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.LangCode" Description="用户语言" DataType="string" Length="5" IsRequire="N"/>
+	   		<Field No="9" FieldTag="TranCode" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.TranCode" Description="交易代码" DataType="string" Length="4" IsRequire="N"/>
+	   		<Field No="10" FieldTag="PIN" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.PIN" Description="PIN种子" DataType="string" Length="16" IsRequire="N"/>
+	   		<Field No="11" FieldTag="KeyVersionNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.KeyVersionNo" Description="密钥版本号" DataType="string" Length="10" IsRequire="N"/>
+	   		<Field No="12" FieldTag="TargetAdr" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.TargetAdr" Description="目标地址" DataType="string" Length="8" IsRequire="N"/>
+	   		<Field No="13" FieldTag="SourceAdr" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.SourceAdr" Description="源地址" DataType="string" Length="8" IsRequire="N"/>
+	   		<Field No="14" FieldTag="MsgEndFlag" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.MsgEndFlag" Description="信息结束标志" DataType="string" Length="1" IsRequire="N"/>
+	   		<Field No="15" FieldTag="MsgSeqNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.MsgSeqNo" Description="报文序号" DataType="string" Length="5" IsRequire="N"/>
+	   		<Field No="16" FieldTag="LinkTranCode" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.LinkTranCode" Description="联动交易码" DataType="string" Length="4" IsRequire="N"/>
+	   		<Field No="17" FieldTag="TranSerialNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.TranSerialNo" Description="交易序号" DataType="string" Length="10" IsRequire="N"/>
+	   		<Field No="18" FieldTag="SubSvcRetInfo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.SubSvcRetInfo" Description="服务响应信息数组" DataType="array" ArrayName="rBh_SubSvcRetInfo"/>
+	   		<Field No="19" FieldTag="SubSvcSysId" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.SubSvcSysId" Description="子服务系统ID" DataType="string" Length="10" IsRequire="N"/>
+	   		<Field No="20" FieldTag="SubSvcId" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.SubSvcId" Description="子服务ID" DataType="string" Length="128" IsRequire="N"/>
+	   		<Field No="21" FieldTag="SubSvcRetCode" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.SubSvcRetCode" Description="子服务返回代码" DataType="string" Length="12" IsRequire="N"/>
+	   		<Field No="22" FieldTag="SubSvcRetMsg" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.SubSvcRetMsg" Description="子服务返回信息" DataType="string" Length="255" IsRequire="N"/>
+	   		<Field No="23" FieldTag="RsrvContent" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.RsrvContent" Description="扩展内容" DataType="string" Length="128" IsRequire="N"/>
+	   </Message>
+	   
+	   <Message ID="rBh_SubSvcRetInfo" Tag="SubSvcRetInfo" NameSpace="s" SelectSQL="" Description="服务响应信息数组">
+	   </Message>
+	   
+	   <!-- esb流程部分公用的(rsp)Body中的Header部分(OMessage) -->
+	   <Message ID="BPMP_rsp_Body_header" Tag="RspSvcHeader" NameSpace="s" SelectSQL="" Description="esb公用的Body中的Header部分">
+	   		<Field No="1" FieldTag="TranDate" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.TranDate" Description="交易日期" DataType="string" Length="8" IsRequire="Y"/>
+	   		<Field No="2" FieldTag="TranTime" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.TranTime" Description="交易时间" DataType="string" Length="9" IsRequire="Y"/>
+	   		<Field No="3" FieldTag="BackendSeqNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.BackendSeqNo" Description="后台流水号" DataType="string" Length="26" IsRequire="Y"/>
+	   		<Field No="4" FieldTag="BackendSysId" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.ConsumerId" Description="后台系统ID" DataType="string" Length="10" IsRequire="Y"/>
+	   		<Field No="5" FieldTag="GlobalSeqNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.GlobalSeqNo" Description="全局流水号" DataType="string" Length="26" IsRequire="N"/>
+	   		<Field No="6" FieldTag="ReturnCode" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.ReturnCode" Description="服务返回代码" DataType="string" Length="12" IsRequire="Y"/>
+	   		<Field No="7" FieldTag="ReturnMsg" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.ReturnMsg" Description="服务返回信息" DataType="string" Length="255" IsRequire="Y"/>
+	   		<Field No="8" FieldTag="LangCode" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.LangCode" Description="用户语言" DataType="string" Length="5" IsRequire="N"/>
+	   		<Field No="9" FieldTag="TranCode" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.TranCode" Description="交易代码" DataType="string" Length="4" IsRequire="N"/>
+	   		<Field No="10" FieldTag="PIN" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.PIN" Description="PIN种子" DataType="string" Length="16" IsRequire="N"/>
+	   		<Field No="11" FieldTag="KeyVersionNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.KeyVersionNo" Description="密钥版本号" DataType="string" Length="10" IsRequire="N"/>
+	   		<Field No="12" FieldTag="TargetAdr" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.TargetAdr" Description="目标地址" DataType="string" Length="8" IsRequire="N"/>
+	   		<Field No="13" FieldTag="SourceAdr" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.SourceAdr" Description="源地址" DataType="string" Length="8" IsRequire="N"/>
+	   		<Field No="14" FieldTag="MsgEndFlag" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.MsgEndFlag" Description="信息结束标志" DataType="string" Length="1" IsRequire="N"/>
+	   		<Field No="15" FieldTag="MsgSeqNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.MsgSeqNo" Description="报文序号" DataType="string" Length="5" IsRequire="N"/>
+	   		<Field No="16" FieldTag="LinkTranCode" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.LinkTranCode" Description="联动交易码" DataType="string" Length="4" IsRequire="N"/>
+	   		<Field No="17" FieldTag="TranSerialNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.TranSerialNo" Description="交易序号" DataType="string" Length="10" IsRequire="N"/>
+	   		<Field No="18" FieldTag="SubSvcRetInfo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.SubSvcRetInfo" Description="服务响应信息数组" DataType="array" ArrayName="SubSvcRetInfo" IsRequire="N"/>
+	   </Message>
+	   
+	   <!-- 服务响应信息数组 -->
+	     <Message ID="SubSvcRetInfo" Tag="SubSvcRetInfo" NameSpace = "s"  SelectSQL=""  Description="服务响应信息数组">
+	     	<Field No="1" FieldTag="SubSvcSysId" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.SubSvcSysId" Description="子服务系统ID"  DataType="String" Length="10" IsRequire = "N"/>
+	     	<Field No="2" FieldTag="SubSvcId" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.SubSvcId" Description="子服务ID"  DataType="String" Length="128" IsRequire = "N"/>
+	     	<Field No="3" FieldTag="SubSvcRetCode" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.SubSvcRetCode" Description="子服务返回代码"  DataType="String" Length="12" IsRequire = "N"/>
+	     	<Field No="4" FieldTag="SubSvcRetMsg" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.SubSvcRetMsg" Description="子服务返回信息"  DataType="String" Length="255" IsRequire = "N"/>
+	     	<Field No="5" FieldTag="RsrvContent" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.RsrvContent" Description="扩展内容"  DataType="String" Length="128" IsRequire = "N"/>
+	     </Message>	
+	   
+</Messages>
+
+<Transactions>
+</Transactions>
+</Instance>

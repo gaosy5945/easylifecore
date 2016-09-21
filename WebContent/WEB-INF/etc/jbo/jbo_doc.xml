@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.doc" >
+	<class name="DOC_ATTACHMENT" label="DOC_ATTACHMENT" keyAttributes="DOCNO,ATTACHMENTNO">
+			<attributes>
+				<attribute name="DOCNO" label="附件编号" type="STRING" length="32"/>
+				<attribute name="ATTACHMENTNO" label="附件名称编号" type="STRING" length="32"/>
+				<attribute name="FILENAME" label="文件名" type="STRING" length="250"/>
+				<attribute name="CONTENTTYPE" label="内容类型" type="STRING" length="80"/>
+				<attribute name="CONTENTLENGTH" label="内容长度" type="STRING" length="32"/>
+				<attribute name="CONTENTSTATUS" label="内容状态" type="STRING" length="18"/>
+				<attribute name="BEGINTIME" label="开始时间" type="STRING" length="20"/>
+				<attribute name="ENDTIME" label="结束时间" type="STRING" length="20"/>
+				<attribute name="DOCCONTENT" label="附件内容" type="STRING" length="1000"/>
+				<attribute name="INPUTUSER" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORG" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTTIME" label="登记时间" type="STRING" length="20"/>
+				<attribute name="UPDATEUSER" label="更新人" type="STRING" length="32"/>
+				<attribute name="UPDATETIME" label="更新时间" type="STRING" length="20"/>
+				<attribute name="REMARK" label="评论" type="STRING" length="250"/>
+				<attribute name="FILEPATH" label="文件路径" type="STRING" length="120"/>
+				<attribute name="FULLPATH" label="文件全路径" type="STRING" length="200"/>
+				<attribute name="FILESAVEMODE" label="文档保存模式" type="STRING" length="18"/>
+				<attribute name="FILETYPE" label="文档类型" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DOC_ATTACHMENT" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DOC_LIBRARY" label="附件信息" keyAttributes="DOCNO">
+			<attributes>
+				<attribute name="DOCNO" label="文档编号" type="STRING" length="40"/>
+				<attribute name="DOCTYPE" label="文档类型" type="STRING" length="18"/>
+				<attribute name="DOCTITLE" label="文档名称" type="STRING" length="80"/>
+				<attribute name="DOCSOURCE" label="文档来源" type="STRING" length="80"/>
+				<attribute name="DOCUNIT" label="编制单位" type="STRING" length="80"/>
+				<attribute name="DOCDATE" label="编制日期" type="STRING" length="10"/>
+				<attribute name="DOCORGANIZER" label="编制人" type="STRING" length="80"/>
+				<attribute name="DOCKEYWORD" label="文档主题词" type="STRING" length="250"/>
+				<attribute name="DOCABSTRACT" label="文档摘要" type="STRING" length="250"/>
+				<attribute name="INPUTUSERID" label="输入用户名称" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="输入机构名称" type="STRING" length="80"/>
+				<attribute name="INPUTTIME" label="登记日期" type="STRING" length="20"/>
+				<attribute name="UPDATEUSERIUD" label="更新用户" type="STRING" length="32"/>
+				<attribute name="UPDATETIME" label="更新日期" type="STRING" length="20"/>
+				<attribute name="SORTNO" label="排序号" type="STRING" length="32"/>
+				<attribute name="REMARK" label="备注" type="STRING" length="400"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DOC_LIBRARY" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DOC_RELATIVE" label="附件关联信息" keyAttributes="DOCNO,OBJECTTYPE,OBJECTNO">
+			<attributes>
+				<attribute name="DOCNO" label="文档编号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="文档关联对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="文档关联对象编号" type="STRING" length="40"/>
+				<attribute name="OBJECTNAME" label="文档关联对象名称" type="STRING" length="80"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DOC_RELATIVE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DOC_FILE_CONFIG" label="业务资料配置" keyAttributes="FILEID">
+			<attributes>
+				<attribute name="FILEID" label="业务资料编号" type="STRING" length="40"/>
+				<attribute name="FILENAME" label="业务资料名称" type="STRING" length="80"/>
+				<attribute name="FILETYPE" label="业务资料类别（CodeNo:DocumentFileType）" type="STRING" length="10"/>
+				<attribute name="FILEFORMAT" label="业务资料形式（CodeNo:DocumentFileFormat）原件、影印件、电子版等" type="STRING" length="10"/>
+				<attribute name="CONTROLLEVEL" label="控制级别（CodeNo:DocumentControlLevel）" type="STRING" length="10"/>
+				<attribute name="IMAGEFILEID" label="扫描资料编号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="资料归属类型（贷款、额度、合作方）" type="STRING" length="40"/>
+				<attribute name="SUBMITPHASE" label="提交资料阶段（CodeNo:BPMPhaseType）" type="STRING" length="10"/>
+				<attribute name="STATUS" label="状态（CodeNo:IsInUse）" type="STRING" length="10"/>
+				<attribute name="MEMO" label="备注" type="STRING" length="400"/>
+				<attribute name="UPDATEUSERID" label="更新人" type="STRING" length="32"/>
+				<attribute name="UPDATEORGID" label="更新机构" type="STRING" length="32"/>
+				<attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>
+				<attribute name="SECRETLEVEL" label="保密级别(CodeNo:FileSecretLevel)" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DOC_FILE_CONFIG" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DOC_FILE_INFO" label="业务资料信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="FILEID" label="业务资料编号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="COPYNUMBER" label="份数" type="INT"/>
+				<attribute name="SUBMITDATE" label="接收日期" type="STRING" length="10"/>
+				<attribute name="IMAGEDATE" label="扫描日期" type="STRING" length="10"/>
+				<attribute name="STATUS" label="状态(CodeNo:DocumentFileStatus)" type="STRING" length="10"/>
+				<attribute name="KEYWORDS" label="文件索引关键词" type="STRING" length="80"/>
+				<attribute name="PACKAGESERIALNO" label="所属资料包流水号" type="STRING" length="40"/>
+				<attribute name="FILEFORMAT" label="业务资料形式（CodeNo:DocumentFileFormat）" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DOC_FILE_INFO" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DOC_FILE_PACKAGE" label="业务资料包信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="PACKAGEID" label="资料包编号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="PACKAGETYPE" label="资料包类型(CodeNo:DocumentPackageType)" type="STRING" length="10"/>
+				<attribute name="POSITION" label="存放位置编号" type="STRING" length="40"/>
+				<attribute name="STATUS" label="状态(CodeNo:DocumentPachageStatus)" type="STRING" length="10"/>
+				<attribute name="LASTOPERATEDATE" label="上次操作日期" type="STRING" length="10"/>
+				<attribute name="MANAGEORGID" label="管理机构" type="STRING" length="32"/>
+				<attribute name="MANAGEUSERID" label="管理人" type="STRING" length="32"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>
+				<attribute name="PACKAGENAME" label="客户名称" type="STRING" length="120"/>
+				<attribute name="CONTRACTARTIFICIALNO" label="资料编号" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DOC_FILE_PACKAGE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DOC_OPERATION" label="业务资料管理操作记录" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="TASKSERIALNO" label="操作所属批次编号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="TRANSACTIONCODE" label="操作类型(CodeNo:DocumentTransactionCode)" type="STRING" length="10"/>
+				<attribute name="OPERATEDATE" label="操作日期" type="STRING" length="10"/>
+				<attribute name="OPERATEUSERID" label="操作人" type="STRING" length="32"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="USEUSERID" label="领用人" type="STRING" length="32"/>
+				<attribute name="USEORGID" label="领用机构" type="STRING" length="32"/>
+				<attribute name="STATUS" label="状态(CodeNo:DocumentTransactionStatus)" type="STRING" length="10"/>
+				<attribute name="OPERATEDESCRIPTION" label="描述" type="STRING" length="200"/>
+				<attribute name="UPDATEUSERID" label="更新人" type="STRING" length="32"/>
+				<attribute name="UPDATEORGID" label="更新机构" type="STRING" length="32"/>
+				<attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>
+				<attribute name="BORROWDATE" label="借用日期" type="STRING" length="10"/>
+				<attribute name="PLANRETURNDATE" label="计划归还日期" type="STRING" length="10"/>
+				<attribute name="ACTUALRETURNDATE" label="实际归还日期" type="STRING" length="10"/>
+				<attribute name="TRANSACTIONCONTEXT" label="出库内容" type="STRING" length="400"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DOC_OPERATION" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DOC_OPERATION_FILE" label="业务资料管理操作关联" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="OPERATIONSERIALNO" label="管理操作编号" type="STRING" length="40"/>
+				<attribute name="FILESERIALNO" label="业务资料编号" type="STRING" length="40"/>
+				<attribute name="OPERATEMEMO" label="管理操作备注" type="STRING" length="400"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DOC_OPERATION_FILE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DOC_VIEW_CATALOG" label="业务资料分类结构" keyAttributes="FOLDERID,VIEWID">
+			<attributes>
+				<attribute name="VIEWID" label="视图编号" type="STRING" length="40"/>
+				<attribute name="PARENTFOLDER" label="父节点编号" type="STRING" length="40"/>
+				<attribute name="FOLDERID" label="分类节点编号" type="STRING" length="40"/>
+				<attribute name="FOLDERNAME" label="分类节点名称" type="STRING" length="80"/>
+				<attribute name="STATUS" label="状态(CodeNo:IsInUse)" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DOC_VIEW_CATALOG" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DOC_VIEW_FILE" label="业务资料文件清单" keyAttributes="FILEID,FOLDERID,VIEWID">
+			<attributes>
+				<attribute name="VIEWID" label="视图编号" type="STRING" length="40"/>
+				<attribute name="FOLDERID" label="分类节点编号" type="STRING" length="16"/>
+				<attribute name="FILEID" label="业务资料编号" type="STRING" length="40"/>
+				<attribute name="REQUIREDINDICATOR" label="是否必须标志(CodeNo:RequiredFlag)" type="STRING" length="2"/>
+				<attribute name="COPYNUMBER" label="份数" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DOC_VIEW_FILE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+	</package>
+</jbo>
+

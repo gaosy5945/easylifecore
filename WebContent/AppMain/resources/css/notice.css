@@ -1,0 +1,23 @@
+body {
+	background: transparent;
+	overflow: hidden;
+	height: 100%;
+	font-size: 12px;
+}
+.container {
+	height: 100%;
+	overflow-y: auto;
+}
+a {
+	display: block;
+	margin: 2px 8px;
+}
+
+a, a:link, a:active {
+	outline: none;
+	color: #333;
+}
+
+img {
+	border: none;
+}

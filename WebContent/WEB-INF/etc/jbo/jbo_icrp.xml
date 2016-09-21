@@ -1,0 +1,1225 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.icrp" >
+		<class name="ICRP_ACCFUND" label="住房公积金参缴记录" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="AREA" label="参缴地" type="STRING" length="120"/>
+				<attribute name="REGISTERDATE" label="参缴日期" type="STRING" length="20"/>
+				<attribute name="FIRSTMONTH" label="初缴月份" type="STRING" length="14"/>
+				<attribute name="TOMONTH" label="缴至月份" type="STRING" length="14"/>
+				<attribute name="STATE" label="缴费状态" type="STRING" length="20"/>
+				<attribute name="PAY" label="月缴存额" type="STRING" length="25"/>
+				<attribute name="OWNPERCENT" label="个人缴存比例" type="STRING" length="4"/>
+				<attribute name="COMPERCENT" label="单位缴存比例" type="STRING" length="4"/>
+				<attribute name="ORGANNAME" label="缴费单位" type="STRING" length="120"/>
+				<attribute name="GETTIME" label="信息更新日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_ACCFUND" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_ADMINAWARD" label="行政奖励记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ORGANNAME" label="奖励机构" type="STRING" length="120"/>
+				<attribute name="CONTENT" label="奖励内容" type="STRING" length="200"/>
+				<attribute name="BEGINDATE" label="生效日期" type="STRING" length="20"/>
+				<attribute name="ENDDATE" label="截止日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_ADMINAWARD" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_ADPT" label="资产处置信息" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ORGANNAME" label="资产管理公司" type="STRING" length="120"/>
+				<attribute name="GETTIME" label="债务接收日期" type="STRING" length="20"/>
+				<attribute name="MONEY" label="接收的债务金额" type="STRING" length="25"/>
+				<attribute name="LATESTREPAYDATE" label="最近一次还款日期" type="STRING" length="20"/>
+				<attribute name="BALANCE" label="余额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_ADPT" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_ANNOUNCEINFO" label="本人声明" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CONTENT" label="声明内容" type="STRING" length="4000"/>
+				<attribute name="GETTIME" label="添加日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_ANNOUNCEINFO" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_APS" label="行政处罚记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ORGANNAME" label="处罚机构" type="STRING" length="100"/>
+				<attribute name="CONTENT" label="处罚内容" type="STRING" length="200"/>
+				<attribute name="MONEY" label="处罚金额" type="STRING" length="25"/>
+				<attribute name="BEGINDATE" label="生效日期" type="STRING" length="20"/>
+				<attribute name="ENDDATE" label="截止日期" type="STRING" length="20"/>
+				<attribute name="RESULT" label="行政复议结果" type="STRING" length="200"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_APS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_ASSETDS" label="资产处置信息汇总" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="COUNT" label="笔数" type="STRING" length="13"/>
+				<attribute name="BALANCE" label="余额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_ASSETDS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_ASSUREERRS" label="保证人代偿汇总" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="COUNT" label="笔数" type="STRING" length="13"/>
+				<attribute name="BALANCE" label="余额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_ASSUREERRS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_ASSURERREPAY" label="保证人代偿信息" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ORGANNAME" label="代偿机构" type="STRING" length="120"/>
+				<attribute name="LATESTASSURERREPAYDATE" label="最近一次代偿日期" type="STRING" length="20"/>
+				<attribute name="MONEY" label="累计代偿金额" type="STRING" length="25"/>
+				<attribute name="LATESTREPAYDATE" label="最近一次还款日期" type="STRING" length="20"/>
+				<attribute name="BALANCE" label="余额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_ASSURERREPAY" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_CJE" label="民事判决记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="COURT" label="立案法院" type="STRING" length="80"/>
+				<attribute name="CASEREASON" label="案由" type="STRING" length="80"/>
+				<attribute name="REGISTERDATE" label="立案日期" type="STRING" length="20"/>
+				<attribute name="CLOSEDTYPE" label="结案方式" type="STRING" length="20"/>
+				<attribute name="CASERESULT" label="判决/调解结果" type="STRING" length="200"/>
+				<attribute name="CASEVALIDATEDATE" label="判决/调解生效日期" type="STRING" length="20"/>
+				<attribute name="SUITOBJECT" label="诉讼标的" type="STRING" length="200"/>
+				<attribute name="SUITOBJECTMONEY" label="诉讼标的金额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_CJE" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_COMPETENCE" label="执业资格记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="COMPETENCYNAME" label="执业资格名称" type="STRING" length="120"/>
+				<attribute name="GRADE" label="等级" type="STRING" length="35"/>
+				<attribute name="AWARDDATE" label="获得日期" type="STRING" length="20"/>
+				<attribute name="ENDDATE" label="到期日期" type="STRING" length="20"/>
+				<attribute name="REVOKEDATE" label="吊销日期" type="STRING" length="20"/>
+				<attribute name="ORGANNAME" label="颁发机构" type="STRING" length="120"/>
+				<attribute name="AREA" label="机构所在地" type="STRING" length="120"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_COMPETENCE" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_CREDITSC" label="信用汇总提示" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="HOUSELOANCOUNT" label="住房贷款笔数" type="STRING" length="13"/>
+				<attribute name="OTHERLOANCOUNT" label="其他贷款笔数" type="STRING" length="13"/>
+				<attribute name="FIRSTLOANOPENMONTH" label="首笔贷款发放月份" type="STRING" length="14"/>
+				<attribute name="LOANCARDCOUNT" label="贷记卡账户数" type="STRING" length="13"/>
+				<attribute name="FIRSTLOANCARDOPENMONTH" label="首张贷记卡发卡月份" type="STRING" length="20"/>
+				<attribute name="STANDARDLOANCARDCOUNT" label="准贷记卡账户数" type="STRING" length="13"/>
+				<attribute name="FIRSTSTANDARDLOANCARDOPENMONTH" label="首张准贷记卡发卡月份" type="STRING" length="20"/>
+				<attribute name="ANNOUNCECOUNT" label="本人声明数目" type="STRING" length="13"/>
+				<attribute name="DISSENTCOUNT" label="异议标注数目" type="STRING" length="13"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_CREDITSC" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_CREDITSCORE" label="中征信评分" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="SCORE" label="评分" type="STRING" length="40"/>
+				<attribute name="MONTH" label="评分月份" type="STRING" length="14"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_CREDITSCORE" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_DISSENTINFO" label="异议标注" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CONTENT" label="标注内容" type="STRING" length="200"/>
+				<attribute name="GETTIME" label="添加日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_DISSENTINFO" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_ENDOWMENTIDI" label="养老保险金发放记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="AREA" label="发放地" type="STRING" length="120"/>
+				<attribute name="RETIRETYPE" label="离退休类别" type="STRING" length="50"/>
+				<attribute name="RETIREDDATE" label="离退休月份" type="STRING" length="14"/>
+				<attribute name="WORKDATE" label="参加工作月份" type="STRING" length="14"/>
+				<attribute name="MONEY" label="本月实发养老金" type="STRING" length="25"/>
+				<attribute name="PAUSEREASON" label="停发原因" type="STRING" length="60"/>
+				<attribute name="ORGANNAME" label="原单位名称" type="STRING" length="200"/>
+				<attribute name="GETTIME" label="信息更新日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_ENDOWMENTIDI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_ENDOWMENTIDS" label="养老保险金缴存记录" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="AREA" label="参保地" type="STRING" length="120"/>
+				<attribute name="REGISTERDATE" label="参保日期" type="STRING" length="20"/>
+				<attribute name="MONTHDURATION" label="累计缴费月数" type="STRING" length="13"/>
+				<attribute name="WORKDATE" label="参加工作月份" type="STRING" length="14"/>
+				<attribute name="STATE" label="缴费状态" type="STRING" length="50"/>
+				<attribute name="OWNBASICMONEY" label="个人缴费基数" type="STRING" length="25"/>
+				<attribute name="MONEY" label="本月缴费金额" type="STRING" length="25"/>
+				<attribute name="ORGANNAME" label="缴费单位" type="STRING" length="200"/>
+				<attribute name="PAUSEREASON" label="中断或终止缴费原因" type="STRING" length="60"/>
+				<attribute name="GETTIME" label="信息更新日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_ENDOWMENTIDS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_ERRORINFO" label="个人错误信息" keyAttributes="ERRNO">
+			<attributes>
+				<attribute name="ERRNO" label="错误编号" type="STRING" length="36"/>
+				<attribute name="FILEPATH" label="文件地址" type="STRING" length="200"/>
+				<attribute name="FILENAME" label="文件名" type="STRING" length="80"/>
+				<attribute name="QUERYTYPE" label="查询类型" type="STRING" length="10"/>
+				<attribute name="RESULTCODE" label="查询结果" type="STRING" length="10"/>
+				<attribute name="INFORMATION" label="详细信息" type="STRING" length="100"/>
+				<attribute name="CREATEDATE" label="创建时间" type="STRING" length="19"/>
+				<attribute name="REPORTID" label="报文标识号" type="STRING" length="20"/>
+				<attribute name="NAME" label="被查询者姓名" type="STRING" length="60"/>
+				<attribute name="CERTTYPE" label="被查询者证件类型" type="STRING" length="60"/>
+				<attribute name="CERTNO" label="被查询者证件号码" type="STRING" length="36"/>
+				<attribute name="RESULTFLAG" label="入仓标识" type="STRING" length="1"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_ERRORINFO" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_FELLBACKDS" label="呆帐信息汇总" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="COUNT" label="笔数" type="STRING" length="13"/>
+				<attribute name="BALANCE" label="余额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_FELLBACKDS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_FET" label="强制执行记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="COURT" label="执行法院" type="STRING" length="80"/>
+				<attribute name="CASEREASON" label="执行案由" type="STRING" length="80"/>
+				<attribute name="REGISTERDATE" label="立案日期" type="STRING" length="20"/>
+				<attribute name="CLOSEDTYPE" label="结案方式" type="STRING" length="40"/>
+				<attribute name="CASESTATE" label="案件状态" type="STRING" length="40"/>
+				<attribute name="CLOSEDDATE" label="结案日期" type="STRING" length="20"/>
+				<attribute name="ENFORCEOBJECT" label="申请执行标的" type="STRING" length="200"/>
+				<attribute name="ENFORCEOBJECTMONEY" label="申请执行标的金额" type="STRING" length="25"/>
+				<attribute name="ALREADYENFORCEOBJECT" label="已执行标的" type="STRING" length="200"/>
+				<attribute name="ALREADYENFORCEOBJECTMONEY" label="已执行标的金额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_FET" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_GTS" label="对外担保信息汇总" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="COUNT" label="担保笔数" type="STRING" length="13"/>
+				<attribute name="AMOUNT" label="担保金额" type="STRING" length="25"/>
+				<attribute name="BALANCE" label="担保本金余额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_GTS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_GUARANTEE" label="担保信息" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ORGANNAME" label="担保贷款发放机构" type="STRING" length="120"/>
+				<attribute name="CONTRACTMONEY" label="担保贷款合同金额" type="STRING" length="25"/>
+				<attribute name="BEGINDATE" label="担保贷款发放日期" type="STRING" length="20"/>
+				<attribute name="ENDDATE" label="担保贷款到期日期" type="STRING" length="20"/>
+				<attribute name="GUANANTEEMONEY" label="担保金额" type="STRING" length="25"/>
+				<attribute name="GUARANTEEBALANCE" label="担保贷款本金余额" type="STRING" length="25"/>
+				<attribute name="CLASS5STATE" label="担保贷款五级分类" type="STRING" length="40"/>
+				<attribute name="BILLINGDATE" label="结算日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_GUARANTEE" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_IDENTITY" label="身份信息" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="GENDER" label="性别" type="STRING" length="30"/>
+				<attribute name="BIRTHDAY" label="出生日期" type="STRING" length="20"/>
+				<attribute name="MARITALSTATE" label="婚姻状况" type="STRING" length="50"/>
+				<attribute name="MOBILE" label="手机号码" type="STRING" length="32"/>
+				<attribute name="OFFICETELEPHONENO" label="单位电话" type="STRING" length="50"/>
+				<attribute name="HOMETELEPHONENO" label="住宅电话" type="STRING" length="50"/>
+				<attribute name="EDULEVEL" label="学历" type="STRING" length="60"/>
+				<attribute name="EDUDEGREE" label="学位" type="STRING" length="20"/>
+				<attribute name="POSTADDRESS" label="通讯地址" type="STRING" length="200"/>
+				<attribute name="REGISTEREDADDRESS" label="户籍地址" type="STRING" length="200"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_IDENTITY" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LCARD_ACI" label="贷记卡授信情况" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="FINANCEORG" label="发卡机构" type="STRING" length="120"/>
+				<attribute name="ACCOUNT" label="业务号" type="STRING" length="80"/>
+				<attribute name="CURRENCY" label="币种" type="STRING" length="60"/>
+				<attribute name="OPENDATE" label="发卡日期" type="STRING" length="20"/>
+				<attribute name="CREDITLIMITAMOUNT" label="授信额度" type="STRING" length="25"/>
+				<attribute name="GUARANTEETYPE" label="担保方式" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LCARD_ACI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LCARD_AUI" label="本人声明" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CONTENT" label="声明内容" type="STRING" length="4000"/>
+				<attribute name="GETTIME" label="添加日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LCARD_AUI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LCARD_BIU" label="与该笔业务相关的贷款机构说明" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CONTENT" label="机构说明" type="STRING" length="200"/>
+				<attribute name="GETTIME" label="添加日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LCARD_BIU" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LCARD_COD" label="当前逾期信息" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CURROVERDUECYC" label="当前逾期期数" type="STRING" length="13"/>
+				<attribute name="CURROVERDUEAMOUNT" label="当前逾期金额" type="STRING" length="25"/>
+				<attribute name="OVERDUE31TO60AMOUNT" label="逾期31-60天未归还贷款本金" type="STRING" length="25"/>
+				<attribute name="OVERDUE61TO90AMOUNT" label="逾期61-90天未归还贷款本金" type="STRING" length="25"/>
+				<attribute name="OVERDUE91TO180AMOUNT" label="逾期91-180天未归还贷款本金" type="STRING" length="25"/>
+				<attribute name="OVERDUEOVER180AMOUNT" label="逾期180天以上未归还贷款本金" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LCARD_COD" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LCARD_DSI" label="异议标注" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CONTENT" label="标注内容" type="STRING" length="200"/>
+				<attribute name="GETTIME" label="添加日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LCARD_DSI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LCARD_L24MPS" label="最近24个月还款状态" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="BEGINMONTH" label="起始月" type="STRING" length="14"/>
+				<attribute name="ENDMONTH" label="截止月" type="STRING" length="14"/>
+				<attribute name="LATEST24STATE" label="还款记录明细" type="STRING" length="48"/>
+				<attribute name="STATE" label="24个月还款状态" type="STRING" length="48"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LCARD_L24MPS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LCARD_L5YOR" label="最近5年内的逾期记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="BEGINMONTH" label="起始月" type="STRING" length="14"/>
+				<attribute name="ENDMONTH" label="截止月" type="STRING" length="14"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LCARD_L5YOR" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LCARD_ODR" label="逾期记录明细" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="MONTH" label="月份" type="STRING" length="14"/>
+				<attribute name="LASTMONTHS" label="持续月数" type="STRING" length="13"/>
+				<attribute name="AMOUNT" label="金额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LCARD_ODR" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LCARD_RAI" label="使用/还款情况" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="STATEENDDATE" label="状态截止日" type="STRING" length="20"/>
+				<attribute name="STATEENDMONTH" label="状态截止月" type="STRING" length="14"/>
+				<attribute name="SHARECREDITLIMITAMOUNT" label="共享额度" type="STRING" length="25"/>
+				<attribute name="USEDCREDITLIMITAMOUNT" label="已用额度/透支余额" type="STRING" length="25"/>
+				<attribute name="LATEST6MONTHUSEDAVGAMOUNT" label="最近6个月平均使用额度/最近6个月平均透支余额" type="STRING" length="25"/>
+				<attribute name="USEDHIGHESTAMOUNT" label="最大使用额度/最大透支余额" type="STRING" length="25"/>
+				<attribute name="SCHEDULEDPAYMENTDATE" label="账单日" type="STRING" length="20"/>
+				<attribute name="SCHEDULEDPAYMENTAMOUNT" label="本月应还款" type="STRING" length="25"/>
+				<attribute name="ACTUALPAYMENTAMOUNT" label="本月实还款" type="STRING" length="25"/>
+				<attribute name="RECENTPAYDATE" label="最近一次还款日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LCARD_RAI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LCARD_SLT" label="特殊交易信息" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="TYPE" label="类型" type="STRING" length="40"/>
+				<attribute name="GETTIME" label="发生日期" type="STRING" length="30"/>
+				<attribute name="CHANGINGMONTHS" label="变更月数" type="STRING" length="13"/>
+				<attribute name="CHANGINGAMOUNT" label="发生金额" type="STRING" length="25"/>
+				<attribute name="CONTENT" label="明细记录" type="STRING" length="200"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LCARD_SLT" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOAN" label="贷款" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识" type="STRING" length="60"/>
+				<attribute name="CUE" label="基本信息提示" type="STRING" length="4000"/>
+				<attribute name="STATE" label="账户状态" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOAN" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOANCARD" label="贷记卡" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CUE" label="基本信息提示" type="STRING" length="4000"/>
+				<attribute name="STATE" label="账户状态" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOANCARD" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOANCARDSUM" label="贷记卡逾期" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="COUNT" label="笔数/账户数" type="STRING" length="13"/>
+				<attribute name="MONTHS" label="月份数" type="STRING" length="13"/>
+				<attribute name="HIGHESTOVERDUEAMOUNTPERMON" label="单月最高逾期总额/单月最高透支总额" type="STRING" length="25"/>
+				<attribute name="MAXDURATION" label="最长逾期月数/最长透支月数" type="STRING" length="13"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOANCARDSUM" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOANSUM" label="贷款逾期" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="COUNT" label="笔数/账户数" type="STRING" length="13"/>
+				<attribute name="MONTHS" label="月份数" type="STRING" length="13"/>
+				<attribute name="HIGHESTOVERDUEAMOUNTPERMON" label="单月最高逾期总额/单月最高透支总额" type="STRING" length="25"/>
+				<attribute name="MAXDURATION" label="最长逾期月数/最长透支月数" type="STRING" length="13"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOANSUM" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOAN_ACI" label="本人声明" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（逾期唯一标识）" type="STRING" length="60"/>
+				<attribute name="CONTENT" label="声明内容" type="STRING" length="4000"/>
+				<attribute name="GETTIME" label="添加日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOAN_ACI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOAN_BIU" label="与该笔业务相关的贷款机构说明" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（逾期唯一标识）" type="STRING" length="60"/>
+				<attribute name="CONTENT" label="机构说明" type="STRING" length="200"/>
+				<attribute name="GETTIME" label="添加日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOAN_BIU" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOAN_CAI" label="当前账户信息" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="STATEENDDATE" label="状态截止日" type="STRING" length="20"/>
+				<attribute name="STATEENDMONTH" label="状态截止月/转出月" type="STRING" length="14"/>
+				<attribute name="CLASS5STATE" label="五级分类" type="STRING" length="20"/>
+				<attribute name="BALANCE" label="本金余额" type="STRING" length="25"/>
+				<attribute name="REMAINPAYMENTCYC" label="剩余还款期数" type="STRING" length="13"/>
+				<attribute name="SCHEDULEDPAYMENTAMOUNT" label="本月应还款" type="STRING" length="25"/>
+				<attribute name="SCHEDULEDPAYMENTDATE" label="应还款日" type="STRING" length="20"/>
+				<attribute name="ACTUALPAYMENTAMOUNT" label="本月实还款" type="STRING" length="25"/>
+				<attribute name="RECENTPAYDATE" label="最近一次还款日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOAN_CAI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOAN_CI" label="贷款的合同信息" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识" type="STRING" length="60"/>
+				<attribute name="FINANCEORG" label="贷款机构" type="STRING" length="120"/>
+				<attribute name="ACCOUNT" label="业务号" type="STRING" length="80"/>
+				<attribute name="TYPE" label="贷款种类细分" type="STRING" length="60"/>
+				<attribute name="CURRENCY" label="币种" type="STRING" length="60"/>
+				<attribute name="OPENDATE" label="发放日期" type="STRING" length="20"/>
+				<attribute name="ENDDATE" label="到期日期" type="STRING" length="20"/>
+				<attribute name="CREDITLIMITAMOUNT" label="合同金额" type="STRING" length="25"/>
+				<attribute name="GUARANTEETYPE" label="担保方式" type="STRING" length="40"/>
+				<attribute name="PAYMENTRATING" label="还款频率" type="STRING" length="40"/>
+				<attribute name="PAYMENTCYC" label="还款期数" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOAN_CI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOAN_COD" label="当前逾期信息" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CURROVERDUECYC" label="当前逾期期数" type="STRING" length="13"/>
+				<attribute name="CURROVERDUEAMOUNT" label="当前逾期金额" type="STRING" length="25"/>
+				<attribute name="OVERDUE31TO60AMOUNT" label="逾期31-60天未归还贷款本金" type="STRING" length="25"/>
+				<attribute name="OVERDUE61TO90AMOUNT" label="逾期61-90天未归还贷款本金" type="STRING" length="25"/>
+				<attribute name="OVERDUE91TO180AMOUNT" label="逾期91-180天未归还贷款本金" type="STRING" length="25"/>
+				<attribute name="OVERDUEOVER180AMOUNT" label="逾期180天以上未归还贷款本金" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOAN_COD" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOAN_DSI" label="异议标注" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（逾期唯一标识）" type="STRING" length="60"/>
+				<attribute name="CONTENT" label="标注内容" type="STRING" length="200"/>
+				<attribute name="GETTIME" label="添加日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOAN_DSI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOAN_L24MPS" label="最近24个月还款状态" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="BEGINMONTH" label="起始月" type="STRING" length="14"/>
+				<attribute name="ENDMONTH" label="截止月" type="STRING" length="14"/>
+				<attribute name="LATEST24STATE" label="24个月还款状态" type="STRING" length="48"/>
+				<attribute name="STATE" label="还款记录明细" type="STRING" length="48"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOAN_L24MPS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOAN_L5YOR" label="最近5年内的逾期记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="BEGINMONTH" label="起始月" type="STRING" length="14"/>
+				<attribute name="ENDMONTH" label="截止月" type="STRING" length="14"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOAN_L5YOR" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOAN_ODR" label="逾期记录明细 " keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（逾期唯一标识）" type="STRING" length="60"/>
+				<attribute name="MONTH" label="月份" type="STRING" length="14"/>
+				<attribute name="LASTMONTHS" label="持续月数" type="STRING" length="13"/>
+				<attribute name="AMOUNT" label="金额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOAN_ODR" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_LOAN_SCT" label="特殊交易信息" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（逾期唯一标识）" type="STRING" length="60"/>
+				<attribute name="TYPE" label="类型" type="STRING" length="40"/>
+				<attribute name="GETTIME" label="发生日期" type="STRING" length="30"/>
+				<attribute name="CHANGINGMONTHS" label="变更月数" type="STRING" length="13"/>
+				<attribute name="CHANGINGAMOUNT" label="发生金额" type="STRING" length="25"/>
+				<attribute name="CONTENT" label="明细记录" type="STRING" length="200"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_LOAN_SCT" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_MESSAGEHEADER" label="报告头描述" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="QUERYTIME" label="查询请求时间" type="STRING" length="38"/>
+				<attribute name="REPORTCREATETIME" label="报告时间" type="STRING" length="38"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_MESSAGEHEADER" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_PROFESSIONAL" label="职业信息" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="EMPLOYER" label="工作单位" type="STRING" length="200"/>
+				<attribute name="EMPLOYERADDRESS" label="单位地址" type="STRING" length="200"/>
+				<attribute name="OCCUPATION" label="职业" type="STRING" length="90"/>
+				<attribute name="INDUSTRY" label="行业" type="STRING" length="40"/>
+				<attribute name="DUTY" label="职务" type="STRING" length="130"/>
+				<attribute name="TITLE" label="职称" type="STRING" length="20"/>
+				<attribute name="STARTYEAR" label="进入本单位年份" type="STRING" length="8"/>
+				<attribute name="GETTIME" label="信息更新日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_PROFESSIONAL" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_QUERYREQ" label="查询请求信息" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="NAME" label="被查询者姓名" type="STRING" length="60"/>
+				<attribute name="CERTTYPE" label="被查询者证件类型" type="STRING" length="60"/>
+				<attribute name="CERTNO" label="被查询者证件号码" type="STRING" length="36"/>
+				<attribute name="QUERYREASON" label="查询原因" type="STRING" length="40"/>
+				<attribute name="QUERYFORMAT" label="查询请求参数" type="STRING" length="40"/>
+				<attribute name="QUERYORG" label="查询机构" type="STRING" length="28"/>
+				<attribute name="USERCODE" label="查询操作员" type="STRING" length="128"/>
+				<attribute name="QUERYRESULTCUE" label="查询结果提示" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_QUERYREQ" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_RECORDDETAIL" label="信贷审批查询记录明细" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="QUERYDATE" label="查询日期" type="STRING" length="20"/>
+				<attribute name="QUERIER" label="查询操作员" type="STRING" length="200"/>
+				<attribute name="QUERYREASON" label="查询原因" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_RECORDDETAIL" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_REPORTMAININFO" label="个人征信查询主信息" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="NAME" label="姓名" type="STRING" length="60"/>
+				<attribute name="CERTTYPE" label="证件类型" type="STRING" length="60"/>
+				<attribute name="CERTNO" label="证件号码" type="STRING" length="36"/>
+				<attribute name="CREATEDATE" label="创建时间" type="STRING" length="19"/>
+				<attribute name="QUERYTYPE" label="查询类型" type="STRING" length="10"/>
+				<attribute name="FILEPATH" label="文件地址" type="STRING" length="200"/>
+				<attribute name="FILENAME" label="文件名" type="STRING" length="80"/>
+				<attribute name="RESULTFLAG" label="入仓标识" type="STRING" length="1"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_REPORTMAININFO" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_REPORTSTATUS" label="个人处理状态" keyAttributes="FILENO">
+			<attributes>
+				<attribute name="FILENO" label="文件编号" type="STRING" length="36"/>
+				<attribute name="FILEPATH" label="文件地址" type="STRING" length="200"/>
+				<attribute name="FILENAME" label="文件名" type="STRING" length="80"/>
+				<attribute name="QUERYTYPE" label="查询类型" type="STRING" length="10"/>
+				<attribute name="RESNUM" label="应答数量" type="STRING" length="10"/>
+				<attribute name="COMNUM" label="入库数量" type="STRING" length="10"/>
+				<attribute name="CREATEDATE" label="创建时间" type="STRING" length="19"/>
+				<attribute name="REPORTID" label="报文标识号" type="STRING" length="20"/>
+				<attribute name="RESULTFLAG" label="入仓标识" type="STRING" length="1"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_REPORTSTATUS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_RESIDENCE" label="居住信息" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ADDRESS" label="居住地址" type="STRING" length="200"/>
+				<attribute name="RESIDENCETYPE" label="居住状况" type="STRING" length="30"/>
+				<attribute name="GETTIME" label="信息更新日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_RESIDENCE" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SALVATION" label="低保救助记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="PERSONNELTYPE" label="人员类别" type="STRING" length="30"/>
+				<attribute name="AREA" label="所在地" type="STRING" length="120"/>
+				<attribute name="ORGANNAME" label="工作单位" type="STRING" length="200"/>
+				<attribute name="MONEY" label="家庭月收入" type="STRING" length="25"/>
+				<attribute name="REGISTERDATE" label="申请日期" type="STRING" length="20"/>
+				<attribute name="PASSDATE" label="批准日期" type="STRING" length="20"/>
+				<attribute name="GETTIME" label="信息更新日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SALVATION" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCARD" label="准贷记卡" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CUE" label="基本信息提示" type="STRING" length="4000"/>
+				<attribute name="STATE" label="账户状态" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCARD" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCARD_ACI" label="贷记卡授信情况" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="FINANCEORG" label="发卡机构" type="STRING" length="120"/>
+				<attribute name="ACCOUNT" label="业务号" type="STRING" length="80"/>
+				<attribute name="CURRENCY" label="币种" type="STRING" length="60"/>
+				<attribute name="OPENDATE" label="发卡日期" type="STRING" length="20"/>
+				<attribute name="CREDITLIMITAMOUNT" label="授信额度" type="STRING" length="25"/>
+				<attribute name="GUARANTEETYPE" label="担保方式" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCARD_ACI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCARD_AUI" label="本人声明" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CONTENT" label="声明内容" type="STRING" length="4000"/>
+				<attribute name="GETTIME" label="添加日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCARD_AUI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCARD_BIU" label="与该笔业务相关的贷款机构说明" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CONTENT" label="机构说明" type="STRING" length="200"/>
+				<attribute name="GETTIME" label="添加日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCARD_BIU" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCARD_COD" label="当前逾期信息" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CURROVERDUECYC" label="当前逾期期数" type="STRING" length="13"/>
+				<attribute name="CURROVERDUEAMOUNT" label="当前逾期金额" type="STRING" length="25"/>
+				<attribute name="OVERDUE31TO60AMOUNT" label="逾期31-60天未归还贷款本金" type="STRING" length="25"/>
+				<attribute name="OVERDUE61TO90AMOUNT" label="逾期61-90天未归还贷款本金" type="STRING" length="25"/>
+				<attribute name="OVERDUE91TO180AMOUNT" label="逾期91-180天未归还贷款本金" type="STRING" length="25"/>
+				<attribute name="OVERDUEOVER180AMOUNT" label="逾期180天以上未归还贷款本金" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCARD_COD" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCARD_DSI" label="异议标注" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="CONTENT" label="标注内容" type="STRING" length="200"/>
+				<attribute name="GETTIME" label="添加日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCARD_DSI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCARD_L24MPS" label="最近24个月还款状态" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="BEGINMONTH" label="起始月" type="STRING" length="14"/>
+				<attribute name="ENDMONTH" label="截止月" type="STRING" length="14"/>
+				<attribute name="LATEST24STATE" label="还款记录明细" type="STRING" length="48"/>
+				<attribute name="STATE" label="24个月还款状态" type="STRING" length="48"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCARD_L24MPS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCARD_L5YOR" label="最近5年内的逾期记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="BEGINMONTH" label="起始月" type="STRING" length="14"/>
+				<attribute name="ENDMONTH" label="截止月" type="STRING" length="14"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCARD_L5YOR" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCARD_ODR" label="逾期记录明细" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="MONTH" label="月份" type="STRING" length="14"/>
+				<attribute name="LASTMONTHS" label="持续月数" type="STRING" length="13"/>
+				<attribute name="AMOUNT" label="金额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCARD_ODR" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCARD_RAI" label="使用/还款情况 " keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="STATEENDDATE" label="状态截止日" type="STRING" length="20"/>
+				<attribute name="STATEENDMONTH" label="状态截止月" type="STRING" length="14"/>
+				<attribute name="SHARECREDITLIMITAMOUNT" label="共享额度" type="STRING" length="25"/>
+				<attribute name="USEDCREDITLIMITAMOUNT" label="已用额度/透支余额" type="STRING" length="25"/>
+				<attribute name="LATEST6MONTHUSEDAVGAMOUNT" label="最近6个月平均使用额度/最近6个月平均透支余额" type="STRING" length="25"/>
+				<attribute name="USEDHIGHESTAMOUNT" label="最大使用额度/最大透支余额" type="STRING" length="25"/>
+				<attribute name="SCHEDULEDPAYMENTDATE" label="账单日" type="STRING" length="20"/>
+				<attribute name="SCHEDULEDPAYMENTAMOUNT" label="本月应还款" type="STRING" length="25"/>
+				<attribute name="ACTUALPAYMENTAMOUNT" label="本月实还款" type="STRING" length="25"/>
+				<attribute name="RECENTPAYDATE" label="最近一次还款日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCARD_RAI" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCARD_SLT" label="特殊交易信息" keyAttributes="ITEMNO,ITEMNO2,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ITEMNO2" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="TYPE" label="类型" type="STRING" length="40"/>
+				<attribute name="GETTIME" label="发生日期" type="STRING" length="30"/>
+				<attribute name="CHANGINGMONTHS" label="变更月数" type="STRING" length="13"/>
+				<attribute name="CHANGINGAMOUNT" label="发生金额" type="STRING" length="25"/>
+				<attribute name="CONTENT" label="明细记录" type="STRING" length="200"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCARD_SLT" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SLCS" label="准贷记卡60天以上透支" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="COUNT" label="笔数/账户数" type="STRING" length="13"/>
+				<attribute name="MONTHS" label="月份数" type="STRING" length="13"/>
+				<attribute name="HIGHESTOVERDUEAMOUNTPERMON" label="单月最高逾期总额/单月最高透支总额" type="STRING" length="25"/>
+				<attribute name="MAXDURATION" label="最长逾期月数/最长透支月数" type="STRING" length="13"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SLCS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SPOUSE" label="配偶信息" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="NAME" label="姓名" type="STRING" length="60"/>
+				<attribute name="CERTTYPE" label="证件类型" type="STRING" length="60"/>
+				<attribute name="CERTNO" label="证件号码" type="STRING" length="36"/>
+				<attribute name="EMPLOYER" label="工作单位" type="STRING" length="120"/>
+				<attribute name="TELEPHONENO" label="联系电话" type="STRING" length="50"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SPOUSE" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SUMDETAIL_LMO" label="最近1个月内的查询机构数" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="QUERYREASON" label="查询原因" type="STRING" length="40"/>
+				<attribute name="SUM" label="数目" type="STRING" length="19"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SUMDETAIL_LMO" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SUMDETAIL_LMR" label="最近1个月内的查询次数" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="QUERYREASON" label="查询原因" type="STRING" length="40"/>
+				<attribute name="SUM" label="数目" type="STRING" length="19"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SUMDETAIL_LMR" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_SUMDETAIL_TYR" label="最近2年内的查询次数" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="QUERYREASON" label="查询原因" type="STRING" length="40"/>
+				<attribute name="SUM" label="数目" type="STRING" length="19"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_SUMDETAIL_TYR" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_TAXARREAR" label="欠税记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ORGANNAME" label="主管税务机关" type="STRING" length="100"/>
+				<attribute name="TAXARREAAMOUNT" label="欠税总额" type="STRING" length="25"/>
+				<attribute name="REVENUEDATE" label="欠税统计日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_TAXARREAR" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_TELPAYMENT" label="电信缴费记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ORGANNAME" label="电信运营商" type="STRING" length="120"/>
+				<attribute name="TYPE" label="业务类型" type="STRING" length="200"/>
+				<attribute name="REGISTERDATE" label="业务开通日期" type="STRING" length="20"/>
+				<attribute name="STATE" label="当前缴费状态" type="STRING" length="100"/>
+				<attribute name="ARREARMONEY" label="当前欠费金额" type="STRING" length="25"/>
+				<attribute name="ARREARMONTHS" label="当前欠费月数" type="STRING" length="200"/>
+				<attribute name="STATUS24" label="最近24个月缴费状态" type="STRING" length="48"/>
+				<attribute name="GETTIME" label="记帐年月" type="STRING" length="14"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_TELPAYMENT" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_UDLC" label="未销户贷记卡信息汇总" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="FINANCECORPCOUNT" label="贷款法人机构数/发卡法人机构数" type="STRING" length="13"/>
+				<attribute name="FINANCEORGCOUNT" label="贷款机构数/发卡机构数" type="STRING" length="13"/>
+				<attribute name="ACCOUNTCOUNT" label="笔数/账户数" type="STRING" length="13"/>
+				<attribute name="CREDITLIMIT" label="合同金额/授信总额" type="STRING" length="25"/>
+				<attribute name="MAXCREDITLIMITPERORG" label="单家行最高授信额度" type="STRING" length="25"/>
+				<attribute name="MINCREDITLIMITPERORG" label="单家行最低授信额度" type="STRING" length="25"/>
+				<attribute name="BALANCE" label="余额" type="STRING" length="25"/>
+				<attribute name="USEDCREDITLIMIT" label="已用额度/透支余额" type="STRING" length="25"/>
+				<attribute name="LATEST6MONTHUSEDAVGAMOUNT" label="最近6个月平均应还款/最近6个月平均使用额度/最近6个月平均透支余额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_UDLC" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_UDSLC" label="未销户准贷记卡信息汇总" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="FINANCECORPCOUNT" label="贷款法人机构数/发卡法人机构数" type="STRING" length="13"/>
+				<attribute name="FINANCEORGCOUNT" label="贷款机构数/发卡机构数" type="STRING" length="13"/>
+				<attribute name="ACCOUNTCOUNT" label="笔数/账户数" type="STRING" length="13"/>
+				<attribute name="CREDITLIMIT" label="合同金额/授信总额" type="STRING" length="25"/>
+				<attribute name="MAXCREDITLIMITPERORG" label="单家行最高授信额度" type="STRING" length="25"/>
+				<attribute name="MINCREDITLIMITPERORG" label="单家行最低授信额度" type="STRING" length="25"/>
+				<attribute name="BALANCE" label="余额" type="STRING" length="25"/>
+				<attribute name="USEDCREDITLIMIT" label="已用额度/透支余额" type="STRING" length="25"/>
+				<attribute name="LATEST6MONTHUSEDAVGAMOUNT" label="最近6个月平均应还款/最近6个月平均使用额度/最近6个月平均透支余额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_UDSLC" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_UNPAIDLOAN" label="未结清贷款信息汇总" keyAttributes="REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="FINANCECORPCOUNT" label="贷款法人机构数/发卡法人机构数" type="STRING" length="13"/>
+				<attribute name="FINANCEORGCOUNT" label="贷款机构数/发卡机构数" type="STRING" length="13"/>
+				<attribute name="ACCOUNTCOUNT" label="笔数/账户数" type="STRING" length="13"/>
+				<attribute name="CREDITLIMIT" label="合同金额/授信总额" type="STRING" length="25"/>
+				<attribute name="MAXCREDITLIMITPERORG" label="单家行最高授信额度" type="STRING" length="25"/>
+				<attribute name="MINCREDITLIMITPERORG" label="单家行最低授信额度" type="STRING" length="25"/>
+				<attribute name="BALANCE" label="余额" type="STRING" length="25"/>
+				<attribute name="USEDCREDITLIMIT" label="已用额度/透支余额" type="STRING" length="25"/>
+				<attribute name="LATEST6MONTHUSEDAVGAMOUNT" label="最近6个月平均应还款/最近6个月平均使用额度/最近6个月平均透支余额" type="STRING" length="25"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_UNPAIDLOAN" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ICRP_VEHICLE" label="车辆交易和抵押记录" keyAttributes="ITEMNO,REPORTSN">
+			<attributes>
+				<attribute name="REPORTSN" label="报告编号" type="STRING" length="48"/>
+				<attribute name="ITEMNO" label="编号（唯一标识）" type="STRING" length="60"/>
+				<attribute name="ENGINECODE" label="发送机号" type="STRING" length="28"/>
+				<attribute name="LICENSECODE" label="车牌号码" type="STRING" length="30"/>
+				<attribute name="BRAND" label="品牌" type="STRING" length="80"/>
+				<attribute name="CARTYPE" label="车辆类型" type="STRING" length="30"/>
+				<attribute name="USECHARACTER" label="使用性质" type="STRING" length="30"/>
+				<attribute name="STATE" label="车辆状态" type="STRING" length="30"/>
+				<attribute name="PLEDGEFLAG" label="抵押标记" type="STRING" length="20"/>
+				<attribute name="GETTIME" label="信息更新日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ICRP_VEHICLE" />
+				</managerProperties>
+			</manager>
+		</class>
+		
+		<class name="ICRP_QUERY_RECORD" label="移动平台征信查询记录" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="30"/>
+				<attribute name="ORGID" label="查询机构号" type="STRING" length="10"/>
+				<attribute name="QUERYTIME" label="查询时间" type="STRING" length="30"/>
+				<attribute name="USERID" label="用户工号" type="STRING" length="10"/>
+				<attribute name="USERNAME" label="用户姓名" type="STRING" length="60"/>
+				<attribute name="CUSTOMERNAME" label="客户姓名" type="STRING" length="60"/>
+				<attribute name="CERTTYPE" label="客户证件类型" type="STRING" length="10"/>
+				<attribute name="CERTNO" label="客户证件号" type="STRING" length="30"/>
+				<attribute name="SOURCESYSID" label="服务源发起系统ID" type="STRING" length="30"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="icrp_query_record" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+	</package>
+</jbo>
+

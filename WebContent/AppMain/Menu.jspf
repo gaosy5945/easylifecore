@@ -1,0 +1,152 @@
+<%@ page language="java" contentType="text/html; charset=GBK" %>
+<%
+String sMenuBarId = "ASMenuBar_" + sAppID;
+ArrayList<String> ExcludeIDs = new ArrayList<String>();
+com.amarsoft.web.ui.mainmenu.AmarMenu menu = new com.amarsoft.web.ui.mainmenu.AmarMenu(CurUser, sAppID, ExcludeIDs);
+String sMenuBar = menu.genMenuBar(sMenuBarId);
+%>
+<td width="1"><div id="allmenu_btn" onclick="showAllMenu()"></div></td>
+<td height="30" width="100%"><%=sMenuBar%></td>
+<script type="text/javascript">
+	var sMenuBarId = "<%=sMenuBarId%>";
+	
+	function showAllMenu(){
+		var temp = showMenu;
+		showMenu = function(){};
+
+		var $mbar = $("#"+sMenuBarId);
+		var $mbt = $(">li:last", $mbar);
+		var lis = $(">li:not(:last)", $mbar).add($(">ul >li", $mbt));
+		var allmenu = $("#allmenu");
+		var allmenu_board = $("#allmenu_board");
+		if(allmenu.length < 1){
+			allmenu = $("<div id=\"allmenu\">" +
+				"<div style=\"overflow: hidden; width: 100%; height: 100%; padding: 0;\"><ul class=\"allmenu_bar\"></ul></div>" +
+				"<a class=\"allmenu_left\" href=\"#\" onmouseover=\"scrollAllMenu($(this).prev(), this, -1)\" hidefocus onclick=\"return false;\"></a>" +
+				"<a class=\"allmenu_right\" href=\"#\" onmouseover=\"scrollAllMenu($(this).prev().prev(), this, 1)\" hidefocus onclick=\"return false;\"></a>" +
+			"</div>");
+			allmenu_board = $("<div id=\"allmenu_board\"><iframe frameborder=\"0\" width=\"100%\" height=\"100%\"></iframe><div></div></div>");
+			$("body").append(allmenu_board).append(allmenu);
+		}
+		
+		var div = $(">div", allmenu);
+		var ul = $(">ul", div).append(lis);
+		$("ul", lis).show();
+		
+		var width = 0;
+		lis.each(function(){width += $(this).width()+20;});
+		ul.width(width);
+
+		var left = div.next();
+		var right = left.next();
+		if(div.scrollLeft() > 0) left.show();
+		else left.hide();
+		if(width > div.scrollLeft() + allmenu.width()) right.show();
+		else right.hide();
+		
+		allmenu.slideDown(100, function(){
+			allmenu_board.show();//.bgiframe();
+		});
+		
+		window.hideallmenu = function(){
+			$(document).unbind("mousedown", down).unbind("keyup", up);
+			window.hideallmenu = undefined;
+			$("#"+sMenuBarId).append(lis).append($mbt);
+			$("ul", lis).hide();
+			showMenu = temp;
+			moremenu();
+			allmenu.slideUp(100, function(){
+				$("#allmenu_board").hide();
+			});
+		};
+		function down(e){
+			if(e.pageY < 245) return;
+			hideallmenu();
+		}
+		function up(e){
+			//alert(e.keyCode);
+			if(e.keyCode == 27)
+				hideallmenu();
+		}
+		$(document).bind("mousedown", down).bind("keyup", up);
+	}
+	
+	function scrollAllMenu(allmenu, obj, flag){
+		var temp = setInterval(function(){
+			var oldleft = allmenu.scrollLeft();
+			allmenu.scrollLeft(oldleft + 10*flag);
+			var left = allmenu.scrollLeft();
+			
+			var leftobj, rightobj;
+			if(flag < 0){
+				leftobj = $(obj);
+				rightobj = $(obj).next();
+			}else{
+				rightobj = $(obj);
+				leftobj = $(obj).prev();
+			}
+			if(left == 0){
+				leftobj.hide();
+				rightobj.show();
+			}else if(left == oldleft){
+				leftobj.show();
+				rightobj.hide();
+			}else{
+				leftobj.show();
+				rightobj.show();
+			}
+		}, 1);
+		$(obj).bind("mouseleave", function(){
+			$(this).unbind("mouseleave");
+			clearInterval(temp);
+		});
+	}
+	
+	function showMenu(a, e){
+		var ul = a.nextSibling;
+		if(!ul || ul.tagName != "UL") return;
+		ul.style.display = "block";
+		var li = a.parentNode;
+		$(li).bind("mouseleave", function(){
+			$(this).unbind("mouseleave");
+			ul.style.display = "none";
+		});
+		
+		var zIndex = Math.ceil(new Date().getTime()/1000);
+		li.style.zIndex = zIndex;
+		ul.style.zIndex = zIndex;
+		ul.className = "";
+		var stateX = a.offsetWidth + ul.offsetWidth-(!e.offsetX?e.layerX:e.offsetX);
+		if(li.parentNode.className == "menu_left_show"){
+			ul.className = "menu_left_show";
+		}else if(e.clientX+stateX>document.body.clientWidth){
+			ul.className = "menu_left_show";
+		}else{
+			ul.className = "";
+		}
+		$(ul).bgiframe({conditional:/MSIE/.test(navigator.userAgent)});
+	}
+	
+	function moremenu(){
+		if(window.hideallmenu) hideallmenu();
+		
+		var $mbar = $("#"+sMenuBarId);
+		var $mbt = $(">li:last", $mbar).hide();
+		var $mul = $(">ul", $mbt);
+		$mbar.append($(">li", $mul)).append($mbt);
+		var mwidth = $mbar.width();
+		var width = 25;
+		$(">li", $mbar).each(function(){
+			if(this == $mbt[0]) return;
+			if((width += $(this).width()) < mwidth) return;
+			$mul.append(this);
+			$mbt.show();
+		});
+	}
+	
+	$(function(){
+		$("#"+sMenuBarId).show();
+		moremenu();
+		$(window).bind("resize", moremenu);
+	});
+</script>

@@ -1,0 +1,24 @@
+body {
+    background: url(../images/compdialog_bg.jpg) repeat-x scroll 0 0 transparent;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}
+.opencomp_head {
+	background-image: url(../images/pop_bg.png);
+	border-color: #a5a;
+}
+.right_menu a {
+    background: none;
+}
+.right_menu a:hover {
+    background: none;
+    color: #5ce472;
+}
+
+.right_menu{
+ 	background: url(../images/tecbg.png) no-repeat left;	
+	*+background: url(../images/tecbg.gif) no-repeat left;	
+}

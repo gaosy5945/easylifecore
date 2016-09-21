@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Instance>
+    <Messages> 
+    	<Message ID="CRQS_CONYENT" Tag="CFX" SelectSQL=""  Description="征信报文">
+    		<Field No="1" FieldTag="MSG" NameSpace = "" ValueSource="" TableField="" DefaultValue="" Description="征信报查询基本信息"  DataType="object" ObjectName="CRQS_INFO" />
+    	</Message>
+    	
+    	<Message ID="CRQS_INFO" Tag="MSG" SelectSQL=""  Description="影像自带交易基本信息">
+    		 <Field No="1" FieldTag="OrgCode" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.OrgCode" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="2" FieldTag="QuerySystem" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.QuerySystem" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="3" FieldTag="QueryForce" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.QueryForce" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="4" FieldTag="QueryStyle" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.QueryStyle" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="5" FieldTag="ReqStyle" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.ReqStyle" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="6" FieldTag="QuerOrgcode" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.QuerOrgcode" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="7" FieldTag="UserCode" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.UserCode" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="8" FieldTag="Name" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.Name" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="9" FieldTag="Certtype" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.Certtype" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="10" FieldTag="Certno" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.Certno" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="11" FieldTag="Queryreason" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.Queryreason" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="12" FieldTag="Queryformat" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.Queryformat" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="13" FieldTag="QueryExtend1" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.QueryExtend1" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 <Field No="14" FieldTag="QueryExtend2" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.QueryExtend2" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    	</Message>
+    	
+    	
+    	<Message ID="CRQS_In" Tag="ReqMMPClntCrQry" NameSpace="s" SelectSQL=""   Description="E207贷款信息查询系统接口">
+			<Field No="1" FieldTag="ReqSvcHeader" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="paid_reqsvcheader" DataType="object" ObjectName="req_Body_header" />
+			<Field No="2" FieldTag="SvcBody" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="paid_svcbody" DataType="object" ObjectName="CRQS_Req" />
+		</Message>
+		
+		<Message ID="CRQS_Out" Tag="RspMMPClntCrQry" NameSpace="s" SelectSQL="" Description="O_E207贷款信息查询系统接口">
+			<Field No="1" FieldTag="RspSvcHeader" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="BPMP_rsp_Body_header" DataType="object" ObjectName="BPMP_rsp_Body_header" />
+			<Field No="2" FieldTag="SvcBody" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="" Description="paid_O_svcbody"  DataType="object" ObjectName="CRQS_Resp"/>
+	     </Message>
+		
+    	
+    	<Message ID="CRQS_Req" Tag="SvcBody" NameSpace="s" SelectSQL="" Description="移动平台调征信调用客户信息">
+			<Field No="1" FieldTag="InstId1" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.InstId1" Description="查询机构号"  DataType="String" Length="10" IsRequire = "Y"/>
+			<Field No="2" FieldTag="ManagerNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.ManagerNo" Description="客户经理工号"  DataType="String" Length="10" IsRequire = "Y"/>
+			<Field No="3" FieldTag="ClientName" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.ClientName" Description="客户姓名"  DataType="String" Length="60" IsRequire = "Y"/>
+			<Field No="4" FieldTag="CtfType" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.CtfType" Description="客户证件种类"  DataType="String" Length="10" IsRequire = "Y"/>
+			<Field No="5" FieldTag="CtfId" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.CtfId" Description="客户证件号"  DataType="String" Length="30" IsRequire = "Y"/>
+		</Message>		
+		
+		<Message ID="CRQS_Resp" Tag="SvcBody" NameSpace="s" SelectSQL="" Description="个贷返回移动平台征信客户信息">
+			<Field No="1" FieldTag="CrTotHsNum" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.calcPolicyNum" Description="贷款人征信累计住房套数"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="2" FieldTag="CrRcrdFlg" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.haveInfoFlag" Description="是否有征信记录标识"  DataType="String" Length="1" IsRequire = "Y"/>
+			<Field No="3" FieldTag="LnAcctRcrdFlg" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.haveGdActnoFlag" Description="是否有个贷账户记录"  DataType="String" Length="1" IsRequire = "Y"/>
+			<Field No="4" FieldTag="CrCardAcctRcrdFlg" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.haveCreditActnoFlag" Description="是否有信用卡账户记录"  DataType="String" Length="1" IsRequire = "Y"/>
+			<Field No="5" FieldTag="CrnLnSt" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.preTrmClass" Description="当前贷款状态"  DataType="String" Length="2" IsRequire = "Y"/>
+			<Field No="6" FieldTag="Lst12MLnTotOdueTms" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.last12mTotOvdTimes" Description="过去12个月贷款累计逾期次数"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="7" FieldTag="Lst6MLnMaxOduePrd" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.last6mMaxOvdPeri" Description="过去6个月贷款最长逾期期数"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="8" FieldTag="Lst12MLnMaxOduePrd" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.last12mMaxOvdPeri" Description="过去12个月贷款最长逾期期数"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="9" FieldTag="Lst24MLnWrstRepySt" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.last24mWorstStat" Description="过去24个月内贷款的最差还款状态"  DataType="int" Length="8" IsRequire = "Y"/>
+			<Field No="10" FieldTag="LnMaxTotOdueTms" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.totOvdTimes" Description="贷款累计逾期次数取最大值"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="11" FieldTag="LnMaxOduePrd" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.maxOvdPeri" Description="贷款最高逾期期数"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="12" FieldTag="TllNowLnMaxOduePrd" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.tillNowMaxOvdPeri" Description="过去所有时间所有信贷产品最大的逾期期数"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="13" FieldTag="LnAcctMaxLgnMos" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.maxLoginMonths" Description="所有贷款帐户最长在册时间（月）"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="14" FieldTag="CrExpsr75PctCardCnt" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.exp75perCnt" Description="信用额度使用率Exposure为75%的信用卡个数"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="15" FieldTag="CrExpsr30PctCardCnt" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.exp30perCnt" Description="信用额度使用率Exposure为 30%的信用卡个数"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="16" FieldTag="PslLnBalAcctNum" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.dkHaveLnbalCnt" Description="个人贷款有余额的帐户数量"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="17" FieldTag="Lst12MCrChkQryTms" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.last12mCreditQueryCnt" Description="过去12个月中信贷审核查询次数"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="18" FieldTag="OthrDbtMoPyts" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.elseDebtMonth" Description="其他债务月偿付额"  DataType="double" Length="15,2" IsRequire = "Y"/>
+			<Field No="19" FieldTag="CrnCrCardSt" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.presentCreditStat" Description="当前信用卡状态只包含贷记卡"  DataType="String" Length="2" IsRequire = "Y"/>
+			<Field No="20" FieldTag="CrnCrCardOdueAmt" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.presentCreditOvdamt" Description="当前信用卡拖欠金额只包含贷记卡"  DataType="double" Length="15,2" IsRequire = "Y"/>
+			<Field No="21" FieldTag="Lst12MMinNonRepyTms" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.last12mCreditLowestCnt" Description="过去12个月信用卡未还最低还款额的次数"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="22" FieldTag="Lst24MCrWrstRepySt" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.last24mCreditWorstStat" Description="过去24个月内信用卡的最差还款状态"  DataType="int" Length="8" IsRequire = "Y"/>
+			<Field No="23" FieldTag="Lst12MAllQryTms" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.last12mAllQueryCnt" Description="过去12个月中所有查询次数"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="24" FieldTag="LnUnmoRepyFrqncy" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.unmonthlyRtnCnt" Description="还款频率为非按月还款的未结清贷款"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="25" FieldTag="Lst24MLnTotOdueTms" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.last24mTotOvdTimes" Description="过去24个月贷款累计逾期次数"  DataType="int" Length="10" IsRequire = "Y"/>
+		</Message>			
+     </Messages> 	
+        
+    <Transactions>
+	   	<Transaction ClientID="CRQS_QUERY" ServerID="" Description="征信查询" ConnectionID="crqs" Type="CLIENT">
+   			<property name = "SysHeadFlag" value = "N"/>
+   			<property name = "SendCharSet" value = "GB2312"/>
+   			<property name = "RecvCharSet" value = "GB2312"/>
+   			<property name = "Operation" value = "do"/>    			
+   			<property name = "XMLVERSION" value = "1.0"/>
+   			<property name = "XMLENOCDING" value = "GBK"/>
+   			<property name = "Queryformat" value = "111"/>
+   			<property name = "QueryExtend1" value = "1"/>
+   			<property name = "QueryExtend2" value = "000002"/>
+   			<property name = "OrgCode" value = "B11512900H0001"/>
+   			<property name = "QuerySystem" value = "11"/>
+   			<!-- 查询本地30天 -->
+   			<property name = "QueryForce" value = "3"/>
+   			<property name = "QueryStyle" value = "1"/>
+   			<property name = "ReqStyle" value = "1"/>
+   			<property name = "REPORTCODE" value = "UTF-8"/>
+   			
+   			<!-- 使用的message模板，需要按顺序设置 -->
+   			<IMessages>
+	   			<message name = "image_in" value = "CRQS_CONYENT"/>
+	   		</IMessages>
+	   		<OMessages>
+	   			<message name = "image_out" value = "CRQS_CONYENT"/>
+	   		</OMessages>
+   		</Transaction>
+
+   		<Transaction ClientID="CRQS_MOBLIE_QUERY" ServerID="" Description="征信查询" ConnectionID="crqs" Type="CLIENT">
+   			<property name = "SysHeadFlag" value = "N"/>
+   			<property name = "SendCharSet" value = "GB2312"/>
+   			<property name = "RecvCharSet" value = "GB2312"/>
+   			<property name = "Operation" value = "do"/>    			
+   			<property name = "XMLVERSION" value = "1.0"/>
+   			<property name = "XMLENOCDING" value = "GBK"/>
+   			<property name = "Queryformat" value = "111"/>
+   			<property name = "QueryExtend1" value = "1"/>
+   			<property name = "QueryExtend2" value = "000002"/>
+   			<property name = "OrgCode" value = "B11512900H0001"/>
+   			<property name = "QuerySystem" value = "12"/>
+   			<!-- 始终去人行查询最新的报告 -->
+   			<property name = "QueryForce" value = "2"/>
+   			<property name = "QueryStyle" value = "1"/>
+   			<property name = "ReqStyle" value = "1"/>
+   			<property name = "REPORTCODE" value = "UTF-8"/>
+   			
+   			<!-- 使用的message模板，需要按顺序设置 -->
+   			<IMessages>
+	   			<message name = "image_in" value = "CRQS_CONYENT"/>
+	   		</IMessages>
+	   		<OMessages>
+	   			<message name = "image_out" value = "CRQS_CONYENT"/>
+	   		</OMessages>
+   		</Transaction>
+   		
+		
+    </Transactions>
+</Instance>

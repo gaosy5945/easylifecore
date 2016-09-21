@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="GBK" standalone="no"?><ComponentTypes>
+	<ComponentType ID="PRD01" NAME="客户准入要求" STATUS="1"/>
+	<ComponentType ID="PRD0101" NAME="企业客户准入要求" STATUS="1"/>
+	<ComponentType ID="PRD0102" NAME="个人客户准入要求" STATUS="1"/>
+	<ComponentType ID="PRD02" NAME="债项准入要求" STATUS="1"/>
+	<ComponentType ID="PRD0201" NAME="金额期限要求" STATUS="1"/>
+	<ComponentType ID="PRD0202" NAME="资金用途要求" STATUS="1"/>
+	<ComponentType ID="PRD0203" NAME="担保要求" STATUS="1"/>
+	<ComponentType ID="PRD0204" NAME="合作方要求" STATUS="1"/>
+	<ComponentType ID="PRD03" NAME="产品功能定义" STATUS="1"/>
+	<ComponentType ID="PRD0301" NAME="还款方式" STATUS="1"/>
+	<ComponentType ID="PRD0302" NAME="利率方案" STATUS="1"/>
+	<ComponentType ID="PRD0303" NAME="罚息方案" STATUS="1"/>
+	<ComponentType ID="PRD0304" NAME="费用方案" STATUS="1"/>
+	<ComponentType ID="PRD0305" NAME="补贴方案" STATUS="1"/>
+	<ComponentType ID="PRD0306" NAME="支付方式" STATUS="1"/>
+	<ComponentType ID="PRD0307" NAME="授信额度" STATUS="1"/>
+	<ComponentType ID="PRD0308" NAME="贷后服务" STATUS="1"/>
+	<ComponentType ID="PRD04" NAME="管理要求" STATUS="1"/>
+	<ComponentType ID="PRD0401" NAME="受理调查" STATUS="1"/>
+	<ComponentType ID="PRD0402" NAME="审查审批" STATUS="1"/>
+	<ComponentType ID="PRD0403" NAME="合同签订" STATUS="1"/>
+	<ComponentType ID="PRD0404" NAME="放款支付" STATUS="1"/>
+	<ComponentType ID="PRD0405" NAME="贷后检查" STATUS="1"/>
+</ComponentTypes>

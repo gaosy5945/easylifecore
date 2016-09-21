@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Instance>
+  <Messages> 
+ 		<!--ckxu添加  数据接口公用的(req)Header部分(IMessage)-->
+		<Message ID="Req_HeaderType" Tag="HeadType" NameSpace = "gateway"  SelectSQL=""  Description="请求头信息">
+			<Field No="1" FieldTag="versionNo" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.versionNo" Description="版本号"  DataType="String" Length="10" IsRequire = "Y"/>
+			<Field No="2" FieldTag="toEncrypt" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.toEncrypt" Description="密押标识.表示数据报文是否压缩格式，目前不使用，默认填0"  DataType="String" 	Length="2" IsRequire = "Y"/>
+			<Field No="3" FieldTag="commCode" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.commCode" Description="暂时填写500001"  DataType="string" Length="10" IsRequire = "Y"/>
+			<Field No="4" FieldTag="commType" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.commType" Description="0--同步请求(等待接收方返回业务处理结果)；1--异步请求(接收方不返回结果,由网关返回给请求方通讯回执)"  DataType="String" Length="2" IsRequire = "Y"/>
+			<Field No="5" FieldTag="senderId" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.senderId" Description="报文发送方的标识"  DataType="string" 	Length="20" IsRequire = "Y"/>
+			<Field No="6" FieldTag="tradeCode" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.tradeCode" Description="交易发起方所做交易的编码，由各业务系统制定。"  DataType="String" 	Length="10" IsRequire = "Y"/>
+			<Field No="7" FieldTag="receiverId" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.receiverId" Description="接收方标识.填写接收方系统机器名"  DataType="String" 	Length="10" IsRequire = "N"/>
+			<Field No="8" FieldTag="senderSN" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.senderSN" Description="发起方流水"  DataType="String" Length="40" IsRequire = "N"/>
+			<Field No="9" FieldTag="senderDate" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.senderDate" Description="发起方日期"  DataType="String" Length="10" IsRequire = "N"/>
+			<Field No="10" FieldTag="senderTime" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.senderTime" Description="发起方时间"  DataType="String" Length="10" IsRequire = "N"/>
+			<Field No="11" FieldTag="gwErrorMessage" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.gwErrorMessage" Description="网关错误代码.用于表示具体错误内容的七位的半角字符串，发起方填空"  DataType="String" Length="10" IsRequire = "N"/>
+			<Field No="12" FieldTag="gwErrorCode" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.gwErrorCode" Description="网关用于表示是否处理过程发生错误。发起方填空.01成功,00 错误"  DataType="String" Length="10" IsRequire = "N"/>
+		</Message>
+    	<Message ID="I_IndividualInfoQry" Tag="NoAS400" NameSpace = "gateway" SelectSQL=""  Description="R612个人身份认证_无照片">
+			<Field No="1" FieldTag="idCardCode" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.idCardCode" Description="身份证号"  DataType="STRING" Length="20" IsRequire = "Y"/>
+			<Field No="2" FieldTag="idCardName" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.idCardName" Description="客户姓名"  DataType="STRING" Length="50" IsRequire = "Y"/>
+    	</Message>
+ 	    <Message ID="O_IndividualInfoQry" Tag="NoAS400" NameSpace = "gateway"  SelectSQL=""  Description="O_R612个人身份认证_无照片">
+			<Field No="1" FieldTag="result" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.result" Description="“00”表示有效的身份证，其他表示无效的身份"  DataType="STRING" 	Length="20" IsRequire = "Y"/>
+			<Field No="2" FieldTag="message" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.message" Description="状态说明"  DataType="STRING" 	Length="30" IsRequire = "Y"/>
+			<Field No="3" FieldTag="idCardCode" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.idCardCode" Description="被验证者的身份证号"  DataType="STRING" Length="20" IsRequire = "Y"/>
+			<Field No="4" FieldTag="idCardName" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.idCardName" Description="被验证者的真实姓名"  DataType="STRING" Length="50" IsRequire = "Y"/>
+    	</Message>
+    	<Message ID="O_IndividualInfoQry_Photo" Tag="NoAS400" NameSpace = "gateway"  SelectSQL=""  Description="O_R612个人身份认证_无照片">
+			<Field No="1" FieldTag="result" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.result" Description="“00”表示有效的身份证，其他表示无效的身份"  DataType="STRING" 	Length="20" IsRequire = "Y"/>
+			<Field No="2" FieldTag="message" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.message" Description="状态说明"  DataType="STRING" 	Length="30" IsRequire = "Y"/>
+			<Field No="3" FieldTag="idCardCode" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.idCardCode" Description="被验证者的身份证号"  DataType="STRING" Length="20" IsRequire = "Y"/>
+			<Field No="4" FieldTag="idCardName" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.idCardName" Description="被验证者的真实姓名"  DataType="STRING" Length="50" IsRequire = "Y"/>
+    		<Field No="5" FieldTag="idcardphoto" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.idcardphoto" Description="被验证者的照片"  DataType="CLOB" IsRequire = "Y"/>
+    		
+    	</Message>
+     </Messages> 	
+    <Transactions>
+    	<!-- R612个人身份认证 -->
+		<Transaction ClientID="IndInfoQry_Client" ServerID="" Description="R612个人身份认证_无照片" ConnectionID="dataclientrqs" Type="CLIENT">
+			<Property name = "EndPoint" value="http://203.156.212.19/dataservice_Amarsoft/getIDCardCheck"/>
+			<property name = "tradeCode" value = "R612"/>
+			<property name = "receiverId" value = ""/>
+			<property name = "gwErrorCode" value = ""/>
+			<property name = "Operation" value = "getIDCardCheck"/>
+			<!-- 下面的property用于向查询记录表中插入数据 -->
+			<property name = "ServiceAction" value = "getIDCardCheck"/>   
+			<property name = "ServiceAdr" value = "http://203.156.212.19/dataservice_Amarsoft/"/>   
+			<property name = "ConsumerId" value = "0215"/>   
+			<property name = "SourceSysId" value = "0201"/>   
+			<IMessages>
+				<message name="SysHeader" value="Req_HeaderType" />
+				<message name="SysBody" value="I_IndividualInfoQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="Req_HeaderType" />
+				<message name="SysBody" value="O_IndividualInfoQry" />
+			</OMessages>
+		</Transaction>
+		<!-- R612个人身份认证_带照片 -->
+		<Transaction ClientID="WithPhoto_IndInfoQry_Client" ServerID="" Description="R613个人身份认证_无照片" ConnectionID="dataclientrqs" Type="CLIENT">
+			<Property name = "EndPoint" value="http://203.156.212.19/dataservice_Amarsoft/getIDCardCheckWithPhoto"/>
+			<property name = "tradeCode" value = "R613"/>
+			<property name = "receiverId" value = ""/>
+			<property name = "gwErrorCode" value = ""/>
+			<property name = "Operation" value = "getIDCardCheckWithPhoto"/>
+			<!-- 下面的property用于向查询记录表中插入数据 -->
+			<property name = "ServiceAction" value = "getIDCardCheckWithPhoto"/>   
+			<property name = "ServiceAdr" value = "http://203.156.212.19/dataservice_Amarsoft/"/>   
+			<property name = "ConsumerId" value = "0215"/>   
+			<property name = "SourceSysId" value = "0201"/>   
+			<IMessages>
+				<message name="SysHeader" value="Req_HeaderType" />
+				<message name="SysBody" value="I_IndividualInfoQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="Req_HeaderType" />
+				<message name="SysBody" value="O_IndividualInfoQry_Photo" />
+			</OMessages>
+		</Transaction>
+    </Transactions>
+</Instance>

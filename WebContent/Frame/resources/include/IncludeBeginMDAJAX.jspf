@@ -1,0 +1,59 @@
+<%@page buffer="64kb" errorPage="/Frame/page/control/ErrorPage.jsp"%><%@
+page import="java.io.*"%><%@
+page import="java.sql.*"%><%@
+page import="java.text.*"%><%@
+page import="java.util.*"%><%@
+page import="com.amarsoft.are.ARE"%><%@
+page import="com.amarsoft.are.lang.*"%><%@
+page import="com.amarsoft.are.security.*"%><%@
+page import="com.amarsoft.are.util.*"%><%@
+page import="com.amarsoft.amarscript.*"%><%@
+page import="com.amarsoft.context.*"%><%@
+page import="com.amarsoft.awe.*"%><%@
+page import="com.amarsoft.awe.Configure"%><%@
+page import="com.amarsoft.awe.RuntimeContext"%><%@
+page import="com.amarsoft.awe.control.model.*"%><%@
+page import="com.amarsoft.awe.util.*"%><%@
+page import="com.amarsoft.alert.*"%><%@
+page import="com.amarsoft.web.dw.*"%><%@
+page import="com.amarsoft.web.ui.*"%><%@
+page import="com.amarsoft.web.util.ArgTool"%><%
+    response.setHeader("Cache-Control","no-store");
+	response.setHeader("Pragma","no-cache");
+	response.setDateHeader("Expires",0);
+
+	RuntimeContext CurARC = (RuntimeContext)session.getAttribute("CurARC");
+	if(CurARC == null) throw new Exception("------Timeout------");
+
+	Configure CurConfig = Configure.getInstance(application);
+	if(CurConfig ==null) throw new Exception("读取配置文件错误！请检查配置文件");
+	
+	String sWebRootPath = request.getContextPath();
+	String sCompClientID = request.getParameter("CompClientID");
+	if(sCompClientID==null) sCompClientID="";
+	
+    ASUser CurUser = CurARC.getUser();
+    ASOrg CurOrg = CurUser.getBelongOrg();
+
+    Transaction SqlcaRepository = null;
+    Transaction Sqlca = null;
+
+    try{
+        int iPostChange = 1;
+        
+        ComponentSession CurCompSession = CurARC.getCompSession();
+        Component CurComp = CurCompSession.lookUp(sCompClientID);
+        Page CurPage = new Page(CurComp);
+        CurPage.setRequestAttribute((HttpServletRequest)request);
+        
+   		String sDataSource = CurConfig.getConfigure("DataSource");
+       	try{
+       		SqlcaRepository = new Transaction(sDataSource);
+       	}catch(Exception ex) {
+       		ex.printStackTrace();
+       	    throw new Exception("连接数据库失败！连接参数：<br>DataSource:"+sDataSource);
+       	}
+		
+		SqlcaRepository.commit();
+		Sqlca = SqlcaRepository;
+%>

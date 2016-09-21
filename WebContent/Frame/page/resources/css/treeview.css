@@ -1,0 +1,69 @@
+/*************************************�����ͼ**********************************************/
+.rootTDCls{
+	background:#fff url(../images/treeview/panel_title.png) repeat-x top;
+	height:23px;
+	width:100%;
+	color:#fff;
+	padding:0px;
+	display:block;
+	min-width:200px;
+	margin:0px;
+	font-weight:bold;
+	line-height:23px;
+}
+.rootTDCls a{
+	color:#fff;
+}
+.folderTDCls,.pageTDCls{
+     border-right:0px solid #9fc0e3;
+     width:100%; 
+	 min-width:200px;
+	 display:block;
+	 padding:0px;
+	margin:0px;
+}
+.node_hoverCls {
+	background-color:#b4cbff;
+}
+.tree_show_in_view .node_hoverCls {
+	font-weight: bold;
+}
+.node_icon {
+	width: 16px;
+}
+.gray_arrow {
+	background: url(../images/treeview/gray_arrow.gif) no-repeat center;
+}
+.back_arrow {
+	background: url(../images/treeview/back_arrow.gif) no-repeat center;
+}
+.img-folder {
+	background: url(../images/treeview/img-folder.gif) no-repeat center;
+}
+.img-page {
+	background: url(../images/treeview/img-page.gif) no-repeat center;
+}
+/**�������Ԫ����**/
+#tabTreeview table{ border:0px;  border-bottom:1px dotted #9fc0e3; height:22px;}
+#tabTreeview td{ 
+     line-height:22px; 
+     border:0px;
+	 color:#416aa3
+}
+#tabTreeview td:hover{ color:#F90}
+#tabTreeview td a,.tabTreeview td a:active,.tabTreeview td a:visited{color:#416aa3}
+#tabTreeview span.multiSelect {
+	width: 16px;/* height: 16px;*/ display: inline-block;
+	background: url(../images/treeview/tree_checkbox_0.gif) no-repeat center;
+	cursor: pointer;
+}
+#tabTreeview span.multiSelected {
+	width: 16px; /*height: 16px;*/ display: inline-block;
+	background: url(../images/treeview/tree_checkbox_1.gif) no-repeat center;
+	cursor: pointer;
+}
+#tabTreeview span.notAllChildMultiSelect {
+	width: 16px; /*height: 16px;*/ display: inline-block;
+	background: url(../images/treeview/tree_checkbox_2.gif) no-repeat center;
+	cursor: pointer;
+}

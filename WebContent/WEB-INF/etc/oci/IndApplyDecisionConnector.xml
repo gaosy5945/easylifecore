@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	#{}为传入参数
+	${}为其他表获得参数
+	@{}为xml属性值
+ -->
+	<decision>
+		<Properties>
+			<!-- 合同状态：未签约 -->
+			<Property name="UNSIGNATURAL" value="01" />
+			<!-- 合同状态：已签约待放款 -->
+			<Property name="SIGNATURAL" value="02" />
+			<!-- 合同状态:已放款 -->
+			<Property name="PUT_MONEY" value="03"/>
+			<!-- 合同状态:已终结 -->
+			<Property name="TERMINAL" value="04"/>
+			<!-- 业务种类:个人授信额度申请 -->
+			<Property name="IND_CREDIT_LOAN" value="555"/>
+			<!-- 业务种类:个人一手房购房贷款 -->
+			<Property name="IND_NEW_HOUSE_LOAN" value="001"/>
+			<!-- 业务种类:个人二手房购房贷款 -->
+			<Property name="IND_OLD_HOUSE_LOAN" value="002"/>
+			<!-- 业务种类:个人商业用房抵押贷款-->
+			<Property name="IND_BUSINESS_HOUSE_LOAN" value="003" />
+			<!-- 业务种类:个人一手房购房贷款-经适房-->
+			<Property name="IND_NEW_SUITABLE_HOUSE_LOAN" value="032"/>
+			<!-- 业务种类:个人一手房购房贷款-合力贷 -->
+			<Property name="IND_NEW_HOUSE_FORCES_LOAN" value="033"/>
+			<!-- 业务种类:个人二手房-接力贷 -->
+			<Property name="IND_OLD_HOUSE_RELAY_LOAN" value="034"/>
+			<!-- 业务种类:个人二手房-合力贷 -->
+			<Property name="IND_OLD_HOUSE_FORCES_LOAN" value="035"/>
+			<!-- 业务种类:个人商业用房按揭贷款-接力贷 -->
+			<Property name="IND_BUSINESS_HOUSE_RELAY_LOAN" value="036"/>
+			<!-- 业务种类:公积金贷款 -->
+			<Property name="ACC_FUND_HOUSE_LOAN" value="100"/>
+			<!-- 业务种类:个人住房证券化贷款 -->
+			<Property name="IND_HOUSE_BOND_LOAN" value="407"/>
+			<!-- 申请关联类型:公积金组合打包申请 -->
+			<Property name="ACCUMULATION_FUND_COMBINATION_APPLY" value="07"/>
+			<!-- 申请关联类型:额度关联 -->
+			<Property name="LIMIT_ABOUT" value="06"/>
+			<!-- 申请人类型:共同还款人 -->
+			<Property name="COMMON_REPAYMENT_APPLICANT" value="03"/>
+			<!-- 客户关系类型:配偶 -->
+			<Property name="SPOUSE" value="2007"/>
+			<!-- 财务类型:月稳定收入 -->
+			<Property name="MON_STABLE_INCOME" value="3010"/>
+			<!-- 财务类型:租金月收入 -->
+			<Property name="MON_RENT_INCOME" value="3020"/>
+			<!-- 财务类型:投资月收入 -->
+			<Property name="MON_INVEST_INCOME" value="3030"/>
+			<!-- 财务类型:其他月收入 -->
+			<Property name="MON_REST_INCOME" value="3040"/>
+			<!-- 财务类型:个人月收入 -->
+			<Property name="MON_PERSONAL_INCOME" value="3050"/>
+			<!-- 业务状态:正常 -->
+			<Property name="BUSINESS_STATUS_NORMAL" value="L0"/>
+			<!-- 业务状态:B逾期 -->
+			<Property name="BUSINESS_STATUS_BOVERDUE" value="L1"/>
+			<!-- 业务状态:逾期 -->
+			<Property name="BUSINESS_STATUS_OVERDUE" value="L11"/>
+			<!-- 业务状态:呆滞 -->
+			<Property name="BUSINESS_STATUS_DULL" value="L12"/>
+			<!-- 业务状态:呆账 -->
+			<Property name="BUSINESS_STATUS_BADDEBT" value="L13"/>
+			<!-- 客户标示:人行黑名单 -->
+			<Property name="PEOPLE_BANK_BLACKLIST" value="1020"/>
+			<!-- 客户标示:本行黑名单 -->
+			<Property name="LOCAL_BANK_BLACKLIST" value="1030"/>
+			<!-- 客户等级:白金客户 -->
+			<Property name="PLATINUM_CUSTOMER" value="10"/>
+			<!-- 资产类型:房地产 -->
+			<Property name="REAL_ESTATE" value="20100"/>
+			<!-- 资产类型:居住用房地产 -->
+			<Property name="LIVE_ESTATE" value="20100100"/>
+			<!-- 资产类型:公寓 -->
+			<Property name="APARTMENT_ESTATE" value="20100100100"/>
+			<!-- 资产类型:别墅 -->
+			<Property name="VILLA_EATATE" value="20100100110"/>
+			<!-- 资产类型:政策性住房(限于特定产品) -->
+			<Property name="POLICY_ESTATE" value="20100100120"/>
+			<!-- 资产类型:商用房地产 -->
+			<Property name="BUSINESS_ESTATE" value="20100200"/>
+			<!-- 资产类型:商铺或商场 -->
+			<Property name="MARKET_ESTATE" value="20100200100"/>
+			<!-- 资产类型:商住两用房 -->
+			<Property name="BUSINESS_AND_LIVE_ESTATE" value="20100200110"/>
+			<!-- 资产类型:办公用房地产 -->
+			<Property name="WORK_ESTATE" value="20100300"/>
+			<!-- 资产类型:办公用房 -->
+			<Property name="WORK_ESTATE_A" value="20100300100"/>
+			<!-- 资产类型:工业用房地产 -->
+			<Property name="INDUSTRY_ESTATE" value="20100400"/>
+			<!-- 资产类型:标准工业厂房 -->
+			<Property name="NORM_INDUSTRY_ESTATE" value="20100400100"/>
+			<!-- 资产类型:非标准工业厂房 -->
+			<Property name="ABNORM_INDUSTRY_ESTATE" value="20100400110"/>
+			<!-- 资产类型:仓库 -->
+			<Property name="STORAGE_ESTATE" value="20100400120"/>
+			<!-- 资产类型:车辆 -->
+			<Property name="CAR" value="40500100"/>
+			<!-- 资产类型:载货汽车 -->
+			<Property name="CARGO_CAR" value="40500100100"/>
+			<!-- 资产类型:大中型载客汽车 -->
+			<Property name="BIG_BUSINESS_CAR" value="40500100110"/>
+			<!-- 资产类型:小型载客汽车 -->
+			<Property name="SMALL_BUSINESS_CAR" value="40500100120"/>
+			<!-- 资产类型:牵引车 -->
+			<Property name="DRAG_CAR" value="40500100130"/>
+			<!-- 资产类型:挂车 -->
+			<Property name="HANG_CAR" value="40500100140"/>
+			<!-- 资产类型:工程车 -->
+			<Property name="PROJECT_CAR" value="40500100150"/>
+			<!-- 资产类型:特种车 -->
+			<Property name="SPECIAL_CAR" value="40500100160"/>
+			<!-- 抵质押物状态:办妥正式抵押 -->
+			<Property name="ACHIEVE_OFFICIAL_GUARANTY" value="05"/>
+			<!-- 额度类型：综合授信额度 -->
+			<Property name="TOT_CREADIT_AMT" value="0101" />
+			<!-- 额度类型:消费额度 -->
+			<Property name="CONSUMEPOOL_AMT" value="0105"/>
+			<!-- 额度类型:经营额度 -->
+			<Property name="WORKINGPOOL_AMT" value="0106"/>
+			<!-- 输入固定值:请求方代码 -->
+			<Property name="SYSTEMID" value="PL"/>
+			<!-- 输入固定值:交易码 -->
+			<Property name="ALIAS" value="PLAPPONL"/>
+			<!-- 输入固定值:所调用策略流的签名 -->
+			<Property name="SIGNATURE" value="SPDB"/>
+			<!-- 输入固定值:输入的Physical Layout -->
+			<Property name="INPUTDATAAREA" value="OPLAPPIN"/>
+			<!-- 输入固定值:输出的Physical Layout -->
+			<Property name="OUTPUTDATAAREA" value="OPLAPPOT"/>
+			<!-- 输入固定值:调用DA时的日志级别 -->
+			<Property name="TRACELEVEL" value="16"/>
+			<!-- 输入固定值:调用位置 -->
+			<Property name="POSITION" value="0"/>
+			<!-- 信用额度 -->
+			<Property name="CREDITPOOL_AMT" value="0"/>
+			<!-- 授信项下信用贷款余额 -->
+			<Property name="CREDITPOOL_BAL" value="0"/>
+			<!-- 暂定产品小类 -->
+			<Property name="PRODUCT_CLASS" value="130301"/>
+			<!-- 暂定产品最大金额 -->
+			<Property name="PRODUCT_MAX_AMT" value="100000"/>
+			<!-- 暂定产品最小金额 -->
+			<Property name="PRODUCT_MIN_AMT" value="10000"/>
+			<!-- 对象类型 -->
+			<Property name="OBJECTTYPE" value="jbo.app.BUSINESS_APPLY"/>
+			<!-- 共用质押品关联的所有贷款余额 -->
+			<Property name="IMPAWNOTHERLOANBAL" value="0"/>
+			<!-- 共用抵押品关联的所有贷款余额 -->
+			<Property name="MORTAGAGEOTHERLOANBAL" value="0"/>
+			<!-- 利率类型:正常利率 -->
+			<Property name="NORMALRATE" value="01"/>
+			<!-- 产品适用范围 -->
+			<!-- 个人住房 -->
+			<Property name="LIVEHOUSE" value="1" />
+			<!-- 个人商房 -->
+			<Property name="CONSUMERHOUSE" value="2" />
+			<!-- 个人汽车 -->
+			<Property name="CARLOAN" value="3" />
+			<!-- 个人消费 -->
+			<Property name="CONSUMER" value="4" />
+			<!-- 经营性-->
+			<Property name="OPERATOR" value="5" /> 
+			<!-- 审批状态:已受理 -->
+			<Property name="ACCEPT" value="01" />
+			<!-- 审批状态:审批中 -->
+			<Property name="APPROVING" value="02" />
+			<!-- 发生类型:新发生 -->
+			<Property name="NEWOCCUR" value="0010" />
+			<!-- 出账状态 :申请中-->
+			<Property name="APPLYING" value="01" />
+			<!-- 出账状态 :监督通过-->
+			<Property name="SUPERVISE_PASS" value="02" />
+			<!-- 最高额担保 -->
+			<Property name="MAXCREDITGUARANTY" value="020" />
+			<!-- 接力贷正常状态 -->
+			<Property name="JLD_NORMAL" value="0" />
+		</Properties>
+	
+		<inits>
+			<init>
+				<table tablename="jbo.app.BUSINESS_APPLY">
+					<sqls>
+						<sql key="BusinessContractInfo" sql="select SERIALNO,CUSTOMERID,BUSINESSTYPE,productid,CONTRACTARTIFICIALNO,occurdate,GUARANTYTYPE,RPTTERMID,RESDERATIONREASONS,LOANRATETERMID from O where SERIALNO =#{applyserialno}"  >
+							<cloumn key="customerid" returnkey="CUSTOMERID"/>
+							<cloumn key="applyserialno" returnkey="serialNo" />
+							<cloumn key="loanRateTermId" returnkey="LOANRATETERMID" />
+							<cloumn key="contractArtificialNo" returnkey="CONTRACTARTIFICIALNO" />
+						</sql>
+						<sql key="BusinessApplyInfo" sql="select BUSINESSTERMUNIT,BUSINESSTERM,BUSINESSSUM,BUSINESSTERMDAY,(select ob.orgid from jbo.sys.ORG_BELONG ob where exists (select 1 from jbo.awe.ORG_INFO oi where oi.orgid = ob.orgid and oi.orglevel = 2 ) and ob.BELONGORGID = O.ACCOUNTINGORGID) as v.relativeorgId,NONSTDINDICATOR,VOUCHTYPE,loantype from O where SERIALNO=#{applyserialno}" target1="BusinessApplyInfo"/> 
+						<sql key="ApplyLoanAmount" sql="select sum(case when ApproveStatus in(@{APPLYING},@{SUPERVISE_PASS}) and OccurType = @{NEWOCCUR} and BUSINESSTYPE not in (@{IND_CREDIT_LOAN},@{ACC_FUND_HOUSE_LOAN}) then BUSINESSSUM else 0 end) as v.SUMBUSINESSSUM from O where CustomerID = ${customerid}" />
+						<sql key="ApplyHouseLoanAmount" sql="select sum(case when ApproveStatus in(@{APPLYING},@{SUPERVISE_PASS}) and OccurType = @{NEWOCCUR} and BUSINESSTYPE in(@{IND_NEW_HOUSE_LOAN},@{IND_OLD_HOUSE_LOAN}) then BUSINESSSUM else 0 end) as v.SUMBUSINESSSUM from O where CustomerID = ${customerid}" /> 
+						<sql key="CustomerHouseApplyCount" sql="select sum(case when ApproveStatus in(@{ACCEPT},@{APPROVING}) and OccurType = @{NEWOCCUR} and BUSINESSTYPE in(@{IND_BUSINESS_HOUSE_LOAN},@{IND_BUSINESS_HOUSE_RELAY_LOAN}) then 1 else 0 end) as v.COUNTRESULT from O where CustomerID = ${customerid}" />
+						<sql key="MateHouseApplyCount" sql="select sum(case when ApproveStatus in(@{ACCEPT},@{APPROVING}) and OccurType = @{NEWOCCUR} and BUSINESSTYPE in(@{IND_BUSINESS_HOUSE_LOAN},@{IND_BUSINESS_HOUSE_RELAY_LOAN}) then 1 else 0 end) as v.COUNTRESULT from O where CustomerID = ${relativecustomerid}" /> 																  
+					</sqls>
+				</table>
+				<table tablename="jbo.app.APPLY_RELATIVE">
+					<sqls>
+						<!-- <sql key="ApplyRelativeInfo" sql="select SUM(RELATIVEAMOUNT) as v.SUMRELATIVEAMOUNT from O where APPLYSERIALNO =#{applyserialno} and RELATIVETYPE =@{ACCUMULATION_FUND_COMBINATION_APPLY}" /> -->
+						<sql key="LimitAbout" sql="select count(*) as v.COUNTRESULT from O where APPLYSERIALNO =#{applyserialno} and RELATIVETYPE =@{LIMIT_ABOUT}" />
+						<sql key="ApplyRelativeContractInfo" sql="select objectno,objecttype from O where applyserialNo = #{applyserialno} and RELATIVETYPE =@{ACCUMULATION_FUND_COMBINATION_APPLY}" >
+							<cloumn key="relativeGjjObjectNo" returnkey="objectno" />
+						</sql>
+						<sql key="ApplyCLContractInfo" sql="select objectno,objecttype from O where applyserialNo =#{applyserialno} and RELATIVETYPE =@{LIMIT_ABOUT} ">
+							<cloumn key="relativeCLObjectNo" returnkey="objectno" />
+							<cloumn key="relativeCLObjectType" returnkey="objecttype" />
+						</sql>					
+						<sql key="refuseApplySerialno" sql="select objectno from O where applyserialNo = #{applyserialno} and RELATIVETYPE = '11' and objecttype= 'jbo.app.BUSINESS_APPLY'" >
+							<cloumn key="refuseApplySerialno" returnkey="objectno" />
+						</sql>
+					</sqls> 
+				</table>
+				<table tablename="jbo.customer.CUSTOMER_RELATIVE">
+					<sqls>
+						<sql key="MateId" sql="select RELATIVECUSTOMERID from O where CUSTOMERID =${customerid} and RELATIONSHIP =@{SPOUSE}">
+							<cloumn key="relativecustomerid" returnkey="RELATIVECUSTOMERID"/>
+						</sql>
+					</sqls>
+				</table>
+				<table tablename="jbo.app.BUSINESS_CONTRACT">
+					<sqls>
+						<sql key="ContractSerialNoList" sql="select SERIALNO from O where CUSTOMERID =${customerid}">
+							<cloumn key="ContractSerialNoList" returnkey="SERIALNO"/>
+						</sql>						
+					</sqls>
+				</table>	
+				<table tablename="jbo.app.BUSINESS_APPLY">
+					<sqls>
+						<sql key="relativeGjjApplyInfo" sql="select businesssum,businessterm from O where serialNo =${relativeGjjObjectNo}" />
+						<sql key="lastApplySerialNo" sql="select max(serialNo) as v.lastApplyserialNo from O where O.contractartificialno = ${contractArtificialNo} and serialNo != #{applyserialno}">
+							<cloumn key="lastApplySerialNo" returnkey="lastApplyserialNo" />
+						</sql>
+					</sqls>
+				</table>		
+				<table tablename="jbo.acct.ACCT_RATE_SEGMENT">
+					<sqls>
+						<sql key="AcctRateSegmentInfo" sql="select RATEFLOAT,BUSINESSRATE,BASERATE from O where OBJECTNO =#{applyserialno} and OBJECTTYPE = 'jbo.app.BUSINESS_APPLY' and ratetype =@{NORMALRATE} and termid = ${loanRateTermId}" />
+						<sql key="AcctRateRelativeContractInfo" sql="select BUSINESSRATE from O where OBJECTNO =${relativeGjjObjectNo} and OBJECTTYPE = 'jbo.app.BUSINESS_APPLY' and ratetype =@{NORMALRATE} and termid = (select ba.loanRateTermId from jbo.app.BUSINESS_APPLY ba where ba.serialNo = ${relativeGjjObjectNo} )" />
+					</sqls>
+				</table>			
+				<table tablename="jbo.acct.ACCT_RPT_SEGMENT">
+					<sqls>
+						<sql key="AcctRPTSegmentInfo" sql="select PAYFREQUENCYTYPE,SEGTERM from O where OBJECTNO =#{applyserialno} and OBJECTTYPE = 'jbo.app.BUSINESS_APPLY'"/>
+						<sql key="AcctRPTRelativeContractInfo" sql="select termid,segterm from O where OBJECTNO =${relativeGjjObjectNo} and OBJECTTYPE = 'jbo.app.BUSINESS_APPLY'" />
+					</sqls>
+				</table>
+				<table tablename="jbo.customer.CUSTOMER_INFO">
+					<sqls>
+						<sql key="CustomerInfo" sql="select CUSTOMERNAME,CERTTYPE,CERTID,MFCUSTOMERID from O where CUSTOMERID =${customerid}"/>					
+					</sqls>
+				</table>
+				<table tablename="jbo.customer.IND_INFO">
+					<sqls>
+						<sql key="IndInfo" sql="select BIRTHDAY,COUNTRY,EDUEXPERIENCE,MARRIAGE,INDUSTRYTYPE,HABITATIONSTATUS,JOBYEARS,CECUSREGISTERTYPE,SEX,HAVECHILDREN,FIXEDABODEFLAG,DWELLNUM,CUSTOMERGRADE from O where CUSTOMERID =${customerid}"/>
+					</sqls>
+				</table>
+				<table tablename="jbo.customer.CUSTOMER_FINANCE">
+					<sqls>
+						<sql key="CustomerMonthIncome" sql="select SUM(AMOUNT) as v.SUMAMOUNT from O where CUSTOMERID =${customerid} and FINANCIALITEM =@{MON_PERSONAL_INCOME}"/>
+						<sql key="MateMonthIncome" sql="select SUM(AMOUNT) as v.SUMAMOUNT from O where CUSTOMERID =${relativecustomerid} and FINANCIALITEM = @{MON_PERSONAL_INCOME}"/>
+					</sqls>
+				</table>
+				<table tablename="jbo.app.BUSINESS_DUEBILL">
+					<sqls>
+						<sql key="CntCustomerNormalBusiness" sql="select count(*) as v.COUNTRESULT from O where CUSTOMERID =${customerid} and BUSINESSSTATUS =@{BUSINESS_STATUS_NORMAL}"/>
+						<sql key="CntCustomerOverdueBusiness" sql="select count(*) as v.COUNTRESULT from O where CUSTOMERID =${customerid} and BUSINESSSTATUS in(@{BUSINESS_STATUS_OVERDUE},@{BUSINESS_STATUS_DULL},@{BUSINESS_STATUS_BADDEBT})"/>
+						<sql key="CntMateNormalBusiness" sql="select count(*) as v.COUNTRESULT from O where CUSTOMERID =${relativecustomerid} and BUSINESSSTATUS =@{BUSINESS_STATUS_NORMAL}"/>
+						<sql key="CntMateOverdueBusiness" sql="select count(*) as v.COUNTRESULT from O where CUSTOMERID =${relativecustomerid} and BUSINESSSTATUS in(@{BUSINESS_STATUS_OVERDUE},@{BUSINESS_STATUS_DULL},@{BUSINESS_STATUS_BADDEBT})"/>
+						<sql key="DuebillHouseLoanAmount" sql="select SUM(BALANCE) as v.SUMBALANCE from O where CUSTOMERID =${customerid} and BUSINESSTYPE in(@{IND_NEW_HOUSE_LOAN},@{IND_OLD_HOUSE_LOAN}) and BusinessStatus in(@{BUSINESS_STATUS_NORMAL},@{BUSINESS_STATUS_OVERDUE},@{BUSINESS_STATUS_DULL},@{BUSINESS_STATUS_BADDEBT})"/>
+						<sql key="DuebillLoanAmount" sql="select SUM(BALANCE) as v.SUMBALANCE from O where CUSTOMERID =${customerid} and BusinessStatus in(@{BUSINESS_STATUS_NORMAL},@{BUSINESS_STATUS_OVERDUE},@{BUSINESS_STATUS_DULL},@{BUSINESS_STATUS_BADDEBT})"/>
+						<!-- 
+						<sql key="RelayLoanInfo" sql="select SUM(BALANCE) as v.SUMBALANCE from O where CUSTOMERID =${customerid} and PRODUCTID in(@{IND_OLD_HOUSE_RELAY_LOAN},@{IND_BUSINESS_HOUSE_RELAY_LOAN})"/>
+						<sql key="RelayLoanBusinessNormal" sql="select count(*) as v.COUNTRESULT from O where CUSTOMERID =${customerid} and PRODUCTID in(@{IND_OLD_HOUSE_RELAY_LOAN},@{IND_BUSINESS_HOUSE_RELAY_LOAN}) and BUSINESSSTATUS =@{BUSINESS_STATUS_NORMAL}"/>
+						<sql key="RelayLoanBusinessOverDue" sql="select count(*) as v.COUNTRESULT from O where CUSTOMERID =${customerid} and PRODUCTID in(@{IND_OLD_HOUSE_RELAY_LOAN},@{IND_BUSINESS_HOUSE_RELAY_LOAN}) and BUSINESSSTATUS in(@{BUSINESS_STATUS_OVERDUE},@{BUSINESS_STATUS_DULL},@{BUSINESS_STATUS_BADDEBT})"/>
+						 -->
+						<sql key="CustomerHouseLoanCount" sql="select count(1) as v.COUNTRESULT from O where CustomerID =${customerid} and BusinessStatus in(@{BUSINESS_STATUS_NORMAL},@{BUSINESS_STATUS_OVERDUE},@{BUSINESS_STATUS_DULL},@{BUSINESS_STATUS_BADDEBT}) and BUSINESSTYPE in(@{IND_BUSINESS_HOUSE_LOAN},@{IND_BUSINESS_HOUSE_RELAY_LOAN})" />
+						<sql key="MateHouseLoanCount" sql="select count(1) v.COUNTRESULT from O where CustomerID =${relativecustomerid} and BusinessStatus in(@{BUSINESS_STATUS_NORMAL},@{BUSINESS_STATUS_OVERDUE},@{BUSINESS_STATUS_DULL},@{BUSINESS_STATUS_BADDEBT}) and BUSINESSTYPE in(@{IND_BUSINESS_HOUSE_LOAN},@{IND_BUSINESS_HOUSE_RELAY_LOAN}) " />
+					</sqls>
+				</table>
+				<table tablename="jbo.customer.CUSTOMER_LIST">
+					<sqls>
+						<sql key="PeopleBlackFlag" sql="select count(*) as v.COUNTRESULT from O where CUSTOMERID =${customerid} and LISTTYPE =@{PEOPLE_BANK_BLACKLIST}"/>
+						<sql key="LocalBlackFlag" sql="select count(*) as v.COUNTRESULT from O where CUSTOMERID =${customerid} and LISTTYPE =@{LOCAL_BANK_BLACKLIST}"/>
+					</sqls>
+				</table>
+				
+				<!-- 单笔贷款 -->
+				<table tablename="jbo.guaranty.GUARANTY_RELATIVE" type="apply">
+			    	<sqls>
+			    		<!-- 抵押品编号 -->
+			    		<sql key="AssetSerialNoList" sql="select ASSETSERIALNO,GUARANTYAMOUNT from O where exists (select 1 from jbo.app.APPLY_RELATIVE ar where ar.applyserialno = ${applyserialno} and ar.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and ar.objectno = O.gcserialno )
+														  	and exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.guarantytype like '020%' and gc.serialno = O.gcserialno )" >
+							 <cloumn key="AssetSerialNoList" returnkey="ASSETSERIALNO" />
+						</sql>	
+						<!-- 抵押数量 -->
+						<sql key="AssetCount" sql="select count(*) as v.assetcount from O where exists (select 1 from jbo.app.APPLY_RELATIVE ar where ar.applyserialno = ${applyserialno} and ar.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and ar.objectno = O.gcserialno )
+														  	and exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.guarantytype like '020%' and gc.serialno = O.gcserialno )" />
+						<!-- 质押品编号 -->								  	
+						<sql key="Asset2SerialNoList" sql="select ASSETSERIALNO from O where exists (select 1 from jbo.app.APPLY_RELATIVE ar where ar.applyserialno = ${applyserialno} and ar.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and ar.objectno = O.gcserialno )
+														  	and exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.guarantytype like '040%' and gc.serialno = O.gcserialno )">	
+							<cloumn key="Asset2SerialNoList" returnkey="ASSETSERIALNO" />							  						
+						</sql>	
+						<!--  质押数量-->
+						<sql key="Asset2Count" sql="select count(*) as v.asset2count from O where exists (select 1 from jbo.app.APPLY_RELATIVE ar where ar.applyserialno = ${applyserialno} and ar.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and ar.objectno = O.gcserialno )
+														  	and exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.guarantytype like '040%' and gc.serialno = O.gcserialno )" />
+						<!-- 押品类型为住房的押品 -->									  	
+						<sql key="HouseAssetSerialNoList" sql="select ASSETSERIALNO from O where exists (select 1 from jbo.app.APPLY_RELATIVE ar where ar.applyserialno = ${applyserialno} and ar.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and ar.objectno = O.gcserialno )
+														  		and exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.serialno = O.gcserialno )
+														  		 and exists (select 1 from jbo.app.ASSET_INFO ai where ai.assettype like '%20100100%' and ai.serialno = O.ASSETSERIALNO)" >
+							 <cloumn key="HouseAssetSerialNoList" returnkey="ASSETSERIALNO" />
+	                    </sql>														  		 												
+			    	</sqls>
+			    </table>
+			    <!-- 额度项下的业务 -->
+			    <table tablename="jbo.guaranty.GUARANTY_RELATIVE" type="contract">
+			    	<sqls>
+			    		<!-- 抵押品编号 -->
+			    		<sql key="AssetSerialNoList" sql="select ASSETSERIALNO,GUARANTYAMOUNT from O where exists (select 1 from jbo.app.CONTRACT_RELATIVE cr where cr.contractserialno = ${relativeCLObjectNo} and cr.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and cr.objectno = O.gcserialno )
+														  	and exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.guarantytype like '020%' and gc.serialno = O.gcserialno )" >
+							 <cloumn key="AssetSerialNoList" returnkey="ASSETSERIALNO" />
+						</sql>	
+						<!-- 抵押数量 -->
+						<sql key="AssetCount" sql="select count(*) as v.assetcount from O where exists (select 1 from jbo.app.CONTRACT_RELATIVE cr where cr.contractserialno = ${relativeCLObjectNo} and cr.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and cr.objectno = O.gcserialno )
+														  	and exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.guarantytype like '020%' and gc.serialno = O.gcserialno )" />
+						<!-- 质押品编号 -->								  	
+						<sql key="Asset2SerialNoList" sql="select ASSETSERIALNO from O where exists (select 1 from jbo.app.CONTRACT_RELATIVE cr where cr.contractserialno = ${relativeCLObjectNo} and cr.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and cr.objectno = O.gcserialno )
+														  	and exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.guarantytype like '040%' and gc.serialno = O.gcserialno )">	
+							<cloumn key="Asset2SerialNoList" returnkey="ASSETSERIALNO" />							  						
+						</sql>	
+						<!--  质押数量-->
+						<sql key="Asset2Count" sql="select count(*) as v.asset2count from O where exists (select 1 from jbo.app.CONTRACT_RELATIVE cr where cr.contractserialno = ${relativeCLObjectNo} and cr.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and cr.objectno = O.gcserialno )
+														  	and exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.guarantytype like '040%' and gc.serialno = O.gcserialno )" />
+						<!-- 押品类型为住房的押品 -->									  	
+						<sql key="HouseAssetSerialNoList" sql="select ASSETSERIALNO from O where exists (select 1 from jbo.app.CONTRACT_RELATIVE cr where cr.contractserialno = ${relativeCLObjectNo} and cr.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and cr.objectno = O.gcserialno )
+														  		and exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.serialno = O.gcserialno )
+														  		 and exists (select 1 from jbo.app.ASSET_INFO ai where ai.assettype like '%20100100%' and ai.serialno = O.ASSETSERIALNO)" >
+							 <cloumn key="HouseAssetSerialNoList" returnkey="ASSETSERIALNO" />
+	                    </sql>														  		 										  							
+			    	</sqls>
+			    </table>
+<!-- 			    <table tablename="jbo.guaranty.GUARANTY_CONTRACT">
+			    	<sqls>
+			    		<sql key="GuarantySerialNoList" sql="select serialNo from O where CONTRACTTYPE = @{MAXCREDITGUARANTY} and guarantytype like '020%' and exists (select 1 from jbo.app.APPLY_RELATIVE ar where ar.applyserialNo = #{applyserialno} and O.serialno = ar.objectno and ar.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT')" >
+			    			<cloumn	key="MaxCreditGuarantySerialNoList" returnkey="serialNo"/>
+			    		</sql>
+			    		<sql key="Guaranty2SerialNoList" sql="select serialNo from O where CONTRACTTYPE = @{MAXCREDITGUARANTY} and guarantytype like '040%' and exists (select 1 from jbo.app.APPLY_RELATIVE ar where ar.applyserialNo = #{applyserialno} and O.serialno = ar.objectno and ar.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT')" >
+			    			<cloumn	key="MaxCreditGuaranty2SerialNoList" returnkey="serialNo"/>
+			    		</sql>
+			    	</sqls>
+			    </table>	 -->
+			    <table tablename="jbo.app.BUSINESS_DUEBILL">
+			        <sqls>
+			        	<!-- 共用抵押品关联的所有贷款余额-->
+				    	 <sql key="AssetLoanBalance" sql="select sum(balance) as v.balance from O where exists 
+											(select 1 from jbo.app.CONTRACT_RELATIVE cr where cr.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and 
+											 exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.serialno = cr.objectno and 
+											  exists (select 1 from jbo.guaranty.GUARANTY_RELATIVE gr where gc.serialno = gr.gcserialno and gr.assetserialNo = ${HouseAssetSerialNoList}) ) and cr.contractserialno = O.contractserialno)"> 
+						 </sql> 
+						<!-- 共用质押品关联的所有贷款余额-->			  
+				    	<!-- <sql key="Asset2LoanBalance" sql="select sum(balance) as v.balance from O where exists 
+											(select 1 from jbo.app.CONTRACT_RELATIVE cr where cr.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and 
+											 exists (select 1 from jbo.guaranty.GUARANTY_CONTRACT gc where gc.serialno = cr.objectno and 
+											  exists (select 1 from jbo.guaranty.GUARANTY_RELATIVE gr where gc.serialno = gr.gcserialno and gr.assetserialNo = ${Asset2SerialNoList}) and gc.guarantytype like '040%') and cr.contractserialno = O.contractserialno)">
+						</sql> -->
+						<!-- <sql key="GuarantyLoanBalance" sql="select sum(balance) as v.balance from O where 
+  																exists (select 1 from jbo.app.CONTRACT_RELATIVE cr where cr.contractserialNo = O.contractserialno and cr.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and cr.objectno in *{MaxCreditGuarantySerialNoList} )" />
+						<sql key="GuarantyLoanBalance2" sql="select sum(balance) as v.balance from O where 
+  																exists (select 1 from jbo.app.CONTRACT_RELATIVE cr where cr.contractserialNo = O.contractserialno and cr.objecttype = 'jbo.guaranty.GUARANTY_CONTRACT' and cr.objectno in *{MaxCreditGuaranty2SerialNoList} )" /> -->
+			        </sqls>	
+			    </table>
+				<table tablename="jbo.app.BUSINESS_TRADE">
+					<sqls>
+						<sql key="BusinessTradeInfo" sql="select ISCOLLATERAL,ASSETTYPE,ASSETSERIALNO,FIRSTORSECOND,CONTRACTAMOUNT,COUNTPARTYNAME,COUNTPARTYREGION from O where OBJECTTYPE ='jbo.app.BUSINESS_APPLY' and OBJECTNO =#{applyserialno}">
+							<cloumn	key="assetserialno" returnkey="ASSETSERIALNO"/>
+						</sql>
+					</sqls>
+				</table>	
+			    <table tablename="jbo.guaranty.ASSET_REALTY">
+			    	<sqls>
+			    		<sql key="AssetRealtyInfo" sql="select FLOORAREA,STANDARDUSEYEARS,REMAININGUSEYEARS,COMPLETIONDATE from O where ASSETSERIALNO =${assetserialno}"/>
+			    		<sql key="GuarantyRealtyInfo" sql="select FLOORAREA,COMPLETIONDATE,REMAININGUSEYEARS from O where ASSETSERIALNO =${AssetSerialNoList}"/>
+			    	</sqls>
+			    </table>	
+			    <table tablename="jbo.guaranty.ASSET_OTHERS_EQUIPMENT">
+			    	<sqls>
+			    		<sql key="AssetOthersEquipmentInfo" sql="select VEHICLEOWNERSHIP,ORIGIN,USEDETAIL,LICENCETYPE,PURCHASEDATE,VEHICLETYPE from O where ASSETSERIALNO =${assetserialno}"/>
+			    	</sqls> 
+			    </table>
+			    <table tablename="jbo.app.ASSET_INFO">
+			    	<sqls>
+			    		<!-- 标的物价值 -->
+			    		<sql key="AssetEvaluateValue" sql="select EVALUATEVALUE,CONFIRMVALUE from O where SERIALNO =${assetserialno}"/>
+			    		<!-- 抵押品价值 -->
+			    		<sql key="GuarantyEvaluateValue" sql="select EVALUATEVALUE,CONFIRMVALUE from O where SERIALNO =${AssetSerialNoList}"/>
+			    		<!-- 质押品价值 -->
+			    		<sql key="AssetFinanceInfo" sql="select 
+										 case when af.balance is null then O.confirmvalue else af.balance end as v.balance,
+										 case when af.currency is null then O.CONFIRMVALUECURRENCY else af.currency end as v.currency 
+										 from O left join jbo.guaranty.ASSET_FINANCE af on af.assetserialno = O.serialno where O.serialno = ${Asset2SerialNoList}" />
+			    		<!-- 抵押品资产类型 -->
+			    		<sql key="GuarantyType" sql="select ASSETTYPE from O where serialNo =${AssetSerialNoList}"/>
+			    		<!-- 质押品资产类型 -->
+			    		<sql key="GuarantyType2" sql="select ASSETTYPE from O where serialNo =${Asset2SerialNoList}" />
+			    		
+			    	</sqls> 
+			    </table>  			
+			    	    
+			    <table tablename="jbo.app.BUSINESS_INVEST">
+			    	<sqls>
+			    		<sql key="BusinessInvestInfo" sql="select LASTRETAINEDPROFITS,REALTYPOLICY,BUSINESSORIENTATION,UPORDOWNINDUSTRYFLAG,SALESGROWTH,ADVANTAGE,PROSPECT,AUDITOPINION,ESTABLISHDATE,LOCALUNDERTAKING,SPDBLSACCOUNTS,SHAREHOLDERSCREDIT,COLLINREGION,NATIVEDWELLNUM,RATEPAYINGCERTYFY,HOUSEHOLDREGISTER,LOWRISKASSETS,YEARLYREVENUES,PLATINUMCARDFLAG,UNFINISHEDLOANNO
+			    										   ,Assetliabilityratio1,ENTERPRISECREDIT,LOANBALANCE,LOANODBALANCE,OPERATINGPERIOD,REALTYFLAG,HIGHQUALITYCUSTOMER,FAMILYMONTHLYINCOME,WORSTCREDITLEVEL,FAMILYMONTHLYDEBT,YEARLYODTIMES,YEARLYODTERMS,EASYTOLOANBUSINESS,ASSETLIABILITYRATIO1,BUSINESSINCOMESCALE,SOLDGROWTHRATE,PLEDGETYPE,HOUSELEVEL,HOUSEHOLDREGISTER from O where OBJECTNO =#{applyserialno} and OBJECTTYPE = 'jbo.app.BUSINESS_APPLY'"/>
+			    	</sqls> 
+			    </table>
+			    <table tablename="jbo.app.BUSINESS_EDUCATION">
+			    	<sqls>
+			    		<sql key="educationInfo" sql="select TOTALAMOUNT from O where objectno = #{applyserialno} and objecttype='jbo.app.BUSINESS_APPLY'" />
+			    	</sqls>
+			    </table>
+			    <table tablename="jbo.cl.CL_INFO">
+			    	<sqls>
+			    		<sql key="TotCreditAmt" sql="select BUSINESSAVAAMT from O where OBJECTTYPE = ${relativeCLObjectType} and OBJECTNO = ${relativeCLObjectNo} and CLTYPE =@{TOT_CREADIT_AMT}" />
+			    		<sql key="ConsumePoolAmt" sql="select BUSINESSAVAAMT,BUSINESSAVABALANCE  from O where OBJECTTYPE = ${relativeCLObjectType} and OBJECTNO = ${relativeCLObjectNo} and CLTYPE =@{CONSUMEPOOL_AMT}"/>
+			    		<sql key="WorkPoolAmt" sql="select BUSINESSAVAAMT,BUSINESSAVABALANCE from O where OBJECTTYPE = ${relativeCLObjectType} and OBJECTNO = ${relativeCLObjectNo} and CLTYPE =@{WORKINGPOOL_AMT}"/>
+			    	</sqls>
+			    </table>
+				<table tablename="jbo.app.BUSINESS_PUTOUT">
+					<sqls>
+						<sql key="CustomerHouseLoanPutout" sql="select sum(case when PutOutStatus in(@{APPLYING},@{SUPERVISE_PASS}) and OccurType = @{NEWOCCUR} and Businesstype in(@{IND_BUSINESS_HOUSE_LOAN},@{IND_BUSINESS_HOUSE_RELAY_LOAN}) then 1 else 0 end) as v.COUNTRESULT from O where CustomerID = ${customerid}" />
+						<sql key="MateHouseLoanPutout" sql="select sum(case when PutOutStatus in(@{APPLYING},@{SUPERVISE_PASS}) and OccurType = @{NEWOCCUR} and Businesstype in(@{IND_BUSINESS_HOUSE_LOAN},@{IND_BUSINESS_HOUSE_RELAY_LOAN}) then 1 else 0 end) as v.COUNTRESULT from O where CustomerID = ${relativecustomerid}" />
+						<sql key="CustomerLoanPutoutAmount" sql="select sum(case when PutOutStatus in(@{APPLYING},@{SUPERVISE_PASS}) and OccurType = @{NEWOCCUR} then businesssum else 0 end) as v.SUMBUSINESSSUM from O where CustomerID = ${customerid}" />
+						<sql key="CustomerHouseLoanPutoutAmount" sql="select sum(case when PutOutStatus in(@{APPLYING},@{SUPERVISE_PASS}) and OccurType = @{NEWOCCUR} and Businesstype in(@{IND_NEW_HOUSE_LOAN},@{IND_OLD_HOUSE_LOAN}) then businesssum else 0 end) as v.SUMBUSINESSSUM from O where CustomerID = ${customerid}" />
+					</sqls>
+				</table>
+				<table tablename="jbo.customer.IND_RESUME">
+					<sqls>
+						<sql key="IndResumeInfo" sql="select INDUSTRYTYPE from O where customerid = ${customerid}" />
+					</sqls>
+				</table>				
+        	 </init>
+		</inits>
+		
+        <execute>
+       
+    		<unti objecttype="CustomerInfo" number="1" name="AGE" describe="申请人年龄" source="table" type="int" classname="getAge" >
+    			<table key="IndInfo" value="BIRTHDAY" defaultvalue=""/>
+    		</unti>
+    		<unti objecttype="CustomerInfo" number="2" name="SEX" describe="申请人性别" source="table" type="String">
+    			<table key="IndInfo" value="SEX" classname="changeCode,sex,Sex,ItemAttribute" defaultvalue = "1"/>
+    		</unti>
+    		<unti objecttype="CustomerInfo" number="3" name="MARRIAGE" describe="申请人婚姻状况" source="table" type="String">
+    			<table key="IndInfo" value="MARRIAGE" classname="changeCode,MARRIAGE,MaritalStatus,ItemAttribute" defaultvalue = "3"/>
+    		</unti>
+    		<unti objecttype="CustomerInfo" number="4" name="degree" describe="学历" source="table" type="String">
+    			<table key="IndInfo" value="EDUEXPERIENCE" classname="changeCode,degree,EducationExperience,ItemAttribute" defaultvalue = "90"/>
+    		</unti>
+    		<unti objecttype="CustomerInfo" number="5" name="collegetype" describe="院校类别" source="fixed" type="String" value="10">
+    		</unti>
+    		<unti objecttype="CustomerInfo" number="6" name="house" describe="住房情况" source="table" type="String">
+    			<table key="IndInfo" value="HABITATIONSTATUS" classname="changeCode,house,HabitationStatus,ItemAttribute" defaultvalue = "40"/>
+    		</unti>
+    		<unti objecttype="CustomerInfo" number="7" name="familysupport" describe="供养情况" source="table" type="int">
+    		   	<table key="IndInfo" value="HOUSEHOLD" defaultvalue="0"/>
+    		</unti>
+    		<unti objecttype="CustomerInfo" number="8" name="nation" describe="申请人国籍或所属地区" source="table" type="String">
+    			<table key="IndInfo" value="COUNTRY" classname="changeCode,country,CountryCode,ATTRIBUTE2" defaultvalue=""/>
+    		</unti>
+    		<unti objecttype="CustomerInfo" number="9" name="income" describe="申请人全部月收入" source="table" type="Double">
+    			<table key="CustomerMonthIncome" value="SUMAMOUNT" defaultvalue="0"/>
+    		</unti>
+    		<unti objecttype="CustomerInfo" number="10" name="customertype" describe="客户类型" source="fixed" type="String" value="10">
+    		</unti>
+    		<unti objecttype="CustomerInfo" number="11" name="enterprisetype" describe="企业类型" source="fixed" type="String" value="10">
+    		</unti>
+    		
+    		<unti objecttype="CreditInfo" number="1" name="courtexecution" describe="法院执行/失信记录" source="fixed" type="String" value="10">
+     		</unti>
+    		<unti objecttype="CreditInfo" number="2" name="odl6month" describe="近6个月贷款逾期" source="fixed" type="String" value="10">
+     		</unti>
+     		<unti objecttype="CreditInfo" number="3" name="odc6month" describe="近6个月信用卡是否逾期" source="fixed" type="String" value="1">
+     		</unti>
+     		<unti objecttype="CreditInfo" number="4" name="odc6monthamount" describe="近6个月信用卡逾期金额" source="fixed" type="Double" value="200">
+     		</unti>
+     		<unti objecttype="CreditInfo" number="5" name="hasdebit" describe="是否拥有贷款" source="fixed" type="String" value="1">
+     		</unti>   
+     		<unti objecttype="CreditInfo" number="6" name="hascreditcard" describe="是否拥有信用卡" source="fixed" type="String" value="1">
+     		</unti>   
+     		<unti objecttype="CreditInfo" number="7" name="loaninfo" describe="未结清贷款" source="fixed" type="String" value="20">
+     		</unti>   
+     		<unti objecttype="CreditInfo" number="8" name="cardcreditline" describe="信用卡总额度" source="fixed" type="Double" value="2000">
+     		</unti>   
+     		<unti objecttype="CreditInfo" number="9" name="creditcardusepercent" describe="信用卡总额度使用率 " source="fixed" type="Double" value="10">
+     		</unti> 
+     		<unti objecttype="CreditInfo" number="10" name="creditrecord" describe="信用历史 " source="fixed" type="String" value="50">
+     		</unti>   	
+     		<unti objecttype="CreditInfo" number="11" name="sesamemarks" describe="芝麻信用评分 " source="fixed" type="Double" value="650">
+     		</unti>
+     		
+     		  
+    		<unti objecttype="BusinessApply" number="1" name="loanterm" describe="贷款申请期限" source="table" type="int" >
+     			<table key="BusinessApplyInfo" value="BUSINESSTERM"  defaultvalue="0"/>
+     		</unti>
+     		<unti objecttype="BusinessApply" number="2" name="businesssum" describe="贷款申请金额" source="table" type="Double">
+    			<table key="BusinessApplyInfo" value="BUSINESSSUM" defaultvalue = "0" />
+    		</unti>
+    		<unti objecttype="BusinessApply" number="3" name="businesscreditline" describe="业务额度" source="table" type="Double">
+    			<table key="BusinessApplyInfo" value="BUSINESSSUM" defaultvalue = "0" />
+    		</unti>
+    		<unti objecttype="BusinessApply" number="4" name="rpt" describe="贷款还款方式" source="table" type="String"  classname="getRptChangeValue">
+    			<table key="BusinessApplyInfo" value="RPTTERMID" defaultvalue = "10" />
+      		</unti>      	 
+     		<unti objecttype="BusinessApply" number="5" name="businessrate" describe="贷款执行利率" source="table" type="Double">
+     			<table key="AcctRateSegmentInfo" value="BUSINESSRATE" defaultvalue = "0" />
+     		</unti>
+   			<unti objecttype="BusinessApply" number="6" name="downpayment" describe="首付比例" source="fixed" type="Double" value="30">
+     		</unti>
+    		<unti objecttype="BusinessApply" number="7" name="consumetype" describe="消费类型" source="fixed" type="String" value="10">
+    		</unti>
+    		<unti objecttype="BusinessApply" number="8" name="occurarea" describe="业务区域"  source="fixed" type="String" value="10">
+    		</unti>
+    		
+        	<!-- <unti number="1" name="SYSTEMID" describe="请求方代码" source="fixed" type="String" value="@{SYSTEMID}" />
+    		<unti number="2" name="ALIAS" describe="交易码" source="fixed" type="String" value="@{ALIAS}" />
+    		<unti number="3" name="SYSTEMDATE" describe="交易日期 " source="com.amarsoft.app.oci.ws.decision.prepare.CommandTool" type="String" value="getSystemDate" /> 
+    		<unti number="4" name="SYSTEMTIME" describe="交易时间" source="com.amarsoft.app.oci.ws.decision.prepare.CommandTool" type="String" value="getSystemTime" />
+    		<unti number="5" name="SIGNATURE" describe="所调用策略流的签名" source="fixed" type="String" value="@{SIGNATURE}" />
+    		<unti number="6" name="INPUTDATAAREA" describe="输入的Physical Layout" source="fixed" type="String" value="@{INPUTDATAAREA}" />
+    		<unti number="7" name="OUTPUTDATAAREA" describe="输出的Physical Layout" source="fixed" type="String" value="@{OUTPUTDATAAREA}" />
+    		<unti number="8" name="TRACELEVEL" describe="调用DA时的日志级别" source="fixed" type="String" value="@{TRACELEVEL}" />
+    		<unti number="9" name="POSITION" describe="调用位置" source="fixed" type="String" value="@{POSITION}" />
+    		<unti number="10" name="SEQID" describe="调用唯一序号" source="com.amarsoft.app.oci.ws.decision.prepare.CommandTool" type="String" value="getSEQID" />
+    		<unti number="11" name="INTERFACEVER" describe="策略接口版本" source="obligate" type="String" value=" " />
+    		<unti number="12" name="CONTRACTNO" describe="合同号" source="table" type="String">
+    			<table key="BusinessContractInfo" value="CONTRACTARTIFICIALNO"/>
+    		</unti>
+    		<unti number="13" name="CINO" describe="借据号" source="table" type="String">
+    			<table key="BusinessContractInfo" value="CONTRACTARTIFICIALNO" classname="addOne"/>
+    		</unti>
+    		<unti number="14" name="CUSTNO" describe="申请人客户号" source="table" type="String">
+    			<table key="CustomerInfo" value="MFCUSTOMERID" defaultvalue="XXXXXXX" />
+    		</unti>
+    		<unti number="15" name="CHAMPLABEL" describe="冠军/挑战者标签" source="table" type="String">
+    			<table key="OutMessage" value="CHAMPION_LABEL"  defaultvalue="-1" />
+    		</unti>
+    		<unti number="16" name="LNTYPE" describe="产品大类" source="table" type="String">
+    			<table key="BusinessContractInfo" value="PRODUCTID" defaultvalue=""/>
+    		</unti> 
+    		<unti number="17" name="LNID" describe="产品小类" source="table" type="String">
+    			<table key="BusinessApplyInfo" value="loantype" defaultvalue="" />
+    		</unti>
+    		<unti number="18" name="GUATTYPE" describe="担保类型 " source="table" type="String">
+    			<table key="BusinessContractInfo" value="GUARANTYTYPE"  defaultvalue=""/>
+    		</unti>
+    		<unti number="19" name="TERM" describe="贷款申请期限" source="table" type="String" classname="getTerm" >
+    			<table key="BusinessApplyInfo" value="BUSINESSTERMUNIT" defaultvalue="020"/>
+    			<table key="BusinessApplyInfo" value="BUSINESSTERM"  defaultvalue="0"/>
+    			<table key="BusinessApplyInfo" value="BUSINESSTERMDAY" defaultvalue="0" /> 
+    		</unti>
+    		<unti number="20" name="LNAMT" describe="贷款申请金额" source="table" type="Double">
+    			<table key="BusinessApplyInfo" value="BUSINESSSUM" defaultvalue = "0" />
+    		</unti>
+    		<unti number="21" name="FLTINTRATE" describe="贷款申请利率浮动比例 " source="table" type="Double">
+    			<table key="AcctRateSegmentInfo" value="RATEFLOAT" classname="getFLTINTRATE" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="22" name="BRCODE" describe="分行代码" source="table" type="String">
+    			<table key="BusinessApplyInfo" value="relativeorgId"/>
+    		</unti>
+    		<unti number="23" name="MONTHAMT" describe="本次贷款的月还款额" source="table" type="Double" classname="getMONTHAMT">
+    			<table key="BusinessApplyInfo" value="BUSINESSSUM"  defaultvalue="0.0"/>
+    			<table key="BusinessApplyInfo" value="BUSINESSTERM"  defaultvalue="0.0"/>
+    			<table key="AcctRateSegmentInfo" value="BUSINESSRATE"  defaultvalue="0.0"/>
+    			<table key="BusinessContractInfo" value="RPTTERMID" defaultvalue="" />
+    			<table key="AcctRPTSegmentInfo" value="SEGTERM" defaultvalue="0" />
+    		</unti>
+    		<unti number="24" name="GJJMONTHAMT" describe="与本笔贷款关联的公积金贷款月还款额" source="table" type="Double" classname="getMONTHAMT">
+    			<table key="relativeGjjApplyInfo" value="businesssum"  defaultvalue="0.0"/>
+    			<table key="relativeGjjApplyInfo" value="BUSINESSTERM"  defaultvalue="0.0"/>
+    			<table key="AcctRateRelativeContractInfo" value="BUSINESSRATE"  defaultvalue="0.0"/>
+    			<table key="AcctRPTRelativeContractInfo" value="TERMID" defaultvalue="" />
+    			<table key="AcctRPTRelativeContractInfo" value="SEGTERM" defaultvalue="0" />
+    		</unti>
+    		<unti number="25" name="GJJLNAMT" describe="与本笔贷款关联的公积金贷款金额" source="table" type="Double">
+    			<table key="relativeGjjApplyInfo" value="businesssum" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="26" name="HIGHLIMIT" describe="产品最大金额" source="fixed" type="Double" value="10000" />
+    		<unti number="27" name="LOWLIMIT" describe="产品最小金额" source="fixed" type="Double" value="1000" />
+    		<unti number="26" name="HIGHLIMIT" describe="产品最大金额" source="ProductAmt" type="Double"  />    			
+    		<unti number="27" name="LOWLIMIT" describe="产品最小金额" source="ProductAmt" type="Double"  />
+    		<unti number="28" name="JLDLNBAL" describe="接力贷原贷款当前本金余额" source="table" type="Double">
+    			<table key="BusinessApplyInfo" value="BUSINESSSUM" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="29" name="JLDTRM" describe="接力贷原贷款当前状态" source="fixed" type="String" value="@{JLD_NORMAL}" />
+    		<unti number="30" name="AIMAMT" describe="标的总价" source="table" type="Double" classname="getAIMAMT">
+    			<table key="BusinessTradeInfo" value="CONTRACTAMOUNT" defaultvalue="0"  />
+    			<table key="educationInfo" value="TOTALAMOUNT" defaultValue="0" />
+    			<table key="BusinessContractInfo" value="BUSINESSTYPE" defaultvalue="" />
+    			<table key="BusinessContractInfo" value="PRODUCTID" defaultvalue="" />
+    		</unti>
+    		<unti number="31" name="AUTOREFUSEFLAG" describe="曾被系统自动拒绝标识" source="table" type="String" classname="getRefuseFlag">
+    			<table key="OutMessage" value="APPROVE_RESULT" classname="changeCode,autorefuseflag,CallApproveResult,ATTRIBUTE2" defaultvalue=""/>
+    			<table key="InMessage" value="AUTOREFUSEFLAG" />
+    		</unti>
+    		<unti number="32" name="REINITIATEREASON" describe="重新发起原因" source="table" type="String">
+    			<table key="BusinessContractInfo" value="RESDERATIONREASONS" defaultvalue=""/>
+    		</unti>
+    		<unti number="33" name="EXCEPTIONLOAN" describe="例外贷款标志" source="table" type="String">
+    			<table key="BusinessApplyInfo" value="NONSTDINDICATOR" classname="getEXCEPTIONLOAN" defaultvalue=""/>
+    		</unti>
+    		<unti number="34" name="CONJUNCTCREDITTYPE" describe="共同还款人最差信用等级" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="WORSTCREDITLEVEL" defaultvalue="01" classname="changeCode,WORSTCREDITLEVEL,WorstCreditLevel,ATTRIBUTE2" />
+    		</unti>
+    		<unti number="35" name="CONJUNCTFAMILYINCOME" describe="共同还款人家庭全部月收入" source="table" type="Double">
+    			<table key="BusinessInvestInfo" value="FAMILYMONTHLYINCOME" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="36" name="CONJUNCTFAMILYDEBT" describe="共同还款人家庭全部月债务" source="table" type="Double">
+    			<table key="BusinessInvestInfo" value="FAMILYMONTHLYDEBT" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="37" name="PAYMENTFREQUENCY" describe="还款频率" source="table" type="String">
+    			<table key="AcctRPTSegmentInfo" value="PAYFREQUENCYTYPE" classname="changeCode,PAYMENTFREQUENCY,PaymentFrequencyType,ATTRIBUTE2" defaultvalue="" productType = "@{OPERATOR}" />
+    		</unti>
+    		<unti number="38" name="BASERATE" describe="基础利率" source="table" type="Double" >
+    			<table key="AcctRateSegmentInfo" value="baserate" defaultvalue="0" />
+    		</unti>
+   		
+    		<unti number="39" name="CONJUNCTLAST12MTOTOVDTIMES" describe="共同还款人过去12个月贷款累计逾期次数" source="table" type="int">
+    			<table key="BusinessInvestInfo" value="YEARLYODTIMES"  defaultvalue ="0" />
+    		</unti>
+    		
+    		<unti number="40" name="CONJUNCTLAST12MMAXOVDPERI" describe="共同还款人过去12个月贷款最长逾期期数" source="table" type="int">
+    			<table key="BusinessInvestInfo" value="YEARLYODTERMS"  defaultvalue ="0" />
+    		</unti>   		  		
+    		<unti number="41" name="BIRTHDATE" describe="申请人出生日期" source="table" type="String">
+    			<table key="IndInfo" value="BIRTHDAY"  classname="DateHelper.getStringDate"  defaultvalue=""/>
+    		</unti>
+    		
+    		<unti number="42" name="COUNTRY" describe="申请人国籍或所属地区" source="table" type="String">
+    			<table key="IndInfo" value="COUNTRY" classname="changeCode,country,CountryCode,ATTRIBUTE2" defaultvalue=""/>
+    		</unti>
+    		<unti number="43" name="DWELLNUM" describe="在境内连续居住年限" source="table" type="int">
+    			<table key="IndInfo" value="DWELLNUM" defaultvalue=""/>
+    		</unti>
+    		<unti number="44" name="NATIVEFLAG" describe="是否本地户籍" source="table" type="String">
+    			<table key="IndInfo" value="CECUSREGISTERTYPE"  classname="getNativeflag" defaultvalue=""/>
+    		</unti>
+    		<unti number="45" name="NATIVEDWELLNUM" describe="在本地连续居住年限" source="table" type="int">
+    			<table key="BusinessInvestInfo" value="NATIVEDWELLNUM" defaultvalue="0"/>
+    		</unti>
+    		<unti number="46" name="FIXEDABODEFLAG" describe="在本地是否有固定住所" source="table" type="String">
+    			<table key="IndInfo" value="FIXEDABODEFLAG" defaultvalue=""/>
+    		</unti>
+    		<unti number="47" name="SEX" describe="申请人性别" source="table" type="String">
+    			<table key="IndInfo" value="SEX" classname="changeCode,sex,Sex,SORTNO" defaultvalue = "0"/>
+    		</unti>
+    		<unti number="48" name="EDULEVEL" describe="申请人教育程度" source="table" type="String">
+    			<table key="IndInfo" value="EDUEXPERIENCE" classname="changeCode,eduLevel,EducationExperience,ATTRIBUTE2" defaultvalue=""/>
+    		</unti>
+    		<unti number="49" name="MARRIAGE" describe="申请人婚姻状况" source="table" type="String" classname="getMarriageCondition">
+    			<table key="IndInfo" value="MARRIAGE"  defaultvalue=""/>
+    			<table key="IndInfo" value="haveChildren" defaultvalue="" />
+    		</unti>
+    		<unti number="50" name="TRADE" describe="申请人所在行业" source="table" type="String">
+    			<table key="IndResumeInfo" value="INDUSTRYTYPE" classname="changeCode,trade,IndustryType,ATTRIBUTE2" defaultvalue = "N98"/>
+    		</unti>
+    		<unti number="51" name="LIVEPROPERTY" describe="居住状态" source="table" type="String">
+    			<table key="IndInfo" value="HABITATIONSTATUS" classname="changeCode,liveProperty,HabitationStatus,ATTRIBUTE2" defaultvalue = ""/>
+    		</unti>
+    		<unti number="52" name="INDVINCOME" describe="申请人全部月收入" source="table" type="Double">
+    			<table key="CustomerMonthIncome" value="SUMAMOUNT" defaultvalue="0"/>
+    		</unti>
+    		<unti number="53" name="MATEINDVINCOME" describe="申请人配偶全部月收入" source="table" type="Double">
+    			<table key="MateMonthIncome" value="SUMAMOUNT" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="54" name="TOTLNBAL" describe="申请人在我行现有贷款总余额" source="table" type="Double" classname="getThreeTOT">
+    			<table key="ApplyLoanAmount" value="SUMBUSINESSSUM" defaultvalue = "0.0"/>
+    			<table key="DuebillLoanAmount" value="SUMBALANCE"  defaultvalue = "0.0"/>
+    			<table key="CustomerLoanPutoutAmount" value="SUMBUSINESSSUM" defaultvalue="0.0" />
+    		</unti>
+    		<unti number="55" name="TOTHOUSELNBAL" describe="申请人在我行现有住房贷款总余额" source="table" type="Double" classname="getThreeTOT">
+    			<table key="ApplyHouseLoanAmount" value="SUMBUSINESSSUM" defaultvalue="0.0"/>
+    			<table key="DuebillHouseLoanAmount" value="SUMBALANCE"  defaultvalue="0.0"/>
+    			<table key="CustomerHouseLoanPutoutAmount" value="SUMBUSINESSSUM" defaultvalue="0.0" />
+    		</unti>
+    		<unti number="56" name="BIZHOUSECNT" describe="申请人及其配偶在我行已有商房贷款的笔数" source="table" type="int" classname="getHouseCount">
+    			<table key="CustomerHouseLoanCount" value="COUNTRESULT" defaultvalue="0" />
+    			<table key="MateHouseLoanCount" value="COUNTRESULT" defaultvalue="0" />
+    			<table key="CustomerHouseApplyCount" value="COUNTRESULT" defaultvalue="0" />
+    			<table key="MateHouseApplyCount" value="COUNTRESULT" defaultvalue="0" />
+    			<table key="CustomerHouseLoanPutout" value="COUNTRESULT" defaultvalue="0" />
+    			<table key="MateHouseLoanPutout" value="COUNTRESULT" defaultvalue="0" />
+    		</unti>
+    		<unti number="57" name="PROVEFLAG" describe="非本地居民是否有1年以上当地纳税证明或社会保险缴纳证明" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="RATEPAYINGCERTYFY" defaultvalue=""/>
+    		</unti>
+    		<unti number="58" name="PRESENTTRMCLASS" describe="申请人在我行现有贷款状态" source="table" type="String" classname="getTRMCLASS">
+    			<table key="CntCustomerNormalBusiness" value="COUNTRESULT"  defaultvalue=""/>
+    			<table key="CntCustomerOverdueBusiness" value="COUNTRESULT" defaultvalue=""/>
+    		</unti>
+    		<unti number="59" name="MATEPRESENTTRMCLASS" describe="申请人配偶在我行现有贷款状态" source="table" type="String" classname="getTRMCLASS">
+    			<table key="CntMateNormalBusiness" value="COUNTRESULT" defaultvalue=""/>
+    			<table key="CntMateOverdueBusiness" value="COUNTRESULT"  defaultvalue=""/>
+    		</unti>
+    		<unti number="60" name="TYBLACKLISTFLAG" describe="申请人同业逾期黑名单标识" source="table" type="String">
+    			<table key="PeopleBlackFlag" value="COUNTRESULT" classname="getFLAG" defaultvalue=""/>
+    		</unti>
+    		<unti number="61" name="ZXBLACKLISTFLAG" describe="申请人助学贷款黑名单标识" source="table" type="String">
+    			<table key="LocalBlackFlag" value="COUNTRESULT" classname="getFLAG" defaultvalue=""/>
+    		</unti>
+    		<unti number="62" name="HNBLACKLISTFLAG" describe="申请人行内黑名单客户标识" source="table" type="String">
+    			<table key="LocalBlackFlag" value="COUNTRESULT" classname="getFLAG" defaultvalue=""/>
+    		</unti>
+    		<unti number="63" name="GJJTOTPAYAMT" describe="公积金月缴额" source="table" type="Double" classname="getTwoTOT">
+    			<table key="CustomerGjjAmount" value="AMOUNT"  defaultvalue = "0"/>
+    			<table key="MateGjjAmount" value="AMOUNT"  defaultvalue = "0"/>
+    		</unti>
+    		<unti number="64" name="ISSPDBVIP" describe="申请人是否为浦发银行白金卡客户" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="PLATINUMCARDFLAG"  defaultvalue="" productType="@{OPERATOR}" />
+    		</unti>
+    		<unti number="65" name="AIMMORTFLAG" describe="是否以此标的为抵押" source="table" type="String">
+    			<table key="BusinessTradeInfo" value="ISCOLLATERAL" defaultvalue=""/>
+    		</unti>
+    		<unti number="66" name="HOUSEPROPERTY" describe="房屋属性" source="table" type="String">
+    			<table key="BusinessTradeInfo" value="assettype" classname="changeCode,assettype,AssetType,ATTRIBUTE7" defaultvalue=""/>
+    		</unti>
+    		<unti number="67" name="HOUSETYPE" describe="房屋类型" source="table" type="String" classname="getHouseType">
+    			<table key="BusinessTradeInfo" value="COUNTPARTYNAME"  />
+    			<table key="BusinessTradeInfo" value="COUNTPARTYREGION" />
+    			<table key="BusinessContractInfo" value="BUSINESSTYPE" />
+    		</unti>
+    		<unti number="68" name="POLICYNUM" describe="本次贷款实行第几套住房信贷政策" source="table" type="int">
+    			<table key="BusinessInvestInfo" value="REALTYPOLICY" defaultvalue=""/>
+    		</unti>
+    		<unti number="69" name="CALCPOLICYNUM" describe="贷款人以及配偶征信累计住房套数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="calcPolicyNum" classname="useful" defaultvalue=""/>
+    			<result inputresult="Result" outputkey="mateCalcPolicyNum" classname="getTOT" defaultvalue=""/>
+    		</unti>
+    		<unti number="70" name="HOUSEACREAGE" describe="所购房面积" source="table" type="Double">
+    			<table key="AssetRealtyInfo" value="FLOORAREA" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="71" name="HOUSEAGE" describe="所购房房龄" source="table" type="int">
+    			<table key="AssetRealtyInfo" value="COMPLETIONDATE" classname="getHouseAge" defaultvalue="0" productType="@{LIVEHOUSE},@{CONSUMERHOUSE}" />
+    		</unti>
+    		<unti number="72" name="HOUSEPRICE" describe="所购房屋交易价值" source="table" type="Double">
+    			<table key="BusinessTradeInfo" value="CONTRACTAMOUNT" defaultvalue="0.0" productType="@{LIVEHOUSE},@{CONSUMERHOUSE}" />
+    		</unti>
+    		<unti number="73" name="EVALUATEVALUE" describe="所购房屋评估价值" source="table" type="Double">
+    			<table key="AssetEvaluateValue" value="EVALUATEVALUE" defaultvalue="0.0" productType="@{LIVEHOUSE},@{CONSUMERHOUSE}" />
+    		</unti>
+    		<unti number="74" name="LANDAPPUSENUM" describe="所购房审批土地使用年限" source="table" type="int">
+    			<table key="AssetRealtyInfo" value="STANDARDUSEYEARS" defaultvalue="0" productType="@{LIVEHOUSE},@{CONSUMERHOUSE}" />
+    		</unti>
+    		<unti number="75" name="LANDREMAINUSENUM" describe="所购房当前剩余土地使用年限" source="table" type="int">
+    			<table key="AssetRealtyInfo" value="REMAININGUSEYEARS" defaultvalue="0"/>
+    		</unti>
+    		<unti number="76" name="AUTOOWNER" describe="所购车产权所属" source="table" type="String">
+    			<table key="AssetOthersEquipmentInfo" value="VEHICLEOWNERSHIP" classname="changeCode,autoOwner,VehicleOwnerShip,ATTRIBUTE2" defaultvalue=""/>
+    		</unti>
+    		<unti number="77" name="AUTOHANDS" describe="所购车类型" source="table" type="String">
+    			<table key="BusinessTradeInfo" value="FIRSTORSECOND" defaultvalue="" productType="@{CARLOAN}" classname="changeCode,FIRSTORSECOND,NewOrSecond,ATTRIBUTE2"/>
+    		</unti>
+    		<unti number="78" name="AUTOPROPERTY" describe="所购车产地" source="table" type="String">
+    			<table key="AssetOthersEquipmentInfo" value="ORIGIN" classname="changeCode,origin,VehicleOrigin,ATTRIBUTE2" defaultvalue="" />
+    		</unti>
+    		<unti number="79" name="AUTOTYPE" describe="所购车种类" source="table" type="String">
+    			<table key="AssetOthersEquipmentInfo" value="VEHICLETYPE" classname="changeCode,autotype,VehicleType,ATTRIBUTE2" defaultvalue=""/>
+    		</unti>
+    		<unti number="80" name="AUTOUSAGE" describe="所购车用途" source="table" type="String">
+    			<table key="AssetOthersEquipmentInfo" value="USEDETAIL" defaultvalue=""/>
+    		</unti>
+    		<unti number="81" name="AUTOLICENSE" describe="所购车牌照" source="table" type="String">
+    			<table key="AssetOthersEquipmentInfo" value="LICENCETYPE" classname="changeCode,autoLicense,LicenceType,ATTRIBUTE2" defaultvalue=""/>
+    		</unti>
+    		<unti number="82" name="AUTOPRICE" describe="所购车价格" source="table" type="Double">
+    			<table key="BusinessTradeInfo" value="CONTRACTAMOUNT" defaultvalue="0.0" productType="@{CARLOAN}" />
+    		</unti>
+    		<unti number="83" name="AUTOBUYDATE" describe="车辆购置日期" source="table" type="String">
+    			<table key="AssetOthersEquipmentInfo" value="PURCHASEDATE" classname="DateHelper.getStringDate" defaultvalue=""/>
+    		</unti>
+    		<unti number="84" name="HOUSEOWEFLAG" describe="名下有无房产" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="REALTYFLAG" defaultvalue=""/>
+    		</unti>
+    		<unti number="85" name="HIGHGRADEFLAG" describe="本行优质客户" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="HIGHQUALITYCUSTOMER" defaultvalue=""/>
+    		</unti>
+    		<unti number="86" name="MORTTOTNUM" describe="抵押物数量" source="table" type="int">
+    			<table key="AssetCount" value="assetCount" defaultvalue="0" /> 
+    		</unti>
+    		<unti number="87,93,99,105,111,117,123,129,135,141" name="MORTTYPE" describe="抵押物类型" source="tablewithclass" type="String">
+    			<table key="GuarantyType" value="ASSETTYPE" classname="getMortType" defaultvalue=""/>
+    		</unti>
+    		<unti number="88,94,100,106,112,118,124,130,136,142" name="MORTACREAGE" describe="抵押房面积" source="tablewithclass" type="Double">
+    			<table key="GuarantyRealtyInfo" value="FLOORAREA" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="89,95,101,107,113,119,125,131,137,143" name="MORTFINISHDATE" describe="抵押房房龄(房屋竣工日期)" source="tablewithclass" type="String">
+    			<table key="GuarantyRealtyInfo" value="COMPLETIONDATE" classname="DateHelper.getStringDate" defaultvalue="19000101"/>
+    		</unti>
+    		<unti number="90,96,102,108,114,120,126,132,138,144" name="MORTVALUE" describe="抵押物评估价值" source="tablewithclass" type="Double">
+    			<table key="GuarantyEvaluateValue" value="CONFIRMVALUE" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="91,97,103,109,115,121,127,133,139,145" name="MORTREMAINUSENUM" describe="抵押房屋当前剩余土地使用年限" source="tablewithclass" type="int">
+    			<table key="GuarantyRealtyInfo" value="REMAININGUSEYEARS" defaultvalue="0" />
+    		</unti>
+    		<unti number="92,98,104,110,116,122,128,134,140,146" name="MORTRIGHTS" describe="抵押物担保主债权" source="tablewithclass" type="Double">
+    			<table key="AssetSerialNoList" value="GUARANTYAMOUNT" defaultvalue="0.0" />
+    		</unti>
+    		<unti number="147" name="IMPTOTNUM" describe="质押单证数量" source="table" type="int">
+    			<table key="Asset2Count" value="asset2Count" defaultvalue="0" />
+    		</unti>
+    		<unti number="148,151,154,157,160,163,166,169,172,175" name="IMPAWNTYPE" describe="质押单证类型" source="tablewithclass" type="String">
+    			<table key="GuarantyType2" value="ASSETTYPE" classname="changeCode,assetType,AssetType,ATTRIBUTE3" defaultvalue=""/>
+    		</unti>
+    		<unti number="149,152,155,158,161,164,167,170,173,176" name="IMPAWNCURCD" describe="质押单证币种" source="tablewithclass" type="String">
+    			<table key="AssetFinanceInfo" value="CURRENCY" defaultvalue="" classname="changeCode,currency,Currency,ATTRIBUTE7" />
+    		</unti>
+    		<unti number="150,153,156,159,162,165,168,171,174,177" name="IMPAWNRMBVALUE" describe="质押单证票面价值" source="tablewithclass" type="Double">
+    			<table key="AssetFinanceInfo" value="BALANCE" defaultvalue="0.0" />
+    		</unti>
+    		<unti number="178" name="HAVEINFOFLAG" describe="申请人是否有征信记录标识" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="haveInfoFlag"  defaultvalue=""/>
+    		</unti>
+    		<unti number="179" name="HAVEGDACTNOFLAG" describe="申请人是否有个贷账户记录" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="haveGdActnoFlag"  defaultvalue=""/>
+    		</unti>
+    		<unti number="180" name="HAVECREDITACTNOFLAG" describe="申请人是否有信用卡账户记录" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="haveCreditActnoFlag"  defaultvalue=""/>
+    		</unti>
+    		<unti number="181" name="PRETRMCLASS" describe="申请人当前贷款状态" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="preTrmClass"  defaultvalue=""/>
+    		</unti>
+    		<unti number="182" name="LAST12MTOTOVDTIMES" describe="申请人过去12个月贷款累计逾期次数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="last12mTotOvdTimes"  defaultvalue=""/>
+    		</unti>
+    		<unti number="183" name="LAST6MMAXOVDPERI" describe="申请人过去6个月贷款最长逾期期数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="last6mMaxOvdPeri" defaultvalue=""/>
+    		</unti>
+    		<unti number="184" name="LAST12MMAXOVDPERI" describe="申请人过去12个月贷款最长逾期期数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="last12mMaxOvdPeri" defaultvalue=""/>
+    		</unti>
+    		<unti number="185" name="LAST24MWORSTSTAT" describe="申请人征信报告上过去24个月内贷款的最差还款状态" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="last24mWorstStat" defaultvalue="" />
+    		</unti>
+    		<unti number="186" name="TOTOVDTIMES" describe="申请人征信报告上贷款累计逾期次数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="totOvdTimes" defaultvalue=""/>
+    		</unti>
+    		<unti number="187" name="MAXOVDPERI" describe="申请人征信报告上贷款最高" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="maxOvdPeri" defaultvalue=""/>
+    		</unti>
+    		<unti number="188" name="TILLNOWMAXOVDPERI" describe="过去所有时间所有信贷产品最大的逾期期数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="tillNowMaxOvdPeri" defaultvalue=""/>
+    		</unti>
+    		<unti number="189" name="MAXLOGINMONTHS" describe="所有贷款帐户最长在册时间（月）" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="maxLoginMonths" defaultvalue=""/>
+    		</unti>
+    		<unti number="190" name="EXP75PERCNT" describe="信用额度使用率Exposure为75%的信用卡个数大于75%" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="exp75perCnt" defaultvalue=""/>
+    		</unti>
+    		<unti number="191" name="EXP30PERCNT" describe="信用额度使用率Exposure为 30%的信用卡个数大于30%" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="exp30perCnt" defaultvalue=""/>
+    		</unti>
+    		<unti number="192" name="DKHAVELNBALCNT" describe="个人贷款有余额的帐户数量" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="dkHaveLnbalCnt" defaultvalue=""/>
+    		</unti>
+    		<unti number="193" name="LAST12MCREDITQUERYCNT" describe="过去12个月中信贷审核查询次数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="last12mCreditQueryCnt" defaultvalue=""/>
+    		</unti>
+    		<unti number="194" name="ELSEDEBTMONTH" describe="申请人其他债务月偿付额" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="elseDebtMonth" defaultvalue=""/>
+    		</unti>
+    		<unti number="195" name="PRESENTCREDITSTAT" describe="申请人当前信用卡状态" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="presentCreditStat" defaultvalue=""/>
+    		</unti>
+    		<unti number="196" name="PRESENTCREDITOVDAMT" describe="申请人当前信用卡拖欠金额" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="presentCreditOvdamt" defaultvalue=""/>
+    		</unti>
+    		<unti number="197" name="LAST12MCREDITLOWESTCNT" describe="申请人征信报告上过去12个月信用卡未还最低还款额的次数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="last12mCreditLowestCnt" defaultvalue=""/>
+    		</unti>
+    		<unti number="198" name="LAST24MCREDITWORSTSTAT" describe="申请人征信报告上过去24个月内信用卡的最差还款状态" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="last24mCreditWorstStat" defaultvalue=""/>
+    		</unti>
+    		<unti number="199" name="MATEHAVECREDITFLAG" describe="申请人配偶是否有征信记录标识" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateHaveCreditFlag" defaultvalue=""/>
+    		</unti>
+    		<unti number="200" name="MATEHAVEGDACTNOFLAG" describe="申请人配偶是否有个贷账户记录" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateHaveGdActnoFlag" defaultvalue=""/>
+    		</unti>
+    		<unti number="201" name="MATEHAVECREDITACTNOFLAG" describe="申请人配偶是否有信用卡账户记录" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateHaveCreditActnoFlag" defaultvalue=""/>
+    		</unti>
+    		<unti number="202" name="MATENOWTRMCLASS" describe="申请人配偶当前贷款状态" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateNowTrmClass" defaultvalue=""/>
+    		</unti>
+    		<unti number="203" name="MATELAST12MTOTOVDTIMES" describe="申请人配偶过去12个月贷款累计逾期次数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateLast12mTotOvdTimes" defaultvalue=""/>
+    		</unti>
+    		<unti number="204" name="MATELAST6MMAXOVDPERI" describe="申请人配偶过去6个月贷款最长逾期期数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateLast6mMaxOvdPeri" defaultvalue=""/>
+    		</unti>
+    		<unti number="205" name="MATELAST12MMAXOVDPERI" describe="申请人配偶过去12个月贷款最长逾期期数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateLast12mMaxOvdPeri" defaultvalue=""/>
+    		</unti>
+    		<unti number="206" name="MATELAST24MWORSTSTAT" describe="申请人配偶征信报告上过去24个月内贷款的最差还款状态" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateLast24mWorstStat" defaultvalue=""/>
+    		</unti>
+    		<unti number="207" name="MATEMAXTOTOVDTIMES" describe="申请人配偶征信报告上贷款最高累计逾期次数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateMaxTotOvdTimes" defaultvalue=""/>
+    		</unti>
+    		<unti number="208" name="MATEMAXOVDPERI" describe="申请人配偶征信报告上贷款最高连续逾期期数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateMaxOvdPeri" defaultvalue=""/>
+    		</unti>
+    		<unti number="209" name="MATEELSEDEBTMONTH" describe="申请人配偶的其他债务月偿付额" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateElseDebtMonth" defaultvalue=""/>
+    		</unti>
+    		<unti number="210" name="MATEPRESENTCREDITSTAT" describe="申请人配偶当前信用卡状态" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="matePresentCreditStat" defaultvalue=""/>
+    		</unti>
+    		<unti number="211" name="MATEPRESENTCREDITOVDAMT" describe="申请人配偶当前信用卡拖欠金额" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="matePresentCreditOvdamt" defaultvalue=""/>
+    		</unti>
+    		<unti number="212" name="MATELAST12MCREDITLOWESTCNT" describe="申请人配偶征信报告上过去12个月信用卡未还最低还款额的次数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateLast12mCreditLowestCnt" defaultvalue=""/>
+    		</unti>
+    		<unti number="213" name="MATELAST24MCREDITWORSTSTAT" describe="申请人配偶征信报告上过去24个月内信用卡的最差还款状态" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateLast24mCreditWorstStat" defaultvalue="" />
+    		</unti>
+    		<unti number="214" name="LAST12MALLQUERYCNT" describe="过去12个月中所有查询次数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="last12mAllQueryCnt" defaultvalue=""/>
+    		</unti>
+    		<unti number="215" name="UNMONTHLYRTNCNT" describe="征信报告显示，申请人名下有还款频率为非按月还款的未结清贷款" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="unmonthlyRtnCnt" defaultvalue=""/>
+    		</unti>
+    		<unti number="216" name="LAST24MTOTOVDTIMES" describe="过去24个月贷款累计逾期次数" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="last24mTotOvdTimes" defaultvalue=""/>
+    		</unti>
+    		<unti number="217" name="MATEUNMONTHLYRTNCNT" describe="征信报告显示，申请人配偶名下有还款频率为非按月还款的未结清贷款" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateUnmonthlyRtnCnt" defaultvalue=""/>
+    		</unti>
+    		<unti number="218" name="MATELAST24MTOTOVDTIMES" describe="申请人配偶是否有个贷账户记录" source="DcIcrqResult" type="int">
+    			<result inputresult="Result" outputkey="mateLast24mTotOvdTimes" defaultvalue="" />
+    		</unti>	
+    		<unti number="219" name="CONJUNCTUNMONTHLYRTNCNT" describe="共同还款人有还款频率为非按月还款的未结清贷款笔数" source="table" type="int">
+    			<table key="BusinessInvestInfo" value="UNFINISHEDLOANNO"  defaultvalue="0"/>
+    		</unti>   			
+    		<unti number="220" name="LOWRISKTREASURESUM" describe="借款人名下低风险资产之和" source="table" type="Double">
+    			<table key="BusinessInvestInfo" value="LOWRISKASSETS" defaultvalue="0"/>
+    		</unti>
+    		<unti number="221" name="COMPOPERATORYEAR" describe="借款人在相关行业的经营年限" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="OPERATINGPERIOD" classname="changeCode,OPERATINGPERIOD,IndustryYears,ATTRIBUTE2" defaultvalue=""/>
+    		</unti>
+    		<unti number="222" name="firstPayIncome" describe="可作为第一还款来源的年净收入" source="table" type="Double">
+    			<table key="BusinessInvestInfo" value="YEARLYREVENUES" defaultvalue="0"/>
+    		</unti>
+    		<unti number="223" name="COMPBUSLOCATION" describe="企业的业务定位" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="BUSINESSORIENTATION" classname="getSeparate" />
+    		</unti>
+    		<unti number="224" name="ISBIGCOMPDOWNSTREAM" describe="是否大型企业的上下游行业" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="UPORDOWNINDUSTRYFLAG" defaultvalue="" />
+    		</unti>
+    		<unti number="225" name="COMPSALEVALUE" describe="企业销售增长情况" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="SALESGROWTH" classname="getSeparate" />
+    		</unti>
+    		<unti number="226" name="COMPCOMPETITIONEDGE" describe="企业的竞争优势" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="ADVANTAGE" classname="getSeparate" />
+    		</unti>
+    		<unti number="227" name="COMPDEVELOPPROSPECT" describe="企业的发展前景" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="PROSPECT" classname="getSeparate"/>
+    		</unti>
+    		<unti number="228" name="COMPFINANCEAUDIT" describe="企业财务报表的审计意见" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="AUDITOPINION" classname="getSeparate" />
+    		</unti>
+    		<unti number="229" name="COMPESTABLISHDATE" describe="企业成立日期" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="ESTABLISHDATE" classname="DateHelper.getStringDate" defaultvalue="" />
+    		</unti>
+    		<unti number="230" name="ISCOMPNATIVE" describe="企业的主要经营地点是否在本地" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="LOCALUNDERTAKING" defaultvalue=""/>
+    		</unti>
+    		<unti number="231" name="SPDBISACCOUNTS" describe="浦发银行是否为主要结算行" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="SPDBLSACCOUNTS" defaultvalue=""/>
+    		</unti>
+    		<unti number="232" name="ISEXISTSHAREHOLDER" describe="是否存在多个股东在我行、他行授信" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="SHAREHOLDERSCREDIT" defaultvalue=""/>
+    		</unti>
+    		<unti number="233" name="COLLATERALISBRANCH" describe="抵押物是否在分行经营区域内" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="COLLINREGION" defaultvalue="2"/>
+    		</unti>
+    		<unti number="234" name="ASSETSLIABILITIES" describe="借款人综合资产负债比" source="table" type="int">
+    			<table key="BusinessInvestInfo" value="ASSETLIABILITYRATIO1" defaultvalue="" />
+    		</unti>
+    		<unti number="235" name="ISHAVECOMPINFO" describe="是否有企业征信" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="ENTERPRISECREDIT" defaultvalue=""/>
+    		</unti>
+    		<unti number="236" name="LATELYLOANSTATUS" describe="当前贷款状态" source="table" type="int" classname="getLoanStatus">
+    			jbo中没查，直接赋默认值
+    			<table key="BusinessInvestInfo" value="LOANSTATUS" defaultvalue="0" />
+    			<table key="BusinessInvestInfo" value="ENTERPRISECREDIT" defaultvalue="" />
+    		</unti>
+    		<unti number="237" name="LATELYNOTWIPELOANAMT" describe="当前未结清贷款总余额" source="table" type="Double">
+    			<table key="BusinessInvestInfo" value="LOANBALANCE" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="238" name="LATELYNOTWIPEBADLOANAMT" describe="当前未结清不良贷款余额" source="table" type="Double">
+    			<table key="BusinessInvestInfo" value="LOANODBALANCE" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="239" name="TOT_CREDIT_AMT" describe="总授信额度" source="table" type="Double">
+    			<table key="TotCreditAmt" value="BUSINESSAVAAMT" defaultvalue="0.0"/>    		
+    		</unti>
+    		<unti number="240" name="CONSUMEPOOL_AMT" describe="消费额度" source="table" type="Double" classname="getCLInfo">
+    			<table key="TotCreditAmt" value="BUSINESSAVAAMT" defaultvalue=""/>
+    			<table key="ConsumePoolAmt" value="BUSINESSAVAAMT" defaultvalue=""/>
+    		</unti>
+    		<unti number="241" name="CREDITPOOL_AMT" describe="信用额度" source="fixed" type="Double" value="@{CREDITPOOL_AMT}"/>
+    		<unti number="242" name="WORKINGPOOL_AMT" describe="经营性额度" source="table" type="Double">
+    			<table key="WorkPoolAmt" value="BUSINESSAVAAMT" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="243" name="CONSUMEPOOL_BAL" describe="授信项下消费贷款余额" source="table" type="Double">
+    			<table key="ConsumePoolAmt" value="BUSINESSAVABALANCE" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="244" name="WORKINGPOOL_BAL" describe="授信项下经营贷款余额" source="table" type="Double">
+    			<table key="WorkPoolAmt" value="BUSINESSAVABALANCE" defaultvalue="0.0"/>
+    		</unti>
+    		<unti number="245" name="CREDITPOOL_BAL" describe="授信项下信用贷款余额" source="fixed" type="Double" value="@{CREDITPOOL_BAL}"/>
+    		<unti number="246" name="UNICREDIT_FLAG" describe="是否授信支用申请" source="table" type="String">
+    			<table key="LimitAbout" value="COUNTRESULT" classname="getFLAG" defaultvalue="0.0" />
+    		</unti>
+    		<unti number="247" name="CURRENT_JOB_YEAR" describe="申请人在职工作时长" source="table" type="int">
+    			<table key="IndInfo" value="JOBYEARS" defaultvalue="0"/>
+    		</unti>
+    		<unti number="248" name="OBJECTTYPE" describe="对象类型" source="fixed" type="String" value="@{OBJECTTYPE}"/>
+    		<unti number="249" name="OBJECTNO" describe="对象编号" source="input" type="String" value="#{applyserialno}"/>
+    		<unti number="250" name="DECISIONFLG" describe="调用类型" source="input" type="String" value="#{calltype}"/>
+    		<unti number="251" name="IMPAWNOTHERLOANBAL" describe="共用质押品关联的所有贷款余额" source="fixed" type="Double" value="0" />
+    		<unti number="252" name="MORTAGAGEOTHERLOANBAL" describe="共用抵押品关联的所有贷款余额" source="tablewithclass" type="Double" >
+    			<table key="AssetLoanBalance" value="balance" defaultvalue="0.0" />
+    		</unti>
+    		<unti number="253" name="ydd_plan" describe="易贷多业务方案" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="EASYTOLOANBUSINESS" defaultvalue="" classname="substr,1,2" />
+    		</unti>
+    		<unti number="254" name="debt_ratio" describe="资产负债率" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="ASSETLIABILITYRATIO1" defaultvalue="" classname="getDebt" />
+    		</unti>
+    		<unti number="255" name="last2y_income_rate" describe="近二年销售收入或净利润年增长率" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="SOLDGROWTHRATE" defaultvalue="" classname="substr,1,2" />
+    		</unti>
+    		<unti number="256" name="main_income_ratio" describe="主营业务收入占总收入比例" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="BUSINESSINCOMESCALE" defaultvalue="" classname="substr,1,2" />
+    		</unti>	
+    		<unti number="257" name="guarantee_type" describe="抵押类类型" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="PLEDGETYPE" defaultvalue="" classname="substr,1,2" /> 
+    		</unti>
+    		<unti number="258" name="house_level" describe="房屋等级" source="table" type="String">
+    			<table key="BusinessInvestInfo" value="HOUSELEVEL" defaultvalue="" classname="substr,1,2" />
+    		</unti>
+    		<unti number="259" name="rtn_type" describe="还款方式" source="table" type="String">
+    			<table key="BusinessContractInfo" value="RPTTERMID" classname="substr,5,6" defaultvalue="" />
+    		</unti>			 -->
+   		</execute>
+
+	</decision>

@@ -1,0 +1,42 @@
+1、风险预警发起，初始化风险预警：
+/web/src/com/amarsoft/app/risk/StartRiskWarning.java
+2、风险预警信息列表显示界面：
+传入参数：
+	SignalType：风险预警交易类型
+	Status：风险预警交易执行状态
+	Status1、Status2：风险预警认定完成队列交易参数
+	TempletNo:风险预警信息列表显示模板
+/web/WebContent/BusinessManage/RiskWarningManage/RiskWarningManageList.jsp
+3、风险预警信息详情录入界面：
+/web/WebContent/BusinessManage/RiskWarningManage/RiskWarningManageInfo.jsp
+4、风险预警历史信息显示：
+/web/WebContent/BusinessManage/RiskWarningManage/RiskWarningManageHistList.jsp
+5、风险预警提示信息产看显示列表
+增加传入参数：
+	SignalType：风险预警交易类型
+/web/WebContent/BusinessManage/RiskWarningManage/RiskWarningManageViewList.jsp
+
+--下面风险预警配置信息功能，采用6版本中的datawindown开发完成--
+<--begin-->
+6、风险预警配置信息列表
+/web/WebContent/BusinessManage/RiskWarningManage/RiskWarningConfigList.jsp
+7、风险预警配置信息详情
+/web/WebContent/BusinessManage/RiskWarningManage/RiskWarningConfigInfo.jsp
+<--end-->
+
+8、风险预警提示跟踪
+在risk_warning_signal表中增加字段:afterdoflag,用来控制是否完成反馈信息，对应代码为：RiskDoFlag
+修改界面：
+/web/WebContent/BusinessManage/RiskWarningManage/RiskWarningManageViewList.jsp
+增加传入参数：
+	SignalType：风险预警交易类型
+	DoFlag：风险预警提示反馈执行状态
+	TempletNo:风险预警信息列表显示模板
+	
+需求规格说明书中的以下功能还未完成基本功能开发：
+1、风险报告上传功能
+2、风险预警查询
+
+友情提醒：
+目前上面开发完成的功能模块，基本实现了人工发起风险预警、解除预警、发起风险预警提示等基本功能信息，显示页面中的
+信息要素以及页面录入字段信息要素以及页面显示格式，还需要补充和完善。

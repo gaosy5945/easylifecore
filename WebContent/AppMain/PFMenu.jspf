@@ -1,0 +1,17 @@
+<%@page import="com.amarsoft.dict.als.manage.RoleManager"%>
+<%@page import="com.amarsoft.web.ui.mainmenu.AmarMenu"%>
+<%@ page language="java" contentType="text/html; charset=GBK" %>
+<%
+	AmarMenu amarMenu = new AmarMenu(CurUser, sAppID, new ArrayList<String>());
+%>
+<link rel="stylesheet" href="<%=sWebRootPath%>/AppMain/resources/css/pfmenu.css">
+<td height="30" width="100%">
+<div class="pf_menu">
+<ul class="pf_menu_ul" ><%=amarMenu.genMenuBar()%></ul>
+<span class="pf_menu_mspan">
+<a class="pf_menu_mbtn" href="javascript:void(0);" onclick="return false;" hidefocus ></a>
+<ul class="pf_menu_more" ></ul>
+</span>
+</div>
+<script type="text/javascript" src="<%=sWebRootPath%>/AppMain/resources/js/pfmenu.js" ></script>
+</td>

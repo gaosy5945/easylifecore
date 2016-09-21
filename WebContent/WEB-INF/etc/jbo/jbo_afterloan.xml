@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.al" >
+		<class name="BAT_INSPECT_CONFIG" label="批量征信查询配置信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="MAXOVERDUEDAYS" label="最大逾期天数" type="INT"/>
+				<attribute name="MINOVERDUEDAYS" label="最小逾期天数" type="INT"/>
+				<attribute name="MAXBALANCE1" label="最大客户贷款余额（非经营类）" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MINBALANCE1" label="最小客户贷款余额（非经营类）" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MAXBALANCE2" label="最大客户贷款余额（含经营类）" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MINBALANCE2" label="最小客户贷款余额（含经营类）" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MAXBALANCE3" label="最大客户纯信用贷款余额（非经营类）" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MINBALANCE3" label="最小客户纯信用贷款余额（非经营类）" type="DOUBLE" length="24" scale="2"/>
+				
+				<attribute name="USEROBJECT" label="消费贷款征信查询对象" type="STRING" length="40" />
+				<attribute name="USEROBJECT1" label="网贷征信查询对象" type="STRING" length="40"/>
+				<attribute name="USEROBJECT2" label="预警客户征信查询对象" type="STRING" length="40"/>
+				<attribute name="MAXOVERDUEDAYS1" label="网贷最大逾期天数" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MINOVERDUEDAYS1" label="网贷最小逾期天数" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="ALERTLEVEL" label="预警等级" type="STRING" length="40"/>
+				<attribute name="ALERTSTATUS" label="业务形态" type="STRING" length="40"/>
+				<attribute name="TOTALOVERDUE" label="累计逾期期数" type="INT"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="BAT_INSPECT_CONFIG" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="CLASSIFY_RECORD" label="风险分类记录信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="CLASSIFYMONTH" label="风险分类月份" type="STRING" length="10"/>
+				<attribute name="CLASSIFYDATE" label="风险分类日期" type="STRING" length="10"/>
+				<attribute name="CLASSIFYRESULT" label="风险分类结果（CodeNo:ClassifyResult）" type="STRING" length="10"/>
+				<attribute name="LOANCLASSIFYRESULT" label="贷款风险分类结果(CodeNo:ClassifyResult)" type="STRING" length="10"/>
+				<attribute name="REMARK" label="备注" type="STRING" length="400"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="CLASSIFY_RECORD" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="INSPECT_RECORD" label="贷后检查记录信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="TASKSERIALNO" label="贷后检查任务编号" type="STRING" length="40"/>
+				<attribute name="INSPECTTYPE" label="贷后检查类型(CodeNo:CreditInspectType)" type="STRING" length="10"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="CREATETYPE" label="发起类型(CodeNo:TaskCreateType)" type="STRING" length="10"/>
+				<attribute name="OPERATEORGID" label="检查机构" type="STRING" length="32"/>
+				<attribute name="OPERATEUSERID" label="检查人" type="STRING" length="32"/>
+				<attribute name="OPERATEDATE" label="检查日期" type="STRING" length="10"/>
+				<attribute name="INPUTDATE" label="创建日期" type="STRING" length="10"/>
+				<attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>
+				<attribute name="STATUS" label="状态(CodeNo:CreditInspectStatus)" type="STRING" length="10"/>
+				<attribute name="OPINION" label="说明" type="STRING" length="1024"/>
+				<attribute name="WORKTEMPLATETYPE" label="工作模板类型（CodeNo：WorkTemplateType CheckList、格式化报告、外部文件、附件、表）" type="STRING" length="10"/>
+				<attribute name="INSPECTACTION" label="检查结论(CodeNo:InspectAction)" type="STRING" length="10"/>
+				<attribute name="ISTORISKMANAGER" label="是否提交风险经理(CodeNo:YesNo)" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="INSPECT_RECORD" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="RISK_WARNING_CONFIG" label="风险预警配置信息" keyAttributes="SIGNALID">
+			<attributes>
+				<attribute name="SIGNALID" label="预警信号编号" type="STRING" length="40"/>
+				<attribute name="SIGNALNAME" label="预警信号名称" type="STRING" length="800"/>
+				<attribute name="SIGNALSUBJECT" label="预警信号类型（codeno:riskwarningsubject）" type="STRING" length="10"/>
+				<attribute name="DESCRIBE" label="备注" type="STRING" length="200"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="SIGNALLEVEL" label="级别（CodeNo:RiskWarningLevel）" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="录入人" type="STRING" length="40"/>
+				<attribute name="INPUTORGID" label="录入机构" type="STRING" length="40"/>
+				<attribute name="INPUTDATE" label="录入时间" type="STRING" length="10"/>
+				<attribute name="UPDATEUSERID" label="更新人" type="STRING" length="40"/>
+				<attribute name="UPDATEORGID" label="更新机构" type="STRING" length="40"/>
+				<attribute name="UPDATEDATE" label="更新时间" type="STRING" length="10"/>
+				<attribute name="RISKINDEXATTRIBUTE" label="指标属性（CodeNo:RiskIndexAttribute）" type="STRING" length="10"/>
+				<attribute name="STATUS" label="是否有效（CodeNo:YesNo）" type="STRING" length="10"/>
+				<attribute name="RISWARNINGQUERY" label="风险预警查询" type="STRING" length="4000"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="RISK_WARNING_CONFIG" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="RISK_WARNING_OBJECT" label="风险预警对象" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="SIGNALSERIALNO" label="预警信号流水号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="RISK_WARNING_OBJECT" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="RISK_WARNING_SIGNAL" label="风险预警信号信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="SIGNALID" label="信号编号" type="STRING" length="40"/>
+				<attribute name="STATUS" label="状态(CodeNo:IsInUse)" type="STRING" length="10"/>
+				<attribute name="DESCRIBE" label="描述" type="STRING" length="400"/>
+				<attribute name="SIGNALLEVEL" label="信号级别(CodeNo:RiskWarningLevel)" type="STRING" length="10"/>
+				<attribute name="SIGNALCHANNEL" label="信号渠道（CodeNo:RiskWarningChannel）" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>
+				<attribute name="SIGNALTYPE" label="预警交易类型(CodeNo:SignalType)" type="STRING" length="10"/>
+				<attribute name="AFTERDOFLAG" label="预警提示反馈标志（1：待反馈，2：已反馈）" type="STRING" length="10"/>
+				<attribute name="RECTIFYREQUIRE" label="整改要求" type="STRING" length="800"/>
+				<attribute name="GIVEOUTORG" label="下发机构" type="STRING" length="32"/>
+				<attribute name="REMARK" label="备注" type="STRING" length="250"/>
+				<attribute name="ISEXCLUDE" label="是否需要排除(CodeNo:YesNo)" type="STRING" length="10"/>
+				<attribute name="EXCLUDERESULT" label="排除结果描述" type="STRING" length="200"/>
+				<attribute name="ISWARNING" label="是否预警(CodeNo:YesNo)" type="STRING" length="10"/>
+				<attribute name="DEALMETHOD" label="预警处置措施" type="STRING" length="200"/>
+				<attribute name="DENYREASON" label="否决原因" type="STRING" length="200"/>
+				<attribute name="TASKCHANNEL" label="任务产生渠道（01 系统功能 02批量）" type="STRING" length="200"/>
+				<attribute name="RELASERIALNO" label="关联预警流水号（转发使用）" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="RISK_WARNING_SIGNAL" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DEFAULT_RECORD" label="违约认定信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="REASON" label="违约认定触发原因（CodeNo:DefaultReason）" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="更新人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="更新机构" type="STRING" length="32"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="APPROVEUSERID" label="审批人" type="STRING" length="32"/>
+				<attribute name="APPROVEORGID" label="审批机构" type="STRING" length="32"/>
+				<attribute name="APPROVEDATE" label="审批日期" type="STRING" length="10"/>
+				<attribute name="UPDATEUSERID" label="更新人" type="STRING" length="32"/>
+				<attribute name="UPDATEEORGID" label="更新机构" type="STRING" length="32"/>
+				<attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>
+				<attribute name="REMARK" label="备注" type="STRING" length="400"/>
+				<attribute name="APPLYSTATUS" label="违约认定申请状态(CodeNo:ApplyStatus)" type="STRING" length="10"/>
+				<attribute name="APPROVESTATUS" label="违约认定审批状态(CodeNo:ApproveStatus)" type="STRING" length="10"/>
+				<attribute name="APPROVEOPINION" label="复核意见" type="STRING" length="10"/>
+				<attribute name="OPINIONDETAIL" label="意见说明" type="STRING" length="400"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DEFAULT_RECORD" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+	</package>
+</jbo>
+

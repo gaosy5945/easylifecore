@@ -1,0 +1,122 @@
+<serviceGroup>
+	
+     <service name="WebService/S020030008">
+		<parameter name="ServiceClass">com.amarsoft.app.oci.server.PLBSZHIPP
+		</parameter>
+		<description>个人贷款信息查询</description>
+		<operation name="IdvLoanInfoQry">
+			<actionMapping>urn:/IdvLoanInfoQry</actionMapping>
+			<messageReceiver class="com.amarsoft.app.oci.PlbsXmlInOutReceiver" />
+		</operation>
+
+		<description>个人贷款详情查询</description>
+		<operation name="IdvLoanDtlQry">
+			<actionMapping>urn:/IdvLoanDtlQry</actionMapping>
+			<messageReceiver class="com.amarsoft.app.oci.PlbsXmlInOutReceiver" />
+		</operation>
+		
+		<messageReceivers>
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only"
+				class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		</messageReceivers>
+	</service>
+	
+    <service name="WebService/S020030010">
+		<description>借据信息查询</description>
+		<parameter name="ServiceClass">com.amarsoft.app.oci.server.PLBSZHIPP1
+		</parameter>
+
+		<operation name="DuebillInfoQry">
+			<actionMapping>urn:/DuebillInfoQry</actionMapping>
+			<messageReceiver class="com.amarsoft.app.oci.PlbsXmlInOutReceiver" />
+		</operation>
+		<messageReceivers>
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only"
+				class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		</messageReceivers>
+	</service>
+	
+	<service name="WebService/S020030009">
+		<description>还贷明细查询</description>
+		<parameter name="ServiceClass">com.amarsoft.app.oci.server.PLBSZHIPP2
+		</parameter>
+
+		<operation name="RepaymentDtlQry">
+			<actionMapping>urn:/RepaymentDtlQry</actionMapping>
+			<messageReceiver class="com.amarsoft.app.oci.PlbsXmlInOutReceiver" />
+		</operation>
+		<messageReceivers>
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only"
+				class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		</messageReceivers>
+	</service>
+	
+	<service name="WebService/S020030022">
+		<description>贷款信息查询系统接口</description>
+		<parameter name="ServiceClass">com.amarsoft.app.oci.server.PLBSPAID
+		</parameter>
+
+		<operation name="LnInfoQry">
+			<actionMapping>urn:/LnInfoQry</actionMapping>
+			<messageReceiver class="com.amarsoft.app.oci.PlbsXmlInOutReceiver" />
+		</operation>
+		<messageReceivers>
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only"
+				class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		</messageReceivers>
+	</service>
+	
+	<service name="WebService/S020020026">
+		<description>个贷导入接口</description>
+		<parameter name="ServiceClass">com.amarsoft.app.oci.server.PLBSPAID1
+		</parameter>
+
+		<operation name="LnInfoImpr">
+			<actionMapping>urn:/LnInfoImpr</actionMapping>
+			<messageReceiver class="com.amarsoft.app.oci.PlbsXmlInOutReceiver" />
+		</operation>
+		<messageReceivers>
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only"
+				class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		</messageReceivers>
+	</service>
+	
+	<service name="WebService/S020030032">
+		<description>移动营销平台征信查询</description>
+		<parameter name="ServiceClass">com.amarsoft.app.oci.server.PLBSZHIPP3
+		</parameter>	
+		<operation name="MMPClntCrQry">
+			<actionMapping>urn:/MMPClntCrQry</actionMapping>
+			<messageReceiver class="com.amarsoft.app.oci.PlbsXmlInOutReceiver" />
+		</operation>
+		<messageReceivers>
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only"
+				class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		</messageReceivers>
+	</service>
+	
+</serviceGroup>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Domain ConfigurationVersion="1.0.0.0" Name="am@rBank">
+	<ImagePath>/Frame/page/resources/images</ImagePath>
+
+	<DataSource>als</DataSource>
+	
+	<TranDebugMode>1</TranDebugMode>
+	<!--TranDebugMode Remark 0:不输出Sql运行信息,1:输出Sql运行信息 -->
+	<StatementMode>1</StatementMode>
+	<!--StatementMode Remark 查询SQL游标模式 0:Statement,1: prepareStatement -->
+	<DBChange>2</DBChange>
+	<!--DBChange Remark 1:GBK->ISO8859_1,2:NoChange,3:ISO8859_1->GBK -->
+
+	<AmarDWChange>1</AmarDWChange>
+	<AmarDWMaxRows>1000000</AmarDWMaxRows>
+	<AmarDWTransMode>1</AmarDWTransMode>
+	<AmarDWDebugMode>1</AmarDWDebugMode>
+	<!--AmarDWDebugMode Remark 0:不输出DataWindow保存信息,1:输出DataWindow保存信息 -->
+
+	<RunMode>Development</RunMode>
+	<!--Development Remark Development：开发模式；Production：产品模式;Demonstration:演示模式 -->
+	<FileSaveMode>Disk</FileSaveMode>
+	<!--FileSaveMode Remark Table：存放在数据库；Disk：存放在文件服务器 -->
+	<!--为满足程序和文档分开的需要，下面指定的文档保存、下载路径一般都为绝对路径-->
+	<FileSavePath>/tmp/als/Upload</FileSavePath>
+	<!--FileSavePath Remark 文件保存路径 在FileSaveMode为Disk指定，如果指定目录不存在则保存在WEB-INF的Upload下 -->
+	<FileSavePath2>/tmp/als/Upload2</FileSavePath2>
+	<!--FileSavePath2 Remark 文件保存路径 在FileSaveMode为Disk指定，如果指定目录不存在则保存在WEB-INF的Upload2下 -->
+	<WorkDocSavePath>/tmp/als/WorkDoc</WorkDocSavePath>
+	<!--WorkDocSavePath Remark 格式化文档保存路径，如果指定目录不存在则保存在WEB-INF的WorkDoc下 -->
+	<WorkDocOfflineSavePath>/tmp/als/offlineworkdoc</WorkDocOfflineSavePath>
+	<!--WorkDocOfflineSavePath Remark 离线格式化报告存储位置 -->
+	<DWDownloadFilePath>/tmp/DownLoad</DWDownloadFilePath>
+	<!--FileFundSavePath 公积金相关文件存放路径 -->
+	<FileFundSavePath>/tmp/als/Fund</FileFundSavePath>
+	<!--DWDownloadFilePath 表示DataWindow下载的文件存放的服务器位置，必须以/表示目录分割符 -->
+	<DWTmpPath>/tmp/DW</DWTmpPath>
+	<!--DWTmpPath 表示DataWindow临时的文件存放的服务器位置，必须以/表示目录分割符 -->
+	<FileNameType>SRC</FileNameType>
+	<!--FileNameType Remark SRC:上传原始名称 MD5:生成MD5加密文件名 -->
+	<CRQSavePath>/tmp</CRQSavePath>
+	<!--CRQSavePath 征信 查询保存的路径-->
+	<ReportSavePath>/tmp/als/DownLoad/REPORT</ReportSavePath>
+	<!--ReportSavePath 表示批量生成的报表脚本存放的位置,绝对路径或基于Web应用下得相对路径 -->
+
+	<ProductID>CFS</ProductID>
+	<ProductName>消费信贷服务系统</ProductName>
+	<ProductVersion>7</ProductVersion>
+	<ImplementationID>ALS</ImplementationID>
+	<ImplementationName>消费信贷服务系统</ImplementationName>
+	<ImplementationVersion>7.4.4</ImplementationVersion>
+	<BankName>xx银行</BankName>
+
+	<!-- zip文件保存地址 -->
+	<ZipDownPath>/tmp/Zip_DownLoad</ZipDownPath>
+	<!--============== 内容管理配置  begin=====================-->
+	<!-- 是否使用内容管理: true-使用, false-不使用 -->
+	<IsUseContentManager>true</IsUseContentManager>
+	<!-- 内容管理实现类: 
+		默认实现类com.amarsoft.app.contentmanage.DefaultContentManagerImpl用于把影像数据保存到磁盘；
+		FileNet实现类为com.amarsoft.app.contentmanage.FileNetContentManagerImpl;
+		其他内容管理平台需要自行实现 -->
+	<ContentManagerClass>com.amarsoft.app.contentmanage.DefaultContentManagerImpl</ContentManagerClass>
+	<!-- 如果使用的是DefaultContentManager,则将影像信息保存至此文件夹中 -->
+	<ImageFolder>/tmp/image_document</ImageFolder>
+	<!--============== end ================--> 
+
+</Domain>

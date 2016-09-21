@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=GBK" %>
+<%!
+	StringBuffer searchNameHtml;
+	void SearchName(ASObjectModel doTemp, Page CurPage, String...names) throws Exception {
+		searchNameHtml = new StringBuffer();
+		ArrayList<String> searchNames = new ArrayList<String>();
+		for(String name : names){
+			if(StringX.isSpace(name)) continue;
+			name = name.trim();
+			if(searchNames.indexOf(name) >= 0) continue;
+			searchNames.add(name);
+			String value = CurPage.getParameter("Search_"+name);
+			searchNameHtml.append("<tr>");
+			searchNameHtml.append("<td nowrap>");
+			searchNameHtml.append(doTemp.getColumnAttribute(name, "COLHEADER"));
+			searchNameHtml.append("：</td>");
+			searchNameHtml.append("<td nowrap>");
+			searchNameHtml.append("<input name=\"Search_"+name+"\" value=\"");
+			if(!StringX.isSpace(value)){
+				searchNameHtml.append(value);
+				String[] aV = value.split(" ");
+				for(String v : aV){
+					if(StringX.isSpace(v)) continue;
+					doTemp.appendJboWhere(" and "+name+" like '%"+v+"%'");
+				}
+			}
+			searchNameHtml.append("\" style=\"width:100%;\" />");
+			searchNameHtml.append("</td>");
+			searchNameHtml.append("</tr>");
+		}
+	}
+%>
+<%if(this.searchNameHtml != null){%>
+<div id="SearchName" class="list_search list_search_nohover" onmousedown="AsLink.moveBoxOnDown(event, this)" style="width:270px;display:none;">
+	<form name="SearchName" method=post >
+		<table width="100%" cellpadding="0" cellspacing="0" >
+		<%=this.searchNameHtml%>
+		<tr><td colspan="2" align="center" nowrap >
+			<input type="submit" value="查询" />
+			<input type="button" value="清空" onclick="$('#SearchName :text').val('')" />
+			<input type="button" value="取消" onclick="$('#SearchName').hide()" />
+		</td></tr>
+		</table>
+	</form>
+</div>
+<script type="text/javascript">
+	$("#SearchName :input").mousedown(AsLink.stopEvent);
+</script>
+<%}%>

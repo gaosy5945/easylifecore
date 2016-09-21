@@ -1,0 +1,17 @@
+<link rel="shortcut icon" href="<%=sWebRootPath%>/favicon.ico">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/Frame/page/resources/css/widget.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%><%=sSkinPath%>/css/widget.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/Frame/page/resources/css/button.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%><%=sSkinPath%>/css/button.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/Frame/page/resources/css/button_types.css">
+<script type="text/javascript">window.history.forward(1);var sCompClientID="<%=sCompClientID%>";var sWebRootPath="<%=sWebRootPath%>";</script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/jspf/js_var_global.jspf"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/checkdatavalidity.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/common.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/message.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/as_common.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/as_control.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/as_widget.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/chart/json2.js"></script>
+<%@ include file="/AppMain/resources/include/app_head.jspf" %>

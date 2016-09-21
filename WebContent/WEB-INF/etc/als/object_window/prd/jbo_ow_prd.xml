@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="GB18030" ?>
+<jbo>
+    <package name="ow.prd" label="产品模块显示模板定义">
+        <class name="PRD_TransInfo_NewProduct" label="产品修改交易录入界面" style="Info">
+            <attributes>
+				<attribute name="TransactionSerialNo" label="交易流水号" type="STRING" length="40" format="" align="1" editType="Text"
+                	visible="true" readonly="true" required="true" groupid="" query.value="PT.SERIALNO" updateable="true" defaultValue="">
+	                <extendProperties>
+						<property name="codeType" value="" />
+						<property name="codeString" value="" />
+						<property name="innerButton" value="" />
+						<property name="unit" value="" />
+						<property name="htmlStyle" value="" />
+						<property name="span" value="" />
+					</extendProperties>
+				</attribute>
+            </attributes>
+            
+			<inputParameters>
+	            <parameter name="TransactionSerialNo" label="交易流水号" type="STRING" length="40"/>
+			</inputParameters>
+            
+        <!--     <bizObjects>
+            	<bizObject type="jbo" objectname="PT" classname="jbo.prd.PRD_TRANSACTION"/>
+	            <bizObject type="jbo" objectname="PL" classname="jbo.prd.PRD_PRODUCT_LIBRARY"/>
+            </bizObjects> -->
+            
+            <businessProcessor classname="" htmlGenerator="">
+            	<action type="create" classname="">
+            	</action>
+            	<action type="save" classname="">
+            		<bizObject name=""/>
+            	</action>
+            	<action type="delete" classname="">
+            		<bizObject name=""/>
+            	</action>
+            	<action type="query" classname="">
+            		<bizObject objectname="PL" type="m" methodType="jbosql" jboClassName="jbo.prd.PRD_TRANSACTION" method="select O.* from O,jbo.prd.PRD_PRODUCT_LIBRARY PL where O.SerialNo=:TransactionSerialNo and
+            												O.ObjectNo=PL.ProductID " 
+            			parameter="TransactionSerialNo={#TransactionSerialNo}"/>
+            	</action>
+            </businessProcessor>
+
+			<filterParameters>
+	        </filterParameters>
+           
+            <extendProperties>
+            	<property name="jsfile" value="/ProductManage/ProductConfig/js/Product.js;/ProductManage/ProductConfig/js/ProductInfo.js"/>
+            </extendProperties>
+        </class>
+       
+    </package>
+</jbo>

@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="GBK" ?>
+<AccountingConfig>
+	<InterestTypeConfigs>
+		<InterestTypeConfig id="0" name="贷款利息" >
+			<property name="InterestObjectType" 	value="jbo.acct.ACCT_LOAN" description="计息对象类型"/>
+			<property name="AccrueInterestScript" value="com.amarsoft.app.accounting.interest.accrue.impl.LoanInterestAccruer"/>
+			<!-- 一般情况下都采用还款方式的计算利息处理方法，此处不定义变量InterestCalculatorScript-->
+			<RateTypeConfigs>
+				<!-- RateType ID不要与BaseRateType代码值相同 -->
+				<RateTypeConfig id="01" name="普通贷款利率-非等额平息还款方式使用">
+					<property name="BaseAmountCalculatorType" value="el" />
+					<property name="BaseAmountCalculator" value="interestObject.getBusinessObjectsByAttributes('jbo.acct.ACCT_RPT_SEGMENT', 'TermID','RPT-13','Status','1').size() > 0 ? interestObject.getDouble('BusinessSum') : interestObject.getBusinessObjectByAttributes('jbo.acct.ACCT_SUBSIDIARY_LEDGER', 'AccountCodeNo','Customer01').getDouble('DebitBalance') " description="计息基础金额"/>
+					<property name="InterestEffectScript" value="true"/>
+				</RateTypeConfig>
+			</RateTypeConfigs>
+		</InterestTypeConfig>
+		
+		<InterestTypeConfig id="1" name="本金罚息">
+			<property name="InterestObjectType" 	value="jbo.acct.ACCT_PAYMENT_SCHEDULE" description="计息对象类型"/>
+			<property name="AccrueInterestScript" value="com.amarsoft.app.accounting.interest.accrue.impl.PaymentScheduleBeforeInterestAccruer,com.amarsoft.app.accounting.interest.accrue.impl.PaymentScheduleAfterInterestAccruer"/>
+			<property name="InterestCalculatorScript" value="com.amarsoft.app.accounting.interest.calc.impl.DailyCalculator"/>
+			<RateTypeConfigs>
+				<RateTypeConfig id="02" name="罚息利率">
+					<!-- 表达式
+					<property name="BaseAmountCalculatorType" value="el" />
+					<property name="BaseAmountCalculator" value="interestObject.getDouble('PayPrincipalAmt')-interestObject.getDouble('ActualPayPrincipalAmt')" description="计息基础金额"/>
+					 -->
+					<property name="BaseAmountCalculatorType" value="java" />
+					<property name="BaseAmountCalculator" value="com.amarsoft.app.accounting.interest.amount.impl.InterestBaseAmount" description="计息基础金额"/>
+					<property name="InterestEffectScript" value="true"/>
+				</RateTypeConfig>
+			</RateTypeConfigs>
+			<property name="Condition" value=" Status='1' and (FinishDate = null or FinishDate = '')" description="还款计划筛选条件"/>
+			<property name="SettleTermUnit" value="M"/>
+			<property name="SettleTerm" value="1"/>
+		</InterestTypeConfig>
+		
+		<InterestTypeConfig id="2" name="利息罚息">
+			<property name="InterestObjectType" 	value="jbo.acct.ACCT_PAYMENT_SCHEDULE" description="计息对象类型"/>
+			<property name="AccrueInterestScript" value="com.amarsoft.app.accounting.interest.accrue.impl.PaymentScheduleInterestAccruer"/>
+			<property name="InterestCalculatorScript" value="com.amarsoft.app.accounting.interest.calc.impl.DailyCalculator"/>
+			<RateTypeConfigs>
+				<RateTypeConfig id="02" name="罚息利率">
+					<property name="BaseAmountCalculatorType" value="java" />
+					<property name="BaseAmountCalculator" value="com.amarsoft.app.accounting.interest.amount.impl.InterestBaseAmount" description="计息基础金额"/>
+					<property name="InterestEffectScript" value="true"/>
+				</RateTypeConfig>
+			</RateTypeConfigs>
+			<property name="Condition" value=" Status='1' and (FinishDate = null or FinishDate = '')" description="还款计划筛选条件"/>
+			<property name="SettleTermUnit" value="M"/>
+			<property name="SettleTerm" value="1"/>
+		</InterestTypeConfig>
+		
+		<InterestTypeConfig id="3" name="IRR利息" >
+			<property name="InterestObjectType" 	value="jbo.acct.ACCT_LOAN" description="计息对象类型"/>
+			<property name="AccrueInterestScript" value="com.amarsoft.app.accounting.interest.accrue.impl.LoanInterestAccruer"/>
+			<!-- 一般情况下都采用还款方式的计算利息处理方法，此处不定义变量InterestCalculatorScript-->
+			<RateTypeConfigs>
+				<!-- RateType ID不要与BaseRateType代码值相同 -->
+				<RateTypeConfig id="04" name="IRR利率">
+					<property name="BaseAmountCalculatorType" value="el" />
+					<property name="BaseAmountCalculator" value="interestObject.getBusinessObjectByAttributes('jbo.acct.ACCT_SUBSIDIARY_LEDGER', 'AccountCodeNo','IRR01').getDouble('DebitBalance')" description="计息基础金额"/>
+					<property name="InterestEffectScript" value="true"/>
+				</RateTypeConfig>
+			</RateTypeConfigs>
+		</InterestTypeConfig>
+		
+		<InterestTypeConfig id="4" name="费用" >
+			<property name="InterestObjectType" 	value="jbo.acct.ACCT_LOAN" description="计息对象类型"/>
+			<property name="AccrueInterestScript" value="com.amarsoft.app.accounting.interest.accrue.impl.LoanInterestAccruer"/>
+			<!-- 一般情况下都采用还款方式的计算利息处理方法，此处不定义变量InterestCalculatorScript-->
+			<RateTypeConfigs>
+				<!-- RateType ID不要与BaseRateType代码值相同 -->
+				<RateTypeConfig id="05" name="费率">
+					<property name="BaseAmountCalculatorType" value="el" />
+					<property name="BaseAmountCalculator" value="interestObject.getDouble('BusinessSum')" description="计息基础金额"/>
+					<property name="InterestEffectScript" value="true"/>
+				</RateTypeConfig>
+			</RateTypeConfigs>
+		</InterestTypeConfig>
+		
+	</InterestTypeConfigs>
+	
+	<AmountCodeConfigs>
+		<AmountCodeConfig id="01" name="本金金额">
+			<!-- 该金额发生变化时影响下面这种利息类型 -->
+			<property name="InfluenceInterestType" 	value="1"/>
+			<!-- 该金额到期未还金额计算类，用于其影响的利息类型计算计息基础，结合com.amarsoft.app.accounting.interest.amount.impl.InterestBaseAmount使用-->
+			<property name="AmountCalculator" 	value="com.amarsoft.app.accounting.interest.amount.impl.PrincipalAmount"/>
+			<property name="PS.PayAttributeID" 	value="PayPrincipalAmt"/>
+			<property name="PS.ActualPayAttributeID" 	value="ActualPayPrincipalAmt"/>
+			<property name="PS.WaiveAttributeID" value="WaivePrincipalAmt"/>
+			<property name="PS.BalanceAttributeID" 	value="PrincipalBalance"/>
+			
+			<property name="PL.PayAttributeID" 	value="PayPrincipalAmt"/>
+			<property name="PL.ActualPayAttributeID" 	value="ActualPayPrincipalAmt"/>
+			<property name="PL.WaiveAttributeID" value="WaivePrincipalAmt"/>
+			<property name="PL.BalanceAttributeID" 	value="PrincipalBalance"/>
+			
+			<property name="TP.PayAttributeID" 	value="PayPrincipalAmt"/>
+			<property name="TP.ActualPayAttributeID" 	value="ActualPayPrincipalAmt"/>
+			<property name="TP.PrepayAttributeID" 	value="PrepayPrincipalAmt"/>
+			<property name="TP.WaiveAttributeID" value="WaivePrincipalAmt"/>
+			
+			<property name="PS.PassdueAmt" value="PassduePrincipalAmt"/>
+			<property name="PS.OverdueAmt" value="OverduePrincipalAmt"/>
+			<property name="PS.GraceAmt" value="GracePrincipalAmt"/>
+			<property name="PS.HolidayAmt" value="HolidayPrincipalAmt"/>
+			<property name="PS.CurrentAmt" value="CurrentPrincipalAmt"/>
+			<property name="PS.FirstPassdueAmt" value="FirstPassduePrincipalAmt"/>
+			<property name="PS.DifferencePassdueAmt" value="DifferencePassduePrincipalAmt"/>
+			
+			<property name="NormalBalanceAccountCode" 	value="Customer01"/>
+			<property name="OverdueBalanceAccountCode" 	value="Customer02"/>
+		</AmountCodeConfig>
+		
+		<AmountCodeConfig id="02" name="利息金额">
+			<!-- 该金额通过下面利息类型计算得到 -->
+			<property name="InterestType" 	value="0"/>
+			<!-- 该金额发生变化时影响下面这种利息类型 -->
+			<property name="InfluenceInterestType" 	value="2"/>
+			<!-- 该金额到期未还金额计算类，用于其影响的利息类型计算计息基础 ，结合com.amarsoft.app.accounting.interest.amount.impl.InterestBaseAmount使用-->
+			<property name="AmountCalculator" 	value="com.amarsoft.app.accounting.interest.amount.impl.InterestAmount"/>
+			<property name="PS.PayAttributeID" 	value="PayInterestAmt"/>
+			<property name="PS.ActualPayAttributeID" 	value="ActualPayInterestAmt"/>
+			<property name="PS.WaiveAttributeID" value="WaiveInterestAmt"/>
+			
+			<property name="PL.PayAttributeID" 	value="PayInterestAmt"/>
+			<property name="PL.ActualPayAttributeID" 	value="ActualPayInterestAmt"/>
+			<property name="PL.WaiveAttributeID" value="WaiveInterestAmt"/>
+			
+			<property name="TP.PayAttributeID" 	value="PayInterestAmt"/>
+			<property name="TP.ActualPayAttributeID" 	value="ActualPayInterestAmt"/>
+			<property name="TP.PrepayAttributeID" 	value="PrepayInterestAmt"/>
+			<property name="TP.WaiveAttributeID" value="WaiveInterestAmt"/>
+			<!-- 当前利息金额字段，用于体现计提利息 -->
+			<property name="CurrentAttributeID" value="CurrentInterestAmt"/>
+			
+			<property name="PS.PassdueAmt" value="PassdueInterestAmt"/>
+			<property name="PS.OverdueAmt" value="OverdueInterestAmt"/>
+			<property name="PS.GraceAmt" value="GraceInterestAmt"/>
+			<property name="PS.HolidayAmt" value="HolidayInterestAmt"/>
+			<property name="PS.CurrentAmt" value="CurrentInterestAmt"/>
+			<property name="PS.FirstPassdueAmt" value="FirstPassdueInterestAmt"/>
+			<property name="PS.DifferencePassdueAmt" value="DifferencePassdueInterestAmt"/>
+			
+			<property name="NormalBalanceAccountCode" 	value="Customer11"/>
+			<property name="OverdueBalanceAccountCode" 	value="Customer12"/>
+		</AmountCodeConfig>
+		
+		<AmountCodeConfig id="11" name="IRR本金金额">
+			<property name="PS.PayAttributeID" 	value="PayPrincipalAmt"/>
+			<property name="PS.ActualPayAttributeID" 	value="ActualPayPrincipalAmt"/>
+			<property name="PS.WaiveAttributeID" value="WaivePrincipalAmt"/>
+			<property name="PS.BalanceAttributeID" 	value="PrincipalBalance"/>
+			
+			<property name="PL.PayAttributeID" 	value="PayPrincipalAmt"/>
+			<property name="PL.ActualPayAttributeID" 	value="ActualPayPrincipalAmt"/>
+			<property name="PL.WaiveAttributeID" value="WaivePrincipalAmt"/>
+			<property name="PL.BalanceAttributeID" 	value="PrincipalBalance"/>
+			
+			<property name="TP.PayAttributeID" 	value="PayPrincipalAmt"/>
+			<property name="TP.ActualPayAttributeID" 	value="ActualPayPrincipalAmt"/>
+			<property name="TP.PrepayAttributeID" 	value="PrepayPrincipalAmt"/>
+			<property name="TP.WaiveAttributeID" value="WaivePrincipalAmt"/>
+			
+			<property name="NormalBalanceAccountCode" 	value="IRR01"/>
+		</AmountCodeConfig>
+		
+		<AmountCodeConfig id="12" name="IRR利息金额">
+			<property name="InterestType" 	value="3"/>
+			<property name="PS.PayAttributeID" 	value="PayInterestAmt"/>
+			<property name="PS.ActualPayAttributeID" 	value="ActualPayInterestAmt"/>
+			<property name="PS.WaiveAttributeID" value="WaiveInterestAmt"/>
+			
+			<property name="PL.PayAttributeID" 	value="PayInterestAmt"/>
+			<property name="PL.ActualPayAttributeID" 	value="ActualPayInterestAmt"/>
+			<property name="PL.WaiveAttributeID" value="WaiveInterestAmt"/>
+			
+			<property name="TP.PayAttributeID" 	value="PayInterestAmt"/>
+			<property name="TP.ActualPayAttributeID" 	value="ActualPayInterestAmt"/>
+			<property name="TP.PrepayAttributeID" 	value="PrepayInterestAmt"/>
+			<property name="TP.WaiveAttributeID" value="WaiveInterestAmt"/>
+		</AmountCodeConfig>
+		
+		<AmountCodeConfig id="21" name="费用金额">
+			<property name="InterestType" 	value="4"/>
+			<property name="PS.PayAttributeID" 	value="PayInterestAmt"/>
+			<property name="PS.ActualPayAttributeID" 	value="ActualPayInterestAmt"/>
+			<property name="PS.WaiveAttributeID" value="WaiveInterestAmt"/>
+			
+			<property name="PL.PayAttributeID" 	value="PayInterestAmt"/>
+			<property name="PL.ActualPayAttributeID" 	value="ActualPayInterestAmt"/>
+			<property name="PL.WaiveAttributeID" value="WaiveInterestAmt"/>
+			
+			<property name="TP.PayAttributeID" 	value="PayInterestAmt"/>
+			<property name="TP.ActualPayAttributeID" 	value="ActualPayInterestAmt"/>
+			<property name="TP.PrepayAttributeID" 	value="PrepayInterestAmt"/>
+			<property name="TP.WaiveAttributeID" value="WaiveInterestAmt"/>
+		</AmountCodeConfig>
+		
+		
+		<AmountCodeConfig id="30" name="本金罚息">
+			<!-- 该金额通过下面利息类型计算得到 -->
+			<property name="InterestType" 	value="1"/>
+			<!-- 该金额发生变化时影响下面这种利息类型 -->
+			<property name="InfluenceInterestType" 	value="2"/>
+			<!-- 该金额已结息未还金额计算类，用于其影响的利息类型计算计息基础 ，结合com.amarsoft.app.accounting.interest.amount.impl.InterestBaseAmount使用-->
+			<property name="AmountCalculator" 	value="com.amarsoft.app.accounting.interest.amount.impl.PrincipalPenaltyAmount"/>
+			<property name="PS.PayAttributeID" 	value="PayPrincipalPenaltyAmt"/>
+			<property name="PS.ActualPayAttributeID" 	value="ActualPayPrincipalPenaltyAmt"/>
+			<property name="PS.WaiveAttributeID" value="WaivePrincipalPenaltyAmt"/>
+			
+			<property name="PL.PayAttributeID" 	value="PayPrincipalPenaltyAmt"/>
+			<property name="PL.ActualPayAttributeID" 	value="ActualPayPrincipalPenaltyAmt"/>
+			<property name="PL.WaiveAttributeID" value="WaivePrincipalPenaltyAmt"/>
+			
+			<property name="TP.PayAttributeID" value="PayPrincipalPenaltyAmt"/>
+			<property name="TP.ActualPayAttributeID" value="ActualPayPrincipalPenaltyAmt"/>
+			<property name="TP.WaiveAttributeID" value="WaivePrincipalPenaltyAmt"/>
+			
+			<property name="PS.PassdueAmt" value="PassduePrincipalPenaltyAmt"/>
+			<property name="PS.OverdueAmt" value="OverduePrincipalPenaltyAmt"/>
+			<property name="PS.GraceAmt" value="GracePrincipalPenaltyAmt"/>
+			<property name="PS.HolidayAmt" value="HolidayPrincipalPenaltyAmt"/>
+			<property name="PS.CurrentAmt" value="CurrentPrincipalPenaltyAmt"/>
+			<property name="PS.FirstPassdueAmt" value="FirstPassduePrincipalPenaltyAmt"/>
+			<property name="PS.DifferencePassdueAmt" value="DifferencePassduePrincipalPenaltyAmt"/>
+			
+			<property name="OverdueBalanceAccountCode" 	value="Customer13"/>
+		</AmountCodeConfig>
+		
+		<AmountCodeConfig id="31" name="利息罚息">
+			<!-- 该金额通过下面利息类型计算得到 -->
+			<property name="InterestType" 	value="2"/>
+			<!-- 该金额发生变化时影响下面这种利息类型 -->
+			<!--如果利息罚息还要计算利息，则放开该配置
+			<property name="InfluenceInterestType" 	value="2"/>
+			-->
+			<!-- 该金额已结息未还金额计算类，用于其影响的利息类型计算计息基础 ，结合com.amarsoft.app.accounting.interest.amount.impl.InterestBaseAmount使用-->
+			<property name="AmountCalculator" 	value="com.amarsoft.app.accounting.interest.amount.impl.InterestPenaltyAmount"/>
+			<property name="PS.PayAttributeID" 	value="PayInterestPenaltyAmt"/>
+			<property name="PS.ActualPayAttributeID" 	value="ActualPayInterestPenaltyAmt"/>
+			<property name="PS.WaiveAttributeID" value="WaiveInterestPenaltyAmt"/>
+			
+			<property name="PL.PayAttributeID" 	value="PayInterestPenaltyAmt"/>
+			<property name="PL.ActualPayAttributeID" 	value="ActualPayInterestPenaltyAmt"/>
+			<property name="PL.WaiveAttributeID" value="WaiveInterestPenaltyAmt"/>
+			
+			<property name="TP.PayAttributeID" value="PayInterestPenaltyAmt"/>
+			<property name="TP.ActualPayAttributeID" value="ActualPayInterestPenaltyAmt"/>
+			<property name="TP.WaiveAttributeID" value="WaiveInterestPenaltyAmt"/>
+			
+			<property name="PS.PassdueAmt" value="PassdueInterestPenaltyAmt"/>
+			<property name="PS.OverdueAmt" value="OverdueInterestPenaltyAmt"/>
+			<property name="PS.GraceAmt" value="GraceInterestPenaltyAmt"/>
+			<property name="PS.HolidayAmt" value="HolidayInterestPenaltyAmt"/>
+			<property name="PS.CurrentAmt" value="CurrentInterestPenaltyAmt"/>
+			<property name="PS.FirstPassdueAmt" value="FirstPassdueInterestPenaltyAmt"/>
+			<property name="PS.DifferencePassdueAmt" value="DifferencePassdueInterestPenaltyAmt"/>
+			
+			<property name="OverdueBalanceAccountCode" 	value="Customer14"/>
+		</AmountCodeConfig>
+	</AmountCodeConfigs>
+	
+	<PSTypeConfigs>
+		<PSTypeConfig id="1" name="本息偿付计划">
+			<property name="AmountCode" 	value="01,02,30,31"/>
+			<property name="PrincipalAmountCode" value="01"/>
+			<property name="InterestAmountCode" value="02,30,31"/>
+			<property name="IRRAmountCode" value="02"/> <!-- 内部收益率收益金额 -->
+			<!-- 新生成的还款计划是否参与自动扣款 -->
+			<property name="AutoPayFlag" value="1"/>
+			<!-- 新生成的还款计划归还项目代码 -->
+			<property name="PayItemCode" value="PI"/>
+			<!-- 还款计划类型收付标示 A 收 P 付-->
+			<property name="Direction" value="R"/>
+			<!-- 生成未来还款计划多少期次，项目组可根据实际情况决定生成未来还款计划情况，该数字范围 0(含)~999，为0时表示不使用该参数，生成全部还款计划 -->
+			<property name="FuturePeriod" value="0"/>
+		</PSTypeConfig>
+		
+		<PSTypeConfig id="2" name="财务入账计划（IRR-内部收益率计划）">
+			<property name="AmountCode" 	value="11,12"/>
+			<property name="PrincipalAmountCode" value="11"/>
+			<property name="InterestAmountCode" value="12"/>
+			<!-- 新生成的还款计划是否参与自动扣款 -->
+			<property name="AutoPayFlag" value="0"/>
+			<!-- 新生成的还款计划归还项目代码 -->
+			<property name="PayItemCode" value="PI"/>
+			<!-- 还款计划类型收付标示 A 收 P 付-->
+			<property name="Direction" value="B"/>
+			<!-- 生成未来还款计划多少期次，项目组可根据实际情况决定生成未来还款计划情况，该数字范围 0(含)~999，为0时表示不使用该参数，生成全部还款计划 -->
+			<property name="FuturePeriod" value="0"/>
+		</PSTypeConfig>
+		
+		<PSTypeConfig id="3" name="服务费用计划">
+			<property name="AmountCode" 	value="21"/>
+			<property name="IRRAmountCode" value="21"/> <!-- 内部收益率收益金额 -->
+			<!-- 新生成的还款计划是否参与自动扣款 -->
+			<property name="AutoPayFlag" value="1"/>
+			<!-- 新生成的还款计划归还项目代码 -->
+			<property name="PayItemCode" value="PI"/>
+			<!-- 还款计划类型收付标示 A 收 P 付-->
+			<property name="Direction" value="R"/>
+			<!-- 生成未来还款计划多少期次，项目组可根据实际情况决定生成未来还款计划情况，该数字范围 0(含)~999，为0时表示不使用该参数，生成全部还款计划 -->
+			<property name="FuturePeriod" value="0"/>
+		</PSTypeConfig>
+	</PSTypeConfigs>
+	
+	<PayRuleConfigs>
+		<!-- 使用条件Filter，配置者需注意多种还款顺序得全面覆盖所有情况，还款顺序不是按照ID排序，请在定义标签时按照顺序排列 -->
+		<PayRuleConfig id="01" name="费用->利息罚息->本金罚息->利息->本金" desc="正常还款顺序" Filter="LoanStatus in('0','1') and (OverdueDays &lt;= 90 or OverdueDays=null)">
+			<!-- 组和组之间采用金额类型优先原则，组内规则采用还款计划加载排序规则 -->
+			<PayRuleGroup id="1" desc="费用->利息罚息->本金罚息->利息->本金">
+				<PayRule id="1" desc="费用" amountCode="21" filter="PSType='3' "/>
+				<PayRule id="2" desc="利息罚息" amountCode="31" filter="PSType='1' "/>
+				<PayRule id="3" desc="本金罚息" amountCode="30" filter="PSType='1' "/>
+				<PayRule id="4" desc="利息" amountCode="02" filter="PSType='1' "/>
+				<PayRule id="5" desc="本金" amountCode="01" filter="PSType='1' "/>
+			</PayRuleGroup>
+		</PayRuleConfig>
+		
+		<PayRuleConfig id="02" name="本金->利息->本金罚息->利息罚息->费用" desc="不良还款顺序" Filter="LoanStatus in('0','1') and OverdueDays > 90">
+			<!-- 组和组之间采用金额类型优先原则，组内规则采用还款计划加载排序规则 -->
+			<PayRuleGroup id="1" desc="本金">
+				<PayRule id="1" desc="本金" amountCode="01" filter="PSType='1' "/>
+			</PayRuleGroup>
+			<PayRuleGroup id="2" desc="利息">
+				<PayRule id="1" desc="利息" amountCode="02" filter="PSType='1' "/>
+			</PayRuleGroup>
+			<PayRuleGroup id="3" desc="本金罚息">
+				<PayRule id="1" desc="本金罚息" amountCode="30" filter="PSType='1' "/>
+			</PayRuleGroup>
+			<PayRuleGroup id="4" desc="利息罚息">
+				<PayRule id="1" desc="利息罚息" amountCode="31" filter="PSType='1' "/>
+			</PayRuleGroup>
+			<PayRuleGroup id="5" desc="费用">
+				<PayRule id="1" desc="费用" amountCode="21" filter="PSType='3' "/>
+			</PayRuleGroup>
+		</PayRuleConfig>
+	</PayRuleConfigs>
+	
+	<!-- 还款周期定义 -->
+	<PayFrequencyConfigs>
+		<!-- 期限单位：D 天、M 月、Y 年，此码值需和com.amarsoft.app.accounting.util.DateHelper程序中定义的静态变量同步 -->
+		<PayFrequencyType id="1" name="按月" TermUnit="M" Term="1"/>
+		<PayFrequencyType id="2" name="按季" TermUnit="M" Term="3"/>
+		<PayFrequencyType id="3" name="一次" TermUnit="M" Term="0"/>
+		<PayFrequencyType id="4" name="按半年" TermUnit="M" Term="6"/>
+		<PayFrequencyType id="5" name="按年" TermUnit="M" Term="12"/>
+		<PayFrequencyType id="6" name="指定周期" TermUnit="" term=""/>
+		<PayFrequencyType id="7" name="按双周" TermUnit="D" Term="14"/>
+		<PayFrequencyType id="8" name="按季（固定）" TermUnit="M" Term="3" StartDate="2015/12/01" /><!-- 存在很多按季的还款方式按照 固定 3，6，9，12月还款，非放款日加3个月，所以增加该还款周期，请注意 start参数，标示计算还款日的实际起始日期-->
+	</PayFrequencyConfigs>
+	
+	<!-- 提前还款处理逻辑类 -->
+	<PrepayScriptConfigs>
+		<PrepayScript id = "1" name="部分提前还款-期限不变-金额类型（本金）-按照还款金额计算利息-按照交易日计算利息天数" filter="PrePayType='1' and PrepayAmtFlag='1' and PrepayInterestBaseFlag='1' and PrepayInterestDaysFlag='1'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript1"/>
+		<PrepayScript id = "2" name="部分提前还款-期限不变-金额类型（本金）-按照还款金额计算利息-按照下次还款日计算利息天数" filter="PrePayType='1' and PrepayAmtFlag='1' and PrepayInterestBaseFlag='1' and PrepayInterestDaysFlag='2'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript2"/>
+		<PrepayScript id = "3" name="部分提前还款-期限不变-金额类型（本金）-按照余额计算利息-按照交易日计算利息天数" filter="PrePayType='1' and PrepayAmtFlag='1' and PrepayInterestBaseFlag='2' and PrepayInterestDaysFlag='1'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript3"/>
+		<PrepayScript id = "4" name="部分提前还款-期限不变-金额类型（本金）-按照余额计算利息-按照下次还款日计算利息天数" filter="PrePayType='1' and PrepayAmtFlag='1' and PrepayInterestBaseFlag='2' and PrepayInterestDaysFlag='2'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript4"/>
+		<PrepayScript id = "5" name="部分提前还款-期限不变-金额类型（本金）-不还利息（放到下期）" filter="PrePayType='1' and PrepayAmtFlag='1' and PrepayInterestBaseFlag='3' " 
+					script=""/>
+		<PrepayScript id = "6" name="部分提前还款-期限不变-金额类型（本金+利息）-按照还款金额计算利息-按照交易日计算利息天数" filter="PrePayType='1' and PrepayAmtFlag='2' and PrepayInterestBaseFlag='1' and PrepayInterestDaysFlag='1'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript6"/>
+		<PrepayScript id = "7" name="部分提前还款-期限不变-金额类型（本金+利息）-按照还款金额计算利息-按照下次还款日计算利息天数" filter="PrePayType='1' and PrepayAmtFlag='2' and PrepayInterestBaseFlag='1' and PrepayInterestDaysFlag='2'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript7"/>
+		<PrepayScript id = "8" name="部分提前还款-期限不变-金额类型（本金+利息）-按照余额计算利息-按照交易日计算利息天数" filter="PrePayType='1' and PrepayAmtFlag='2' and PrepayInterestBaseFlag='2' and PrepayInterestDaysFlag='1'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript8"/>
+		<PrepayScript id = "9" name="部分提前还款-期限不变-金额类型（本金+利息）-按照余额计算利息-按照下次还款日计算利息天数" filter="PrePayType='1' and PrepayAmtFlag='2' and PrepayInterestBaseFlag='2' and PrepayInterestDaysFlag='2'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript9"/>
+		<PrepayScript id = "10" name="部分提前还款-期限不变-金额类型（本金+利息）-不还利息（放到下期）" filter="PrePayType='1' and PrepayAmtFlag='2' and PrepayInterestBaseFlag='3'" 
+					script=""/>
+		<PrepayScript id = "11" name="部分提前还款-期供不变-金额类型（本金）-按照还款金额计算利息-按照交易日计算利息天数" filter="PrePayType='2' and PrepayAmtFlag='1' and PrepayInterestBaseFlag='1' and PrepayInterestDaysFlag='1'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript11"/>
+		<PrepayScript id = "12" name="部分提前还款-期供不变-金额类型（本金）-按照还款金额计算利息-按照下次还款日计算利息天数" filter="PrePayType='2' and PrepayAmtFlag='1' and PrepayInterestBaseFlag='1' and PrepayInterestDaysFlag='2'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript12"/>
+		<PrepayScript id = "13" name="部分提前还款-期供不变-金额类型（本金）-按照余额计算利息-按照交易日计算利息天数" filter="PrePayType='2' and PrepayAmtFlag='1' and PrepayInterestBaseFlag='2' and PrepayInterestDaysFlag='1'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript13"/>
+		<PrepayScript id = "14" name="部分提前还款-期供不变-金额类型（本金）-按照余额计算利息-按照下次还款日计算利息天数" filter="PrePayType='2' and PrepayAmtFlag='1' and PrepayInterestBaseFlag='2' and PrepayInterestDaysFlag='2'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript14"/>
+		<PrepayScript id = "15" name="部分提前还款-期供不变-金额类型（本金）-不还利息（放到下期）" filter="PrePayType='2' and PrepayAmtFlag='1' and PrepayInterestBaseFlag='3'" 
+					script=""/>
+		<PrepayScript id = "16" name="部分提前还款-期供不变-金额类型（本金+利息）-按照还款金额计算利息-按照交易日计算利息天数" filter="PrePayType='2' and PrepayAmtFlag='2' and PrepayInterestBaseFlag='1' and PrepayInterestDaysFlag='1'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript16"/>
+		<PrepayScript id = "17" name="部分提前还款-期供不变-金额类型（本金+利息）-按照还款金额计算利息-按照下次还款日计算利息天数" filter="PrePayType='2' and PrepayAmtFlag='2' and PrepayInterestBaseFlag='1' and PrepayInterestDaysFlag='2'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript17"/>
+		<PrepayScript id = "18" name="部分提前还款-期供不变-金额类型（本金+利息）-按照余额计算利息-按照交易日计算利息天数" filter="PrePayType='2' and PrepayAmtFlag='2' and PrepayInterestBaseFlag='2' and PrepayInterestDaysFlag='1'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript18"/>
+		<PrepayScript id = "19" name="部分提前还款-期供不变-金额类型（本金+利息）-按照余额计算利息-按照下次还款日计算利息天数" filter="PrePayType='2' and PrepayAmtFlag='2' and PrepayInterestBaseFlag='2' and PrepayInterestDaysFlag='2'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript19"/>
+		<PrepayScript id = "20" name="部分提前还款-期供不变-金额类型（本金+利息）-不还利息（放到下期）" filter="PrePayType='2' and PrepayAmtFlag='2' and PrepayInterestBaseFlag='3'" 
+					script=""/>
+		<PrepayScript id = "21" name="全部提前还款" filter="PrePayType='3'" 
+					script="com.amarsoft.app.accounting.trans.script.loan.repay.prepay.impl.PrepayScript21"/>
+	</PrepayScriptConfigs>
+	
+	<!-- 利率重定价方式 -->
+	<RepriceTypeConfigs>
+		<RepriceType id="1" name="立即" script="com.amarsoft.app.accounting.interest.rate.reprice.impl.RepriceMethod1"/>
+		<RepriceType id="2" name="次年初" script="com.amarsoft.app.accounting.interest.rate.reprice.impl.RepriceMethod2"/>
+		<RepriceType id="3" name="次年对月对日" script="com.amarsoft.app.accounting.interest.rate.reprice.impl.RepriceMethod3"/>
+		<RepriceType id="4" name="按月调" script="com.amarsoft.app.accounting.interest.rate.reprice.impl.RepriceMethod4"/>
+		<RepriceType id="5" name="下一还款日调整" script="com.amarsoft.app.accounting.interest.rate.reprice.impl.RepriceMethod5"/>
+		<RepriceType id="6" name="次年首个还款日调整" script="com.amarsoft.app.accounting.interest.rate.reprice.impl.RepriceMethod6"/>
+		<RepriceType id="7" name="不调整" script="com.amarsoft.app.accounting.interest.rate.reprice.impl.RepriceMethod7"/>
+		<RepriceType id="8" name="手工指定调整日" script="com.amarsoft.app.accounting.interest.rate.reprice.impl.RepriceMethod8"/>
+	</RepriceTypeConfigs>
+	
+	<!-- 年基准天数的配置：主要用于将年利率转换为日利率的被除数
+		现行规则，英式币种一般采用365天计算，其他币种一般采用360天计算 
+	-->
+	<YearBaseDayConfigs>
+		<YearBaseDay id="1" name="一年按照360天计算" value="360" Filter="Currency in('CNY','01','04','05')"/>
+		<YearBaseDay id="2" name="一年按照365天计算" value="365" Filter="Currency in('02','03')"/>
+	</YearBaseDayConfigs>
+	
+	<!-- 金额小数位数：主要是根据币种的不同有所区别  
+		如：人民币、美元、英镑等保留小数点后2位，日元、韩元等保留整数 
+	-->
+	<NumberPrecisionConfigs>
+		<NumberPrecision id="1" type="MONEY" name="金额（保留两位小数）" value="2" Filter="Currency in('CNY','01')"/>
+		<NumberPrecision id="2" type="MONEY" name="金额（保留零位小数）" value="0" Filter="Currency in('10')"/>
+		<NumberPrecision id="3" type="RATE" name="利率（保留零位小数）" value="8" Filter=""/>
+	</NumberPrecisionConfigs>
+</AccountingConfig>

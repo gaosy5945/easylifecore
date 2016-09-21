@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- edit by jywen 2015.12.31 
+征信调查中检查项配置，规则
+1、定义检查项
+2、在相应的检查阶段配置中关联1中的检查项
+3、取数逻辑：java/sql
+4、变量命名规则：${i},i=0,1,2数字  / ${name},name=变量名
+-->
+<CheckConfig>
+	<!-- 检查项配置 -->
+	<checkdatas label = "核查项中需要展示的数据">
+		<checkdata ID="0001" name="CustomerName" label="客户姓名/名称" querytype="Sql" querycode="select CustomerName from CUSTOMER_INFO where CustomerId = '${customerid}'" />
+		<checkdata ID="0002" name="CertId" label="证件号码" querytype="Sql" querycode="select CertId from CUSTOMER_INFO where CustomerId = '${customerid}'" />
+		<checkdata ID="0003" name="PermanentAddress" label="户籍地址" querytype="Sql" querycode="select concat(PI.Country,PI.City,PI.Address1) as PermanentAddress from PUB_ADDRESS_INFO PI where PI.AddressType='03' and PI.ObjectType='jbo.customer.CUSTOMER_INFO' and PI.ObjectNo = '${customerid}'" />
+		<checkdata ID="0004" name="FamilyAddress" label="家庭地址" querytype="Sql" querycode="select concat(PI.Country,PI.City,PI.Address1) as FamilyAddress from PUB_ADDRESS_INFO PI where PI.AddressType='01' and PI.ObjectType='jbo.customer.CUSTOMER_INFO' and PI.ObjectNo = '${customerid}'" />
+		<checkdata ID="0005" name="Employment" label="工作单位名称" querytype="Sql" querycode="select IR.Employment FROM IND_RESUME IR where IR.CustomerId = '${customerid}'" />
+		<checkdata ID="0006" name="Position" label="职位" querytype="Sql" querycode="select II.Position,II.Occupation,II.Headship from IND_INFO II where II.CustomerId = '${customerid}'" />
+		
+		<checkdata ID="0007" name="SSIAccountNo" label="社会保障号码" querytype="Sql" querycode="select INS.ACCOUNTNO as SSIAccountNo FROM IND_SI INS where INS.CustomerId = '${customerid}'" />
+		<checkdata ID="0008" name="City" label="城市（默认为工作单位城市）" querytype="Sql" querycode="select PI.City from PUB_ADDRESS_INFO PI where PI.AddressType='02' and PI.ObjectType='jbo.customer.CUSTOMER_INFO' and PI.ObjectNo = '${customerid}'" />
+		<checkdata ID="0009" name="PositionTime" label="入职时间" querytype="Sql" querycode="select IR.BeginDate as PositionTime FROM IND_RESUME IR where IR.CustomerId = '${customerid}'" />
+		<checkdata ID="0010" name="MonthIncome" label="月收入" querytype="Sql" querycode="select concat(CF.Amount,CF.Currency) as MonthIncome FROM CUSTOMER_FINANCE CF where CF.CustomerId = '${customerid}' and CF.FinancialItem in ('3050')" />
+		
+		<checkdata ID="0011" name="FamilyTel" label="住宅电话" querytype="Sql" querycode="select concat(CT.Area,CT.TelePhone,CT.Ext) as FamilyTel FROM CUSTOMER_TEL CT where CT.TelType = 'PB2002' and CT.IsNew = '1' and CT.CustomerId = '${customerid}'" />
+		<checkdata ID="0012" name="WorkTel" label="办公电话" querytype="Sql" querycode="select concat(CT.Area,CT.TelePhone,CT.Ext) as WorkTel FROM CUSTOMER_TEL CT where CT.TelType = 'PB2001' and CT.IsNew = '1' and CT.CustomerId = '${customerid}'" />
+		<checkdata ID="0013" name="OtherTel" label="其他联系电话" querytype="Sql" querycode="select concat(CT.Area,CT.TelePhone,CT.Ext) as OtherTel FROM CUSTOMER_TEL CT where CT.TelType = 'E00001' and CT.IsNew = '1' and CT.CustomerId = '${customerid}'" />
+		<checkdata ID="0014" name="MobilePhone" label="手机号码" querytype="Sql" querycode="select concat(CT.Area,CT.TelePhone,CT.Ext) as MobilePhone FROM CUSTOMER_TEL CT where CT.TelType = 'PB2004' and CT.IsNew = '1' and CT.CustomerId = '${customerid}'" />
+		<checkdata ID="0015" name="FamilyContactsTel" label="家庭联系人电话" querytype="Sql" querycode="select CR.RelationShip, concat(CT.Area,CT.TelePhone,CT.Ext) as FamilyContactsTel FROM CUSTOMER_TEL CT, CUSTOMER_RELATIVE CR where CT.IsNew = '1' and CT.CustomerId = CR.RelativeCustomerId and CR.RelationShip in ('2001','2002','2003','2004','2005','2007') and CR.CustomerId = '${customerid}'" />    
+		<checkdata ID="0016" name="OtherContactsTel" label="其他联系人电话" querytype="Sql" querycode="select CR.RelationShip, concat(CT.Area,CT.TelePhone,CT.Ext) as OtherContactsTel FROM CUSTOMER_TEL CT, CUSTOMER_RELATIVE CR where CT.IsNew = '1' and CT.CustomerId = CR.RelativeCustomerId and CR.RelationShip not in ('2000','2001','2002','2003','2004','2005','2007') and CR.CustomerId = '${customerid}'" />
+	
+		<checkdata ID="0017" name="WorkAddress" label="工作单位地址" querytype="Sql" querycode="select concat(PI.Country,PI.City,PI.Address1) as WorkAddress from PUB_ADDRESS_INFO PI where PI.AddressType = '02' and PI.ObjectType='jbo.customer.CUSTOMER_INFO' and PI.ObjectNo = '${customerid}'" />
+	
+		<checkdata ID="0018" name="BusinessSum" label="贷款金额" querytype="Sql" querycode="select BusinessSum from Business_Apply BA where BA.SerialNo = '${baserialno}'" />
+		<checkdata ID="0019" name="ProductName" label="方案产品" querytype="Sql" querycode="select PRL.ProductName from PRD_PRODUCT_LIBRARY PRL,Business_Apply BA where BA.SerialNo = '${baserialno}' and PRL.ProductId = BA.ProductId" />
+		<checkdata ID="0020" name="BusinessTerm" label="贷款期数" querytype="Sql" querycode="select concat(BusinessTerm,'期') as BusinessTerm from Business_Apply BA where BA.SerialNo = '${baserialno}'" />
+		<checkdata ID="0021" name="OperateDate" label="贷款期数" querytype="Sql" querycode="select OperateDate from Business_Apply BA where BA.SerialNo = '${baserialno}'" />
+		
+		<checkdata ID="0022" name="IncomeAmount" label="收入金额" querytype="Sql" querycode="select CF.Amount as IncomeAmount FROM CUSTOMER_FINANCE CF where CF.CustomerId = '${customerid}' and CF.FinancialItem = '${financialitem}'" />
+		<checkdata ID="0023" name="IncomeCurrency" label="收入币种" querytype="Sql" querycode="select CF.Currency as IncomeCurrency FROM CUSTOMER_FINANCE CF where CF.CustomerId = '${customerid}' and CF.FinancialItem = '${financialitem}'" />
+		<checkdata ID="0024" name="FinancialItem" label="收入类型" querytype="Sql" querycode="select CL.ItemNo as FinancialItem,CL.ItemName FROM CODE_LIBRARY CL,CUSTOMER_FINANCE CF where CL.ItemNo=CF.FinancialItem and CF.FinancialItem like '30%' and CF.FinancialItem not in ('30','3050') and codeno='FinancialItem' and CF.CustomerId = '${customerid}'"/>
+		
+		<checkdata ID="0025" name="OccurDate" label="发生日期" querytype="Sql" querycode="select BA.OccurDate FROM Business_Apply BA where BA.SerialNo = '${baserialno}' "/>
+		<checkdata ID="0026" name="InputOrgname" label="录入机构" querytype="Sql" querycode="select OI.ORGNAME as InputOrgname FROM Business_Apply BA,ORG_INFO OI where BA.InputOrgId=OI.ORGID and BA.SerialNo = '${baserialno}' "/>
+		<checkdata ID="0027" name="Productname" label="产品名称" querytype="Sql" querycode="select PRL.Productname FROM Business_Apply BA,PRD_PRODUCT_LIBRARY PRL where BA.ProductId = PRL.PRODUCTID and BA.SerialNo = '${baserialno}' "/>
+		<checkdata ID="0028" name="PurposeTypeName" label="贷款用途" querytype="Sql" querycode="select CL.ItemName as PurposeTypeName FROM Business_Apply BA,CODE_LIBRARY CL where BA.SerialNo = '${baserialno}' and CL.CodeNo='CreditPurposeType' and BA.PurposeType = CL.ItemNo "/>
+		
+		<checkdata ID="0029" name="DefaultDueDay" label="默认还款日" querytype="Sql" querycode="select ARS.DefaultDueDay FROM ACCT_RPT_SEGMENT ARS where ARS.ObjectNo = '${baserialno}' and ARS.ObjectType='jbo.app.BUSINESS_APPLY'"/>
+		<checkdata ID="0030" name="SeginstalmentAmt" label="期供金额" querytype="Sql" querycode="select ARS.SeginstalmentAmt FROM ACCT_RPT_SEGMENT ARS where ARS.ObjectNo = '${baserialno}' and ARS.ObjectType='jbo.app.BUSINESS_APPLY'"/>
+		<checkdata ID="0031" name="BusinessCurrency" label="币种" querytype="Sql" querycode="select BA.BusinessCurrency FROM Business_Apply BA where BA.SerialNo = '${baserialno}'"/>
+		<checkdata ID="0032" name="PayAccountNo" label="还款账号" querytype="Sql" querycode="select ABA.AccountNo as PayAccountNo FROM Acct_Business_Account ABA where ABA.ObjectNo = '${baserialno}' and ABA.ObjectType='jbo.app.BUSINESS_APPLY' and ABA.AccountIndicator='01'"/>
+		<checkdata ID="0033" name="PayAccountOrgName" label="还款账号开户行" querytype="Sql" querycode="select CL.ItemName as PayAccountOrgName FROM Acct_Business_Account ABA,CODE_LIBRARY CL where ABA.ObjectNo = '${baserialno}' and ABA.ObjectType='jbo.app.BUSINESS_APPLY' and ABA.AccountIndicator='01' and CL.CodeNo='AccountBankNo' and CL.ItemNo=ABA.AccountOrgId and CL.IsInUse='1'"/>
+	
+		<checkdata ID="0034" name="Salutation" label="称呼" querytype="Sql" querycode="select case II.Sex when '1' then '先生' when '2' then '女士' else '' end as Salutation from Ind_Info II where II.CustomerId='${customerid}'"/>
+		<checkdata ID="0035" name="OrgName" label="当前机构名称" querytype="Sql" querycode="select '${orgname}' as OrgName from system_setup "/>
+		
+	</checkdatas>
+	
+	<parameters label = "核查清单或核查分组加载数据需要的参数">
+		<parameter ID="0001" name="CustomerId" label="客户编号" querycode="select distinct BA.CustomerId from FLOW_OBJECT FO, BUSINESS_APPLY BA where FO.FlowSerialNo = '${flowserialno}' and FO.ObjectType = 'jbo.app.BUSINESS_APPLY' and BA.SerialNo = FO.ObjectNo" />
+		<parameter ID="0002" name="checkItemCode" label="核查项意见代码" querycode="select Status from FLOW_CHECKLIST where CheckItemNo = '${checkgroupid}' and  CheckItem = '${checkitemid}' and ObjectNo='${objectno}' and ObjectType = '${objecttype}' and TaskSerialNo = '${taskserialno}'" />
+		<parameter ID="0003" name="BASerialNo" label="申请编号" querycode="select BA.SerialNo from FLOW_OBJECT FO, BUSINESS_APPLY BA where FO.FlowSerialNo = '${flowserialno}' and FO.ObjectType = 'jbo.app.BUSINESS_APPLY' and BA.SerialNo = FO.ObjectNo" />
+		<parameter ID="0004" name="Remark" label="备注" querycode="select Remark from FLOW_CHECKLIST where CheckItemNo = '${checkgroupid}' and  CheckItem = '${checkitemid}' and ObjectNo='${objectno}' and ObjectType = '${objecttype}' and TaskSerialNo = '${taskserialno}'" />
+		<parameter ID="0005" name="OrgName" label="当前机构名称" querycode="select '${orgname}' as OrgName from system_setup" />
+	</parameters>
+	
+	<checkstatuscodes label = "核查结果选项">
+		<checkstatuscode ID="0001" name = "HumanLawCheckCode" >
+			<option ID="0001" value = "有"/>
+			<option ID="0002" value = "无"/>
+			<option ID="0003" value = "访问失败"/>
+		</checkstatuscode>
+	
+		<checkstatuscode ID="0002" name = "SecProofCheckCode" >
+			<option ID="0001" value = "有效"/>
+			<option ID="0002" value = "无效"/>
+			<option ID="0003" value = "未提供"/>
+		</checkstatuscode>
+		
+		<checkstatuscode ID="0003" name = "SSICheckCode" >
+			<option ID="0001" value = "社保单位名称与申请表一致"/>
+			<option ID="0002" value = "社保单位名称与申请表不一致"/>
+			<option ID="0003" value = "无社保"/>
+			<option ID="0004" value = "无法验证社保信息"/>
+			<option ID="0005" value = "其他"/>
+			<option ID="0006" value = "欺诈嫌疑"/>
+		</checkstatuscode>
+		
+		<checkstatuscode ID="0004" name = "FamilyContactCheckCode" >
+			<option ID="0001" value = "占线/无人应答"/>
+			<option ID="0002" value = "信息已验证"/>
+			<option ID="0003" value = "信息验证失败"/>
+			<option ID="0004" value = "涉嫌欺诈"/>
+			<option ID="0005" value = "信息不足无法判断"/>
+			<option ID="0006" value = "未调查"/>
+		</checkstatuscode>
+		
+		<checkstatuscode ID="0005" name = "TripartiteWorkTelCheckCode" >
+			<option ID="0001" value = "公司名和地址均一致"/>
+			<option ID="0002" value = "名称不一致，地址一致"/>
+			<option ID="0003" value = "无记录"/>
+			<option ID="0004" value = "名称一致，地址不一致"/>
+			<option ID="0005" value = "名称和地址均不同"/>
+			<option ID="0006" value = "获取新号码"/>
+			<option ID="0007" value = "访问失败"/>
+		</checkstatuscode>
+		
+		<checkstatuscode ID="0006" name = "WorkTelCheckCode" >
+			<option ID="0001" value = "占线/无人应答"/>
+			<option ID="0002" value = "信息不足无法判断"/>
+			<option ID="0003" value = "信息已验证"/>
+			<option ID="0004" value = "信息验证失败"/>
+			<option ID="0005" value = "涉嫌欺诈"/>
+			<option ID="0006" value = "验证结果无法分类"/>
+		</checkstatuscode>
+		
+		<checkstatuscode ID="0007" name = "OtherContactsCheckCode" >
+			<option ID="0001" value = "占线/无人应答"/>
+			<option ID="0002" value = "信息已验证"/>
+			<option ID="0003" value = "信息验证失败"/>
+			<option ID="0004" value = "涉嫌欺诈"/>
+			<option ID="0005" value = "验证结果无法分类"/>
+			<option ID="0006" value = "未调查"/>
+		</checkstatuscode>
+		
+		<checkstatuscode ID="0008" name = "TripartiteFamilyTelCheckCode" >
+			<option ID="0001" value = "名字和地址均验证成功"/>
+			<option ID="0002" value = "名字和地址均验证失败"/>
+			<option ID="0003" value = "访问失败"/>
+			<option ID="0004" value = "无记录"/>
+			<option ID="0005" value = "是公用电话"/>
+			<option ID="0006" value = "名字验证失败，地址验证成功"/>
+			<option ID="0007" value = "名字验证成功，地址验证失败"/>
+		</checkstatuscode>
+		
+		<checkstatuscode ID="0009" name = "MobliePhoneCheckCode" >
+			<option ID="0001" value = "占线/无人应答"/>
+			<option ID="0002" value = "信息已验证"/>
+			<option ID="0003" value = "信息验证失败"/>
+			<option ID="0004" value = "欺诈嫌疑"/>
+			<option ID="0005" value = "验证结果无法分类"/>
+		</checkstatuscode>
+		
+		<checkstatuscode ID="0010" name = "SameNotSame" >
+			<option ID="0001" value = "一致"/>
+			<option ID="0002" value = "不一致"/>
+		</checkstatuscode>
+		
+		<checkstatuscode ID="0011" name = "YesNo" >
+			<option ID="0001" value = "是"/>
+			<option ID="0002" value = "否"/>
+		</checkstatuscode>
+		
+		<checkstatuscode ID="0012" name = "AccompAmounts" label="陪同人数" >
+			<option ID="0001" value = "0"/>
+			<option ID="0002" value = "1"/>
+			<option ID="0003" value = "2"/>
+			<option ID="0004" value = "3"/>
+			<option ID="0005" value = "4"/>
+			<option ID="0006" value = "5人及以上"/>
+		</checkstatuscode>
+		
+		<checkstatuscode ID="0013" name = "NewOldDegree" label="新旧程度" >
+			<option ID="0001" value = "全新"/>
+			<option ID="0002" value = "半新旧"/>
+			<option ID="0003" value = "有损坏"/>
+		</checkstatuscode>
+	</checkstatuscodes>
+	
+	<salepoints label = "话述">
+		<salepoint ID="0001" description="${customername}${salutation}，您好！这里是${orgname}，近期您是否在我司办理了${productname}业务? 现需2分钟向您确认一下信息方便吗？">
+			<referdata ID="0034" />
+			<referdata ID="0035" />
+			<referdata ID="0001" />
+			<referdata ID="0019" />
+		</salepoint>
+		<salepoint ID="0002" description="您好！这里是${orgname}，请问${customername}${salutation}是贵公司的员工吗? 现需2分钟向您确认一下信息可以吗？">
+			<referdata ID="0034" />
+			<referdata ID="0035" />
+			<referdata ID="0001" />
+		</salepoint>
+	</salepoints>
+	
+	<operinstructs label="操作指引">
+		<operinstruct ID = "0001" name="HumanLawCheck" label="人法核查" >
+			<step ID = "0001" classname="url" description="请登录网址：${url};" />
+			<step ID = "0002" classname="input" description="请查询：${input};" />
+			<step ID = "0003" classname="check" description="请核对：${check};" />
+		</operinstruct>
+	</operinstructs>
+	
+	<optiontypes>
+		<optiontype ID="0001" name="select" label="下拉框（单选）"/>
+		<optiontype ID="0002" name="radio" label="互斥选项组"/>
+		<optiontype ID="0003" name="text" label="输入框"/>
+	</optiontypes>
+	
+	<checktypes>
+		<checktype ID="0001" name="TelCheck" label="电话核查"/>
+		<checktype ID="0002" name="IncomeCheck" label="收入核查"/>
+		<checktype ID="0003" name="ExternChannelCheck" label="外部渠道核查"/>
+		<checktype ID="0004" name="GuaranteeCheck" label="担保核查"/>
+	</checktypes>
+	
+	<checkitems label = "核查项">
+		<checkitem ID="0001" name="HumanLawCheck" label="人法核查" defaultstatuscode="0001" parameter="0002" required="${required} ">
+			<referdata ID="0001" class="check"/>
+			<referdata ID="0002" class="input" />
+			<referdata ID="0003" class="check"/>
+			<referdata ID="0004" class="check" />
+			<referdata ID="0005" class="check" />
+			<referdata ID="0006" class="display" />
+			<referinstruct ID="0001" url="www.baidu.com" input="客户身份证号-${certid}" check="客户姓名-${customername}、户籍地址-${permanentaddress}"/>
+		</checkitem>
+		<checkitem ID="0002" name="SecProofCheck" label="第二证明资料核查" defaultstatuscode="0002" parameter="0002" required="${required}">
+			<referinstruct ID="0001" url="www.baidu.com"/>
+		</checkitem>
+		<checkitem ID="0003" name="SSICheck" label="SSI【社保】核查" defaultstatuscode="0003" parameter="0002" required="${required}">
+			<referdata ID="0001" />
+			<referdata ID="0002" />
+			<referdata ID="0007" />
+			<referdata ID="0008" />
+			<referdata ID="0005" />
+			<referdata ID="0006" />
+			<referdata ID="0009" />
+			<referdata ID="0010" />
+			<referinstruct ID="0001"/>
+		</checkitem>
+		
+		<checkitem ID="0004" name="FamilyContactCheck" label="家庭联系人电话信息" defaultstatuscode="0010" parameter="0002" required="${required}">
+			<referdata ID="0015" />
+		</checkitem>
+		<checkitem ID="0007" name="OtherContactsCheck" label="其他联系人电话信息" defaultstatuscode="0010" parameter="0002" required="${required}">
+			<referdata ID="0016" />
+		</checkitem>
+		<checkitem ID="0008" name="TripartiteFamilyTelCheck" label="家庭住址信息" defaultstatuscode="0010" parameter="0002" required="${required}">
+			<referdata ID="0004" />
+		</checkitem>
+		
+<!-- 		用于电话核查 start -->
+		<checkitem	ID="0011" name="CustomerInfoConfirm" label="客户基本信息确认" defaultstatuscode="0010" parameter="0002" required="${required}">
+			<referdata ID="0001" />
+			<referdata ID="0002" />
+			<referdata ID="0004" />
+		</checkitem>
+		<checkitem	ID="0012" name="LoanInfoConfirm" label="贷款信息确认" defaultstatuscode="0010" parameter="0002" required="${required}">
+			<referdata ID="0018" />
+			<referdata ID="0019" />
+			<referdata ID="0020" />
+			<referdata ID="0021" />
+		</checkitem>
+		<checkitem	ID="0013" name="CorpInfoConfirm" label="公司信息确认" defaultstatuscode="0010" parameter="0002" required="${required}">
+			<referdata ID="0005" />
+			<referdata ID="0017" />
+		</checkitem>
+		<checkitem	ID="0014" name="ConfirmResult" label="综合结果" checkstatuscode="${checkstatuscode}" parameter="0002" required="${required}">
+		</checkitem>
+<!-- 		用于电话核查 end  -->
+
+<!-- 		用于协审信息 start -->
+		<checkitem ID="0015" name="SignatureConfirm" label="是否已确认代扣还款借记卡号机背后本人签名" defaultstatuscode="0011" parameter="0002" required="${required}"  optiontype="radio">
+		</checkitem>
+		<checkitem ID="0016" name="ApplyMaterialConfirm" label="申请资料是否已查看原件，复印件（影像件）与原件内容完全一致" defaultstatuscode="0011" parameter="0002" required="${required}" optiontype="radio">
+		</checkitem>
+		<checkitem ID="0017" name="LoanMattersAware" label="是否已明确告知申请人贷款相关注意事项，并告知其还款义务" defaultstatuscode="0011" parameter="0002" required="${required}" optiontype="radio">
+		</checkitem>
+		
+		<checkitem ID="0018" name="PhoneConfirm" label="申请人手机号是否已核实" defaultstatuscode="0011" parameter="0002" required="${required}" optiontype="radio">
+		</checkitem>
+		<checkitem ID="0019" name="WorkTelConfirm" label="单位电话是否已核实" defaultstatuscode="0011" parameter="0002" required="${required}" optiontype="radio">
+		</checkitem>
+		<checkitem ID="0020" name="ContactTelConfirm" label="联系人电话是否已核实" defaultstatuscode="0011" parameter="0002" required="${required}" optiontype="radio">
+		</checkitem>
+		
+		<checkitem ID="0021" name="SIAccountConfirm" label="是否查询申请人社保信息" defaultstatuscode="0011" parameter="0002" required="${required}" optiontype="radio">
+		</checkitem>
+		<checkitem ID="0022" name="WorkCorpNetConfirm" label="是否网络查询申请人单位信息" defaultstatuscode="0011" parameter="0002" required="${required}" optiontype="radio">
+		</checkitem>
+		
+		<checkitem ID="0023" name="AccompAmounts" label="陪同人数" defaultstatuscode="0012" parameter="0002" required="${required}" optiontype="radio">
+		</checkitem>
+		<checkitem ID="0024" name="AccompApply" label="陪同人员是否有申请" defaultstatuscode="0011" parameter="0002" required="${required}" optiontype="radio">
+		</checkitem>
+		<checkitem ID="0025" name="AccompName" label="陪同人姓名" defaultstatuscode="" parameter="0004" required="${required}" optiontype="text">
+		</checkitem>
+		<checkitem ID="0026" name="AccompPhone" label="陪同人手机号" defaultstatuscode="" parameter="0004" required="${required}" optiontype="text">
+		</checkitem>
+		<checkitem ID="0027" name="Brand" label="申请人目前所用同类商品品牌" defaultstatuscode="" parameter="0004" required="${required}" optiontype="text">
+		</checkitem>
+		<checkitem ID="0028" name="ModelVersion" label="型号" defaultstatuscode="" parameter="0004" required="${required}" optiontype="text">
+		</checkitem>
+		<checkitem ID="0029" name="NewOldDegree" label="目前所用手机新旧程度（或摩托车等）" defaultstatuscode="0013" parameter="0002" required="${required}" optiontype="radio">
+		</checkitem>
+		<checkitem ID="0030" name="FamilyAddMiles" label="门店与家庭住址距离" defaultstatuscode="" parameter="0004" required="${required}" optiontype="radio">
+		</checkitem>
+		<checkitem ID="0031" name="WorkAddMiles" label="门店与工作地址距离" defaultstatuscode="" parameter="0004" required="${required}" optiontype="radio">
+		</checkitem>
+		<checkitem ID="0032" name="FamilyWorkAddMiles" label="家庭住址与工作地址距离" defaultstatuscode="" parameter="0004" required="${required}" optiontype="radio">
+		</checkitem>
+<!-- 		用于协审信息 end  -->
+
+<!-- 		用于收入核查 start -->
+		<checkitem ID="0033" name="IncomeImage" label="证明材料" defaultstatuscode="" required="${required}">
+		</checkitem>
+		<checkitem ID="0034" name="IncomeCurrency" label="收入币种" defaultstatuscode="" required="${required}">
+			<referdata ID="0023" />
+		</checkitem>
+		<checkitem ID="0035" name="IncomeAmount" label="收入金额" defaultstatuscode="" required="${required}">
+			<referdata ID="0022" />
+		</checkitem>
+<!-- 		用于收入核查  end  -->
+
+<!-- 用于新的电话核查  2016-01-26 accessed by Mr.Wang -->
+		<checkitem ID="0036" description="请问您的身份证号码是？" answer="${certid}" defaultstatuscode="0010" parameter="0002" remarkparam="0004" required="${required}" optiontype="radio">
+			<referdata ID="0002" ></referdata>
+		</checkitem>
+		<checkitem ID="0037" description="请问您的家庭住址是？" answer="${familyaddress}" defaultstatuscode="0010" parameter="0002" remarkparam="0004" required="${required}" optiontype="radio">
+			<referdata ID="0004" ></referdata>
+		</checkitem>
+		<checkitem ID="0038" description="请问您的公司名称是？" answer="${employment}" defaultstatuscode="0010" parameter="0002" remarkparam="0004" required="${required}" optiontype="radio">
+			<referdata ID="0005" ></referdata>
+		</checkitem>
+		<checkitem ID="0039" description="您${occurdate}于${inputorgname}办理${productname}贷款${businesssum}元，用于购买${purposetypename}，请问是否属实？" answer="${occurdate}|${inputorgname}|${productname}|${businesssum}|${purposetypename}" defaultstatuscode="0010" parameter="0002" remarkparam="0004" required="${required}" optiontype="radio">
+			<referdata ID="0025" ></referdata>
+			<referdata ID="0026" ></referdata>
+			<referdata ID="0027" ></referdata>
+			<referdata ID="0018" ></referdata>
+			<referdata ID="0028" ></referdata>
+		</checkitem>
+		<checkitem ID="0040" description="本次贷款分为${businessterm}期，您每月${defaultdueday}日需缴${seginstalmentamt}${businesscurrency}，请问是否属实？" answer="${businessterm}|${defaultdueday}|${seginstalmentamt}|${businesscurrency}" defaultstatuscode="0010" parameter="0002" remarkparam="0004" required="${required}" optiontype="radio">
+			<referdata ID="0020" ></referdata>
+			<referdata ID="0029" ></referdata>
+			<referdata ID="0030" ></referdata>
+			<referdata ID="0031" ></referdata>
+		</checkitem>
+		<checkitem ID="0041" description="请问您的还款账号卡号为？开卡行为？" answer="${payaccountno}|${payaccountorgname}" defaultstatuscode="0010" parameter="0002" remarkparam="0004" required="${required}" optiontype="radio">
+			<referdata ID="0032" ></referdata>
+			<referdata ID="0033" ></referdata>
+		</checkitem>
+<!-- 用于新的电话核查  2016-01-26 accessed by Mr.Wang -->
+		
+		<checkitem ID="0042" name="CreditPreference" label="人行征信报告核查" defaultstatuscode="0010" parameter="0002" remarkparam="0004" required="${required}">
+			<referinstruct ID="0001" ></referinstruct>
+		</checkitem>
+
+	</checkitems>
+
+	<checkgroups label = "核查分组">
+		<checkgroup ID="0001" name="InformationCheck" label = "信息/资料核查">
+			<referitem ID="0001" required="true"/>
+			<referitem ID="0002"  required="true" />
+		</checkgroup>
+		
+		<checkgroup ID="0002" name="SSICheck" label = "SSI【社保】核查" >
+			<referitem ID="0003"  required="true" />
+		</checkgroup>
+		
+		<checkgroup ID="0004" name="MobilePhoneCheck" label = "手机号码外呼核查" >
+			<referdata ID="0001"  />
+			<referdata ID="0014" />
+			<refersalepoint ID="0001" />
+			<referitem ID="0036"  level="item" required="true"/>
+			<referitem ID="0037"  level="item" required="true"/>
+			<referitem ID="0038"  level="item" required="true"/>
+			<referitem ID="0039"  level="item" required="true"/>
+			<referitem ID="0040"  level="item" required="true"/>
+			<referitem ID="0041"  level="item" required="true"/>
+			<referitem ID="0014" level="group" required="true" checkstatuscode="0009"/>
+			<datasource script="select '0004' as CheckType,'手机号码外呼核查' as CheckTypeName,CT.* from Customer_Tel CT where CT.TelType = 'PB2004' and CT.IsNew = '1' and CT.CustomerId = '${customerid}'"/>
+		</checkgroup>
+		
+		<checkgroup ID="0005" name="FamilyContactCheck" label = "家庭联系人外呼核查">
+			<referdata ID="0001"  />
+			<referitem ID="0004"  level="item" required="true"/>
+			<referitem ID="0014" level="group" required="true"  checkstatuscode="0004"/>
+			<datasource script="select '0005' as CheckType,'家庭联系人外呼核查' as CheckTypeName,CT.* FROM CUSTOMER_TEL CT, CUSTOMER_RELATIVE CR where CT.IsNew = '1' and CT.CustomerId = CR.RelativeCustomerId and CR.RelationShip in ('2001','2002','2003','2004','2005','2007') and CR.CustomerId = '${customerid}'"/>
+		</checkgroup>
+		
+		<checkgroup ID="0006" name="TripartiteWorkTelCheck" label = "三方办公电话核查" >
+			<referdata ID="0001"  />
+			<referdata ID="0012"  />
+			<referitem ID="0013"  level="item" required="true"/>
+			<referitem ID="0014" level="group" required="true" checkstatuscode="0005"/>
+			<datasource script="select '0006' as CheckType,'三方办公电话核查' as CheckTypeName,CT.* from Customer_Tel CT where CT.TelType = 'PB2001' and CT.IsNew = '1' and CT.CustomerId = '${customerid}'"/>
+		</checkgroup>
+		
+		<checkgroup ID="0007" name="WorkTelCheck" label = "办公电话外呼核查">
+			<referdata ID="0001"  />
+			<referdata ID="0012"  />
+			<referitem ID="0014" level="group" required="true" checkstatuscode="0006"/>
+			<datasource script="select '0007' as CheckType,'办公电话外呼核查' as CheckTypeName,CT.* from Customer_Tel CT where CT.TelType = 'PB2001' and CT.IsNew = '1' and CT.CustomerId = '${customerid}'"/>
+		</checkgroup>
+		
+		<checkgroup ID="0008" name="OtherContactsCheck" label = "其他联系人核查" >
+			<referdata ID="0001"  />
+			<referitem ID="0007" level="item" required="true"/>
+			<referitem ID="0014" level="group" required="true" checkstatuscode="0007"/>
+			<datasource script="select '0008' as CheckType,'其他联系人核查' as CheckTypeName,CT.* FROM CUSTOMER_TEL CT, CUSTOMER_RELATIVE CR where CT.IsNew = '1' and CT.CustomerId = CR.RelativeCustomerId and CR.RelationShip not in ('2000','2001','2002','2003','2004','2005','2007') and CR.CustomerId = '${customerid}'"/>
+		</checkgroup>
+		
+		<checkgroup ID="0009" name="TripartiteFamilyTelCheck" label = "三方家庭电话核查" >
+			<referdata ID="0001"  />
+			<referdata ID="0011"  />
+			<referitem ID="0008" level="item" required="true"/>
+			<referitem ID="0014" level="group" required="true" checkstatuscode="0008"/>
+			<datasource script="select '0009' as CheckType,'三方家庭电话核查' as CheckTypeName,CT.* from Customer_Tel CT where CT.TelType = 'PB2002' and CT.IsNew = '1' and CT.CustomerId = '${customerid}'"/>
+		</checkgroup>
+		
+		<checkgroup ID="0010" name="FamilyTelCheck" label = "家庭电话外呼核查">
+			<referdata ID="0001"  />
+			<referdata ID="0011"  />
+			<referitem ID="0014" level="group" required="true" checkstatuscode="0007"/>
+			<datasource script="select '0010' as CheckType,'家庭电话外呼核查' as CheckTypeName,CT.* from Customer_Tel CT where CT.TelType = 'PB2002' and CT.IsNew = '1' and CT.CustomerId = '${customerid}'"/>
+		</checkgroup>
+		
+		<checkgroup ID="0011" name="ApplyTable" label="申请表">
+			<referitem ID="0015" required="true" />
+		</checkgroup>
+		<checkgroup ID="0012" name="ApplyMaterial" label="申请资料">
+			<referitem ID="0016" required="true"  />
+		</checkgroup>
+		<checkgroup ID="0013" name="MattersAware" label="告知事项">
+			<referitem ID="0017" required="true"  />
+		</checkgroup>
+		<checkgroup ID="0014" name="PhoneConfirm" label="电话核实">
+			<referitem ID="0018" required="true"  />
+			<referitem ID="0019" required="true"  />
+			<referitem ID="0020" required="true"  />
+		</checkgroup>
+		<checkgroup ID="0015" name="InternetConfirm" label="网络核实">
+			<referitem ID="0021" required="true"  />
+			<referitem ID="0022" required="true"  />
+		</checkgroup>
+		<checkgroup ID="0016" name="OtherInformationConfirm" label="陪同人信息" >
+			<referitem ID="0023" required="true"/>
+			<referitem ID="0024" required="true"/>
+			<referitem ID="0025" required="true"/>
+			<referitem ID="0026" required="true"/>
+			<referScript name="accompanyvalidate"/>
+		</checkgroup>
+		<checkgroup ID="0017" name="OtherInformationConfirm" label="其他信息">
+			<referitem ID="0027" required="true" />
+			<referitem ID="0028" required="true" />
+			<referitem ID="0029" required="true" />
+			<referitem ID="0030" required="true" />
+			<referitem ID="0031" required="true" />
+			<referitem ID="0032" required="true" />
+		</checkgroup>
+		<checkgroup ID="0018${financialitem}" name="" label="${itemname}">
+			<referitem ID="0033" required="true" />
+			<referitem ID="0034" required="true" />
+			<referitem ID="0035" required="true" />
+		</checkgroup>
+	</checkgroups>
+	
+	<checklists label = "核查清单">
+		<checklist ID="0001" name="creditExternCheck" flowno="BusinessFlow_001" phaseno="investigate1">
+			<refergroup ID = "0001" nextgroup = "0002" />
+			<refergroup ID = "0002"  nextgroup = "0003" />
+			<referparameter ID="0001"/>
+		</checklist>
+		
+		<checklist ID="0002" name="TelCheck" flowno="BusinessFlow_001" phaseno="investigate1">
+			<refergroup ID = "0004"   required="true" nextgroup =""/>
+			<refergroup ID = "0005"   required="true" nextgroup =""/>
+			<refergroup ID = "0006"   required="true" nextgroup =""/>
+			<refergroup ID = "0007"   required="true" nextgroup =""/>
+			<refergroup ID = "0008"   required="true" nextgroup =""/>
+			<refergroup ID = "0009"   required="true" nextgroup =""/>
+			<refergroup ID = "0010"   required="true" nextgroup =""/>
+			<referparameter ID="0001"/>
+			<referparameter ID="0003"/>
+			<referparameter ID="0005"/>
+		</checklist>
+		
+		<checklist  ID="0003"  name="creditExternCheck" flowno="BusinessFlow_001" phaseno="investigate2">
+			<refergroup ID = "0001" nextgroup = "0002" />
+			<refergroup ID = "0002"  nextgroup = "0003" />
+			<referparameter ID="0001"/>
+		</checklist>
+		
+		<checklist ID="0004" name="TelCheck" flowno="BusinessFlow_001" phaseno="investigate2">
+			<refergroup ID = "0004"   required="true" nextgroup =""/>
+			<refergroup ID = "0005"   required="true" nextgroup =""/>
+			<refergroup ID = "0006"   required="true" nextgroup =""/>
+			<refergroup ID = "0007"   required="true" nextgroup =""/>
+			<refergroup ID = "0008"   required="true" nextgroup =""/>
+			<refergroup ID = "0009"   required="true" nextgroup =""/>
+			<refergroup ID = "0010"   required="true" nextgroup =""/>
+			<referparameter ID="0001"/>
+			<referparameter ID="0003"/>
+			<referparameter ID="0005"/>
+		</checklist>
+		
+		<checklist ID="0005" name="AssistInvestigate" flowno="BusinessFlow_001" phaseno="investigate2">
+			<refergroup ID = "0011"   required="true" nextgroup =""/>
+			<refergroup ID = "0012"   required="true" nextgroup =""/>
+			<refergroup ID = "0013"   required="true" nextgroup =""/>
+			<refergroup ID = "0014"   required="true" nextgroup =""/>
+			<refergroup ID = "0015"   required="true" nextgroup =""/>
+			<refergroup ID = "0016"   required="true" nextgroup =""/>
+			<refergroup ID = "0017"   required="true" nextgroup =""/>
+			<referparameter ID="0001"/>
+			<referparameter ID="0003"/>
+		</checklist>
+		
+		<checklist ID="0006" name="IncomeCheck" flowno="BusinessFlow_001" phaseno="investigate2" >
+			<refergroup ID = "0018${financialitem}" name="itemname" type="Sql"  required="true" nextgroup =""/>
+			<referparameter ID="0001"/>
+			<referdata name="financialitem" ID="0024"/>
+		</checklist>
+		
+		<checklist ID="0007" name="AssistInvestigate" flowno="BusinessFlow_001" phaseno="investigate1">
+			<refergroup ID = "0011"   required="true" nextgroup =""/>
+			<refergroup ID = "0012"   required="true" nextgroup =""/>
+			<refergroup ID = "0013"   required="true" nextgroup =""/>
+			<refergroup ID = "0014"   required="true" nextgroup =""/>
+			<refergroup ID = "0015"   required="true" nextgroup =""/>
+			<refergroup ID = "0016"   required="true" nextgroup =""/>
+			<refergroup ID = "0017"   required="true" nextgroup =""/>
+			<referparameter ID="0001"/>
+			<referparameter ID="0003"/>
+		</checklist>
+	</checklists>
+</CheckConfig>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.scenario" >
+		<class name="SCENARIO_ARGS" label="" keyAttributes="ALARMARGID,SCENARIOID">
+			<attributes>
+				<attribute name="SCENARIOID" label="场景流水号" type="STRING" length="32"/>
+				<attribute name="ALARMARGID" label="预警参数ID" type="STRING" length="32"/>
+				<attribute name="SORTNO" label="排序号" type="STRING" length="10"/>
+				<attribute name="ARGSSTRING" label="参数字串" type="STRING" length="1000"/>
+				<attribute name="QUERYSQL" label="查询SQL" type="STRING" length="1000"/>
+				<attribute name="STATUS" label="是否有效" type="STRING" length="1"/>
+				<attribute name="INPUTUSER" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORG" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTTIME" label="登记时间" type="STRING" length="20"/>
+				<attribute name="UPDATEUSER" label="更新人" type="STRING" length="32"/>
+				<attribute name="UPDATETIME" label="更新时间" type="STRING" length="20"/>
+				<attribute name="REMARK" label="备注" type="STRING" length="250"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="SCENARIO_ARGS" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="SCENARIO_CATALOG" label="" keyAttributes="SCENARIOID">
+			<attributes>
+				<attribute name="SCENARIOID" label="场景编号" type="STRING" length="32"/>
+				<attribute name="SCENARIONAME" label="场景名称" type="STRING" length="80"/>
+				<attribute name="SCENARIODESCRIBE" label="场景描述" type="STRING" length="250"/>
+				<attribute name="DEFAULTSUBTYPENO" label="默认子类型编号" type="STRING" length="20"/>
+				<attribute name="INITIATECLASS" label="初始化执行类" type="STRING" length="250"/>
+				<attribute name="INPUTUSER" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORG" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTTIME" label="登记时间" type="STRING" length="20"/>
+				<attribute name="UPDATEUSER" label="更新人" type="STRING" length="32"/>
+				<attribute name="UPDATETIME" label="更新时间" type="STRING" length="20"/>
+				<attribute name="REMARK" label="备注" type="STRING" length="250"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="SCENARIO_CATALOG" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="SCENARIO_GROUP" label="" keyAttributes="GROUPID,SCENARIOID">
+			<attributes>
+				<attribute name="SCENARIOID" label="场景号" type="STRING" length="32"/>
+				<attribute name="GROUPID" label="分组号" type="STRING" length="32"/>
+				<attribute name="SORTNO" label="排序号" type="STRING" length="10"/>
+				<attribute name="GROUPNAME" label="分组名称" type="STRING" length="1000"/>
+				<attribute name="REMARK" label="备注" type="STRING" length="1000"/>
+				<attribute name="INPUTUSER" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORG" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTTIME" label="登记时间" type="STRING" length="20"/>
+				<attribute name="UPDATEUSER" label="更新人" type="STRING" length="32"/>
+				<attribute name="UPDATETIME" label="更新时间" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="SCENARIO_GROUP" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="SCENARIO_MODEL" label="??\BE\AF\B3\A1\BE\B0??\D0\CD" keyAttributes="MODELID,SCENARIOID">
+			<attributes>
+				<attribute name="SCENARIOID" label="场景流水号" type="STRING" length="32"/>
+				<attribute name="MODELID" label="模型编号" type="STRING" length="32"/>
+				<attribute name="SORTNO" label="排序号" type="STRING" length="10"/>
+				<attribute name="MODELNAME" label="模型名" type="STRING" length="250"/>
+				<attribute name="MODELDESCRIBE" label="模型详细描述" type="STRING" length="1600"/>
+				<attribute name="MODELTYPE" label="模型类型" type="STRING" length="20"/>
+				<attribute name="SUBTYPENO" label="子类型" type="STRING" length="20"/>
+				<attribute name="RUNCONDITION" label="运行条件" type="STRING" length="250"/>
+				<attribute name="STATUS" label="是否有效" type="STRING" length="1"/>
+				<attribute name="NOPASSDEAL" label="检查未通过后的处理方法" type="STRING" length="18"/>
+				<attribute name="PASSDEAL" label="检查通过后的处理方法" type="STRING" length="18"/>
+				<attribute name="PASSMESSAGE" label="检查通过后提示消息" type="STRING" length="1000"/>
+				<attribute name="NOPASSMESSAGE" label="检查未通过后提示消息" type="STRING" length="1000"/>
+				<attribute name="EXECUTESCRIPT" label="执行脚本" type="STRING" length="2000"/>
+				<attribute name="REMARK" label="备注" type="STRING" length="250"/>
+				<attribute name="INPUTUSER" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORG" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTTIME" label="登记时间" type="STRING" length="20"/>
+				<attribute name="UPDATEUSER" label="更新人" type="STRING" length="32"/>
+				<attribute name="UPDATETIME" label="更新时间" type="STRING" length="20"/>
+				<attribute name="GROUPID" label="分组号" type="STRING" length="32"/>
+				<attribute name="MODELKIND" label="检查类型" type="STRING" length="32"/>
+				<attribute name="BIZVIEWER" label="业务查看" type="STRING" length="200"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="SCENARIO_MODEL" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="SCENARIO_RELATIVE" label="" keyAttributes="GROUPID,MODELID,SCENARIOID">
+			<attributes>
+				<attribute name="SCENARIOID" label="场景流水号" type="STRING" length="32"/>
+				<attribute name="GROUPID" label="分组号" type="STRING" length="32"/>
+				<attribute name="MODELID" label="模型编号" type="STRING" length="32"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="SCENARIO_RELATIVE" />
+				</managerProperties>
+			</manager>
+		</class>
+	</package>
+</jbo>
+

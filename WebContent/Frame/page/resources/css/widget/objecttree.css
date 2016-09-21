@@ -1,0 +1,136 @@
+.search {
+	position: absolute;
+	width: 250px;
+	background: #eee;
+	border: 1px solid #aaa;
+}
+.search .search_title {
+	width: 100%;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	font-size: 14px;
+	background: #88a;
+	cursor: pointer;
+}
+.objecttree .title {
+	background: #ccc;
+	color: #333;
+	width: 100%;
+	font-size: 9pt;
+	font-weight: bold;
+}
+.objecttree .node {
+	display: block;
+	color: #333;
+	width: 100%;
+	/*height: 30px;*/
+	line-height: 30px;
+	border-bottom: 1px dotted #bbb;
+	outline: none;
+	cursor: pointer;
+	white-space: nowrap;
+}
+.objecttree .folder .node {
+	/*background: #f0f0f0;*/
+}
+.objecttree .page .node {
+	/*background: #fff;*/
+}
+.objecttree .folder .node.hover,
+.objecttree .page .node.hover {
+	background: #eaeaea; /*定位节点颜色 FIXME*/
+}
+.objecttree .folder .node.click,
+.objecttree .page .node.click {
+	background: #aaa; /*点击节点颜色 FIXME*/
+}
+.objecttree .index {
+	margin: 0 2px;
+	width: 16px;
+	display: inline-block;
+}
+.objecttree .check {
+	width: 12px;
+	background: url(../../images/widget/objecttree/checkbox0.gif) no-repeat center;
+}
+.objecttree .halfchecked {
+	background: url(../../images/widget/objecttree/checkbox2.gif) no-repeat center;
+}
+.objecttree .checked {
+	background: url(../../images/widget/objecttree/checkbox1.gif) no-repeat center;
+}
+.objecttree .folder .arrow {
+	background: url(../../images/widget/objecttree/back_arrow.gif) no-repeat center;
+}
+.objecttree .folder.collapse .arrow {
+	background: url(../../images/widget/objecttree/gray_arrow.gif) no-repeat center;
+}
+.objecttree .page .arrow {
+	background-image: none;
+}
+.objecttree .folder .arrow2 {
+	background: url(../../images/widget/objecttree/back_arrow.gif) no-repeat center;
+}
+.objecttree .folder.collapse .arrow2 {
+	background: url(../../images/widget/objecttree/gray_arrow.gif) no-repeat center;
+}
+.objecttree .page .arrow2 {
+	background: url(../../images/widget/objecttree/img-page.gif) no-repeat center;
+}
+
+/* 默认icon:deficon */
+/* 可作为案例，也可以不考虑节点类型直接给出图标 */
+.folder .deficon {
+	background: url(../../images/widget/objecttree/img-folder.gif) no-repeat center;
+}
+.page .deficon {
+	background: url(../../images/widget/objecttree/img-page.gif) no-repeat center;
+}
+
+/** 动画icon:ordericon */
+.page .ordericon,
+.folder .ordericon {
+	height: 16px;
+	line-height: 16px;
+	vertical-align: middle;
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -233px -389px;
+}
+.folder .hover .ordericon {
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -281px -389px;
+}
+.folder.collapse .ordericon {
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -264px -389px;
+}
+.folder.collapse .hover .ordericon {
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -248px -389px;
+}
+.page .ordericon, .page.collapse .ordericon {
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -297px -389px;
+}
+.page .hover .ordericon, .page.collapse .hover .ordericon {
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -313px -389px;
+}
+/** 动画icon:moveicon */
+.page .moveicon,
+.folder .moveicon {
+	height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -38px -407px;
+}
+.folder .hover .moveicon {
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -22px -407px;
+}
+.folder.collapse .moveicon {
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -70px -407px;
+}
+.folder.collapse .hover .moveicon {
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -559px -386px;
+}
+.page .moveicon, .page.collapse .moveicon {
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -54px -407px;
+}
+.page .hover .moveicon, .page.collapse .hover .moveicon {
+	background: url(../../images/widget/objecttree/icon.gif) no-repeat -542px -386px;
+}

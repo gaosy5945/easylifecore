@@ -1,0 +1,11 @@
+<%@ include file="/Frame/page/jspf/include/jsp_frame_lrud.jspf"%>
+<script type="text/javascript">
+	var myleft={};
+	changeLayout(true);
+	setTimeout(function(){
+		if(!isNaN(myleft.width))
+			changeLayout(isLeftRight(),myleft.width/($(document.body).width()-myleft.width));
+	},1);
+	Layout.initRegionName("frameleft", self.name, Layout.getRegionName("FirstFrame"));
+	Layout.initRegionName("frameright", self.name, Layout.getRegionName("SecondFrame"));
+</script>

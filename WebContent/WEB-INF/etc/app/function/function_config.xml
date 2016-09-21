@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Functions>
+	<Function id="FunctionConfig" name="功能定义模块" module="AppBase">
+		<FunctionTypes>
+			<FunctionType id="NavigationMenu" name="导航菜单"/>
+			<FunctionType id="SimpleDataGridPage" name="单一数据列表" htmlGeneratorType="page" htmlGenerator="/pages/datagrid/datagrid1.jsp"/>
+			
+			<FunctionType id="DefaultDataFormPage" name="默认表单页面" htmlGeneratorType="page" htmlGenerator="/pages/form/dataform1.jsp"/>
+			
+			<FunctionType id="DataGrid" name="数据列表" 
+				uimapping="{'frozenColumns':'frozenColumns','fitColumns':'fitColumns','resizeHandle':'resizeHandle','autoRowHeight':'autoRowHeight'
+				,'toolbar':'toolbar','striped':'striped','nowrap':'nowrap','idField':'idField','pagination':'pagination'
+				,'rownumbers':'rownumbers','pagePosition':'pagePosition','pageSize':'pageSize','showHeader':'showHeader','showFooter':'showFooter'}" 
+				htmlGeneratorType="class" htmlGenerator="com.amarsoft.app.cfs.web.html.impl.easyui.DataGridHtmlGenerator"/>
+		</FunctionTypes>
+		
+		<FunctionItemTypes>
+			<FunctionItemType id="DataGridColumn" name="数据列表项" 
+				uimapping="{'field':'field','title':'title','width':'width','rowspan':'rowspan','colspan':'colspan'
+				,'align':'align','halign':'halign','sortable':'sortable','order':'order','resizable':'resizable'
+				,'hidden':'hidden','sortable':'sortable','sortable':'sortable','sortable':'sortable','sortable':'sortable'}" 
+				htmlGeneratorType="class" htmlGenerator=""/>
+			<FunctionItemType id="Button" name="按钮" uimapping="{}"
+				htmlGeneratorType="class" htmlGenerator="com.amarsoft.app.cfs.web.html.impl.easyui.ButtonHtmlGenerator"/>
+			<FunctionItemType id="MenuItem" uimapping="{'id':'id','name':'text','iconCls':'iconCls','parentID':'parentId','url':'url'}"/>
+		</FunctionItemTypes>
+	</Function>
+</Functions>

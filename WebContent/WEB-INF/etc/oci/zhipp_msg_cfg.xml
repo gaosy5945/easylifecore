@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Instance>
+        <Messages>
+        <!-- E204个人客户查询 -->
+		<Message ID="ZHIPP_IdvLoanInfoQry" Tag="ReqIdvLoanInfoQry" NameSpace="s" SelectSQL=""   Description="E204个人客户查询">
+			<Field No="1" FieldTag="ReqSvcHeader" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_reqsvcheader" DataType="object" ObjectName="req_Body_header" />
+			<Field No="2" FieldTag="SvcBody" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_svcbody" DataType="object" ObjectName="IdvLoanInfoQry_svcbody" />
+		</Message>
+		
+		<Message ID="IdvLoanInfoQry_svcbody" Tag="SvcBody" NameSpace="s" SelectSQL="" Description="E204个人客户查询">
+			<Field No="1" FieldTag="ClientNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.ClientNo" Description="客户号码"  DataType="String" Length="200" IsRequire = "Y"/>
+		</Message>
+		
+		<!-- O_E204个人客户查询 -->
+		<Message ID="ZHIPP_O_IdvLoanInfoQry" Tag="RspIdvLoanInfoQry" NameSpace="s" SelectSQL="" Description="O_E204个人客户查询">
+			<Field No="1" FieldTag="RspSvcHeader" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="rsp_Body_header" DataType="object" ObjectName="rsp_Body_header" />
+			<Field No="2" FieldTag="SvcBody" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_O_svcbody"  DataType="object" ObjectName="IdvLoanInfoQry_O_svcbody"/>
+	     </Message>
+	     
+		 <Message ID="IdvLoanInfoQry_O_svcbody" Tag="SvcBody" NameSpace = "s" 
+		 SelectSQL ="select ci.mfcustomerid ClientNo,
+				       '1' ClientStatus,
+				       ci.customername ClientName,
+				       ci.certtype CtfType,
+				       ci.certid CtfId,
+				       max(case
+				             when bd.BusinessStatus in('L11','L12','L13') then
+				          'Y'
+				         else
+				          'N'
+				       end) OdueLoanFlag,
+				       max(case
+				             when bd.businesstype IN('018','060') and bd.BusinessStatus = 'L0' then
+				              'Y'
+				             else
+				              'N'
+				           end) CrdtLoanFlag,
+				       max(case
+				             when bd.businesstype IN(SELECT PRODUCTID FROM PRD_PRODUCT_LIBRARY where ProductType3 = '02') and bd.BusinessStatus = 'L0' then
+				              'Y'
+				             else
+				              'N'
+				           end) BussLoanFlag,
+				       sum(bd.balance) LoanBal,
+				       sum(case
+				             when bc.vouchType = '005' then
+				              bd.balance
+				             else
+				              0
+				           end) CrdtLoanBal,
+				           '' RsrvField1,
+				           '' RsrvField2,
+				           '' RsrvField3
+				  from customer_info     ci,
+				       business_duebill  bd,
+				       business_contract bc,
+				       ind_info          ii
+				 where ci.customerid=ii.customerid 
+				   and ci.customerid = bd.customerid
+				   and bd.contractserialno = bc.serialno
+				   and ci.mfcustomerid = ':MFCustomerID'
+				 	group by ci.mfcustomerid, ci.customername,ci.certtype,ci.certid 
+				 union all
+				 select '' ClientNo,
+				       '0' ClientStatus,
+				       '' ClientName,
+				       '' CtfType,
+				       '' CtfId,
+				       '' OdueLoanFlag,
+				       '' CrdtLoanFlag,
+				       '' BussLoanFlag,
+				       0 LoanBal,
+				       0 CrdtLoanBal,
+				           '' RsrvField1,
+				           '' RsrvField2,
+				           '' RsrvField3
+				  from dual
+				 where 1=1 and ':ClientStatus' = '0'
+				" Description="O_E204个人客户查询">
+		 	<Field No="1" FieldTag ="ClientNo" NameSpace ="s" ValueSource="SelectSQL" TableField="ClientNo" DefaultValue="" Description="客户号码" DataType ="string" Length="30" IsRequire="Y"/>
+		 	<Field No="2" FieldTag ="ClientStatus" NameSpace ="s" ValueSource="SelectSQL" TableField="ClientStatus" DefaultValue="" Description="客户状态" DataType ="string" Length="10" IsRequire="Y"/>
+		 	<Field No="3" FieldTag ="ClientName" NameSpace ="s" ValueSource="SelectSQL" TableField="ClientName" DefaultValue="" Description="客户名称" DataType ="string" Length="200" IsRequire="Y"/>
+		 	<Field No="4" FieldTag ="CtfType" NameSpace ="s" ValueSource="SelectSQL" TableField="CtfType" DefaultValue="" Description="证件类型" DataType ="string" Length="10" IsRequire="Y"/>
+		 	<Field No="5" FieldTag ="CtfId" NameSpace ="s" ValueSource="SelectSQL" TableField="CtfId" DefaultValue="" Description="证件号" DataType ="string" Length="40" IsRequire="Y"/>
+		 	<Field No="6" FieldTag ="OdueLoanFlag" NameSpace ="s" ValueSource="SelectSQL" TableField="OdueLoanFlag" DefaultValue="" Description="逾期贷款标志" DataType ="string" Length="1" IsRequire="Y"/>
+		 	<Field No="7" FieldTag ="CrdtLoanFlag" NameSpace ="s" ValueSource="SelectSQL" TableField="CrdtLoanFlag" DefaultValue="" Description="信用类贷款标志" DataType ="string" Length="1" IsRequire="Y"/>
+		 	<Field No="8" FieldTag ="BussLoanFlag" NameSpace ="s" ValueSource="SelectSQL" TableField="BussLoanFlag" DefaultValue="" Description="经营类贷款标志" DataType ="string" Length="1" IsRequire="Y"/>
+		 	<Field No="9" FieldTag ="LoanBal" NameSpace ="s" ValueSource="SelectSQL" TableField="LoanBal" DefaultValue="" Description="贷款余额" DataType ="double" Length="24,2" IsRequire="Y"/>
+		 	<Field No="10" FieldTag ="CrdtLoanBal" NameSpace ="s" ValueSource="SelectSQL" TableField="CrdtLoanBal" DefaultValue="" Description="信用贷款余额" DataType ="double" Length="24,2" IsRequire="Y"/>
+		 	<Field No="11" FieldTag ="RsrvField1" NameSpace ="s" ValueSource="SelectSQL" TableField="RsrvField1" DefaultValue="" Description="保留字段1" DataType ="string" Length="255" IsRequire="Y"/>
+		 	<Field No="12" FieldTag ="RsrvField2" NameSpace ="s" ValueSource="SelectSQL" TableField="RsrvField2" DefaultValue="" Description="保留字段2" DataType ="string" Length="255" IsRequire="Y"/>
+		 	<Field No="13" FieldTag ="RsrvField3" NameSpace ="s" ValueSource="SelectSQL" TableField="RsrvField3" DefaultValue="" Description="保留字段3" DataType ="string" Length="255" IsRequire="Y"/>
+		 </Message>
+		 
+		 <!-- E205个人客户查询 -->
+		<Message ID="ZHIPP_IdvLoanDtlQry" Tag="ReqIdvLoanDtlQry" NameSpace="s" SelectSQL="" Description="E205个人客户查询">
+			<Field No="1" FieldTag="ReqSvcHeader" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_reqsvcheader" DataType="object" ObjectName="req_Body_header" />
+			<Field No="2" FieldTag="SvcBody" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_svcbody" DataType="object" ObjectName="IdvLoanDtlQry_svcbody" />
+		</Message>
+		
+		<Message ID="IdvLoanDtlQry_svcbody" Tag="SvcBody" NameSpace="s" SelectSQL="" Description="E205个人客户查询">
+			<Field No="1" FieldTag="ClientNo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="#Constants.ClientNo" Description="客户号码"  DataType="String" Length="200" IsRequire = "Y"/>
+		</Message>
+		
+		<!-- O_E205个人客户查询 -->
+		<Message ID="ZHIPP_O_IdvLoanDtlQry" Tag="RspIdvLoanDtlQry" NameSpace="s" SelectSQL="" Description="O_E205个人客户查询">
+			<Field No="1" FieldTag="RspSvcHeader" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="rsp_Body_header" DataType="object" ObjectName="rsp_Body_header" />
+			<Field No="2" FieldTag="SvcBody" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_O_svcbody"  DataType="object" ObjectName="IdvLoanDtlQry_O_svcbody"/>
+	     </Message>
+	     
+		 <Message ID="IdvLoanDtlQry_O_svcbody" Tag="SvcBody" NameSpace = "s" 
+		 SelectSQL ="select ci.mfcustomerid ClientNo,
+				       '1' ClientStatus,
+				       ci.customername ClientName,
+				       ci.certtype CtfType,
+				       ci.certid CtfId,
+				       max(case
+				             when bd.BusinessStatus in('L11','L12','L13') then
+				              'Y'
+				             else
+				              'N'
+				           end) OdueLoanFlag,
+				       max(case
+				             when bd.businesstype IN('018','060') and bd.BusinessStatus = 'L0' then
+				              'Y'
+				             else
+				              'N'
+				           end) CrdtLoanFlag,
+				       max(case
+				             when bd.PRODUCTID IN('006','041','042','043','044','045','046','047','048','049','050','051','052','054','055','056','057','058','064','065') and bd.BusinessStatus = 'L0'
+				             or bc.productid in('500','502') and bc.contractstatus = '03' then
+				              'Y'
+				             else
+				              'N'
+				           end) BussLoanFlag,
+				       sum(case
+				       		 when bc.productid in('500','502') and bc.contractstatus = '03' then
+				       		  bc.businesssum
+				             when bd.PRODUCTID IN('006','041','042','043','044','045','046','047','048','049','050','051','052','054','055','056','057','058','064','065') and bd.BusinessStatus in('L0','L11','L12','L13') then
+				              nvl(bd.balance,0)
+				             else
+				              0
+				           end) BussLoanBal,
+				       sum(case
+				             when bd.businesstype IN('018','060') and bd.BusinessStatus in('L0','L11','L12','L13') then
+				              bd.balance
+				             else
+				              0
+				           end) CrdtLoanBal,
+				       max(case
+				             when bd.businesstype in('043')  and bd.BusinessStatus = 'L0' then
+				              'Y'
+				             else
+				              'N'
+				           end) NoGntLoanFlag,
+				       sum(case
+				             when bd.businesstype in('043')  and bd.BusinessStatus in('L0','L11','L12','L13') then
+				              bd.balance
+				             else
+				              0
+				           end) NoGntLoanbal,
+				       '' RsrvField1,
+				       '' RsrvField2,
+				       '' RsrvField3
+				  from customer_info     ci,
+				       business_contract bc left join business_duebill  bd on bc.serialno = bd.contractserialno,
+				       ind_info          ii
+				where ci.customerid = bd.customerid 
+				   and ci.customerid=ii.customerid
+				   and bd.contractserialno = bc.serialno
+				   and ci.mfcustomerid = ':MFCustomerID'
+				 group by ci.mfcustomerid, ci.customername, ci.certtype, ci.certid
+				 union all
+				 select '' ClientNo,
+		               '0' ClientStatus,
+		               '' ClientName,
+		               '' CtfType,
+		               '' CtfId,
+		               '' OdueLoanFlag,
+		               '' CrdtLoanFlag,
+		               '' BussLoanFlag,
+		               0 BussLoanBal,
+		               0 CrdtLoanBal,
+		               '' NoGntLoanFlag,
+		               0 NoGntLoanbal,
+		               '' RsrvField1,
+		               '' RsrvField2,
+		               '' RsrvField3
+				  from dual
+				 where 1=1 and ':ClientStatus' = '0'" Description="O_E205个人客户查询">
+		 	<Field No="1" FieldTag ="ClientNo" NameSpace ="s" ValueSource="SelectSQL" TableField="ClientNo" DefaultValue="" Description="客户号码" DataType ="string" Length="30" IsRequire="Y"/>
+		 	<Field No="2" FieldTag ="ClientStatus" NameSpace ="s" ValueSource="SelectSQL" TableField="ClientStatus" DefaultValue="" Description="客户状态" DataType ="string" Length="10" IsRequire="Y"/>
+		 	<Field No="3" FieldTag ="ClientName" NameSpace ="s" ValueSource="SelectSQL" TableField="ClientName" DefaultValue="" Description="客户名称" DataType ="string" Length="200" IsRequire="Y"/>
+		 	<Field No="4" FieldTag ="CtfType" NameSpace ="s" ValueSource="SelectSQL" TableField="CtfType" DefaultValue="" Description="证件类型" DataType ="string" Length="10" IsRequire="Y"/>
+		 	<Field No="5" FieldTag ="CtfId" NameSpace ="s" ValueSource="SelectSQL" TableField="CtfId" DefaultValue="" Description="证件号" DataType ="string" Length="40" IsRequire="Y"/>
+		 	<Field No="6" FieldTag ="OdueLoanFlag" NameSpace ="s" ValueSource="SelectSQL" TableField="OdueLoanFlag" DefaultValue="" Description="逾期贷款标志" DataType ="string" Length="1" IsRequire="Y"/>
+		 	<Field No="7" FieldTag ="CrdtLoanFlag" NameSpace ="s" ValueSource="SelectSQL" TableField="CrdtLoanFlag" DefaultValue="" Description="信用类贷款标志" DataType ="string" Length="1" IsRequire="Y"/>
+		 	<Field No="8" FieldTag ="BussLoanFlag" NameSpace ="s" ValueSource="SelectSQL" TableField="BussLoanFlag" DefaultValue="" Description="经营类贷款标志" DataType ="string" Length="1" IsRequire="Y"/>
+		 	<Field No="9" FieldTag ="BussLoanBal" NameSpace ="s" ValueSource="SelectSQL" TableField="BussLoanBal" DefaultValue="" Description="经营贷款余额" DataType ="double" Length="24,2" IsRequire="Y"/>
+		 	<Field No="10" FieldTag ="CrdtLoanBal" NameSpace ="s" ValueSource="SelectSQL" TableField="CrdtLoanBal" DefaultValue="" Description="信用贷款余额" DataType ="double" Length="24,2" IsRequire="Y"/>
+		 	<Field No="11" FieldTag ="NoGntLoanFlag" NameSpace ="s" ValueSource="SelectSQL" TableField="NoGntLoanFlag" DefaultValue="" Description="无担保贷款标志" DataType ="string" Length="1" IsRequire="Y"/>
+		 	<Field No="12" FieldTag ="NoGntLoanBal" NameSpace ="s" ValueSource="SelectSQL" TableField="NoGntLoanbal" DefaultValue="" Description="无担保贷款余额" DataType ="double" Length="24,2" IsRequire="Y"/>
+		 	<Field No="13" FieldTag ="RsrvField1" NameSpace ="s" ValueSource="SelectSQL" TableField="RsrvField1" DefaultValue="" Description="保留字段1" DataType ="string" Length="255" IsRequire="Y"/>
+		 	<Field No="14" FieldTag ="RsrvField2" NameSpace ="s" ValueSource="SelectSQL" TableField="RsrvField2" DefaultValue="" Description="保留字段2" DataType ="string" Length="255" IsRequire="Y"/>
+		 	<Field No="15" FieldTag ="RsrvField3" NameSpace ="s" ValueSource="SelectSQL" TableField="RsrvField3" DefaultValue="" Description="保留字段3" DataType ="string" Length="255" IsRequire="Y"/>
+		 </Message>
+		 
+		 <!-- 借据信息查询 -->
+		<Message ID="ZHIPP_DuebillInfoQry" Tag="ReqDuebillInfoQry" NameSpace="s" SelectSQL="" Description="借据信息查询">
+			<Field No="1" FieldTag="ReqSvcHeader" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_reqsvcheader" DataType="object" ObjectName="req_Body_header" />
+			<Field No="2" FieldTag="SvcBody" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_svcbody" DataType="object" ObjectName="DuebillInfoQry_svcbody" />
+		</Message>
+		
+		<Message ID="DuebillInfoQry_svcbody" Tag="SvcBody" NameSpace="s" SelectSQL="" Description="借据信息查询">
+			<Field No="1" FieldTag="DuebillNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.DuebillNo" Description="借据号" DataType="string" Length="30" IsRequire="Y" />
+		</Message>
+		
+		<!-- O_借据信息查询 -->
+		<Message ID="ZHIPP_O_DuebillInfoQry" Tag="RspDuebillInfoQry" NameSpace="s" SelectSQL="" Description="O_借据信息查询">
+			<Field No="1" FieldTag="RspSvcHeader" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="rsp_Body_header" DataType="object" ObjectName="rsp_Body_header" />
+			<Field No="2" FieldTag="SvcBody" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_O_svcbody"  DataType="object" ObjectName="DuebillInfoQry_O_svcbody"/>
+	     </Message>
+	     
+		 <Message ID="DuebillInfoQry_O_svcbody" Tag="SvcBody" NameSpace = "s" 
+		 SelectSQL ="select getItemName('BusinessType_Core',bd.loantype) LoanTypeName,
+				       bd.businesssum DstrAmt,
+				      replace(bd.putoutdate,'/','') StartIntDate,
+				       substr(bd.rpttermid,length(bd.rpttermid),1) RepayMode,
+				       bd.actualbusinessrate IntRate,
+				       bd.mforgid BussBranchId,
+				       oi.orgname InstName,
+				       bd.balance AcctBal,
+				       bd.overduebalance OduePrncpl,
+				       (bd.interestbalance1 + bd.interestbalance2) OweIntAmt,
+				       (bd.finebalance1 + bd.finebalance2) OdueInt,
+				       replace(bd.finishdate,'/','') CancelDate,
+				       (select replace(BUSINESSDATE,'/','') from SYS_SETUP where rownum=1) TranDate1
+				  from business_duebill bd, org_info oi
+				 where bd.mforgid = oi.orgid
+				 and bd.serialno = ':Serialno'
+		 " Description="O_借据信息查询">
+		 	<Field No="1" FieldTag ="LoanTypeName" NameSpace ="s" ValueSource="SelectSQL" TableField="LoanTypeName" DefaultValue="" Description="贷款类型名称" DataType ="string" Length="200" IsRequire="Y"/>
+		 	<Field No="2" FieldTag ="DstrAmt" NameSpace ="s" ValueSource="SelectSQL" TableField="DstrAmt" DefaultValue="" Description="发放金额" DataType ="double" Length="24,2" IsRequire="Y"/>
+		 	<Field No="3" FieldTag ="LoanTerm" NameSpace ="s" ValueSource="Default" TableField="" DefaultValue="#Constants.LoanTerm" Description="贷款期限" DataType ="string" Length="10" IsRequire="Y"/>
+		 	<Field No="4" FieldTag ="StartIntDate" NameSpace ="s" ValueSource="SelectSQL" TableField="StartIntDate" DefaultValue="" Description="起息日期" DataType ="string" Length="8" IsRequire="Y"/>
+		 	<Field No="5" FieldTag ="RepayMode" NameSpace ="s" ValueSource="SelectSQL" TableField="RepayMode" DefaultValue="" Description="还款方式" DataType ="string" Length="2" IsRequire="Y"/>
+		 	<Field No="6" FieldTag ="IntRate" NameSpace ="s" ValueSource="SelectSQL" TableField="IntRate" DefaultValue="" Description="利率" DataType ="double" Length="9,7" IsRequire="Y"/>
+		 	<Field No="7" FieldTag ="BussBranchId" NameSpace ="s" ValueSource="SelectSQL" TableField="BussBranchId" DefaultValue="" Description="营业机构号" DataType ="string" Length="20" IsRequire="Y"/>
+		 	<Field No="8" FieldTag ="InstName" NameSpace ="s" ValueSource="SelectSQL" TableField="InstName" DefaultValue="" Description="机构名称" DataType ="string" Length="200" IsRequire="Y"/>
+		 	<Field No="9" FieldTag ="AcctBal" NameSpace ="s" ValueSource="SelectSQL" TableField="AcctBal" DefaultValue="" Description="账户余额" DataType ="double" Length="24,2" IsRequire="Y"/>
+		 	<Field No="10" FieldTag ="OduePrncpl" NameSpace ="s" ValueSource="SelectSQL" TableField="OduePrncpl" DefaultValue="" Description="逾期本金" DataType ="double" Length="24,2" IsRequire="Y"/>
+		 	<Field No="11" FieldTag ="OweIntAmt" NameSpace ="s" ValueSource="SelectSQL" TableField="OweIntAmt" DefaultValue="" Description="欠息金额" DataType ="double" Length="24,2" IsRequire="Y"/>
+		 	<Field No="12" FieldTag ="OdueInt" NameSpace ="s" ValueSource="SelectSQL" TableField="OdueInt" DefaultValue="" Description="逾期利息" DataType ="double" Length="24,2" IsRequire="Y"/>
+		 	<Field No="13" FieldTag ="CancelDate" NameSpace ="s" ValueSource="SelectSQL" TableField="CancelDate" DefaultValue="" Description="销户日期" DataType ="string" Length="8" IsRequire="Y"/>
+		 	<Field No="14" FieldTag ="TranDate1" NameSpace ="s" ValueSource="SelectSQL" TableField="TranDate1" DefaultValue="" Description="交易日期1" DataType ="string" Length="8" IsRequire="Y"/>
+		 </Message>
+		 
+		 <!-- 还款明细查询-->
+		<Message ID="ZHIPP_RepaymentDtlQry" Tag="ReqRepaymentDtlQry" NameSpace="s" SelectSQL="" Description="还款明细查询">
+			<Field No="1" FieldTag="ReqSvcHeader" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_reqsvcheader" DataType="object" ObjectName="req_Body_header" />
+			<Field No="2" FieldTag="SvcBody" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_svcbody" DataType="object" ObjectName="RepaymentDtlQry_svcbody" />
+		</Message>
+		
+		<Message ID="RepaymentDtlQry_svcbody" Tag="SvcBody" NameSpace="s" SelectSQL="" Description="还款明细查询">
+			<Field No="1" FieldTag="DuebillNo" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.DuebillNo" Description="借据号" DataType="string" Length="30" IsRequire="Y" />
+			<Field No="2" FieldTag="StartDate" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.StartDate" Description="起始日期" DataType="string" Length="8" IsRequire="Y" />
+			<Field No="3" FieldTag="EndDate" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.EndDate" Description="结束日期" DataType="string" Length="8" IsRequire="Y" />
+			<Field No="4" FieldTag="StartNum1" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.StartNum1" Description="起始笔数1" DataType="int" Length="10" IsRequire="Y" />
+			<Field No="5" FieldTag="QueryNum1" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="#Constants.QueryNum1" Description="查询笔数1" DataType="int" Length="10" IsRequire="Y" />
+		</Message>
+		
+		<!-- O_还款明细查询-->
+		<Message ID="ZHIPP_O_RepaymentDtlQry" Tag="RspRepaymentDtlQry" NameSpace="s" SelectSQL="" Description="O_还款明细查询">
+			<Field No="1" FieldTag="RspSvcHeader" NameSpace="s" ValueSource="Default" TableField="" DefaultValue="" Description="rsp_Body_header" DataType="object" ObjectName="rsp_Body_header" />
+			<Field No="2" FieldTag="SvcBody" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="" Description="zhipp_O_svcbody"  DataType="object" ObjectName="RepaymentDtlQry_O_svcbody"/>
+	     </Message>
+	     
+		 <Message ID="RepaymentDtlQry_O_svcbody" Tag="SvcBody" NameSpace = "s" SelectSQL ="" Description="O_还款明细查询">
+		 	<Field No="1" FieldTag ="DuebillNo" NameSpace ="s" ValueSource="Default" TableField="" DefaultValue="#Constants.DuebillNo" Description="借据号" DataType ="string" Length="30" IsRequire="Y"/>
+		 	<Field No="2" FieldTag ="RMBLastRepayDate" NameSpace ="s" ValueSource="Default" TableField="" DefaultValue="#Constants.RMBLastRepayDate" Description="上次还款日期(人民币)" DataType ="string" Length="8" IsRequire="Y"/>
+		 	<Field No="3" FieldTag ="TotalNum1" NameSpace ="s" ValueSource="Default" TableField="" DefaultValue="#Constants.TotalNum1" Description="总笔数1" DataType ="string" Length="10" IsRequire="Y"/>
+		 	<Field No="4" FieldTag="RepymtDtlInfo" NameSpace = "s"  ValueSource="Default" TableField="" DefaultValue="" Description="还贷明细信息数组"  DataType="array" ArrayName="zhipp_RepymtDtlInfo"/>
+	     </Message>
+	        <Message ID="zhipp_RepymtDtlInfo" Tag="RepymtDtlInfo" NameSpace = "s"  
+	        SelectSQL="select * from (select rownum as wid,a.*
+            from (select 
+                         replace(pl.actualpaydate,'/','') as ActTranDate,
+                         ps.seqid as CrnTerm,
+                         (pl.actualpayprincipalamt+pl.actualpayinteamt+pl.ACTUALPAYFINEAMT) as TranAmt,
+                         pl.actualpayprincipalamt as RepymtPrncpl,
+                        pl.actualpayinteamt as Interest,
+                        pl.ACTUALPAYFINEAMT as OdueInt,
+                        ps.principalbalance as AcctBal
+                    from acct_payment_log pl,acct_payment_schedule ps
+                   where pl.loanserialno = ':DuebillNo' and ps.serialno=pl.psserialno
+                     and pl.actualpaydate between  to_char(to_date(':StartDate','yyyymmdd'),'yyyy/mm/dd') and to_char(to_date(':EndDate','yyyymmdd'),'yyyy/mm/dd') order by pl.actualpaydate)  a)
+           where wid between :StartNum1 and :TotalNum1 "  Description="还贷明细信息数组">
+	        <Field No="1" FieldTag="ActTranDate" NameSpace = "s"  ValueSource="SelectSQL" TableField="ActTranDate" DefaultValue="" Description="实际交易日期"  DataType="String" Length="8" IsRequire = "Y"/>
+	        <Field No="2" FieldTag="CrnTerm" NameSpace = "s"  ValueSource="SelectSQL" TableField="CrnTerm" DefaultValue="" Description="本期期数"  DataType="int" Length="10" IsRequire = "Y"/>
+	        <Field No="3" FieldTag="TranAmt" NameSpace = "s"  ValueSource="SelectSQL" TableField="TranAmt" DefaultValue="" Description="交易金额"  DataType="double" Length="24,2" IsRequire = "Y"/>
+	        <Field No="4" FieldTag="RepymtPrncpl" NameSpace = "s"  ValueSource="SelectSQL" TableField="RepymtPrncpl" DefaultValue="" Description="还本金额"  DataType="double" Length="24,2" IsRequire = "Y"/>
+	        <Field No="5" FieldTag="Interest" NameSpace = "s"  ValueSource="SelectSQL" TableField="Interest" DefaultValue="" Description="利息"  DataType="double" Length="24,2" IsRequire = "Y"/>
+	        <Field No="6" FieldTag="OdueInt" NameSpace = "s"  ValueSource="SelectSQL" TableField="OdueInt" DefaultValue="" Description="逾期利息"  DataType="double" Length="24,2" IsRequire = "Y"/>
+	        <Field No="7" FieldTag="AcctBal" NameSpace = "s"  ValueSource="SelectSQL" TableField="AcctBal" DefaultValue="" Description="账户余额"  DataType="double" Length="24,2" IsRequire = "Y"/>
+	     </Message> 
+		 
+		 
+		</Messages> 
+	     
+    <Transactions>
+    	<!-- E204个人客户查询 -->
+    	<Transaction ClientID="" ServerID="ZHIPP_IdvLoanInfoQry_Server" Description="E204个人客户查询" ConnectionID="esb" Type="SERVER">
+			<property name="Operation" value="urn:/IdvLoanInfoQry" />
+			<Property name="EndPoint" value="http://10.112.20.144:7701/services/S020030008"/>
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ESBServerPaser"/>
+			<Property name="Responser" value="com.amarsoft.app.oci.comm.impl.server.IdvLoanInfoQryResponser"/>
+   			<property name = "ServiceAction" value = "urn:/IdvLoanInfoQry"/>
+   			<property name = "ServiceAdr" value = "http://esb.spdbbiz.com:7701/services/S020030008"/>
+  			<property name = "SourceSysId" value = "0201"/>
+  			<property name = "CharSet" value = "UTF-8"/>
+			<namespaces>
+   			<namespace name = "s" value = "http://esb.spdbbiz.com/services/S020030008"/>
+   			</namespaces>
+			<!-- 使用的message模板，需要按顺序设置 -->
+			<IMessages>
+				<message name="SysHeader" value="req_Header" />
+				<message name="SysBody" value="ZHIPP_IdvLoanInfoQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="rsp_Header" />
+				<message name="SysBody" value="ZHIPP_O_IdvLoanInfoQry" />
+			</OMessages>
+		</Transaction>
+		
+    	<!-- E205个人客户查询 -->
+    	<Transaction ClientID="" ServerID="ZHIPP_IdvLoanDtlQry_Server" Description="E205个人客户查询" ConnectionID="esb" Type="SERVER">
+			<property name="Operation" value="urn:/IdvLoanDtlQry" />
+			<Property name="EndPoint" value="http://10.112.20.144:7701/services/S020030008"/>
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ESBServerPaser"/>
+			<Property name="Responser" value="com.amarsoft.app.oci.comm.impl.server.IdvLoanDtlQryResponser"/>
+   			<property name = "ServiceAction" value = "urn:/IdvLoanDtlQry"/>
+   			<property name = "ServiceAdr" value = "http://esb.spdbbiz.com:7701/services/S020030008"/>
+  			<property name = "SourceSysId" value = "0201"/>
+  			<property name = "CharSet" value = "UTF-8"/>
+			<namespaces>
+   			<namespace name = "s" value = "http://esb.spdbbiz.com/services/S020030008"/>
+   			</namespaces>
+			<!-- 使用的message模板，需要按顺序设置 -->
+			<IMessages>
+				<message name="SysHeader" value="req_Header" />
+				<message name="SysBody" value="ZHIPP_IdvLoanDtlQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="rsp_Header" />
+				<message name="SysBody" value="ZHIPP_O_IdvLoanDtlQry" />
+			</OMessages>
+		</Transaction>
+		
+		<!-- 借据信息查询 -->
+    	<Transaction ClientID="" ServerID="ZHIPP_DuebillInfoQry_Server" Description="借据信息查询" ConnectionID="esb" Type="SERVER">
+			<property name="Operation" value="urn:/DuebillInfoQry" />
+			<Property name="EndPoint" value="http://10.112.20.144:7701/services/S020030010"/>
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ESBServerPaser"/>
+			<Property name="Responser" value="com.amarsoft.app.oci.comm.impl.server.DuebillInfoQryResponser"/>
+   			<property name = "ServiceAction" value = "urn:/DuebillInfoQry"/>
+   			<property name = "ServiceAdr" value = "http://esb.spdbbiz.com:7701/services/S020030010"/>
+  			<property name = "SourceSysId" value = "0201"/>
+  			<property name = "CharSet" value = "UTF-8"/>
+			<namespaces>
+   			<namespace name = "s" value = "http://esb.spdbbiz.com/services/S020030010"/>
+   			</namespaces>
+			<!-- 使用的message模板，需要按顺序设置 -->
+			<IMessages>
+				<message name="SysHeader" value="req_Header" />
+				<message name="SysBody" value="ZHIPP_DuebillInfoQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="rsp_Header" />
+				<message name="SysBody" value="ZHIPP_O_DuebillInfoQry" />
+			</OMessages>
+		</Transaction>
+		
+		<!-- 还款明细查询 -->
+    	<Transaction ClientID="" ServerID="ZHIPP_RepaymentDtlQry_Server" Description="还款明细查询" ConnectionID="esb" Type="SERVER">
+			<property name="Operation" value="urn:/RepaymentDtlQry" />
+			<Property name="EndPoint" value="http://10.112.20.144:7701/services/S020030009"/>
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ESBServerPaser"/>
+			<Property name="Responser" value="com.amarsoft.app.oci.comm.impl.server.RepaymentDtlQryResponser"/>
+   			<property name = "ServiceAction" value = "urn:/RepaymentDtlQry"/>
+   			<property name = "ServiceAdr" value = "http://esb.spdbbiz.com:7701/services/S020030009"/>
+  			<property name = "SourceSysId" value = "0201"/>
+  			<property name = "CharSet" value = "UTF-8"/>
+			<namespaces>
+   			<namespace name = "s" value = "http://esb.spdbbiz.com/services/S020030009"/>
+   			</namespaces>
+			<!-- 使用的message模板，需要按顺序设置 -->
+			<IMessages>
+				<message name="SysHeader" value="req_Header" />
+				<message name="SysBody" value="ZHIPP_RepaymentDtlQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="rsp_Header" />
+				<message name="SysBody" value="ZHIPP_O_RepaymentDtlQry" />
+			</OMessages>
+		</Transaction>
+		
+		<!-- 个人贷款信息查询 -->
+		<Transaction ClientID="ZHIPP_IdvLoanInfoQry_Client" ServerID="" Description="个人贷款信息查询" ConnectionID="esb" Type="CLIENT">
+			<property name="Operation" value="IdvLoanInfoQry" />
+			<Property name="EndPoint" value="http://localhost:8080/web/services/WebService/S020030008"/>
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ESBParser"/>
+			<Property name="Responser" value="com.amarsoft.app.oci.comm.impl.server.IdvLoanInfoQryResponser"/>
+   			<property name = "ServiceAction" value = "urn:/IdvLoanInfoQry"/>
+   			<property name = "ServiceAdr" value = "http://esb.spdbbiz.com:7701/services/S020030008"/>
+  			<property name = "SourceSysId" value = "0201"/>
+  			<property name = "CharSet" value = "UTF-8"/>
+			<namespaces>
+   			<namespace name = "s" value = "http://esb.spdbbiz.com/services/S020030008"/>
+   			</namespaces>
+			<!-- 使用的message模板，需要按顺序设置 -->
+			<IMessages>
+				<message name="SysHeader" value="req_Header" />
+				<message name="SysBody" value="ZHIPP_IdvLoanInfoQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="rsp_Header" />
+				<message name="SysBody" value="ZHIPP_O_IdvLoanInfoQry" />
+			</OMessages>
+		</Transaction>
+		
+		<!-- 个人贷款详情查询 -->
+		<Transaction ClientID="ZHIPP_IdvLoanDtlQry_Client" ServerID="" Description="个人贷款详情查询" ConnectionID="esb" Type="CLIENT">
+			<property name="Operation" value="IdvLoanDtlQry" />
+			<Property name="EndPoint" value="http://localhost:8080/web/services/WebService/S020030008"/>
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ESBParser"/>
+			<Property name="Responser" value="com.amarsoft.app.oci.comm.impl.server.IdvLoanDtlQryResponser"/>
+   			<property name = "ServiceAction" value = "urn:/IdvLoanDtlQry"/>
+   			<property name = "ServiceAdr" value = "http://esb.spdbbiz.com:7701/services/S020030008"/>
+  			<property name = "SourceSysId" value = "0201"/>
+  			<property name = "CharSet" value = "UTF-8"/>
+			<namespaces>
+   			<namespace name = "s" value = "http://esb.spdbbiz.com/services/S020030008"/>
+   			</namespaces>
+			<!-- 使用的message模板，需要按顺序设置 -->
+			<IMessages>
+				<message name="SysHeader" value="req_Header" />
+				<message name="SysBody" value="ZHIPP_IdvLoanDtlQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="rsp_Header" />
+				<message name="SysBody" value="ZHIPP_O_IdvLoanDtlQry" />
+			</OMessages>
+		</Transaction>
+		
+		<!-- 借据信息查询 -->
+		<Transaction ClientID="ZHIPP_DuebillInfoQry_Client" ServerID="" Description="借据信息查询" ConnectionID="esb" Type="CLIENT">
+			<property name="Operation" value="DuebillInfoQry" />
+			<Property name="EndPoint" value="http://localhost:8080/web/services/WebService/S020030010"/>
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ESBParser"/>
+			<Property name="Responser" value="com.amarsoft.app.oci.comm.impl.server.DuebillInfoQryResponser"/>
+   			<property name = "ServiceAction" value = "urn:/DuebillInfoQry"/>
+   			<property name = "ServiceAdr" value = "http://esb.spdbbiz.com:7701/services/S020030010"/>
+  			<property name = "SourceSysId" value = "0201"/>
+  			<property name = "CharSet" value = "UTF-8"/>
+			<namespaces>
+   			<namespace name = "s" value = "http://esb.spdbbiz.com/services/S020030010"/>
+   			</namespaces>
+			<!-- 使用的message模板，需要按顺序设置 -->
+			<IMessages>
+				<message name="SysHeader" value="req_Header" />
+				<message name="SysBody" value="ZHIPP_DuebillInfoQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="rsp_Header" />
+				<message name="SysBody" value="ZHIPP_O_DuebillInfoQry" />
+			</OMessages>
+		</Transaction>
+		
+		<!-- 还贷明细查询 -->
+		<Transaction ClientID="ZHIPP_RepaymentDtlQry_Client" ServerID="" Description="还款明细查询" ConnectionID="esb" Type="CLIENT">
+			<property name="Operation" value="RepaymentDtlQry" />
+			<Property name="EndPoint" value="http://localhost:8080/web/services/WebService/S020030009"/>
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ESBParser"/>
+			<Property name="Responser" value="com.amarsoft.app.oci.comm.impl.server.RepaymentDtlQryResponser"/>
+   			<property name = "ServiceAction" value = "urn:/RepaymentDtlQry"/>
+   			<property name = "ServiceAdr" value = "http://esb.spdbbiz.com:7701/services/S020030009"/>
+  			<property name = "SourceSysId" value = "0201"/>
+  			<property name = "CharSet" value = "UTF-8"/>
+			<namespaces>
+   			<namespace name = "s" value = "http://esb.spdbbiz.com/services/S020030009"/>
+   			</namespaces>
+			<!-- 使用的message模板，需要按顺序设置 -->
+			<IMessages>
+				<message name="SysHeader" value="req_Header" />
+				<message name="SysBody" value="ZHIPP_RepaymentDtlQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="rsp_Header" />
+				<message name="SysBody" value="ZHIPP_O_RepaymentDtlQry" />
+			</OMessages>
+		</Transaction>
+		
+		
+    </Transactions>
+</Instance>
+		

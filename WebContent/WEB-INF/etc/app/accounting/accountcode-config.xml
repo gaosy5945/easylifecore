@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="GBK" standalone="no"?><AccountingCodeConfig>
+	<BookTypes>
+		<BookType ID="C" NAME="客户口径科目">
+			<property DESCRIPTION="核算维度" NAME="SLAttributes" VALUE="OBJECTTYPE,OBJECTNO,CURRENCY,ACCOUNTINGORGID,ACCOUNTCODENO,ITEM1,ITEM2,ITEM3,ITEM4"/>
+			<property DESCRIPTION="总账维度" NAME="GLAttributes" VALUE="ACCOUNTINGORGID,ITEM1,ITEM2,ITEM3,ITEM4"/>
+			<AccountCodes>
+				<!-- codeNo:科目号  name:科目名称  description 科目信息说明-->
+				<AccountCode DIRECTION="D" FILTER="" ID="Customer01" NAME="客户账-正常本金" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="" ID="Customer02" NAME="客户账-逾期本金" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="" ID="Customer11" NAME="客户账-应收利息（未到期部分）" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="" ID="Customer12" NAME="客户账-逾期利息" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="" ID="Customer13" NAME="客户账-罚息" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="" ID="Customer14" NAME="客户账-复息" STATUS="1"/>	
+				<AccountCode DIRECTION="D" FILTER="" ID="IRR01" NAME="IRR本金余额" STATUS="1"/>
+			</AccountCodes>
+		</BookType>
+		
+		<BookType ID="B" NAME="银行口径科目">
+			<property DESCRIPTION="核算维度" NAME="SLAttributes" VALUE="OBJECTTYPE,OBJECTNO,CURRENCY,ACCOUNTINGORGID,ACCOUNTCODENO,ITEM1,ITEM2,ITEM3,ITEM4"/>
+			<property DESCRIPTION="总账维度" NAME="GLAttributes" VALUE="ACCOUNTINGORGID,ITEM1,ITEM2,ITEM3,ITEM4"/>
+			<AccountCodes>
+				<!-- codeNo:科目号  name:科目名称  description 科目信息说明-->
+				<AccountCode DIRECTION="C" FILTER="AccountCodeNo in('LAS10202')" ID="1306" NAME="贷款损失准备" STATUS="1"/>
+				
+				
+				<AccountCode DIRECTION="D" ID="1132" NAME="应收利息" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS10301') " ID="113201" NAME="企业贷款-应收利息" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS10301') " ID="113202" NAME="个人贷款-应收利息" STATUS="1"/>
+				
+				
+				<AccountCode DIRECTION="D" ID="1305" NAME="贷款本金" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="130501" NAME="短期贷款" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS10101')  and month(PutOutDate,MaturityDate) &lt;= 12" ID="13050101" NAME="企业短期贷款" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS10101') and month(PutOutDate,MaturityDate) &lt;= 12" ID="13050102" NAME="个人短期贷款" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="130502" NAME="中长期贷款" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS10101')  and month(PutOutDate,MaturityDate) &gt; 12" ID="13050201" NAME="企业中长期贷款" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS10101') and month(PutOutDate,MaturityDate) &gt; 12" ID="13050202" NAME="个人中长期贷款" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="130503" NAME="逾期贷款" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS10102') " ID="13050301" NAME="企业逾期贷款" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS10102') and Item1 = '03'" ID="13050302" NAME="个人逾期贷款" STATUS="1"/>
+				
+				
+				<AccountCode DIRECTION="D" ID="403" NAME="往来款项" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="40301" NAME="与快钱往来款项" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS40101')" ID="4030102" NAME="与快钱系统间往来" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="40302" NAME="与商管往来款项" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS40102')" ID="4030202" NAME="与商管系统间往来" STATUS="1"/>
+				
+				
+				<AccountCode DIRECTION="C" ID="6011" NAME="利息收入" STATUS="1"/>
+				<AccountCode DIRECTION="C" ID="601101" NAME="利息收入" STATUS="1"/>
+				<AccountCode DIRECTION="C" ID="60110101" NAME="短期贷款利息收入" STATUS="1"/>
+				<AccountCode DIRECTION="C" FILTER="AccountCodeNo in('LAS50101') and month(PutOutDate,MaturityDate) &lt;= 12" ID="6011010101" NAME="企业短期贷款利息收入" STATUS="1"/>
+				<AccountCode DIRECTION="C" FILTER="AccountCodeNo in('LAS50101') and month(PutOutDate,MaturityDate) &lt;= 12" ID="6011010102" NAME="个人短期贷款利息收入" STATUS="1"/>
+				<AccountCode DIRECTION="C" ID="60110102" NAME="中长期贷款" STATUS="1"/>
+				<AccountCode DIRECTION="C" FILTER="AccountCodeNo in('LAS50101') and month(PutOutDate,MaturityDate) &gt; 12" ID="6011010201" NAME="企业中长期贷款利息收入" STATUS="1"/>
+				<AccountCode DIRECTION="C" FILTER="AccountCodeNo in('LAS50101') and month(PutOutDate,MaturityDate) &gt; 12" ID="6011010202" NAME="个人中长期贷款利息收入" STATUS="1"/>
+				<AccountCode DIRECTION="C" ID="601102" NAME="金融机构往来收入" STATUS="1"/>
+				<AccountCode DIRECTION="C" FILTER="AccountCodeNo in('LAS50201')" ID="6021" NAME="手续费及佣金收入" STATUS="1"/>
+				
+				
+				<AccountCode DIRECTION="D" ID="534" NAME="资产减值" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="53401" NAME="计提贷款损失准备" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS10202')" ID="5340101" NAME="计提贷款损失准备" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="608" NAME="已核销资产" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="60802" NAME="已核销贷款" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS70301')" ID="6080201" NAME="已核销贷款本金" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS70302')" ID="6080202" NAME="已核销贷款应收利息" STATUS="1"/>
+				
+				
+				<AccountCode DIRECTION="D" ID="621" NAME="表外应收未收利息" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="62101" NAME="表外贷款应收未收利息" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS70101')" ID="6210101" NAME="表外贷款欠息" STATUS="1"/>
+				<AccountCode DIRECTION="D" FILTER="AccountCodeNo in('LAS70102,LAS70103')" ID="6210102" NAME="表外贷款罚息复利" STATUS="1"/>
+				
+			</AccountCodes>
+		</BookType>
+		<BookType ID="N" NAME="内部核算科目">
+			<property DESCRIPTION="核算维度" NAME="SLAttributes" VALUE="OBJECTTYPE,OBJECTNO,CURRENCY,ACCOUNTINGORGID,ACCOUNTCODENO,ITEM1,ITEM2,ITEM3,ITEM4"/>
+			<property DESCRIPTION="总账维度" NAME="GLAttributes" VALUE="ACCOUNTINGORGID,ITEM1,ITEM2,ITEM3,ITEM4"/>
+			<AccountCodes>
+				<!-- codeNo:科目号  name:科目名称  description 科目信息说明-->
+				<AccountCode DIRECTION="D" ID="LAS10101" NAME="贷款正常本金" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS10102" NAME="贷款逾期本金" STATUS="1"/>
+				<AccountCode DIRECTION="C" ID="LAS10201" NAME="贷款减值准备-单项" STATUS="1"/>
+				<AccountCode DIRECTION="C" ID="LAS10202" NAME="贷款减值准备-组合" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS10301" NAME="贷款-应收未收利息" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS30201" NAME="贷款减值损失-单项" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS30202" NAME="贷款减值损失-组合" STATUS="1"/>
+				<AccountCode DIRECTION="B" ID="LAS40101" NAME="信贷与块钱系统间往来" STATUS="1"/>
+				<AccountCode DIRECTION="B" ID="LAS40102" NAME="信贷与商管系统间往来" STATUS="1"/>
+				<AccountCode DIRECTION="B" ID="LAS40103" NAME="信贷内部机构间往来" STATUS="1"/>
+				<AccountCode DIRECTION="C" ID="LAS50101" NAME="贷款利息收入" STATUS="1"/>
+				<AccountCode DIRECTION="C" ID="LAS50201" NAME="手续费收入" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS60101" NAME="表外业务登记" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS70101" NAME="表外登记贷款应收未收利息" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS70102" NAME="表外登记贷款应收未收罚息" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS70103" NAME="表外登记贷款应收未收复利" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS70301" NAME="已核销本金" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS70302" NAME="已核销利息" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS70401" NAME="已售出本金" STATUS="1"/>
+				<AccountCode DIRECTION="D" ID="LAS70402" NAME="已售出利息" STATUS="1"/>
+				
+			</AccountCodes>
+		</BookType>	
+	</BookTypes>
+	
+	<JournalGroups>
+		<JournalGroup DESC="贷款发放-信贷分录" ID="Drawdown01">
+			<!-- 系统内分录配置 -->
+			<Journal BOOKTYPE="C" DESC="贷款发放-客户帐正常本金" ID="0101">
+				<property NAME="DirectionScript" VALUE="'R'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('BusinessSum')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="transaction.getString('RelativeObjectNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer01'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="C" DESC="贷款发放-客户帐正常本金" ID="0101">
+				<property NAME="DirectionScript" VALUE="'R'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="transaction.getBusinessObject('jbo.acct.ACCT_LOAN').getDouble('BusinessSum')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="transaction.getString('RelativeObjectNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'IRR01'"/>
+				<property NAME="Currency" VALUE="transaction.getBusinessObject('jbo.acct.ACCT_LOAN').getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="transaction.getBusinessObject('jbo.acct.ACCT_LOAN').getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="贷款发放-贷款正常本金" ID="0201">
+				<property NAME="DirectionScript" VALUE="'D'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('BusinessSum')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS10101'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="贷款发放-存款系统间往来" ID="0202">
+				<property NAME="DirectionScript" VALUE="'C'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('BusinessSum')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS40101'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+		</JournalGroup>
+		
+		<JournalGroup DESC="一般还款" ID="Payment01">
+			<Journal BOOKTYPE="C" DESC="实还正常本金" ID="0101">
+				<property NAME="DirectionScript" VALUE="'P'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYPRINCIPALAMT_CURRENT')+documentObject.getDouble('PrePayPrincipalAmt')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer01'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="C" DESC="实还逾期本金" ID="0102">
+				<property NAME="DirectionScript" VALUE="'P'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYPRINCIPALAMT_OLD')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer02'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+ 
+ 			<Journal BOOKTYPE="C" DESC="实还正常利息(正常还款)" ID="0103">
+				<property NAME="DirectionScript" VALUE="'P'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYINTERESTAMT_CURRENT')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer11'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="C" DESC="实还正常利息(逾期还款)" ID="0104">
+				<property NAME="DirectionScript" VALUE="'P'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYINTERESTAMT_OLD')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer12'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+ 
+			<Journal BOOKTYPE="C" DESC="客户账-罚息" ID="0105">
+				<property NAME="DirectionScript" VALUE="'P'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ActualPayPrincipalPenaltyAmt')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer13'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="C" DESC="客户账-复息" ID="0106">
+				<property NAME="DirectionScript" VALUE="'P'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ActualPayInterestPenaltyAmt')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer14'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="实还总金额 往来" ID="0201">
+				<property NAME="DirectionScript" VALUE="'D'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYAMT')+documentObject.getDouble('SUSPENSEAMT')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS40101'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="实还正常本金" ID="0202">
+				<property NAME="DirectionScript" VALUE="'C'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYPRINCIPALAMT_CURRENT')+documentObject.getDouble('PrePayPrincipalAmt')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS10101'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="实还逾期本金" ID="0203">
+				<property NAME="DirectionScript" VALUE="'C'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYPRINCIPALAMT_OLD')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS10102'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="实还应收利息" ID="0204">
+				<property NAME="DirectionScript" VALUE="'C'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="relativeObject.getInt('OVERDUEDAYS')&lt;=90 "/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYINTERESTAMT_OLD')+documentObject.getDouble('PrePayInterestAmt')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS10301'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="还正常利息-贷款利息收入（逾期90天以上）非应计贷款" ID="0205">
+				<property NAME="DirectionScript" VALUE="'C'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="relativeObject.getString('OVERDUEDAYS')&gt;90 "/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYINTERESTAMT_OLD')+documentObject.getDouble('PrePayInterestAmt')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS50101'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="还表外应收未收（逾期90天以上）" ID="0206">
+				<property NAME="DirectionScript" VALUE="'P'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="relativeObject.getString('OVERDUEDAYS')&gt;90"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYINTERESTAMT_OLD')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS70101'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			  
+			<Journal BOOKTYPE="N" DESC="实还罚息复息，计贷款利息收入" ID="0207">
+				<property NAME="DirectionScript" VALUE="'C'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYPRINCIPALPENALTYAMT')+documentObject.getDouble('ACTUALPAYINTERESTPENALTYAMT')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS50101'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="罚息" ID="0208">
+				<property NAME="DirectionScript" VALUE="'P'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYPRINCIPALPENALTYAMT')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS70102'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="复息" ID="0209">
+				<property NAME="DirectionScript" VALUE="'P'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('ACTUALPAYINTERESTPENALTYAMT')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS70103'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			
+			<Journal BOOKTYPE="N" DESC="提前还款违约金" ID="0210">
+				<property NAME="DirectionScript" VALUE="'C'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="documentObject.getDouble('SUSPENSEAMT')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS50201'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+		</JournalGroup>
+		 
+		<JournalGroup DESC="贷款核销-信贷分录" ID="Hexiao01">
+			<!-- 根据客户提供分录需求，自行配置 -->
+		</JournalGroup>
+		
+		<JournalGroup DESC="贷款售出-信贷分录" ID="sc01">
+			<!-- 根据客户提供分录需求，自行配置 -->
+		</JournalGroup>
+		
+		<JournalGroup DESC="贷款本息调整-信贷分录" ID="bxtz01">
+			<!-- 根据客户提供分录需求，自行配置 -->
+		</JournalGroup>
+		
+		<JournalGroup DESC="贷款科目调整-信贷分录" ID="kmtz01">
+			<!-- 根据客户提供分录需求，自行配置 -->
+		</JournalGroup>
+		
+		<JournalGroup DESC="贷款机构调整-信贷分录" ID="jgtz01">
+			<!-- 根据客户提供分录需求，自行配置 -->
+		</JournalGroup>
+		 
+		 
+		<JournalGroup DESC="贷款换日处理" ID="EOD_BOD01">
+			<Journal BOOKTYPE="C" DESC="客户实际正常本金" ID="0101">
+				<property NAME="DirectionScript" VALUE="'P'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassduePrincipalAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer01'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="C" DESC="客户实际逾期本金" ID="0102">
+				<property NAME="DirectionScript" VALUE="'R'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassduePrincipalAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer02'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			
+			<Journal BOOKTYPE="N" DESC="逾期本金" ID="0103">
+				<property NAME="DirectionScript" VALUE="'D'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassduePrincipalAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS10102'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="正常本金" ID="0104">
+				<property NAME="DirectionScript" VALUE="'C'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassduePrincipalAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS10101'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			
+			<Journal BOOKTYPE="C" DESC="客户实际逾期利息" ID="0105">
+				<property NAME="DirectionScript" VALUE="'R'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassdueInterestAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer12'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			
+			<Journal BOOKTYPE="N" DESC="冲减应收利息（逾期超过90天）" ID="0106">
+				<property NAME="DirectionScript" VALUE="'D'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="relativeObject.getInt('OVERDUEDAYS')&gt;90 "/>
+				<property NAME="AmtScript" VALUE="SystemDBConfig.getSubledgerBalance(transaction,'LAS10301')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS10301'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="R"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="冲减利息收入（逾期超过90天）" ID="0107">
+				<property NAME="DirectionScript" VALUE="'C'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="relativeObject.getInt('OVERDUEDAYS')&gt;90 "/>
+				<property NAME="AmtScript" VALUE="SystemDBConfig.getSubledgerBalance(transaction,'LAS10301')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS50101'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="R"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+	
+			<Journal BOOKTYPE="N" DESC="表外应收利息(逾期超过90天)" ID="0108">
+				<property NAME="DirectionScript" VALUE="'R'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="relativeObject.getInt('OVERDUEDAYS')&gt;90 "/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassdueInterestAmt_1') + SystemDBConfig.getSubledgerBalance(transaction,'Customer12') - SystemDBConfig.getSubledgerBalance(transaction,'LAS70101')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS70101'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			
+			<Journal BOOKTYPE="C" DESC="客户实际罚息" ID="0109">
+				<property NAME="DirectionScript" VALUE="'R'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassduePrincipalPenaltyAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer13'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			
+			<Journal BOOKTYPE="N" DESC="客户实际罚息" ID="0110">
+				<property NAME="DirectionScript" VALUE="'R'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassduePrincipalPenaltyAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS70102'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			
+			<Journal BOOKTYPE="C" DESC="客户实际复息" ID="0111">
+				<property NAME="DirectionScript" VALUE="'R'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassdueInterestPenaltyAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer14'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			
+			<Journal BOOKTYPE="N" DESC="客户实际复息" ID="0112">
+				<property NAME="DirectionScript" VALUE="'R'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassdueInterestPenaltyAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS70103'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+		</JournalGroup>
+		
+		<JournalGroup DESC="贷款换日处理" ID="EOD_BOD02">
+			<Journal BOOKTYPE="C" DESC="客户计提利息" ID="0201">
+				<property NAME="DirectionScript" VALUE="'R'"/>
+				<property NAME="ExtendedBookType" VALUE=""/>
+				<property NAME="ConditionScript" VALUE="true"/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('CurrentInterestAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'Customer11'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			
+			<Journal BOOKTYPE="N" DESC="应收利息" ID="0202">
+				<property NAME="DirectionScript" VALUE="'D'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="relativeObject.getInt('OVERDUEDAYS')&lt;=90 "/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassdueInterestAmt_1')+relativeObject.getDouble('CurrentInterestAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS10301'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+			<Journal BOOKTYPE="N" DESC="利息收入" ID="0203">
+				<property NAME="DirectionScript" VALUE="'C'"/>
+				<property NAME="ExtendedBookType" VALUE="B"/>
+				<property NAME="ConditionScript" VALUE="relativeObject.getInt('OVERDUEDAYS')&lt;=90 "/>
+				<property NAME="AmtScript" VALUE="relativeObject.getDouble('DifferencePassdueInterestAmt_1')+relativeObject.getDouble('CurrentInterestAmt_1')"/>
+				<property NAME="ObjectType" VALUE="'jbo.acct.ACCT_LOAN'"/>
+				<property NAME="ObjectNo" VALUE="relativeObject.getString('SerialNo')"/>
+				<property NAME="AccountCodeNo" VALUE="'LAS50101'"/>
+				<property NAME="Currency" VALUE="relativeObject.getString('Currency')"/>
+				<property NAME="AccountingOrgID" VALUE="relativeObject.getString('AccountingOrgID')"/>
+				<property NAME="JournalFlag" VALUE="B"/>
+				<property NAME="Item1" VALUE="''"/>
+				<property NAME="Item2" VALUE="''"/>
+				<property NAME="Item3" VALUE="''"/>
+				<property NAME="Item4" VALUE="''"/>
+			</Journal>
+		</JournalGroup>	 
+ 	</JournalGroups>
+</AccountingCodeConfig>

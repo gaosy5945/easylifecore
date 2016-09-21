@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<!--Amarsoft Runtime Environmen Config File-->
+<CRParseConfig>
+	<!--系统属性可以做为多种用途的扩展之用,可以放置任意多的属性在此-->
+	<SystemProperties>
+	
+		<Property name="iCR_dataSource" value="iparse" />
+		<Property name="eCR_dataSource" value="eparse" />
+		<Property name="vCR_dataSource" value="vparse" />
+		
+		<Property name="iFilterParseConfig" value="{$ARE.APP_HOME}/etc/ifilter.xml" />
+		<Property name="eFilterParseConfig" value="{$ARE.APP_HOME}/etc/efilter.xml" />
+		<Property name="LogoPicConfig" value="{$ARE.APP_HOME}/etc/logo.png" />
+		
+	</SystemProperties>
+	
+	<ThreadPoolConfig>
+		<!-- 核心线程数量 -->
+		<Property name="corePoolSize" value="10" />
+		<!-- 最大线程数量 -->
+		<Property name="maxPoolSize" value="20" />
+		<!-- 线程的成活时间  单位 秒 -->
+		<Property name="keepAliveTime" value="20" />
+		<!-- 等待队列的类型  Array 数组 Linked 链式 -->
+		<Property name="workQueueType" value="Linked" />
+		<!-- 等待队列的长度 -->
+		<Property name="workQueueSize" value="20" />
+	</ThreadPoolConfig>
+	
+	<IDBOperationConfig>
+		<!-- 批量提交数量 -->
+		<Property name="exeNum" value="2000" />
+	</IDBOperationConfig>
+	
+	<EDBOperationConfig>
+		<!-- 批量提交数量 -->
+		<Property name="exeNum" value="2000" />
+	</EDBOperationConfig>
+	
+	<IParseHTMLProperties>
+		<!-- HTML输出表格大小 -->
+		<Property name="width" value="100%" />
+		<!-- 字段输出模式 1-代码字段未转换 2-代码字段转换 -->
+		<Property name="prType" value="2" />
+		<!-- 输出模式 1-输出完整报文结构 2-只输出非空字段的报文 3-浦发个人打印 -->
+		<Property name="prMode" value="3" />
+	</IParseHTMLProperties>
+
+	<EParseHTMLProperties>
+		<!-- HTML输出表格大小 -->
+		<Property name="width" value="100%" />
+		<!-- 字段输出模式 1-代码字段未转换 2-代码字段转换 -->
+		<Property name="prType" value="2" />
+		<!-- 输出模式 1-输出完整报文结构 2-只输出非空字段的报文 3-只过滤正文，财务报表，附件三个部分，其他小节点按模式1输出 4-只控制财务报表 -->
+		<Property name="prMode" value="4" />
+		<!-- 是否显示图片 1-不显示图片 2-显示图片 -->
+		<Property name="enPic" value="1" />
+	</EParseHTMLProperties>
+	
+	<!-- 个人数据源获取sql -->
+	<IResultSetSQLProperties>
+		<Property name="ICRP_MessageHeader" 	value="select QueryTime,ReportCreateTime from ICRP_MessageHeader"/>
+		<Property name="ICRP_QueryReq" 			value="select ProductType,Format,FormatVersion,Name,Certtype,Certno,QueryReason,QueryOrg,UserCode,QueryResultCue from ICRP_QueryReq"/>
+		<Property name="ICRP_Identity" 			value="select Gender,Birthday,MaritalState,Mobile,OfficeTelephoneNo,HomeTelephoneNo,EduLevel,EduDegree,PostAddress,RegisteredAddress from ICRP_Identity"/>
+		<Property name="ICRP_Spouse" 			value="select Name,Certtype,Certno,Employer,TelephoneNo from ICRP_Spouse"/>
+		<Property name="ICRP_Residence" 		value="select Address,ResidenceType,GetTime from ICRP_Residence"/>
+		<Property name="ICRP_Professional" 		value="select Employer,EmployerAddress,Occupation,Industry,Duty,Title,StartYear,GetTime from ICRP_Professional"/>
+		<Property name="ICRP_CreditSC" 			value="select PerHouseLoanCount,PerBusinessHouseLoanCount,OtherLoanCount,FirstLoanOpenMonth,LoancardCount,FirstLoancardOpenMonth,StandardLoancardCount,FirstStandardLoancardOpenMonth,AnnounceCount,DissentCount from ICRP_CreditSC"/>
+		<Property name="ICRP_CreditScore" 		value="select Score,ScoreLevel from ICRP_CreditScore"/>
+		<Property name="ICRP_ScoreElements" 	value="select ScoreEle from ICRP_ScoreElements"/>
+		<Property name="ICRP_FellbackDS" 		value="select Count,Balance from ICRP_FellbackDS"/>
+		<Property name="ICRP_AssetDS" 			value="select Count,Balance from ICRP_AssetDS"/>
+		<Property name="ICRP_AssureerRS" 		value="select Count,Balance from ICRP_AssureerRS"/>
+		<Property name="ICRP_LoanSum" 			value="select Count,Months,HighestOverdueAmountPerMon,MaxDuration from ICRP_LoanSum"/>
+		<Property name="ICRP_LoancardSum" 		value="select Count,Months,HighestOverdueAmountPerMon,MaxDuration from ICRP_LoancardSum"/>
+		<Property name="ICRP_SLCS" 				value="select Count,Months,HighestOverdueAmountPerMon,MaxDuration from ICRP_SLCS"/>
+		<Property name="ICRP_UnpaidLoan" 		value="select FinanceCorpCount,FinanceOrgCount,AccountCount,CreditLimit,MaxCreditLimitPerOrg,MinCreditLimitPerOrg,Balance,UsedCreditLimit,Latest6MonthUsedAvgAmount from ICRP_UnpaidLoan"/>
+		<Property name="ICRP_UDLC" 				value="select FinanceCorpCount,FinanceOrgCount,AccountCount,CreditLimit,MaxCreditLimitPerOrg,MinCreditLimitPerOrg,Balance,UsedCreditLimit,Latest6MonthUsedAvgAmount from ICRP_UDLC"/>
+		<Property name="ICRP_UDSLC" 			value="select FinanceCorpCount,FinanceOrgCount,AccountCount,CreditLimit,MaxCreditLimitPerOrg,MinCreditLimitPerOrg,Balance,UsedCreditLimit,Latest6MonthUsedAvgAmount from ICRP_UDSLC"/>
+		<Property name="ICRP_GTS" 				value="select Count,Amount,Balance from ICRP_GTS"/>
+		<Property name="ICRP_ADPT" 				value="select Organname,ReceiveTime,Money,LatestRepayDate,Balance from ICRP_ADPT"/>
+		<Property name="ICRP_AssurerRepay" 		value="select Organname,LatestAssurerRepayDate,Money,LatestRepayDate,Balance from ICRP_AssurerRepay"/>
+		<Property name="ICRP_Loan" 				value="select Cue,State from ICRP_Loan"/>
+		<Property name="ICRP_loan_CI" 			value="select FinanceOrg,FinanceType,Account,Type,Currency,OpenDate,EndDate,CreditLimitAmount,GuaranteeType,PaymentRating,PaymentCyc from ICRP_loan_CI"/>
+		<Property name="ICRP_loan_CAI" 			value="select StateEndDate,StateEndMonth,Class5State,Balance,RemainPaymentCyc,ScheduledPaymentAmount,ScheduledPaymentDate,ActualPaymentAmount,RecentPayDate from ICRP_loan_CAI"/>
+		<Property name="ICRP_loan_COD" 			value="select CurrOverdueCyc,CurrOverdueAmount,Overdue31To60Amount,Overdue61To90Amount,Overdue91To180Amount,OverdueOver180Amount from ICRP_loan_COD"/>
+		<Property name="ICRP_loan_L24MPS" 		value="select BeginMonth,EndMonth,Latest24State,State from ICRP_loan_L24MPS"/>
+		<Property name="ICRP_loan_L5YOR" 		value="select BeginMonth,EndMonth from ICRP_loan_L5YOR"/>
+		<Property name="ICRP_loan_ODR" 			value="select Month,LastMonths,Amount from ICRP_loan_ODR"/>
+		<Property name="ICRP_loan_SCT" 			value="select Type,GetTime,ChangingMonths,ChangingAmount,Content from ICRP_loan_SCT"/>
+		<Property name="ICRP_loan_BIU" 			value="select Content,GetTime from ICRP_loan_BIU"/>
+		<Property name="ICRP_loan_DSI" 			value="select Content,GetTime from ICRP_loan_DSI"/>
+		<Property name="ICRP_loan_ACI" 			value="select Content,GetTime from ICRP_loan_ACI"/>
+		<Property name="ICRP_loancard" 			value="select Cue,State from ICRP_loancard"/>
+		<Property name="ICRP_lcard_ACI" 		value="select FinanceOrg,FinanceType,Account,Currency,OpenDate,CreditLimitAmount,GuaranteeType from ICRP_lcard_ACI"/>
+		<Property name="ICRP_lcard_RAI" 		value="select StateEndDate,StateEndMonth,ShareCreditLimitAmount,UsedCreditLimitAmount,Latest6MonthUsedAvgAmount,UsedHighestAmount,ScheduledPaymentDate,ScheduledPaymentAmount,ActualPaymentAmount,RecentPayDate from ICRP_lcard_RAI"/>
+		<Property name="ICRP_lcard_COD" 		value="select CurrOverdueCyc,CurrOverdueAmount,Overdue31To60Amount,Overdue61To90Amount,Overdue91To180Amount,OverdueOver180Amount from ICRP_lcard_COD"/>
+		<Property name="ICRP_lcard_L24MPS" 		value="select BeginMonth,EndMonth,State,Latest24State from ICRP_lcard_L24MPS"/>
+		<Property name="ICRP_lcard_L5YOR" 		value="select BeginMonth,EndMonth from ICRP_lcard_L5YOR"/>
+		<Property name="ICRP_lcard_ODR" 		value="select Month,LastMonths,Amount from ICRP_lcard_ODR"/>
+		<Property name="ICRP_lcard_SLT" 		value="select Type,GetTime,ChangingMonths,ChangingAmount,Content from ICRP_lcard_SLT"/>
+		<Property name="ICRP_lcard_BIU" 		value="select Content,GetTime from ICRP_lcard_BIU"/>
+		<Property name="ICRP_lcard_DSI" 		value="select Content,GetTime from ICRP_lcard_DSI"/>
+		<Property name="ICRP_lcard_AUI" 		value="select Content,GetTime from ICRP_lcard_AUI"/>
+		<Property name="ICRP_slcard" 			value="select Cue,State from ICRP_slcard"/>
+		<Property name="ICRP_slcard_ACI" 		value="select FinanceOrg,FinanceType,Account,Currency,OpenDate,CreditLimitAmount,GuaranteeType from ICRP_slcard_ACI"/>
+		<Property name="ICRP_slcard_RAI" 		value="select StateEndDate,StateEndMonth,ShareCreditLimitAmount,UsedCreditLimitAmount,Latest6MonthUsedAvgAmount,UsedHighestAmount,ScheduledPaymentDate,ScheduledPaymentAmount,ActualPaymentAmount,RecentPayDate from ICRP_slcard_RAI"/>
+		<Property name="ICRP_slcard_COD" 		value="select CurrOverdueCyc,CurrOverdueAmount,Overdue31To60Amount,Overdue61To90Amount,Overdue91To180Amount,OverdueOver180Amount from ICRP_slcard_COD"/>
+		<Property name="ICRP_slcard_L24MPS" 	value="select BeginMonth,EndMonth,State,Latest24State from ICRP_slcard_L24MPS"/>
+		<Property name="ICRP_slcard_L5YOR" 		value="select BeginMonth,EndMonth from ICRP_slcard_L5YOR"/>
+		<Property name="ICRP_slcard_ODR" 		value="select Month,LastMonths,Amount from ICRP_slcard_ODR"/>
+		<Property name="ICRP_slcard_SLT" 		value="select Type,GetTime,ChangingMonths,ChangingAmount,Content from ICRP_slcard_SLT"/>
+		<Property name="ICRP_slcard_BIU" 		value="select Content,GetTime from ICRP_slcard_BIU"/>
+		<Property name="ICRP_slcard_DSI" 		value="select Content,GetTime from ICRP_slcard_DSI"/>
+		<Property name="ICRP_slcard_AUI" 		value="select Content,GetTime from ICRP_slcard_AUI"/>
+		<Property name="ICRP_GuaranteeInfo" 	value="select GuaranteeFormat from ICRP_GuaranteeInfo"/>
+		<Property name="ICRP_Guarantee" 		value="select Organname,ContractMoney,BeginDate,EndDate,GuananteeMoney,GuaranteeBalance,Class5State,BillingDate from ICRP_Guarantee"/>
+		<Property name="ICRP_TaxArrear" 		value="select Organname,TaxArreaAmount,Revenuedate from ICRP_TaxArrear"/>
+		<Property name="ICRP_CJE" 				value="select Court,CaseReason,RegisterDate,ClosedType,CaseResult,CaseValidatedate,SuitObject,SuitObjectMoney from ICRP_CJE"/>
+		<Property name="ICRP_FET" 				value="select Court,CaseReason,RegisterDate,ClosedType,CaseState,ClosedDate,EnforceObject,EnforceObjectMoney,AlreadyEnforceObject,AlreadyEnforceObjectMoney from ICRP_FET"/>
+		<Property name="ICRP_APS" 				value="select Organname,Content,Money,BeginDate,EndDate,Result from ICRP_APS"/>
+		<Property name="ICRP_AccFund" 			value="select Area,RegisterDate,FirstMonth,ToMonth,State,Pay,OwnPercent,ComPercent,Organname,GetTime from ICRP_AccFund"/>
+		<Property name="ICRP_EndowmentIDS" 		value="select Area,RegisterDate,MonthDuration,WorkDate,State,OwnBasicMoney,Money,Organname,PauseReason,GetTime from ICRP_EndowmentIDS"/>
+		<Property name="ICRP_EndowmentIDI" 		value="select Area,RetireType,RetiredDate,WorkDate,Money,PauseReason,Organname,GetTime from ICRP_EndowmentIDI"/>
+		<Property name="ICRP_Salvation" 		value="select PersonnelType,Area,Organname,Money,RegisterDate,PassDate,GetTime from ICRP_Salvation"/>
+		<Property name="ICRP_Competence" 		value="select CompetencyName,Grade,AwardDate,EndDate,RevokeDate,Organname,Area from ICRP_Competence"/>
+		<Property name="ICRP_AdminAward" 		value="select Organname,Content,BeginDate,EndDate from ICRP_AdminAward"/>
+		<Property name="ICRP_Vehicle" 			value="select EngineCode,LicenseCode,Brand,CarType,UseCharacter,State,PledgeFlag,GetTime from ICRP_Vehicle"/>
+		<Property name="ICRP_TelPayment" 		value="select Organname,Type,RegisterDate,State,ArrearMoney,ArrearMonths,Status24,GetTime from ICRP_TelPayment"/>
+		<Property name="ICRP_AnnounceInfo" 		value="select Content,GetTime from ICRP_AnnounceInfo"/>
+		<Property name="ICRP_DissentInfo" 		value="select Content,GetTime from ICRP_DissentInfo"/>
+		<Property name="ICRP_SumDetail_LMO" 	value="select QueryReason,Sum from ICRP_SumDetail_LMO"/>
+		<Property name="ICRP_SumDetail_LMR" 	value="select QueryReason,Sum from ICRP_SumDetail_LMR"/>
+		<Property name="ICRP_SumDetail_TYR" 	value="select QueryReason,Sum from ICRP_SumDetail_TYR"/>
+		<Property name="ICRP_RecordInfo" 		value="select QueryReqFormat from ICRP_RecordInfo"/>
+		<Property name="ICRP_RecordDetail" 		value="select QueryDate,Querier,QueryReason from ICRP_RecordDetail"/>
+	</IResultSetSQLProperties>
+	
+	<!-- 企业数据源获取sql -->
+	<EResultSetSQLProperties>
+		<Property name="ECRP_ReportHeader" 			value="select ReportType,ReportNo,ReportDate,CreditCode,CompanyProperty,QuerOrgcode,UserCode,LoanCardCode,QueryReason from ECRP_ReportHeader"/>
+		<Property name="ECRP_Identity" 				value="select Borrname,Regiaddr,Regino,Regidate,Gsregino,Loancardstatus,Contborrcode,Licensematdate,Dsregino,Lastdate from ECRP_Identity"/>
+		<Property name="ECRP_Contributive" 			value="select Registerdesc from ECRP_Contributive"/>
+		<Property name="ECRP_ContributiveInfo" 		value="select Contname,Certtype,Certno,Currency,Contmoney,FundedRatio from ECRP_ContributiveInfo"/>
+		<Property name="ECRP_SeniorExecutive" 		value="select Manatypecode,Mananame,Certtype,Certno,Gender,Birthday from ECRP_SeniorExecutive"/>
+		<Property name="ECRP_RelationInfo" 			value="select Name,LoanCardCode,RelationShip from ECRP_RelationInfo"/>
+		<Property name="ECRP_InfoSummary" 			value="select SummaryDesc from ECRP_InfoSummary"/>
+		<Property name="ECRP_SummaryUnsettled01" 	value="select Debtsdamf_Number,Debtsdamf_Balance,LastDisposaledDate,OweBalancesum_Number,OweBalancesum_Balance,PaidbackBalancesum_Number,PaidbackBalancesum_Balance from ECRP_SummaryUnsettled01"/>
+		<Property name="ECRP_SummaryUS02Info" 		value="select Type,Normalsum_Number,Normalsum_Balance,Concernedsum_Number,Concernedsum_Balance,Badsum_Number,Badsum_Balance,Sumtotal_Number,Sumtotal_Balance from ECRP_SummaryUS02Info"/>
+		<Property name="ECRP_SummaryUnsettled03" 	value="select GuaranteeNum,GuaranteeBalance,GuaranteePayOffDate,InsuranceNum,InsuranceBalance,InsurancePayOffDate from ECRP_SummaryUnsettled03"/>
+		<Property name="ECRP_SummarySettled01" 		value="select Debtsdamf_Number,Debtsdamf_Balance,LastDisposaledDate,StrippedLiabilitie_Number,StrippedLiabilitie_Balance,UPON1,PaidbackBalancesum_Number,PaidbackBalancesum_Balance,PaidbackBalancesum_Paiddate from ECRP_SummarySettled01"/>
+		<Property name="ECRP_SummarySettled02" 		value="select LoanBadsumNumber,LoanNormalsumAmount,FinanBadsumNumber,FinanNormalsumAmount,BillbadsumNumber,BillnormalsumAmount,AssureeBadsumNumber,AssureeNormalsumAmount,PostalBadsumNumber,PostalNormalsumAmount,LetterBadsumNumber,LetterNormalsumAmount,GuaranteBadsumNumber,GuaranteNormalsumAmount from ECRP_SummarySettled02"/>
+		<Property name="ECRP_SummarySettled03" 		value="select GuaranteeNum,GuaranteeMoney,GuaranteeCompensationDate,InsuranceNum,InsuranceMoney,InsuranceCompensationDate from ECRP_SummarySettled03"/>
+		<Property name="ECRP_DebtHistoryInfo" 		value="select Toalliabilitiessum,Toalbadliabilitiessum,Liabilitiesdate from ECRP_DebtHistoryInfo"/>
+		<Property name="ECRP_SGuaranteeInfo" 		value="select Guaranteetype,Amount,Guaranteeamount,GuaranteedBalance_Normal,GuaranteedBalance_Concerned,GuaranteedBalance_Bad from ECRP_SGuaranteeInfo"/>
+		<Property name="ECRP_Unpaid_AD" 			value="select Assetmanagercode,Currency,Inceptsum,Inceptdate,Balance,LastDisposaledDate,DeclarationOfSubmissionAgency from ECRP_Unpaid_AD"/>
+		<Property name="ECRP_Unpaid_GC" 			value="select CompensationOrganization,LastCompensationDate,CompensationSum,CompensationOverage,LastPayOffDate from ECRP_Unpaid_GC"/>
+		<Property name="ECRP_Unpaid_DI" 			value="select Financecode,Currency,Owebalancetormb,Owebalancechangedate,Owekindcode,DeclarationOfSubmissionAgency from ECRP_Unpaid_DI"/>
+		<Property name="ECRP_Unpaid_Paidback" 		value="select Financecode,ContractCode,Currency,Paidbacksum,Pbbalancetormb,Paidbackdate,Fiveclasscode,Originaloperation,DeclarationOfSubmissionAgency from ECRP_Unpaid_Paidback"/>
+		<Property name="ECRP_Unpaid_Bad_LI" 		value="select Financecode,ContractCode,Loankindcode,Currency,Duebillsum,Duebillbalance,Duebilltakeoutdate,Duebillterminatedate,Fiveclasscode,Loanformcode,Guarantee,Extension,DeclarationOfSubmissionAgency from ECRP_Unpaid_Bad_LI"/>
+		<Property name="ECRP_Unpaid_Bad_TF" 		value="select Financecode,ContractCode,Financekindcode,Currency,Financesum,Financingbalance,Duebilltakeoutdate,Duebillterminatedate,Fiveclasscode,Guarantee,Extension,DeclarationOfSubmissionAgency from ECRP_Unpaid_Bad_TF"/>
+		<Property name="ECRP_Unpaid_Bad_Fa" 		value="select Financecode,ContractCode,Assureproductcode,Currency,Extendsum,Extendbalance,Extenddate,Fiveclasscode,Guarantee,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_Unpaid_Bad_Fa"/>
+		<Property name="ECRP_Unpaid_Bad_BD" 		value="select Financecode,ContractCode,Currency,Discountsum,Discountdate,Duebillterminatedate,Fiveclasscode,DeclarationOfSubmissionAgency from ECRP_Unpaid_Bad_BD"/>
+		<Property name="ECRP_Unpaid_Bad_BA" 		value="select Financecode,ContractCode,Currency,Posum,Postartdate,Postopdate,Bailscale,Fiveclasscode,Guarantee,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_Unpaid_Bad_BA"/>
+		<Property name="ECRP_Unpaid_Bad_LC" 		value="select Financecode,ContractCode,Currency,Lettersum,Letterdate,Letterinvaliddate,AvailableBalance,Bailscale,Fiveclasscode,Guarantee,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_Unpaid_Bad_LC"/>
+		<Property name="ECRP_Unpaid_Bad_LG" 		value="select Financecode,ContractCode,Guaranteeletterkindcode,Currency,Lettersum,Letterbalance,Startdate,Terminatedate,Fiveclasscode,Bailscale,Guarantee,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_Unpaid_Bad_LG"/>
+		<Property name="ECRP_Unpaid_Normal_LI" 		value="select Financecode,ContractCode,Loankindcode,Currency,Duebillsum,Duebillbalance,Duebilltakeoutdate,Duebillterminatedate,Loanformcode,Guarantee,Extension,DeclarationOfSubmissionAgency from ECRP_Unpaid_Normal_LI"/>
+		<Property name="ECRP_Unpaid_Normal_TF" 		value="select Financecode,ContractCode,Financekindcode,Currency,Financesum,Financingbalance,Duebilltakeoutdate,Duebillterminatedate,Guarantee,Extension,DeclarationOfSubmissionAgency from ECRP_Unpaid_Normal_TF"/>
+		<Property name="ECRP_Unpaid_Normal_Fa" 		value="select Financecode,ContractCode,Assureproductcode,Currency,Extendsum,Extendbalance,Extenddate,Guarantee,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_Unpaid_Normal_Fa"/>
+		<Property name="ECRP_Unpaid_Normal_BD" 		value="select Financecode,ContractCode,Currency,Discountsum,Discountdate,Duebillterminatedate,DeclarationOfSubmissionAgency from ECRP_Unpaid_Normal_BD"/>
+		<Property name="ECRP_Unpaid_Normal_BA" 		value="select Financecode,ContractCode,Currency,Posum,Postartdate,Postopdate,Bailscale,Guarantee,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_Unpaid_Normal_BA"/>
+		<Property name="ECRP_Unpaid_Normal_LC" 		value="select Financecode,ContractCode,Currency,Lettersum,Letterdate,Letterinvaliddate,AvailableBalance,Bailscale,Guarantee,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_Unpaid_Normal_LC"/>
+		<Property name="ECRP_Unpaid_Normal_LG" 		value="select Financecode,ContractCode,Lettersum,Guaranteeletterkindcode,Currency,Startdate,Terminatedate,Letterbalance,Bailscale,Guarantee,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_Unpaid_Normal_LG"/>
+		<Property name="ECRP_Paid_AD" 				value="select Assetmanagercode,Currency,Inceptsum,Inceptdate,Terminatedate,DeclarationOfSubmissionAgency from ECRP_Paid_AD"/>
+		<Property name="ECRP_Paid_GC" 				value="select CompensationOrganization,LastCompensationDate,CompensationSum,CompensationSettleDate from ECRP_Paid_GC"/>
+		<Property name="ECRP_Paid_Paidback" 		value="select Financecode,ContractCode,Currency,Paidbacksum,Paidbackdate,Fiveclasscode,Originaloperation,Settlementdate,DeclarationOfSubmissionAgency from ECRP_Paid_Paidback"/>
+		<Property name="ECRP_Paid_Bad_LI" 			value="select Financecode,ContractCode,Loankindcode,Currency,Duebillsum,Duebilltakeoutdate,Duebillterminatedate,Settlementdate,RepayType,Fiveclasscode,DeclarationOfSubmissionAgency from ECRP_Paid_Bad_LI"/>
+		<Property name="ECRP_Paid_Bad_TF" 			value="select Financecode,ContractCode,Financekindcode,Currency,Financesum,Duebilltakeoutdate,Duebillterminatedate,Settlementdate,Fiveclasscode,Repaymentmethod,DeclarationOfSubmissionAgency from ECRP_Paid_Bad_TF"/>
+		<Property name="ECRP_Paid_Bad_Fa" 			value="select Financecode,ContractCode,Assureproductcode,Currency,Extendsum,Extenddate,Settlementdate,Paidbackflag,Fiveclasscode,DeclarationOfSubmissionAgency from ECRP_Paid_Bad_Fa"/>
+		<Property name="ECRP_Paid_Bad_BD" 			value="select Financecode,ContractCode,Currency,Discountsum,Discountdate,Duebillterminatedate,Settlementdate,Fiveclasscode,DeclarationOfSubmissionAgency from ECRP_Paid_Bad_BD"/>
+		<Property name="ECRP_Paid_Bad_BA" 			value="select Financecode,ContractCode,Currency,Posum,Postartdate,Postopdate,Settlementdate,Fiveclasscode,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_Paid_Bad_BA"/>
+		<Property name="ECRP_Paid_Bad_LC" 			value="select Financecode,ContractCode,Currency,Lettersum,Letterdate,Letterinvaliddate,Cancellationdate,Fiveclasscode,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_Paid_Bad_LC"/>
+		<Property name="ECRP_Paid_Bad_LG" 			value="select Financecode,ContractCode,Lettersum,Guaranteeletterkindcode,Currency,Startdate,Terminatedate,Settlementdate,Fiveclasscode,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_Paid_Bad_LG"/>
+		<Property name="ECRP_GuaranteeInfo" 		value="select Guaranteetype,ContractCode,Guarantor,Certtype,Certno,Currency,Guaranteeamount,Guaranteekindcode,DeclarationOfSubmissionAgency from ECRP_GuaranteeInfo"/>
+		<Property name="ECRP_BusinessInfo" 			value="select Businesstype,Currency,EndDate,Balance,FiveClassCode from ECRP_BusinessInfo"/>
+		<Property name="ECRP_TaxInfo" 				value="select Taxbureau,Owedtaxamount,Owedtaxdate from ECRP_TaxInfo"/>
+		<Property name="ECRP_CivilJudgement" 		value="select Registeredcourt,Caseregistrationdate,Registercause,Lawsuittype,Lawsuitnumber,Caseprocess,Lawsuitobject,Lawsuitobjectamount,Closedtype,Validatedate,Caseresult from ECRP_CivilJudgement"/>
+		<Property name="ECRP_ForceExecution" 		value="select Excutivecourtname,Caseregistrationdate,Enforcecase,Casenumber,Lawsuitobject,Lawsuitobjectamount,Casestatus,Enforcetype,Executedobject,Executedobjectamount from ECRP_ForceExecution"/>
+		<Property name="ECRP_AdminPunishment" 		value="select Punishmentauthority,Punishmentdocumentnumber,Illegalaction,Punishmentdate,Punishdecide,Punishmentamount,Punishmentimplementation,Result from ECRP_AdminPunishment"/>
+		<Property name="ECRP_InsuranceDeposit" 		value="select Insurancetype,Dateopened,StatisticalDate,Basicmoney,Accountstatus,Accumulatedoverdueamount from ECRP_InsuranceDeposit"/>
+		<Property name="ECRP_AccFund" 				value="select StatisticalDate,PayDateFirst,Employeenumber,Basicmoney,DateRecent,PayDateEnd,Accountstatus,Accumulatedoverdueamount from ECRP_AccFund"/>
+		<Property name="ECRP_PermitInfo" 			value="select Permisstionauthorityname,Permisstiontype,Approbate_date,Validitydate,Approbate_content from ECRP_PermitInfo"/>
+		<Property name="ECRP_ApproveInfo" 			value="select Orgname,Types,Cognizance_date,Validitydate,Content from ECRP_ApproveInfo"/>
+		<Property name="ECRP_Qualifications" 		value="select Orgname,Types,Cognizance_date,Validitydate,Content from ECRP_Qualifications"/>
+		<Property name="ECRP_RewardInfo" 			value="select Awardunit,Encouragement,Awarddate,Validitydate,Fact from ECRP_RewardInfo"/>
+		<Property name="ECRP_Quarantine" 			value="select Ratifydept,Productname,Inuredate from ECRP_Quarantine"/>
+		<Property name="ECRP_Exemption" 			value="select Ratifydept,Productname,Exquaid,Validitydate from ECRP_Exemption"/>
+		<Property name="ECRP_Supervision" 			value="select Departmant,Ruleoffice,Wardshiplevel,Inuredate,Validitydate from ECRP_Supervision"/>
+		<Property name="ECRP_IncidentInfo" 			value="select Entorgcode,Incident,Updatedate from ECRP_IncidentInfo"/>
+		<Property name="ECRP_PatentInfo" 			value="select ProprietaryName,Patentnumber,Applydate,Awarddate,Validity from ECRP_PatentInfo"/>
+		<Property name="ECRP_UtilitiesFees" 		value="select Publicentname,Infotype,StatisticalDate,Curpaystat,Recentpaydate,Arrearagesum,Maximumoweddate,Maximumowedsum from ECRP_UtilitiesFees"/>
+		<Property name="ECRP_BankDescription" 		value="select Content,SubmissionAgency,Submissiondate from ECRP_BankDescription"/>
+		<Property name="ECRP_CreditTagging" 		value="select Content,Markdate from ECRP_CreditTagging"/>
+		<Property name="ECRP_SubjectStatement" 		value="select Content,Declarationdate from ECRP_SubjectStatement"/>
+		<Property name="ECRP_ExchangeRate" 			value="select ExchangeRate from ECRP_ExchangeRate"/>
+		<Property name="ECRP_FinancialInfo" 		value="select LoanCardCode from ECRP_FinancialInfo"/>
+		<Property name="ECRP_FI_DebtInfo07" 		value="select FinanceCode,DebtInfoDate,DebtInfoType,DebtInfoSubType,DebtInfoEdition,AuditAgency,AuditDate from ECRP_FI_DebtInfo07"/>
+		<Property name="ECRP_FI_Currentassets" 		value="select Cashandequivalents,TradingFinancialAssets,Notesreceivable,Accountsreceivable,Advancepayment,Interestreceivable,Dividendreceivable,Othersreceivable,Inventories,Non_currentadwoy,Othercurrentassets,Totalcurrentassets from ECRP_FI_Currentassets"/>
+		<Property name="ECRP_FI_NCurrentAssets" 	value="select Financialassetsafs,HeldToMaturityInvestments,Longtermequityinvestment,Long_termReceivables,InvestmentProperty,Fixedassets,Constructioninprocess,Projectmaterials,Fixedassetsliquidation,AssetsForProduction,OilAndGasAssets,Intangibleassets,DevelopmentExpenditure,Goodwill,Deferredassets,DeferredTaxAssets,OtherNon_currentAssets,TotalNon_currentAssets,Totalassets from ECRP_FI_NCurrentAssets"/>
+		<Property name="ECRP_FI_CLiabilities" 		value="select Short_termloans,FinancialLiabilities,Notespayable,Accountspayable,Advancepayment,Interestpayable,WagesPayable,TaxPayable,Dividendpayable,Othersreceivable,Long_termLiabilitiesDueInAYear,Othercurrentliabilities,Totalcurrentliabilities from ECRP_FI_CLiabilities"/>
+		<Property name="ECRP_FI_NCLiabilities" 		value="select Long_termloans,Bondspayable,Long_termaccountspayable,Specialaccountspayable,Estimatedliabilities,CreditDeferredTax,OtherNon_currentLiabilities,TotalNon_currentLiabilities,Totalliabilities from ECRP_FI_NCLiabilities"/>
+		<Property name="ECRP_FI_SEquity" 			value="select Capital,Capitalsurplus,TreasureStock,Surplusreserve,Undistributedprofit,Totalownersequity,Liabilitiesatoe from ECRP_FI_SEquity"/>
+		<Property name="ECRP_FI_DebtInfo02" 		value="select FinanceCode,DebtInfoDate,DebtInfoType,DebtInfoSubType,DebtInfoEdition,CashandEquivalents,ShortTermInvestment,NotesReceivable,DividendReceivable,InterestReceivable,AccountsReceivable,OthersReceivable,AdvancePayment,FuturesMargin,SubsidiesReceivable,TaxReimbursement,Inventories,RawMaterials,Products,AmortizationExpenses,NetLoss,LongTermInvestmentOneYear,OtherCurrentAssets,TotalCurrentAssets,Long_TermInvestment,LongTermEquityInvestment,LongTermDebtInvestment,ConsolidatedSpreads,TotalLongTermInvestment,CostFixedAssets,AccumulatedDepreciation,NetWorthFixedAssets,ImpairmentFixedAssets,NetAmountFixedAssets,FixedAssetsLiquidation,ProjectMaterials,ConstructionProcess,NetLossFixedAssetsProcess,TotalFixedAssets,IntangibleAssets,LandUsefruct,DeferredAssets,ReparationFixedAssets,BettermentsFixedAssets,OtherLongTermAssets,AuthorizedStocks,AmountIntangibleOtherAssets,DebitItemDeferredTaxation,TotalAssets,ShortTermLoans,NotesPayable,AccountsPayable,MoneyReceivedAdvance,WagesPayabl,WelfarePayable,DividendPayable,TaxPayable,OtherExpensesPayable,OthersPayable,ProvisionExpense,EstimatedLiabilities,LongTermLiabilitiesDueOneYear,OtherCurrentLiabilities,TotalCurrentLiabilities,LongTermLoans,BondsPayable,LongTermAccountsPayable,SpecialAccountsPayable,OtherLongTermLiabilities,AuthorizedStocksFund,TotalLongTermLiabilities,CreditDeferredTax,TotalLiabilities,MinorityStockholdersEquity,Capital,StateOwnedCapital,CollectiveCapital,CorporateCapital,StateOwnedCorporateCapital,UPON1,PersonalCapital,ForeignInvestedCapital,CapitalSurplus,SurplusReserve,CompulsorySurplusReserve,NonprofitFoundation,SupplementalCurrentCapital,UnconfirmedLossInvestment,UndistributedProfit,TranslationMmarginCurrency,TotalOwnerEquity,TotalOwnerEquityLiabilities from ECRP_FI_DebtInfo02"/>
+		<Property name="ECRP_FI_ProfitInfo07" 		value="select FinanceCode,ProfitInfoDate,ProfitInfoType,ProfitInfoSubType,ProfitInfoEdition,SalesRevenue,OperationCost,TaxAndAdditionalEOMO,OperationExpenses,AdministrativeExpenses,FinancialExpenses,AssetsDevaluation,NetchangeIFV,NetInvestmentIncome,IncomeFromInvestment,OperatingProfit,Non_OperationIncome,Non_OperatingExpenses,Non_currentAssetLoss,TotalProfits,IncomeTax,NetIncome,AuditAgency,AuditDate from ECRP_FI_ProfitInfo07"/>
+		<Property name="ECRP_FI_EPerShares" 		value="select EarningsPerShare,DilutedEarningsPerShare from ECRP_FI_EPerShares"/>
+		<Property name="ECRP_FI_ProfitInfo02" 		value="select FinanceCode,ProfitInfoDate,ProfitInfoType,ProfitInfoSubType,ProfitInfoEdition,SalesRevenue,SalesRevenueExports,SalesRevenueImports,DiscountAllowance,NetSalesRevenue,MainOperationCost,CostExportSales,TaxAdditionalExpenses,OperatingExpenses,Others_1,DefferedIncome,IncomeProcurementConsignment,Others_2,MainOperationProfit,ProfitfromAthers,OperationExpenses,AdministrativeExpenses,FinancialExpenses,Others_3,OperatingProfit,InvestmentIncome,FuturesIncome,AllowanceIncome,IncomeCorperationSubsidies,NonOperationIncome,NetIncomeDisposalFixedAssets,UPON1,IncomeSalesIntangileAssets,NetIncomeFine,Others_4,ProfitMadeUpWages,NonOperatingExpenses,NetLossDisposalFixedAssets,LossDebtRestructuring,ExpensesFine,ExpensesDonation,OtherExpenses,ActiveBalancePackageWage,TotalProfits,IncomeTax,GainLossMinorityShareholders,UnConfirmLoss,NetIncome,RetainedEarningsBeginningYear,CompensationSurplus,OtherAdjustmentFactors,ProfitAvailableDistribution,IndividualRetainedProfit,AdditionalFlowCapital,WithdrawalCompulsorySurplus,WithdrawalNonprofitFoundation,WithdrawalStaffWorkersBonus,WithdrawalReservedFund,UPON2,NetIncomeRedeemingInvestment,Others_5,UPON3,PreferredStockDividendsPayable,WithdrawalArbitrarySurplus,OrdinaryStockDividendsPayable,OrdinaryStockDividends,Others_6,UndistributedProfit,UndistributedProfitOffset,AuditAgency,AuditDate from ECRP_FI_ProfitInfo02"/>
+		<Property name="ECRP_FI_CashInfo07" 		value="select FinanceCode,CashInfoDate,CashInfoType,CashInfoSubType,CashInfoEdition,GainOrLossOCACEOER,NetIncreaseICACE,CashAndCashEFB,CashAndCashEATE,AuditAgency,AuditDate from ECRP_FI_CashInfo07"/>
+		<Property name="ECRP_FI_FlowsFOA" 			value="select CashFSOPAPS,RestorationOTAFR,CashRelatingTOR,Sub_TotalOOCI,CashPaidFPPAES,CashPaidTE,TaxAndFeePaid,OtherCashPRTO,Sub_TotalOOCO,NetCashFFOA from ECRP_FI_FlowsFOA"/>
+		<Property name="ECRP_FI_CashFlowsFIA" 		value="select CashFromCOI,CashFromIG,CashOnDisposalOFAIAOLTA,NetCashRFDOSAOBU,CashReceivedRTI,Sub_totalOCIFI,CashPaidFPACFAIAOLTA,CashPaidFI,NetAmountFAOSAOBU,PaymentCashCWI,Sub_TotalOCOFI,NetCashFFI from ECRP_FI_CashFlowsFIA"/>
+		<Property name="ECRP_FI_CashFlowsFFA" 		value="select CashReceivedFI,CashReceivedFB,CashReceivedFOFA,Sub_TotalOCIFFA,CashPaidTRD,CashPaidFDPOI,CashPaidFFA,Sub_TotalOCOFFA,NetCashPBFA from ECRP_FI_CashFlowsFFA"/>
+		<Property name="ECRP_FI_AdjustNetPFBCF" 	value="select Netprofiit,WithdrawalsOAFTADIV,FixedAssetsDDOAGADAFP,AmortisationOIE,AmortisationODAPEIALT,ReductionODAPE,IncreaseOAE,LossOnDisposalOFAIAAOLTA,LossOnFixedAR,LossInFairValue,FinanceExpense,LossOnInvestment,AseetLDIODTred,AseetLDIODTadd,DecreaseInInventories,DecreaseIPIR,IncreaseIOIP,Other,NetFlowsFOA from ECRP_FI_AdjustNetPFBCF"/>
+		<Property name="ECRP_FI_IAndFAICC" 			value="select CapitalTBD,ConvertibleCBDIAY,LeasedFABF,Other from ECRP_FI_IAndFAICC"/>
+		<Property name="ECRP_ChangeOfCashACE" 		value="select EndingBalanceCash,BeginningBalanceCash,EndingBalanceOCE,BeginningBalanceOCE,GainsOCACE from ECRP_ChangeOfCashACE"/>
+		<Property name="ECRP_FI_CashInfo02" 		value="select FinanceCode,CashInfoDate,CashInfoType,CashInfoSubType,CashInfoEdition,UPON1,RestorationTaxFeeReceived,CashRelatingOperationsReceived,OperationCashInflow,CashPaidPurchasing,CashPaidEmployees,TaxFeePaid,OtherCashPaidRelating,OperatingCashOutflow,UPON2,CashCollecting,CashInvestmentGains,CashDisposalFixedAssets,CashReceivedRelatingInvestment,CashInflowFromnvestment,CashPaidPurchasingConstructing,CashPaidInvestment,CashPaidOtherInvestment,CashOutflowInvestment,NetCashFlowsInvestment,CashReceivedInvestment,CashReceivedBorrowing,UPON3,UPON4,CashPaidRepayDebts,CashPaidDPI,CashPaidFinancingActivities,CashOutflowFinancingActivities,NetCashProvidedFA,GainLossCashExchangeRate,NetIncreaseCashEquivalents,Netprofiit,WithdrawalsOAFTADIV,FixedAssetsDDOAGADAFP,AmortisationOIE,AmortisationODAPEIALT,ReductionODAPE,IncreaseOAE,LossOnDisposalOFAIAAOLTA,LossOnFixedAR,FinanceExpense,LossOnInvestment,AseetLDIODT,DecreaseInInventories,DecreaseIPIR,IncreaseIOIP,Other1,NetFlowsFOA,CapitalTBD,ConvertibleCBDIAY,LeasedFABF,Other2,EndingBalanceCash,BeginningBalanceCash,EndingBalanceOCE,BeginningBalanceOCE,GainsOCACE,AuditAgency,AuditDate from ECRP_FI_CashInfo02"/>
+		<Property name="ECRP_FI_DebtSYInfo" 		value="select FinanceCode,Financialreportingtype,Financialreportingdate,AuditAgency,AuditDate from ECRP_FI_DebtSYInfo"/>
+		<Property name="ECRP_FI_Asset" 				value="select Casha,Deposit,BillsReceivable,AmountReceivable,AmountPayable,OtherReceivable,Materials,Products,Outsideifno,FixedAsset,IntangibleAsset,Assetssum from ECRP_FI_Asset"/>
+		<Property name="ECRP_FI_Debt" 				value="select DebitFund,NotePayable,AmountReceivable,AmountPayable,OtherPayable,BudgetPayable,Specialfundsffd,TaxPayable,Debtsum from ECRP_FI_Debt"/>
+		<Property name="ECRP_FI_NetWorth" 			value="select EnterpriseFund,GeneralFund,InvestmentFundsFNO,FixedFunds,SpecialFundsONO,SurplusOfOperation,SurplusOfRunning,NetWorthSunm from ECRP_FI_NetWorth"/>
+		<Property name="ECRP_FI_Income" 			value="select SubsidyFFD,GrantFTHA,RestrictedAppropriation,OperationRevenue,RunningRevenue,PaymentFTAO,OtherIncome,Incomesum,Totalliabilities from ECRP_FI_Income"/>
+		<Property name="ECRP_FI_Expense" 			value="select BudgetOutlay,SpecialFunds,SpecialFundsExpenses,OperationExpenses,RunningExpenses,CostExpenses,SalesTaxes,TurnInExpenses,AssistanceFAO,Self_FinancingCC,ExpenseSum,Totalassets from ECRP_FI_Expense"/>
+		<Property name="ECRP_FI_IncomeExpend" 		value="select FinanceCode,Financialreportingtype,Financialreportingdate,SubsidyFromFinanceDepartment,GrantFromTheHigherAuthority,UPON1,EnterpriseIncome,GrantFEF,OtherIncome,SubTotalA,RunningRevenue,SubtotalB,RestrictedAppropriation,SubtotalC,Toal,BudgetOutlay,TurnInExpenses,AssistanceFAO,Expenditure,FinanceDepartmenexpenditure,ExtrabudgetaryFundsexpenditure,SalesTaxesA,Self_FinancingCC,SubtotalD,RunningExpenses,SalesTaxesB,SubtotalE,SpecialFunds,SpecialFundsExpenses,SubtotalF,Total,EnterpriseBalance,SurplusOfNormalIncome,ReceiveLastYearsExpenditure,OperatingSurplus,PriorYearLoss,Balanceallocation,TaxPayable,CollectFund,TransferredFund,Otherallocation,AuditAgency,AuditDate from ECRP_FI_IncomeExpend"/>
+		<Property name="ECRP_FI_FinancialIndex" 	value="select FinanceCode,Financialreportingtype,Financialreportingdate,Totalcurrentassets,Cashandequivalents,Accountsreceivable,Notesreceivable,Othersreceivable,Inventories,Advancepayment,Longterminvestment,Totalfixedassets,Otherlongtermassets,Totalassets,Totalcurrentliabilities,Shorttermloans,Accountspayable,Notespayable,Wagespayable,Otherpayment,AdvanceIncome,Totallongtermliabilities,Longtermloans,Totalliabilities,Totalownersequity,Capital,Capitalsurplus,Surplusreserve,Undistributedprofit,Salesrevenues,MainBusinessCost,MainBusinessProfit,FinancialExpenses,OperatingProfit,TotalProfits,IncomeTax,NetIncome,AuditAgency,AuditDate from ECRP_FI_FinancialIndex"/>
+		<Property name="ECRP_FI_Financeaddinfo" 	value="select FinanceCode,Financialreportingtype,Financialreportingdate,Accountsreceivable,AccountsreceSix,AccountSixAndYear,AccountsreceThanOne,Accountspayable,AccountspaySix,AccountspaySixAndYear,AccountspayThanOne,Merchandise,MerchandiseMoney,MerchandiseDate,MerchandiserEason,MerchandiseCost from ECRP_FI_Financeaddinfo"/>
+		<Property name="ECRP_AttachMent" 			value="select LoanCardCode,FileNum from ECRP_AttachMent"/>
+		<Property name="ECRP_AM_LoanInfo" 			value="select Financecode,ContractCode,Loankindcode,Currency,Duebillsum,Duebilltakeoutdate,Duebillterminatedate,Settlementdate,RepayType,DeclarationOfSubmissionAgency from ECRP_AM_LoanInfo"/>
+		<Property name="ECRP_AM_TradeFinancing" 	value="select Financecode,ContractCode,Financekindcode,Currency,Financesum,Duebilltakeoutdate,Settlementdate,Repaymentmethod,DeclarationOfSubmissionAgency from ECRP_AM_TradeFinancing"/>
+		<Property name="ECRP_AM_Factoring" 			value="select Financecode,ContractCode,Assureproductcode,Currency,Extendsum,Extenddate,Settlementdate,Paidbackflag,declarationOfSubmissionAgency from ECRP_AM_Factoring"/>
+		<Property name="ECRP_AM_BillDiscount" 		value="select Financecode,ContractCode,Currency,Discountsum,Discountdate,Duebillterminatedate,Settlementdate,declarationOfSubmissionAgency from ECRP_AM_BillDiscount"/>
+		<Property name="ECRP_AM_BankAcceptance" 	value="select Financecode,ContractCode,Currency,Posum,Postartdate,Postopdate,Settlementdate,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_AM_BankAcceptance"/>
+		<Property name="ECRP_AM_LetterCredit" 		value="select Financecode,ContractCode,Currency,Lettersum,Letterdate,Letterinvaliddate,Paidbackflag,Cancellationdate,DeclarationOfSubmissionAgency from ECRP_AM_LetterCredit"/>
+		<Property name="ECRP_AM_LetterGuarantee" 	value="select Financecode,ContractCode,Currency,Lettersum,Guaranteeletterkindcode,Startdate,Terminatedate,Settlementdate,Paidbackflag,DeclarationOfSubmissionAgency from ECRP_AM_LetterGuarantee"/>
+	</EResultSetSQLProperties>
+	
+	<ICommonInfo>
+		<!-- 自定义错误代码 -->
+		<Property name="00000" value="处理请求时候发生未知错误"/>
+		<Property name="00001" value="WS请求报文中存在无效节点_Validate_"/>
+		<Property name="00002" value="WS请求数据项存在校验错误_Validate_"/>
+		<Property name="00003" value="单笔请求文件名不合法_Validate_"/>
+		<Property name="00004" value="批量请求文件名不合法_Validate_"/>
+		<Property name="00005" value="单笔请求文件内容格式有误_Validate_"/>
+		<Property name="00006" value="批量请求文件内容格式有误_Validate_"/>
+		<Property name="00007" value="单笔请求文件数据项存在校验错误_Validate_"/>
+		<Property name="00008" value="批量请求文件数据项存在校验错误_Validate_"/>
+		<Property name="00009" value="单笔请求文件超过了2000_Validate_"/>
+		<Property name="00010" value="批量请求文件超过了2000_Validate_"/>
+		<Property name="00011" value="查询超时，请稍后再试"/>
+		<Property name="00012" value="WebService请求当前不在查询服务范围内，请稍后再试"/>
+		<Property name="00013" value="本地数据库中不存在信用报告，建议直接去人行查询"/>
+		<Property name="00014" value="处理T+0请求时候发生内部错误，建议重新发送请求文件，错误文件名为_"/>
+		<Property name="00015" value="处理T+0请求时候发生内部错误，不需要重新发送请求文件，请联系维护人员，错误文件名为_"/>
+		<Property name="00016" value="处理T+0请求时候未能获取到有效授权码，请稍后重新发送请求文件，请求文件名为_"/>
+		<Property name="00017" value="处理T+1请求时候发生内部错误，建议重新发送请求文件，错误文件名为_"/>
+		<Property name="00018" value="处理T+1请求时候发生内部错误，不需要重新发送请求文件，请联系维护人员，错误文件名为_"/>
+		<Property name="00019" value="WebService等待信用报告时候发生内部错误，不需要重新发送请求，请稍后利用“只查询本地”重试"/>
+		<Property name="00020" value="无T+0请求文件_"/>
+		<Property name="00021" value="无T+1请求文件_"/>
+		<!-- 人行标准错误代码-业务校验 -->
+		<Property name="04002" value="查询机构非法查询错误"/>
+		<Property name="04003" value="查询原因校验错误"/>
+		<Property name="04004" value="被查询人证件类型校验错误"/>
+		<Property name="04005" value="被查询人证件号码校验错误"/>
+		<Property name="04006" value="查询版式校验错误"/>
+		<Property name="04019" value="查询信用报告结果超长，请以批量查询方式重新提交该笔查询请求"/>
+		<Property name="04020" value="报文中查询机构代码与登录用户的顶级机构代码‘不一致’"/>
+		<Property name="04021" value="批量查询请求报文记录数超过2000条"/>
+		<Property name="04022" value="报文文件名校验错误"/>
+		<Property name="04023" value="报文名重名校验错误"/>
+		<Property name="04024" value="WebService单笔信用报告“查询”与“结果获取”接口非同一认证标识"/>
+		<Property name="04025" value="WebService单笔信用报告“结果获取”接口使用“请求ID”在系统中不存在"/>
+		<!-- 人行标准错误代码-系统服务状态声明 -->
+		<Property name="05001" value="系统当前非工作状态"/>
+		<Property name="05002" value="发起节点为故障状态"/>
+		<Property name="05003" value="系统繁忙"/>
+		<Property name="05004" value="请求正在处理中尚未处理完毕，请稍后再试"/>
+		<Property name="05009" value="此版本信用报告查询已停止提供服务"/>
+		<!--人行标准错误代码-系统  -->			
+		<Property name="99002" value="通信异常"/>
+		<Property name="09003" value="数据库错误"/>
+		<Property name="99004" value="系统错误"/>
+		<Property name="99090" value="其它错误"/>
+	</ICommonInfo>
+	
+	<ECommonInfo>
+		<!-- 自定义错误代码 -->
+		<Property name="00000" value="处理请求时候发生未知错误" />
+		<Property name="00001" value="WS请求报文中存在无效节点_Validate_" />
+		<Property name="00002" value="WS请求数据项存在校验错误_Validate_" />
+		<Property name="00004" value="批量请求文件名不合法_Validate_" />
+		<Property name="00006" value="批量请求文件内容格式有误_Validate_" />
+		<Property name="00008" value="批量请求文件数据项存在校验错误_Validate_" />
+		<Property name="00010" value="批量请求文件超过了500_Validate_" />
+		<Property name="00011" value="查询超时，请稍后再试" />
+		<Property name="00012" value="WebService请求当前不在查询服务范围内，请稍后再试" />
+		<Property name="00013" value="本地数据库中不存在信用报告，建议直接去人行查询" />
+		<Property name="00017" value="处理T+1请求时候发生内部错误，建议重新发送请求文件，错误文件名为_" />
+		<Property name="00018" value="处理T+1请求时候发生内部错误，不需要重新发送请求文件，请联系维护人员，错误文件名为_" />
+		<Property name="00019" value="WebService等待信用报告时候发生内部错误，不需要重新发送请求，请稍后利用“只查询本地”重试" />
+		<Property name="00021" value="无T+1请求文件_" />
+		<Property name="00030" value="String格式只支持正文及财务报表的查询" />
+		<Property name="00031" value="本地不存在该流水号对应的信用报告备份，建议直接去人行查询" />
+		<Property name="00032" value="即时单笔反馈zip文件超出限制大小，该文件将通过晚间批量反馈，也可以通过流水号分段查询，流水号为_" />
+		<!-- 人行标准错误代码-安全认证 -->
+		<Property name="01001" value="报文头中节点代码为无效节点" />
+		<Property name="01002" value="登录报文中用户密码错" />
+		<Property name="01003" value="用户在企业征信系统中不存在" />
+		<Property name="01004" value="登录报文中用户密码过期" />
+		<Property name="01005" value="单笔查询请求和批量查询请求中不存在认证标识或认证标识无效，需要重新登录" />
+		<Property name="01006" value="该登录用户没有接口查询权限" />
+		<Property name="01007" value="用户被锁定" />
+		<!-- 人行标准错误代码-报文级 -->
+		<Property name="92001" value="无法识别的报文" />
+		<Property name="92002" value="报文文件解密出错" />
+		<Property name="92003" value="报文文件解压出错" />
+		<Property name="92004" value="报文格式错导致无法解析" />
+		<Property name="92005" value="报文标识号重复" />
+		<!-- 人行标准错误代码-报文级 -->
+		<Property name="93001" value="报文数据项长度错" />
+		<Property name="93002" value="报文数据项为空" />
+		<Property name="93003" value="报文数据项类型错" />
+		<Property name="93999" value="其他报文数据项错" />
+		<!-- 人行标准错误代码-业务校验 -->
+		<Property name="04002" value="单笔查询请求和批量查询请求中查询机构非法查询错误" />
+		<Property name="04003" value="单笔查询请求和批量查询请求中查询原因校验错误" />
+		<Property name="04004" value="单笔查询请求和批量查询请求中被查询企业贷款卡编码错误" />
+		<Property name="04005" value="单笔查询请求和批量查询请求中被查询企业贷款卡密码错误" />
+		<Property name="04006" value="单笔查询请求和批量查询请求中查询版式校验错误" />
+		<Property name="04010" value="批量查询文件状态请求中查询时间大于当前时间" />
+		<Property name="04011" value="批量查询文件状态请求中查询开始时间大于查询结束时间" />
+		<Property name="04012" value="批量查询文件状态请求中查询开始时间和查询结束时间必须同时输入" />
+		<Property name="04013" value="查询机构代码同发起节点机构代码不在同一顶级机构下" />
+		<Property name="04014" value="登录机构代码同发起节点机构代码不在同一顶级机构下" />
+		<Property name="04020" value="报文中查询机构代码与登录用户的顶级机构代码‘不一致’" />
+		<Property name="04021" value="批量查询请求报文记录数超过2000条" />
+		<Property name="04022" value="报文文件名校验错误" />
+		<Property name="04023" value="报文名重名校验错误" />
+		<Property name="04024" value="该贷款卡编码的对应的借款人是自然人，不能进行信用报告的查询！" />
+		<!-- 人行标准错误代码-系统服务状态声明 -->
+		<Property name="05001" value="系统当前非工作状态" />
+		<Property name="05002" value="发起节点为故障状态" />
+		<Property name="05003" value="系统繁忙" />
+		<!--人行标准错误代码-系统 -->
+		<Property name="99002" value="通信异常" />
+		<Property name="09003" value="数据库错误" />
+		<Property name="99004" value="系统错误" />
+		<Property name="99090" value="其它错误" />
+	</ECommonInfo>
+
+	<!-- 个人报文字段映射列表 -->
+	<ICodeUponProperties>
+		<!-- 被查询者证件类型 -->
+		<Code name="Certtype">
+			<Property field="0" 					upon="身份证" />
+			<Property field="1" 					upon="户口簿" />
+			<Property field="2" 					upon="护照" />
+			<Property field="3" 					upon="军官证" />
+			<Property field="4" 					upon="士兵证" />
+			<Property field="5" 					upon="港澳居民来往内地通行证" />
+			<Property field="6" 					upon="台湾同胞来往内地通行证" />
+			<Property field="7" 					upon="临时身份证" />
+			<Property field="8" 					upon="外国人居留证" />
+			<Property field="9" 					upon="警官征" />
+			<Property field="A" 					upon="香港身份证" />
+			<Property field="B" 					upon="澳门身份证" />
+			<Property field="C" 					upon="台湾身份证" />
+			<Property field="X" 					upon="其他证件" />
+		</Code>
+		<!-- 查询原因 -->
+		<Code name="QueryReason">
+			<Property field="01" 					upon="贷后管理" />
+			<Property field="02" 					upon="贷款审批" />
+			<Property field="03" 					upon="信用卡审批" />
+			<Property field="04" 					upon="本人查询" />
+			<Property field="08" 					upon="担保资格审查" />
+			<Property field="19" 					upon="特约商户实名审查" />
+		</Code>
+		<!-- 查询请求参数 -->
+		<Code name="QueryFormat">
+			<Property field="20" 					upon="银行专业版不含评分" />
+			<Property field="21" 					upon="银行专业版含评分" />
+		</Code>
+		<!-- 查询结果提示 -->
+		<Code name="QueryResultCue">
+			<Property field="1" 					upon="查询到该客户信息" />
+			<Property field="2" 					upon="未查询到该客户信息" />
+		</Code>
+	</ICodeUponProperties>
+	
+	<!-- 个人数据库字段映射列表 -->
+	<ITableUponProperties>
+		<Table name="SAMPLE">
+			<Property field="SAMPLE" 				upon="SAMPLE" />
+		</Table>
+	</ITableUponProperties>
+	
+	<!-- 企业报文字段映射列表 -->
+	<ECodeUponProperties>
+		<!-- 查询原因 -->
+		<Code name="QueryReason">
+			<Property field="01|贷前审查" 			upon="贷前审查" />
+			<Property field="02|贷中操作" 			upon="贷中操作" />
+			<Property field="03|贷后管理" 			upon="贷后管理" />
+			<Property field="04|其他理由" 			upon="其他理由" />
+			<Property field="05|关联查询" 			upon="关联查询" />
+		</Code>
+		<!-- 信用报告类型 -->
+		<Code name="ReportType">
+			<Property field="20" 					upon="2012版信用报告" />
+		</Code>
+		<!-- 企业性质 -->
+		<Code name="CompanyProperty">
+			<Property field="1" 					upon="一般企业" />
+			<Property field="2" 					upon="担保公司" />
+			<Property field="3" 					upon="小贷公司" />
+		</Code>
+		<!-- 未结清信贷信息概要-7类信贷业务类型 -->
+		<Code name="SUS02IType">
+			<Property field="1" 					upon="贷款" />
+			<Property field="2" 					upon="保理" />
+			<Property field="3" 					upon="票据贴现" />
+			<Property field="4" 					upon="贸易融资" />
+			<Property field="5" 					upon="信用证" />
+			<Property field="6" 					upon="保函" />
+			<Property field="7" 					upon="银行承兑汇票" />
+			<Property field="8" 					upon="合计" />
+		</Code>
+	</ECodeUponProperties>
+	
+	<!-- 企业数据库字段映射列表 -->
+	<ETableUponProperties>
+		<Table name="ECRP_SummarySettled01">
+			<Property field="StrippedLiabilitie_LastDisposaledDate" 	upon="UPON1" />
+		</Table>
+		<Table name="ECRP_FI_DebtInfo02">
+			<Property field="CollectiveOwnedCorporateCapital" 			upon="UPON1" />
+		</Table>
+		<Table name="ECRP_FI_ProfitInfo02">
+			<Property field="NetIncomeNonMonetaryTransaction" 			upon="UPON1" />
+			<Property field="WithdrawalEnterprisesExpensionFund" 		upon="UPON2" />
+			<Property field="ProfitAvailableInvestorsDistribution" 		upon="UPON3" />
+		</Table>
+		<Table name="ECRP_FI_CashInfo02">
+			<Property field="CashSalesProductsProvidingServices" 		upon="UPON1" />
+			<Property field="NetCashFlowsOperatingActivities" 			upon="UPON2" />
+			<Property field="CashReceivedFinancingActivities" 			upon="UPON3" />
+			<Property field="CashInflowfromFinancingActivities" 		upon="UPON4" />
+		</Table>
+		<Table name="ECRP_FI_IncomeExpend">
+			<Property field="PaymentFromTheAuxiliaryOrganization" 		upon="UPON1" />
+		</Table>
+	</ETableUponProperties>
+	
+</CRParseConfig>

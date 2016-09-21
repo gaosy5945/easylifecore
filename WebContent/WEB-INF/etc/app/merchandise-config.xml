@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="GBK"?>
+<merchandises>
+	<merchandiseBrand ID="iphone" NAME="苹果">
+		<merchandise ID="iphone-6plus64" NAME="苹果6plus 64G"></merchandise>
+		<merchandise ID="iphone-6plus128" NAME="苹果6plus 128G"></merchandise>
+		<merchandise ID="iphone-664" NAME="苹果6 64G"></merchandise>
+		<merchandise ID="iphone-6128" NAME="苹果6 128G"></merchandise>
+		<merchandise ID="iphone-6s16" NAME="苹果6S 16G"></merchandise>
+		<merchandise ID="iphone-6splus64" NAME="苹果6S plus 64G"></merchandise>
+		<merchandise ID="iphone-6s128" NAME="苹果6S 128G"></merchandise>
+	</merchandiseBrand>
+	<merchandiseBrand ID="samsung" NAME="三星">
+		<merchandise ID="samsung-note5" NAME="三星Note5"></merchandise>
+		<merchandise ID="samsung-a3009" NAME="三星A-3009"></merchandise>
+		<merchandise ID="samsung-g5109" NAME="三星G-5109"></merchandise>
+		<merchandise ID="samsung-g7509" NAME="三星G-7509"></merchandise>
+		<merchandise ID="samsung-n7509v" NAME="三星N-7509V"></merchandise>
+		<merchandise ID="samsung-920832" NAME="三星-9208(32G)"></merchandise>
+		<merchandise ID="samsung-920864" NAME="三星-9208(64G)"></merchandise>
+	</merchandiseBrand>
+	<merchandiseBrand ID="huawei" NAME="华为">
+		<merchandise ID="huawei-MateS" NAME="华为Mate S"></merchandise>
+		<merchandise ID="huawei-8817E" NAME="华为-8817E"></merchandise>
+		<merchandise ID="huawei-C199" NAME="华为-C199"></merchandise>
+		<merchandise ID="huaei-C8818" NAME="华为-C8818"></merchandise>
+		<merchandise ID="huawei-GX1" NAME="华为-GX1"></merchandise>
+		<merchandise ID="huawei-MATE7" NAME="华为-MATE7(高配版)"></merchandise>
+		<merchandise ID="huawei-mm4" NAME="华为-麦芒4"></merchandise>
+		<merchandise ID="huawei-ry6PLUS" NAME="华为-荣耀6PLUS"></merchandise>
+		<merchandise ID="huawei-ry7" NAME="华为-荣耀7"></merchandise>
+		<merchandise ID="huawei-rycw4" NAME="华为-荣耀畅玩4"></merchandise>
+	</merchandiseBrand>
+	<merchandiseBrand ID="mi" NAME="小米">
+		<merchandise ID="mi-note" NAME="小米-note"></merchandise>
+		<merchandise ID="mi-2S" NAME="小米-2s 32G"></merchandise>
+	</merchandiseBrand>
+	<merchandiseBrand ID="meizu" NAME="魅族">
+		<merchandise ID="meizu-NOTE2" NAME="魅族-魅蓝NOTE2"></merchandise>
+	</merchandiseBrand>
+	<merchandiseBrand ID="smartisan" NAME="锤子">
+		<merchandise ID="smartisan-1" NAME="锤子-一代"></merchandise>
+	</merchandiseBrand>
+	<merchandiseBrand ID="zx" NAME="中兴">
+		<merchandise ID="zx-nubiya" NAME="努比亚-z009"></merchandise>
+	</merchandiseBrand>
+</merchandises>

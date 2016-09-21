@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.prj" >
+		<class name="PRJ_ASSET_INFO" label="项目项下资产信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="CURRENCY" label="币种(CodeNo:Currency)" type="STRING" length="10"/>
+				<attribute name="TRANSFERRATE" label="转出利率" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="PROJECTSERIALNO" label="关联项目编号" type="STRING" length="40"/>
+				<attribute name="STATUS" label="状态(CodeNo:ProjectAssetStatus)" type="STRING" length="6"/>
+				<attribute name="ACTUALBUSINESSRATE" label="实际年利率" type="DOUBLE" length="12" scale="8"/>
+				<attribute name="BALANCE" label="借据余额" type="DOUBLE" length="24" scale="2"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRJ_ASSET_INFO" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRJ_ASSET_LOG" label="项目资产调整记录" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="ADJUSTTYPE" label="调整类型(CodeNo:ProjectTransactionCode)" type="STRING" length="6"/>
+				<attribute name="ADJUSTUSERID" label="调整人" type="STRING" length="32"/>
+				<attribute name="ADJUSTORGID" label="调整机构" type="STRING" length="32"/>
+				<attribute name="ADJUSTDATE" label="调整日期" type="STRING" length="10"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="PROJECTSERIALNO" label="项目编号" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRJ_ASSET_LOG" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRJ_ASSET_SECURITIZATION" label="资产证券化信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="PROJECTSERIALNO" label="项目编号" type="STRING" length="40"/>
+				<attribute name="TRANFERPERCENT" label="资产转出比率" type="DOUBLE" length="12" scale="8"/>
+				<attribute name="REPAYORDER" label="归还顺序（CodeNo:PrjAssetRepayOrder）" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRJ_ASSET_SECURITIZATION" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRJ_ASSET_TRANSFER" label="资产转让信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="PROJECTSERIALNO" label="项目编号" type="STRING" length="40"/>
+				<attribute name="TRANFERPERCENT" label="转让比率" type="DOUBLE" length="12" scale="8"/>
+				<attribute name="REPAYORDER" label="归还顺序（CodeNo:PrjAssetRepayOrder）" type="STRING" length="10"/>
+				<attribute name="TRANSFERINTERESTRATE" label="转让利率" type="DOUBLE" length="12" scale="8"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRJ_ASSET_TRANSFER" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRJ_BASIC_INFO" label="项目信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="项目编号" type="STRING" length="32"/>
+				<attribute name="AGREEMENTNO" label="协议编号" type="STRING" length="32"/>
+				<attribute name="PROJECTTYPE" label="项目类型(CodeNo:ProjectType)" type="STRING" length="10"/>
+				<attribute name="PROJECTNAME" label="项目名称" type="STRING" length="80"/>
+				<attribute name="CUSTOMERID" label="所属合作方" type="STRING" length="40"/>
+				<attribute name="EXPIRYDATE" label="项目到期日期" type="STRING" length="10"/>
+				<attribute name="PRODUCTLIST" label="适用产品" type="STRING" length="2000"/>
+				<attribute name="EFFECTDATE" label="生效日期" type="STRING" length="10"/>
+				<attribute name="STATUS" label="当前状态(CodeNo:ProjectStatus)" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="录入人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="录入机构" type="STRING" length="32"/>
+				<attribute name="INPUTDATE" label="录入时间" type="STRING" length="10"/>
+				<attribute name="UPDATEUSERID" label="更新人" type="STRING" length="32"/>
+				<attribute name="UPDATEDATE" label="更新时间" type="STRING" length="10"/>
+				<attribute name="TEMPSAVEFLAG" label="暂存标记" type="STRING" length="10"/>
+				<attribute name="REMARK" label="备注" type="STRING" length="1000"/>
+				<attribute name="ORIGINATEORGID" label="项目发起行" type="STRING" length="32"/>
+				<attribute name="CURRENCY" label="项目币种（CodeNo:Currency）" type="STRING" length="10"/>
+				<attribute name="PROJECTAMOUNT" label="项目建立金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="PROJECTCURSUM" label="项目当前金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CREATEDATE" label="建立日期" type="STRING" length="10"/>
+				<attribute name="FINISHDATE" label="结清日期" type="STRING" length="10"/>
+				<attribute name="PARTICIPATEORG" label="参与机构" type="STRING" length="200"/>
+				<attribute name="PARTICIPATEINDICATOR" label="参与机构范围标志（全行指定行）" type="STRING" length="10"/>
+				<attribute name="TRANSFEREE" label="受让方" type="STRING" length="200"/>
+				<attribute name="ASSETCONDITIONS" label="参与资产条件设置" type="STRING" length="200"/>
+				<attribute name="PLANPACKETDATE" label="计划封包日" type="STRING" length="10"/>
+				<attribute name="PLANPOOLDATE" label="计划入池日" type="STRING" length="10"/>
+				<attribute name="PRJSTOPREASON" label="项目终止原因" type="STRING" length="200"/>
+				<attribute name="ISTOONELEVEL" label="是否提交总行" type="STRING" length="10"/>
+				<attribute name="PROJECTREVENUESHARE" lable="分层比例" type="DOUBLE" length="20" scale="2" />
+				<attribute name="PROJECTCLAMT" label="可贷金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="INVOICEFLAG" label="是否向运营商开具发票" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRJ_BASIC_INFO" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRJ_BUILDING" label="合作项目附属楼盘信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="PROJECTSERIALNO" label="合作项目编号" type="STRING" length="40"/>
+				<attribute name="BUILDINGSERIALNO" label="楼盘编号" type="STRING" length="40"/>
+				<attribute name="PERIODICGUARANTEE" label="是否提供阶段性担保标志（CodeNo:YesNo）" type="STRING" length="10"/>
+				<attribute name="TOTALINVESTMENTAMOUNT" label="投资总额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="FIRSTPAYLIMIT" label="首付额度" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="AVERAGEPRICE" label="销售房均价" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MAXUNITPRICE" label="最高单价" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MINUNITPRICE" label="最低单价" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="COMMENCEDATE" label="开工日期" type="STRING" length="10"/>
+				<attribute name="PROGRESS" label="工程进度" type="STRING" length="80"/>
+				<attribute name="ECDATE" label="预计竣工验收合格日期" type="STRING" length="10"/>
+				<attribute name="OPDATE" label="竣工日期" type="STRING" length="10"/>
+				<attribute name="DELIVERDATE" label="交房日期" type="STRING" length="10"/>
+				<attribute name="GUARANTEEINPUTDATE" label="首次办理抵押登记时间" type="STRING" length="10"/>
+				<attribute name="DEVELOPAMOUNT" label="开发贷款金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="SALEPERCENT" label="销售比例" type="DOUBLE" length="12" scale="8"/>
+				<attribute name="DEVELOPISSUEDATE" label="开发贷款首次发放时间" type="STRING" length="10"/>
+				<attribute name="SALEBEGINDATE" label="销/预售开始时间" type="STRING" length="10"/>
+				<attribute name="DEVELOPBALANCE" label="开发贷款当前余额" type="DOUBLE" length="24" scale="2"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRJ_BUILDING" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRJ_BUILDING_CERTIFICATE" label="合作项目楼盘产证信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="BUILDINGSERIALNO" label="合作项目楼盘编号" type="STRING" length="40"/>
+				<attribute name="CERTTYPE" label="产证类型(CodeNo:BuildingCertType)" type="STRING" length="10"/>
+				<attribute name="CERTNO" label="产证编号" type="STRING" length="40"/>
+				<attribute name="CERTDATE" label="开证日期" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRJ_BUILDING_CERTIFICATE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRJ_EQUIPMENT" label="合作项目设备信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="EQUIPMENTTYPE" label="设备类型(CodeNo:EquipmentType)" type="STRING" length="10"/>
+				<attribute name="MANUFACTURER" label="制造商" type="STRING" length="40"/>
+				<attribute name="EQUIPMENTMODEL" label="设备型号" type="STRING" length="80"/>
+				<attribute name="ORIGINCOUNTRY" label="出产国(CodeNo:CountryCode)" type="STRING" length="10"/>
+				<attribute name="SUPPLIER" label="供应商" type="STRING" length="32"/>
+				<attribute name="MEMO" label="描述" type="STRING" length="200"/>
+				<attribute name="BUYBACK" label="回购（CodeNo:YesNo）" type="STRING" length="10"/>
+				<attribute name="AGENTLEVEL" label="代理等级(CodeNo:MarketAgentLevel)" type="STRING" length="10"/>
+				<attribute name="PROJECTSERIALNO" label="合作项目编号" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRJ_EQUIPMENT" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRJ_PARTICIPANT" label="合作项目参与者信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="PROJECTSERIALNO" label="合作项目编号" type="STRING" length="40"/>
+				<attribute name="CUSTOMERID" label="参与方编号" type="STRING" length="40"/>
+				<attribute name="CUSTOMERNAME" label="参与方名称" type="STRING" length="80"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRJ_PARTICIPANT" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRJ_RELATIVE" label="合作项目关联信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="PROJECTSERIALNO" label="合作项目编号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="RELATIVETYPE" label="关联类型（CodeNo:PrjRelativeType）" type="STRING" length="10"/>
+				<attribute name="RELATIVEAMOUNT" label="首付额度" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="RELATIVEPERCENT" label="首付比例" type="DOUBLE" length="12" scale="2"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRJ_RELATIVE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRJ_VEHICLE" label="合作项目附属车辆信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="BRAND" label="品牌" type="STRING" length="40"/>
+				<attribute name="MODEL" label="主要车型" type="STRING" length="400"/>
+				<attribute name="PRICE" label="大概价位" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MODELFLAG" label="销售车型限制（CodeNo:0无1有）" type="STRING" length="10"/>
+				<attribute name="DOWNPAYMENTLIMIT" label="首付额度" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="BUYBACKFLAG" label="回购（CodeNo:0无1有）" type="STRING" length="10"/>
+				<attribute name="AGENTLEVEL" label="代理等级（CodeNo:）" type="STRING" length="10"/>
+				<attribute name="VEHICLETYPE" label="品牌型号" type="STRING" length="80"/>
+				<attribute name="PROJECTSERIALNO" label="项目流水号" type="STRING" length="20"/>
+				
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRJ_VEHICLE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+	</package>
+</jbo>
+

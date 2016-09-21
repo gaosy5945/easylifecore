@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Instance>
+    <Messages>  
+    	<Message ID="Decision_Service_in" Tag="Service" SelectSQL=""  Description="影像报文">
+    		<Field No="1" FieldTag="Control" NameSpace = "" ValueSource="" TableField="" DefaultValue="" Description="影像自带交易基本信息"  DataType="object" ObjectName="Decision_Control" />
+    		<Field No="2" FieldTag="InputFields" NameSpace = "" ValueSource="" TableField="" DefaultValue="" Description="业务传入交易参数"  DataType="object" ObjectName="Decision_InputFields"/>
+    	</Message>
+    	<Message ID="Decision_Control" Tag="Control" SelectSQL=""  Description="影像报文">
+    		<Field No="1" FieldTag="Control" NameSpace = "" ValueSource="" TableField="" DefaultValue="" Description="影像自带交易基本信息"  DataType="array" ArrayName="Decision_ControlField" />
+    	</Message>
+    	<Message ID="Decision_InputFields" Tag="InputFields" SelectSQL=""  Description="影像报文">
+    		<Field No="1" FieldTag="InputFields" NameSpace = "" ValueSource="" TableField="" DefaultValue="" Description="影像自带交易基本信息"  DataType="array" ArrayName="Decision_InputFieldsField" />
+    	</Message>
+  	    <Message ID="Decision_ControlField" Tag="Decision_ControlField" SelectSQL=""  Description="影像属性">
+   		  	<Field No="1" FieldTag="Field"  NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.Value" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y">
+    		 	<attribute>
+    		 		 <Field No="1" FieldTag="name" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.Name" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 	</attribute>
+    		 </Field> 
+    	</Message>
+    	<Message ID="Decision_InputFieldsField" Tag="InputFields" SelectSQL=""  Description="影像属性">
+    		  <Field No="1" FieldTag="Field" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.Value" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y">
+    		 	<attribute>
+    		 		 <Field No="1" FieldTag="name" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.Name" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 		 <Field No="1" FieldTag="type" NameSpace = ""  ValueSource="Default" TableField="" DefaultValue="#Constants.Type" Description="影像属性"  DataType="string" 	Length="30" IsRequire = "Y"/>
+    		 	</attribute>
+    		 </Field> 
+    	</Message>
+    	
+    	<Message ID="Decision_Service_out" Tag="Service" SelectSQL=""  Description="影像报文">
+   			<Field No="1" FieldTag="Control" NameSpace = "" ValueSource="" TableField="" DefaultValue="" Description="影像自带交易基本信息"  DataType="object" ObjectName="Decision_OControl" />
+   			<Field No="2" FieldTag="DAError" NameSpace = "" ValueSource="" TableField="" DefaultValue="" Description="业务传入交易参数"  DataType="object" ObjectName="Decision_ODAError"/>
+   			<Field No="2" FieldTag="OutputFields" NameSpace = "" ValueSource="" TableField="" DefaultValue="" Description="业务传入交易参数"  DataType="object" ObjectName="Decision_OOutputFields"/>
+   		</Message>
+   		
+  		<Message ID="Decision_OControl" Tag="Control" SelectSQL=""  Description="影像报文">
+    		<Field No="1" FieldTag="Field" NameSpace = "" ValueSource="" TableField="" DefaultValue="" Description="影像自带交易基本信息"  DataType="array" ArrayName="Decision_InputFieldsField" />
+    	</Message>
+		<Message ID="Decision_ODAError" Tag="DAError" SelectSQL=""  Description="影像报文">
+    		<Field No="1" FieldTag="Field" NameSpace = "" ValueSource="" TableField="" DefaultValue="" Description="影像自带交易基本信息"  DataType="array" ArrayName="Decision_InputFieldsField" />
+    	</Message>
+    	<Message ID="Decision_OOutputFields" Tag="OutputFields" SelectSQL=""  Description="影像报文">
+    		<Field No="1" FieldTag="Field" NameSpace = "" ValueSource="" TableField="" DefaultValue="" Description="影像自带交易基本信息"  DataType="array" ArrayName="Decision_InputFieldsField" />
+    	</Message>
+     </Messages> 	
+        
+    <Transactions>
+	   	<Transaction ClientID="DECISION_QUERY" ServerID="" Description="评分卡" ConnectionID="decision" Type="CLIENT">
+   			<property name = "SysHeadFlag" value = "N"/>
+   			<property name = "SendCharSet" value = "GB2312"/>
+   			<property name = "RecvCharSet" value = "GB2312"/>
+   			<property name = "Operation" value = "do"/>
+   			<property name = "XMLVERSION" value = "1.0"/>
+   			<property name = "XMLENOCDING" value = "UTF-8"/>
+   			<property name = "Controle" value = "SystemID,ALIAS,SystemDate,SystemTime,SIGNATURE,InputDataArea,OutputDataArea,TraceLevel,Position,SEQID,InterfaceVer"/>
+   			<property name = "Exception" value = "SERIALNO,objectType,objectNo"/>
+   			<!-- 使用的message模板，需要按顺序设置 -->
+   			<IMessages>
+	   			<message name = "decision_in" value = "Decision_Service_in"/>
+	   		</IMessages>
+	   		<OMessages>
+	   			<message name = "decision_out" value = "Decision_Service_out"/>
+	   		</OMessages>
+   		</Transaction>
+    </Transactions>
+</Instance>

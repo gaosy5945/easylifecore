@@ -1,0 +1,1815 @@
+<?xml version="1.0" encoding="GBK"?>
+<flows>
+	<manager>com.amarsoft.app.workflow.manager.impl.ALSFlowManager
+	</manager>
+	<FlowQueryTypes>
+		<FlowQueryType>
+			<property name="ID">01</property>
+			<property name="Name">可办任务</property>
+			<property name="Script">com.amarsoft.app.workflow.exterdata.CanHandleData
+			</property>
+		</FlowQueryType>
+		<FlowQueryType>
+			<property name="ID">02</property>
+			<property name="Name">待办任务</property>
+			<property name="Script">com.amarsoft.app.workflow.exterdata.ToDoData
+			</property>
+		</FlowQueryType>
+		<FlowQueryType>
+			<property name="ID">03</property>
+			<property name="Name">已完成任务</property>
+			<property name="Script">com.amarsoft.app.workflow.exterdata.DoneData
+			</property>
+		</FlowQueryType>
+		<FlowQueryType>
+			<property name="ID">04</property>
+			<property name="Name">综合业务查询</property>
+			<property name="Script">com.amarsoft.app.workflow.exterdata.AllData
+			</property>
+		</FlowQueryType>
+		<FlowQueryType>
+			<property name="ID">05</property>
+			<property name="Name">已挂起任务</property>
+			<property name="Script">com.amarsoft.app.workflow.exterdata.HangUpData
+			</property>
+		</FlowQueryType>
+	</FlowQueryTypes>
+	<FlowObjectTypes>
+		<FlowObjectType>
+			<property name="ID">jbo.acct.ACCT_TRANSACTION</property>
+			<property name="Name">贷后服务</property>
+			<property name="Script">com.amarsoft.app.workflow.interdata.TransactionData
+			</property>
+		</FlowObjectType>
+		<FlowObjectType>
+			<property name="ID">jbo.acct.ACCT_TRANSACTION_BB</property>
+			<property name="Name">批量业务</property>
+			<property name="Script">com.amarsoft.app.workflow.interdata.BatchBusinessData
+			</property>
+		</FlowObjectType>
+		<FlowObjectType>
+			<property name="ID">jbo.al.RISK_WARNING_SIGNAL</property>
+			<property name="Name">预警申请</property>
+			<property name="Script">com.amarsoft.app.workflow.interdata.RiskWaringBuildData
+			</property>
+		</FlowObjectType>
+		<FlowObjectType>
+			<property name="ID">jbo.al.RISK_WARNING_SIGNAL01</property>
+			<property name="Name">预警申请</property>
+			<property name="Script">com.amarsoft.app.workflow.interdata.RiskWaringBuildData01
+			</property>
+		</FlowObjectType>
+		<FlowObjectType>
+			<property name="ID">jbo.app.ASSET_EVALUATE</property>
+			<property name="Name">押品估值</property>
+			<property name="Script">com.amarsoft.app.workflow.interdata.AssetEvaluateData
+			</property>
+		</FlowObjectType>
+		<FlowObjectType>
+			<property name="ID">jbo.app.BUSINESS_APPLY</property>
+			<property name="Name">业务申请</property>
+			<property name="Script">com.amarsoft.app.workflow.interdata.ApplyData
+			</property>
+		</FlowObjectType>
+		<FlowObjectType>
+			<property name="ID">jbo.app.BUSINESS_CONTRACT</property>
+			<property name="Name">业务合同</property>
+			<property name="Script">com.amarsoft.app.workflow.interdata.ContractData
+			</property>
+		</FlowObjectType>
+		<FlowObjectType>
+			<property name="ID">jbo.app.BUSINESS_PUTOUT</property>
+			<property name="Name">放款申请</property>
+			<property name="Script">com.amarsoft.app.workflow.interdata.PutOutData
+			</property>
+		</FlowObjectType>
+		<FlowObjectType>
+			<property name="ID">jbo.prj.PRJ_ASSET_LOG</property>
+			<property name="Name">项目变更申请</property>
+			<property name="Script">com.amarsoft.app.workflow.interdata.ProjectAlterApplyData
+			</property>
+		</FlowObjectType>
+		<FlowObjectType>
+			<property name="ID">jbo.prj.PRJ_BASIC_INFO</property>
+			<property name="Name">项目申请</property>
+			<property name="Script">com.amarsoft.app.workflow.interdata.ProjectApplyData
+			</property>
+		</FlowObjectType>
+		<!-- ckxu添加 -->
+		<FlowObjectType>
+			<property name="ID">jbo.customer.CUSTOMER_INFO</property>
+			<property name="Name">零售商准入申请</property>
+			<property name="Script">com.amarsoft.app.workflow.interdata.MarketCustomerApplyData
+			</property>
+		</FlowObjectType>
+	</FlowObjectTypes>
+
+	<FlowTypes>
+		<FlowType>
+			<property name="ID">0010</property>
+			<property name="Name">业务申请</property>
+			<property name="TodoBusinessOrderCondition"></property>
+			<property name="TodoFlowOrderCondition">FT.CreateTime asc</property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition">FT.CreateTime desc</property>
+			<property name="AvlBusinessOrderCondition">BUSINESSPRIORITY</property>
+			<property name="AvlFlowOrderCondition">FT.CreateTime asc</property>
+		</FlowType>
+		<FlowType>
+			<property name="ID">0020</property>
+			<property name="Name">出账申请</property>
+			<property name="TodoBusinessOrder"></property>
+			<property name="TodoFlowOrderCondition">FT.CreateTime asc</property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition">FT.CreateTime desc</property>
+			<property name="AvlBusinessOrderCondition">BUSINESSPRIORITY</property>
+			<property name="AvlFlowOrderCondition">FT.CreateTime asc</property>
+		</FlowType>
+		<FlowType>
+			<property name="ID">0025</property>
+			<property name="Name">批量出账申请</property>
+			<property name="TodoBusinessOrder"></property>
+			<property name="TodoFlowOrderCondition">FT.CreateTime asc</property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition">FT.CreateTime desc</property>
+			<property name="AvlBusinessOrderCondition"></property>
+			<property name="AvlFlowOrderCondition">FT.CreateTime asc</property>
+		</FlowType>
+		<FlowType>
+			<property name="ID">0030</property>
+			<property name="Name">资产证劵化</property>
+			<property name="TodoBusinessOrder"></property>
+			<property name="TodoFlowOrderCondition"></property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition"></property>
+			<property name="AvlBusinessOrderCondition"></property>
+			<property name="AvlFlowOrderCondition"></property>
+		</FlowType>
+		<FlowType>
+			<property name="ID">0050</property>
+			<property name="Name">贷后交易</property>
+			<property name="TodoBusinessOrder"></property>
+			<property name="TodoFlowOrderCondition"></property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition">FT.CreateTime desc</property>
+			<property name="AvlBusinessOrderCondition"></property>
+			<property name="AvlFlowOrderCondition"></property>
+		</FlowType>
+		<FlowType>
+			<property name="ID">0055</property>
+			<property name="Name">贷后批量还款</property>
+			<property name="TodoBusinessOrder"></property>
+			<property name="TodoFlowOrderCondition"></property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition">FT.CreateTime desc</property>
+			<property name="AvlBusinessOrderCondition"></property>
+			<property name="AvlFlowOrderCondition"></property>
+		</FlowType>
+		<FlowType>
+			<property name="ID">0060</property>
+			<property name="Name">发起风险预警</property>
+			<property name="TodoBusinessOrder"></property>
+			<property name="TodoFlowOrderCondition"></property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition"></property>
+			<property name="AvlBusinessOrderCondition"></property>
+			<property name="AvlFlowOrderCondition"></property>
+		</FlowType>
+		<FlowType>
+			<property name="ID">0070</property>
+			<property name="Name">解除风险预警</property>
+			<property name="TodoBusinessOrder"></property>
+			<property name="TodoFlowOrderCondition"></property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition"></property>
+			<property name="AvlBusinessOrderCondition"></property>
+			<property name="AvlFlowOrderCondition"></property>
+		</FlowType>
+		<FlowType>
+			<property name="ID">0090</property>
+			<property name="Name">合作项目准入申请</property>
+			<property name="TodoBusinessOrder"></property>
+			<property name="TodoFlowOrderCondition"></property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition"></property>
+			<property name="AvlBusinessOrderCondition"></property>
+			<property name="AvlFlowOrderCondition"></property>
+		</FlowType>
+		<FlowType>
+			<property name="ID">0110</property>
+			<property name="Name">风险预警提示</property>
+			<property name="TodoBusinessOrder"></property>
+			<property name="TodoFlowOrderCondition"></property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition"></property>
+			<property name="AvlBusinessOrderCondition"></property>
+			<property name="AvlFlowOrderCondition"></property>
+		</FlowType>
+		<!--ckxu添加 -->
+		<FlowType>
+			<property name="ID">0140</property>
+			<property name="Name">客户准入申请</property>
+			<property name="TodoBusinessOrderCondition"></property>
+			<property name="TodoFlowOrderCondition">FT.CreateTime asc</property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition">FT.CreateTime desc</property>
+			<property name="AvlBusinessOrderCondition"></property>
+			<property name="AvlFlowOrderCondition">FT.CreateTime asc</property>
+		</FlowType>
+		<FlowType>
+			<property name="ID">0150</property>
+			<property name="Name">项目变更申请</property>
+			<property name="TodoBusinessOrderCondition"></property>
+			<property name="TodoFlowOrderCondition">FT.CreateTime asc</property>
+			<property name="FinishBusinessOrderCondition"></property>
+			<property name="FinishFlowOrderCondition">FT.CreateTime desc</property>
+			<property name="AvlBusinessOrderCondition"></property>
+			<property name="AvlFlowOrderCondition">FT.CreateTime asc</property>
+		</FlowType>
+	</FlowTypes>
+
+	<FlowPhaseTypes>
+		<FlowPhaseType>
+			<property name="ID">0010</property>
+			<property name="Name">业务申请</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0020</property>
+			<property name="Name">资料扫描</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0030</property>
+			<property name="Name">资料录入</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0050</property>
+			<property name="Name">征信调查</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0060</property>
+			<property name="Name">贷款审批</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0080</property>
+			<property name="Name">放款申请</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0090</property>
+			<property name="Name">放款审核</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0140</property>
+			<property name="Name">分行预警信号发起</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0150</property>
+			<property name="Name">分行预警信号解除发起</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0160</property>
+			<property name="Name">分行预警信号复核</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0170</property>
+			<property name="Name">分行预警信号解除复核</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0245</property>
+			<property name="Name">合作项目申请</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0250</property>
+			<property name="Name">项目审查</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0260</property>
+			<property name="Name">风险预警提示信息发起</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0270</property>
+			<property name="Name">风险预警提示信息发布</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0280</property>
+			<property name="Name">风险预警提示信息查看及反馈</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0290</property>
+			<property name="Name">转发风险预警提示信息</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0300</property>
+			<property name="Name">额度调整申请</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0310</property>
+			<property name="Name">额度调整审查</property>
+		</FlowPhaseType>
+		<FlowPhaseType>
+			<property name="ID">0320</property>
+			<property name="Name">额度调整审批</property>
+		</FlowPhaseType>
+		<!-- ckxu -->
+		<FlowPhaseType>
+			<property name="ID">0330</property>
+			<property name="Name">客户准入审批</property>
+		</FlowPhaseType>
+	</FlowPhaseTypes>
+
+	<flow>
+		<property name="FlowNo">BusinessFlow_001</property>
+		<property name="FlowVersion">V1.0</property>
+		<property name="FlowName">消费信贷标准授信流程</property>
+		<property name="FlowDescribe">消费信贷标准授信流程</property>
+		<property name="Default">true</property>
+		<property name="DefaultPhaseNo">accept</property>
+		<property name="BusinessTable">jbo.flow.FLOW_BUSINESSINFO</property>
+		<property name="FlowType">0010</property>
+		<parameters>
+			<parameter>
+				<property name="PARAMETERNAME">CUSTOMERID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.app.BUSINESS_APPLY.CUSTOMERID
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">PRODUCTID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.app.BUSINESS_APPLY.ProductID</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CERTTYPE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.app.BUSINESS_APPLY.CertType</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CONTRACTARTIFICIALNO</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.app.BUSINESS_APPLY.CONTRACTARTIFICIALNO
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CUSTOMERNAME</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.app.BUSINESS_APPLY.CustomerName
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CERTID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.app.BUSINESS_APPLY.CertID</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">BUSINESSTYPE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.app.BUSINESS_APPLY.BusinessType
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">APPLYTYPE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.app.BUSINESS_APPLY.ApplyType</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">ORGID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.app.BUSINESS_APPLY.OperateOrgID
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">BUSINESSPRIORITY</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Java</property>
+				<property name="METHOD">com.amarsoft.app.workflow.processdata.GetBusinessPriority
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">org_id</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.app.BUSINESS_APPLY.OperateOrgID
+				</property>
+			</parameter>
+		</parameters>
+		<phases>
+			<phase>
+				<property name="PhaseNo">accept</property>
+				<property name="PhaseType">0010</property>
+				<property name="PhaseName">业务申请</property>
+				<property name="PhaseDescribe">业务申请</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateApplyInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},FlowStatus=2)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">ApplyDeal01</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0001</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="scan" />
+					</nextphase>
+				</nextphases>
+			</phase>
+
+			<phase>
+				<property name="PhaseNo">scan</property>
+				<property name="PhaseType">0020</property>
+				<property name="PhaseName">资料扫描</property>
+				<property name="PhaseDescribe">资料扫描</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateApplyInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},FlowStatus=2)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">DataEntryDeal01</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0003</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="dataentry" />
+					</nextphase>
+				</nextphases>
+			</phase>
+
+			<phase>
+				<property name="PhaseNo">dataentry</property>
+				<property name="PhaseType">0030</property>
+				<property name="PhaseName">资料录入</property>
+				<property name="PhaseDescribe">资料录入</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateApplyInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},FlowStatus=2)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">DataEntryDeal02</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0003</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="investigate1" />
+					</nextphase>
+					<nextphase filter="1=1">
+						<phaseno id="investigate2" />
+					</nextphase>
+				</nextphases>
+			</phase>
+
+			<phase>
+				<property name="PhaseNo">investigate1</property>
+				<property name="PhaseType">0050</property>
+				<property name="PhaseName">征信调查1</property>
+				<property name="PhaseDescribe">征信调查1</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateApplyInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},FlowStatus=2)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">DataEntryDeal06</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0005</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+
+				<parameters>
+					<parameter>
+						<property name="PARAMETERNAME">isHeadRecheck1</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.app.BUSINESS_APPLY.PHASEACTION1
+						</property>
+					</parameter>
+					<parameter>
+						<property name="PARAMETERNAME">review</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Java</property>
+						<property name="METHOD">com.amarsoft.app.workflow.processdata.GetApproveResult
+						</property>
+					</parameter>
+					<parameter>
+						<property name="PARAMETERNAME">isAuthorize</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Java</property>
+						<property name="METHOD">com.amarsoft.app.workflow.processdata.GetCurOrgAuthorize
+						</property>
+					</parameter>
+					<parameter>
+						<property name="PARAMETERNAME">approval_model</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.app.BUSINESS_APPLY.PhaseAction
+						</property>
+					</parameter>
+				</parameters>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="singlereg" >
+							<dependencephaseno id="investigate2" />
+							<syncphaseno id="investigate2" />
+						</phaseno>
+					</nextphase>
+				</nextphases>
+			</phase>
+
+			<phase>
+				<property name="PhaseNo">investigate2</property>
+				<property name="PhaseType">0050</property>
+				<property name="PhaseName">征信调查2</property>
+				<property name="PhaseDescribe">征信调查2</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateApplyInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},FlowStatus=2)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">DataEntryDeal06</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0005</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<parameters>
+					<parameter>
+						<property name="PARAMETERNAME">isHeadRecheck1</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.app.BUSINESS_APPLY.PHASEACTION1
+						</property>
+					</parameter>
+					<parameter>
+						<property name="PARAMETERNAME">review</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Java</property>
+						<property name="METHOD">com.amarsoft.app.workflow.processdata.GetApproveResult
+						</property>
+					</parameter>
+					<parameter>
+						<property name="PARAMETERNAME">isAuthorize</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Java</property>
+						<property name="METHOD">com.amarsoft.app.workflow.processdata.GetCurOrgAuthorize
+						</property>
+					</parameter>
+					<parameter>
+						<property name="PARAMETERNAME">approval_model</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.app.BUSINESS_APPLY.PhaseAction
+						</property>
+					</parameter>
+				</parameters>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="singlereg">
+							<dependencephaseno id="investigate1" filter="1=1" />
+							<syncphaseno id="investigate1" filter="1=1" />
+						</phaseno>
+					</nextphase>
+				</nextphases>
+			</phase>
+
+			<phase>
+				<property name="PhaseNo">singlereg</property>
+				<property name="PhaseType">0060</property>
+				<property name="PhaseName">审批</property>
+				<property name="PhaseDescribe">审批</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateApplyInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},FlowStatus=2)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">DataEntryDeal07</property>
+				<property name="OpnTemplateNo">CreditApproveInfo03</property>
+				<property name="ParticipantFilterScript">
+				</property>
+				<property name="RoleID">PLBS0007</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<parameters>
+					<parameter>
+						<property name="PARAMETERNAME">loan_money</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.app.BUSINESS_APPLY.BusinessSum
+						</property>
+					</parameter>
+					<parameter>
+						<property name="PARAMETERNAME">email_or_msg</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.app.BUSINESS_APPLY.email_or_msg
+						</property>
+					</parameter>
+					<parameter>
+						<property name="PARAMETERNAME">approve</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.app.BUSINESS_APPLY.PhaseActionType
+						</property>
+					</parameter>
+				</parameters>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="loancontrol">
+						</phaseno>
+					</nextphase>
+					<nextphase filter="1=1">
+						<phaseno id="reject">
+						</phaseno>
+					</nextphase>
+
+				</nextphases>
+			</phase>
+
+			<phase>
+				<property name="PhaseNo">loancontrol</property>
+				<property name="PhaseType">0090</property>
+				<property name="PhaseName">放款审核</property>
+				<property name="PhaseDescribe">放款审核</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.contract.action.AddContractInfo.createContract(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},PutoutStatus=02)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">PutoutApproveDeal02
+				</property>
+				<property name="OpnTemplateNo">PutOutCheckResult</property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0016</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<parameters>
+					<parameter>
+						<property name="PARAMETERNAME">email_or_msg</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.app.BUSINESS_APPLY.email_or_msg
+						</property>
+					</parameter>
+					<parameter>
+						<property name="PARAMETERNAME">loan_money</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.app.BUSINESS_APPLY.BusinessSum
+						</property>
+					</parameter>
+				</parameters>
+				
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="pass">
+						</phaseno>
+					</nextphase>
+				</nextphases>
+			</phase>
+
+			<phase>
+				<property name="PhaseNo">pass</property>
+				<property name="PhaseType">1000</property>
+				<property name="PhaseName">审批通过</property>
+				<property name="PhaseDescribe">审批通过</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateApplyInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},FlowStatus=3)</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">DataEntryDeal07</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+
+					</nextphase>
+				</nextphases>
+			</phase>
+
+
+			<phase>
+				<property name="PhaseNo">reject</property>
+				<property name="PhaseType">2000</property>
+				<property name="PhaseName">审批拒绝</property>
+				<property name="PhaseDescribe">审批拒绝</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateApplyInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},FlowStatus=0)</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">DataEntryDeal07</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+
+					</nextphase>
+				</nextphases>
+			</phase>
+
+		</phases>
+	</flow>
+	<flow>
+		<property name="FlowNo">ProjectFlow</property>
+		<property name="FlowVersion">V1.0</property>
+		<property name="FlowName">合作项目准入申请流程</property>
+		<property name="FlowDescribe">合作项目准入申请流程</property>
+		<property name="Default">true</property>
+		<property name="DefaultPhaseNo">apply</property>
+		<property name="BusinessTable">jbo.flow.FLOW_PROJECTINFO</property>
+		<property name="FlowType">0090</property>
+		<property name="FlowFinishScript">com.amarsoft.app.als.project.ApplyFinishUpdateStatus.lastFinishApprove(TaskSerialNo=${TaskSerialNo},SerialNo=${ObjectNo},FlowStatus=${BPMFlowStatus})
+		</property>
+		<parameters>
+			<parameter>
+				<property name="PARAMETERNAME">INPUTORGID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.prj.PRJ_BASIC_INFO.INPUTORGID</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">PROJECTSERIALNO</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.prj.PRJ_BASIC_INFO.AGREEMENTNO
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">PROJECTNAME</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.prj.PRJ_BASIC_INFO.PROJECTNAME
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CREATEDATE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.prj.PRJ_BASIC_INFO.CREATEDATE</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">PROJECTTYPE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.prj.PRJ_BASIC_INFO.PROJECTTYPE
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">PARTICIPATEINDICATOR</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.prj.PRJ_BASIC_INFO.PARTICIPATEINDICATOR
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CUSTOMERID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.prj.PRJ_BASIC_INFO.CUSTOMERID
+				</property>
+			</parameter>
+		</parameters>
+		<phases>
+			<phase>
+				<property name="PhaseNo">apply</property>
+				<property name="PhaseType">0245</property>
+				<property name="PhaseName">合作项目申请</property>
+				<property name="PhaseDescribe">流程启动者(合作项目准入)</property>
+				<property name="PreScript"></property>
+				<property name="PostScript">com.amarsoft.app.als.project.UpdateProjectApproveFlag.update(SerialNo=${ObjectNo})
+				</property>
+				<property name="FunctionID">ProjectApplyInfo</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0001</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="investigate" />
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">investigate</property>
+				<property name="PhaseType">0250</property>
+				<property name="PhaseName">项目审查</property>
+				<property name="PhaseDescribe">项目审查</property>
+				<property name="PreScript"></property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">ProjectApproveView</property>
+				<property name="OpnTemplateNo">CreditApproveInfo69</property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0007</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">
+				</property>
+				<parameters>
+					<parameter>
+						<property name="PARAMETERNAME">approve</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.prj.PRJ_BASIC_INFO.PHASEACTIONTYPE
+						</property>
+					</parameter>
+				</parameters>
+				<nextphases>
+					<nextphase filter="approve='1'">
+						<phaseno id="pass">
+						</phaseno>
+					</nextphase>
+					<nextphase filter="approve='0'">
+						<phaseno id="reject">
+						</phaseno>
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">pass</property>
+				<property name="PhaseType">1000</property>
+				<property name="PhaseName">审批通过</property>
+				<property name="PhaseDescribe">审批通过</property>
+				<property name="PreScript">com.amarsoft.app.als.project.ApplyFinishUpdateStatus.lastFinishApprove(TaskSerialNo=${TaskSerialNo},UserID=${CurUserID},OrgID=${CurOrgID},SerialNo=${ObjectNo},FlowStatus=3)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">ProjectApproveView</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">reject</property>
+				<property name="PhaseType">2000</property>
+				<property name="PhaseName">审批拒绝</property>
+				<property name="PhaseDescribe">审批拒绝</property>
+				<property name="PreScript">com.amarsoft.app.als.project.ApplyFinishUpdateStatus.lastFinishApprove(TaskSerialNo=${TaskSerialNo},UserID=${CurUserID},OrgID=${CurOrgID},SerialNo=${ObjectNo},FlowStatus=0)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">ProjectApproveView</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+
+					</nextphase>
+				</nextphases>
+			</phase>
+		</phases>
+	</flow>
+	<flow>
+		<property name="FlowNo">RiskWarningFlow</property>
+		<property name="FlowVersion">V1.0</property>
+		<property name="FlowName">三色预警发起/认定流程</property>
+		<property name="FlowDescribe">三色预警发起/认定流程</property>
+		<property name="Default">true</property>
+		<property name="DefaultPhaseNo">accept</property>
+		<property name="BusinessTable">jbo.flow.FLOW_WARNINGINFO</property>
+		<property name="FlowType">0060</property>
+		<property name="FlowFinishScript">com.amarsoft.app.als.afterloan.change.RiskWarningFlowFinishDeal.updateRiskWarningSignalStatus(serialNo=${SerialNo},taskserialno=${TASKSERIALNO},flowserialno=${FLOWSERIALNO},FlowStatus=${BPMFlowStatus})
+		</property>
+		<parameters>
+			<parameter>
+				<property name="PARAMETERNAME">INPUTORGID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.al.RISK_WARNING_SIGNAL.INPUTORGID
+				</property>
+			</parameter>
+		</parameters>
+		<phases>
+			<phase>
+				<property name="PhaseNo">accept</property>
+				<property name="PhaseType">0140</property>
+				<property name="PhaseName">业务受理</property>
+				<property name="PhaseDescribe">流程启动者(主办客户经理)</property>
+				<property name="PreScript">com.amarsoft.app.als.afterloan.action.RiskWarningThreeSubmitDeal.updateThreeWarningSubmitStatus(SerialNo=${SerialNo},Status=1)
+				</property>
+				<property name="PostScript">com.amarsoft.app.als.afterloan.action.RiskWarningThreeSubmitDeal.updateThreeWarningSubmitStatus(SerialNo=${SerialNo},Status=2)
+				</property>
+				<property name="FunctionID">RiskWarningManageInfo</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0001</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="zong_warn_identify" />
+					</nextphase>
+				</nextphases>
+			</phase>
+			
+			<phase>
+				<property name="PhaseNo">zong_warn_identify</property>
+				<property name="PhaseType">0160</property>
+				<property name="PhaseName">预警信号认定</property>
+				<property name="PhaseDescribe">PLBS0040(风险管理部负责人)+9900(常量)</property>
+				<property name="PreScript"></property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">RiskWarningManageInfo01</property>
+				<property name="OpnTemplateNo">RiskWarningOpinionInfo01</property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0040</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">
+				</property>
+				<parameters>
+					<parameter>
+						<property name="PARAMETERNAME">approve</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.al.RISK_WARNING_SIGNAL.PHASEACTIONTYPE
+						</property>
+					</parameter>
+				</parameters>
+				<nextphases>
+					<nextphase filter="approve='1'">
+						<phaseno id="pass">
+						</phaseno>
+					</nextphase>
+					<nextphase filter="approve='0'">
+						<phaseno id="reject">
+						</phaseno>
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">pass</property>
+				<property name="PhaseType">1000</property>
+				<property name="PhaseName">审批通过</property>
+				<property name="PhaseDescribe">审批通过</property>
+				<property name="PreScript">com.amarsoft.app.als.afterloan.action.RiskWarningThreeSubmitDeal.updateThreeWarningSubmitStatus(SerialNo=${SerialNo},Status=3);com.amarsoft.app.als.afterloan.action.RiskWarningThreeSubmitDeal.updateCustomerInfoCSTLevel(SerialNo=${SerialNo},Flag=1)
+				</property>
+				<property name="PostScript">
+				</property>
+				<property name="FunctionID">RiskWarningManageInfo</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">reject</property>
+				<property name="PhaseType">2000</property>
+				<property name="PhaseName">审批拒绝</property>
+				<property name="PhaseDescribe">审批拒绝</property>
+				<property name="PreScript">com.amarsoft.app.als.afterloan.action.RiskWarningThreeSubmitDeal.updateThreeWarningSubmitStatus(SerialNo=${SerialNo},Status=4)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">RiskWarningManageInfo</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+
+					</nextphase>
+				</nextphases>
+			</phase>
+		</phases>
+	</flow>
+
+	<flow>
+		<property name="FlowNo">ProjectAlterFlow</property>
+		<property name="FlowVersion">V1.0</property>
+		<property name="FlowName">项目筹建/变更流程</property>
+		<property name="FlowDescribe">项目变更流程</property>
+		<property name="Default">true</property>
+		<property name="DefaultPhaseNo">accept</property>
+		<property name="BusinessTable">jbo.flow.FLOW_PROJECTINFO</property>
+		<property name="FlowType">0150</property>
+		<property name="FlowFinishScript">com.amarsoft.app.als.project.UpdateTransferProjectApproveFlag.update(SerialNo=${ObjectNo},FlowStatus=${BPMFlowStatus})
+		</property>
+		<parameters>
+			<parameter>
+				<property name="PARAMETERNAME">ADJUSTORGID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.prj.PRJ_ASSET_LOG.ADJUSTORGID</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">ADJUSTUSERID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.prj.PRJ_ASSET_LOG.ADJUSTUSERID
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">PROJECTSERIALNO</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.prj.PRJ_ASSET_LOG.PROJECTSERIALNO
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">ADJUSTDATE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.prj.PRJ_ASSET_LOG.ADJUSTDATE
+				</property>
+			</parameter>
+		</parameters>
+		<phases>
+			<phase>
+				<property name="PhaseNo">accept</property>
+				<property name="PhaseType">0010</property>
+				<property name="PhaseName">项目变更申请</property>
+				<property name="PhaseDescribe">项目变更申请</property>
+				<property name="PreScript"></property>
+				<property name="PostScript">com.amarsoft.app.als.project.UpdateTransferProjectApproveFlag.update(PhaseNo=${PhaseNo},TaskSerialNo=${TaskSerialNo},FlowSerialNo=${FlowSerialNo},SerialNo=${ObjectNo})
+				</property>
+				<property name="FunctionID">ProjectAlterFlowInfo</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0001</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="reg" />
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">reg</property>
+				<property name="PhaseType">0250</property>
+				<property name="PhaseName">项目审批</property>
+				<property name="PhaseDescribe">项目审批</property>
+				<property name="PreScript"></property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">PrepareSubmitProject_new</property>
+				<property name="OpnTemplateNo">CreditApproveInfo03</property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0026</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<parameters>
+					<parameter>
+						<property name="PARAMETERNAME">approve</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.prj.PRJ_ASSET_LOG.PhaseActionType
+						</property>
+					</parameter>
+				</parameters>
+				<nextphases>
+					<nextphase filter="approve='1'">
+						<phaseno id="pass">
+						</phaseno>
+					</nextphase>
+					<nextphase filter="approve='0'">
+						<phaseno id="reject">
+						</phaseno>
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">pass</property>
+				<property name="PhaseType">1000</property>
+				<property name="PhaseName">审批通过</property>
+				<property name="PhaseDescribe">审批通过</property>
+				<property name="PreScript">com.amarsoft.app.als.project.UpdateTransferProjectApproveFlag.update(PhaseType=${PhaseType},PhaseNo=${PhaseNo},TaskSerialNo=${TaskSerialNo},FlowSerialNo=${FlowSerialNo},SerialNo=${ObjectNo},FlowStatus=3)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">ProjectAlterFlowInfo</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+			</phase>
+			<phase>
+				<property name="PhaseNo">reject</property>
+				<property name="PhaseType">2000</property>
+				<property name="PhaseName">审批拒绝</property>
+				<property name="PhaseDescribe">审批拒绝</property>
+				<property name="PreScript">com.amarsoft.app.als.project.UpdateTransferProjectApproveFlag.update(PhaseNo=${PhaseNo},TaskSerialNo=${TaskSerialNo},FlowSerialNo=${FlowSerialNo},SerialNo=${ObjectNo},FlowStatus=3)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">ProjectAlterFlowInfo</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+			</phase>
+		</phases>
+	</flow>
+
+
+	<flow>
+		<property name="FlowNo">BatchPutOutFlow</property>
+		<property name="FlowVersion">V1.0</property>
+		<property name="FlowName">批量放款流程</property>
+		<property name="FlowDescribe">批量放款流程</property>
+		<property name="Default">true</property>
+		<property name="DefaultPhaseNo">loanapply</property>
+		<property name="BusinessTable">jbo.flow.FLOW_BATCHBUSINESSINFO</property>
+		<property name="FlowType">0025</property>
+		<property name="FlowFinishScript">
+		</property>
+		<parameters>
+			<parameter>
+				<property name="PARAMETERNAME">BATCHNAME</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION_BB.BATCHNAME
+				</property>
+			</parameter>
+		</parameters>
+		<phases>
+			<phase>
+				<property name="PhaseNo">loanapply</property>
+				<property name="PhaseType">0080</property>
+				<property name="PhaseName">放款申请</property>
+				<property name="PhaseDescribe">放款申请</property>
+				<property name="PreScript">
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">BatchPutoutDeal01</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0001</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="loancontrol" />
+					</nextphase>
+				</nextphases>
+			</phase>
+
+			<phase>
+				<property name="PhaseNo">loancontrol</property>
+				<property name="PhaseType">0090</property>
+				<property name="PhaseName">放款审核</property>
+				<property name="PhaseDescribe">放款审核</property>
+				<property name="PreScript"></property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">BatchPutoutApproveDeal01</property>
+				<property name="OpnTemplateNo">PutOutCheckResult</property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0016</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp</property>
+				<parameters>
+				</parameters>
+				
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="pass" />
+					</nextphase>
+					<nextphase filter="1=1">
+						<phaseno id="reject" />
+					</nextphase>
+				</nextphases>
+			</phase>
+			
+			<phase>
+				<property name="PhaseNo">pass</property>
+				<property name="PhaseType">1000</property>
+				<property name="PhaseName">审批通过</property>
+				<property name="PhaseDescribe">审批通过</property>
+				<property name="PreScript">com.amarsoft.acct.accounting.web.RunTransaction.run(UserID=${CurUserID},OrgID=${CurOrgID},TransactionSerialNo=${ObjectNo},Flag=N)</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID"></property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+					</nextphase>
+				</nextphases>
+			</phase>
+
+
+			<phase>
+				<property name="PhaseNo">reject</property>
+				<property name="PhaseType">2000</property>
+				<property name="PhaseName">审批拒绝</property>
+				<property name="PhaseDescribe">审批拒绝</property>
+				<property name="PreScript">com.amarsoft.acct.accounting.web.RunTransaction.cancel(UserID=${CurUserID},OrgID=${CurOrgID},TransactionSerialNo=${ObjectNo})</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID"></property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+
+					</nextphase>
+				</nextphases>
+			</phase>
+			
+		</phases>
+	</flow>
+
+
+	<flow>
+		<property name="FlowNo">BatchPaymentFlow</property>
+		<property name="FlowVersion">V1.0</property>
+		<property name="FlowName">批量还款流程</property>
+		<property name="FlowDescribe">批量还款流程</property>
+		<property name="Default">true</property>
+		<property name="DefaultPhaseNo">payapply</property>
+		<property name="BusinessTable">jbo.flow.FLOW_BATCHBUSINESSINFO</property>
+		<property name="FlowType">0055</property>
+		<property name="FlowFinishScript">
+		</property>
+		<parameters>
+			<parameter>
+				<property name="PARAMETERNAME">BATCHNAME</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION_BB.BATCHNAME
+				</property>
+			</parameter>
+		</parameters>
+		<phases>
+			<phase>
+				<property name="PhaseNo">payapply</property>
+				<property name="PhaseType">0010</property>
+				<property name="PhaseName">还款申请</property>
+				<property name="PhaseDescribe">还款申请</property>
+				<property name="PreScript">
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">BatchPaymentDeal01</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0001</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="paycontrol" />
+					</nextphase>
+				</nextphases>
+			</phase>
+
+			<phase>
+				<property name="PhaseNo">paycontrol</property>
+				<property name="PhaseType">0050</property>
+				<property name="PhaseName">还款审核</property>
+				<property name="PhaseDescribe">还款审核</property>
+				<property name="PreScript"></property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">BatchPaymentApproveDeal01</property>
+				<property name="OpnTemplateNo">PutOutCheckResult</property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0005</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp</property>
+				<parameters>
+				</parameters>
+				
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="pass" />
+					</nextphase>
+					<nextphase filter="1=1">
+						<phaseno id="reject" />
+					</nextphase>
+				</nextphases>
+			</phase>
+			
+			<phase>
+				<property name="PhaseNo">pass</property>
+				<property name="PhaseType">1000</property>
+				<property name="PhaseName">审批通过</property>
+				<property name="PhaseDescribe">审批通过</property>
+				<property name="PreScript">com.amarsoft.acct.accounting.web.RunTransaction.run(UserID=${CurUserID},OrgID=${CurOrgID},TransactionSerialNo=${ObjectNo},Flag=N)</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID"></property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+					</nextphase>
+				</nextphases>
+			</phase>
+
+
+			<phase>
+				<property name="PhaseNo">reject</property>
+				<property name="PhaseType">2000</property>
+				<property name="PhaseName">审批拒绝</property>
+				<property name="PhaseDescribe">审批拒绝</property>
+				<property name="PreScript">com.amarsoft.acct.accounting.web.RunTransaction.cancel(UserID=${CurUserID},OrgID=${CurOrgID},TransactionSerialNo=${ObjectNo})</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID"></property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+
+					</nextphase>
+				</nextphases>
+			</phase>
+			
+		</phases>
+	</flow>
+
+
+	<flow>
+		<property name="FlowNo">TransactionFlow</property>
+		<property name="FlowVersion">V1.0</property>
+		<property name="FlowName">消费信贷贷后服务短流程</property>
+		<property name="FlowDescribe">消费信贷贷后服务短流程</property>
+		<property name="Default">true</property>
+		<property name="DefaultPhaseNo">accept</property>
+		<property name="BusinessTable">jbo.flow.FLOW_BUSINESSINFO</property>
+		<property name="FlowType">0050</property>
+		<parameters>
+			<parameter>
+				<property name="PARAMETERNAME">CUSTOMERID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.CUSTOMERID
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">LOANSERIALNO</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.RELATIVEOBJECTNO
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">org_id</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.OrgID</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">APPLYTYPE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.ApplyType
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">BUSINESSPRIORITY</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Java</property>
+				<property name="METHOD">com.amarsoft.app.workflow.processdata.GetBusinessPriority
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">BUSINESSTYPE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.BusinessType
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CERTID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.CertID</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CERTTYPE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.CertType
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CONTRACTARTIFICIALNO</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.CONTRACTSERIALNO
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CUSTOMERNAME</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.CustomerName
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">LoanSerialNo</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.LoanSerialNo
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">ORGID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.OrgID</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">ProductID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.acct.ACCT_TRANSACTION.ProductID
+				</property>
+			</parameter>
+		</parameters>
+		<phases>
+			<phase>
+				<property name="PhaseNo">accept</property>
+				<property name="PhaseType">0010</property>
+				<property name="PhaseName">交易发起</property>
+				<property name="PhaseDescribe">交易发起</property>
+				<property name="PreScript">
+				</property>
+				<property name="PostScript">
+				</property>
+				<property name="FunctionID">TransactionTab</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0001</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<parameters>
+					<parameter>
+						<property name="PARAMETERNAME">org_id</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.acct.ACCT_TRANSACTION.CurOrgID
+						</property>
+					</parameter>
+				</parameters>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="investigate" />
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">investigate</property>
+				<property name="PhaseType">0060</property>
+				<property name="PhaseName">交易复核</property>
+				<property name="PhaseDescribe">交易复核</property>
+				<property name="PreScript"></property>
+				<property name="PostScript">
+				</property>
+				<property name="FunctionID">TransactionTab01</property>
+				<property name="OpnTemplateNo">ChangeApproveInfo03</property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0005</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<parameters>
+					<parameter>
+						<property name="PARAMETERNAME">approve</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.acct.ACCT_TRANSACTION.PhaseActionType
+						</property>
+					</parameter>
+				</parameters>
+				<nextphases>
+					<nextphase filter="approve='1'">
+						<phaseno id="pass" />
+					</nextphase>
+					<nextphase filter="approve='0'">
+						<phaseno id="reject" />
+					</nextphase>
+				</nextphases>
+			</phase>
+			
+			<phase>
+				<property name="PhaseNo">pass</property>
+				<property name="PhaseType">1000</property>
+				<property name="PhaseName">审批通过</property>
+				<property name="PhaseDescribe">审批通过</property>
+				<property name="PreScript">com.amarsoft.acct.accounting.web.RunTransaction.run(UserID=${CurUserID},OrgID=${CurOrgID},TransactionSerialNo=${ObjectNo},Flag=N)</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID"></property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+					</nextphase>
+				</nextphases>
+			</phase>
+
+
+			<phase>
+				<property name="PhaseNo">reject</property>
+				<property name="PhaseType">2000</property>
+				<property name="PhaseName">审批拒绝</property>
+				<property name="PhaseDescribe">审批拒绝</property>
+				<property name="PreScript">com.amarsoft.acct.accounting.web.RunTransaction.cancel(UserID=${CurUserID},OrgID=${CurOrgID},TransactionSerialNo=${ObjectNo})</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID"></property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+
+					</nextphase>
+				</nextphases>
+			</phase>
+			
+		</phases>
+
+	</flow>
+
+	<flow>
+		<property name="FlowNo">S0215.plbs_afterloan04.Flow_014</property>
+		<property name="FlowVersion">V1.0</property>
+		<property name="FlowName">三色预警信号解除/预警客户流程</property>
+		<property name="FlowDescribe">三色预警信号解除/预警客户流程</property>
+		<property name="Default">true</property>
+		<property name="DefaultPhaseNo">removeaccept</property>
+		<property name="BusinessTable">jbo.flow.FLOW_WARNINGINFO</property>
+		<property name="FlowType">0070</property>
+		<property name="FlowFinishScript">com.amarsoft.app.als.afterloan.change.RiskWarningFlowFinishDeal.updateRiskWarningSignalStatus(serialNo=${SerialNo},taskserialno=${TASKSERIALNO},flowserialno=${FLOWSERIALNO},FlowStatus=${BPMFlowStatus})
+		</property>
+		<parameters>
+			<parameter>
+				<property name="PARAMETERNAME">APPLYTYPE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.al.RISK_WARNING_SIGNAL.APPLYTYPE
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CUSTOMERNAME</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.al.RISK_WARNING_SIGNAL.CUSTOMERNAME
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">SIGNALTYPE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.al.RISK_WARNING_SIGNAL.SIGNALTYPE
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">org_id</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.al.RISK_WARNING_SIGNAL.INPUTORGID
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">start_org_type</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Java</property>
+				<property name="METHOD">com.amarsoft.app.workflow.processdata.GetOrgType
+				</property>
+			</parameter>
+		</parameters>
+		<phases>
+			<phase>
+				<property name="PhaseNo">removeaccept</property>
+				<property name="PhaseType">0150</property>
+				<property name="PhaseName">业务受理</property>
+				<property name="PhaseDescribe">流程启动者(主办客户经理)</property>
+				<property name="PreScript">com.amarsoft.app.als.afterloan.action.RiskWarningThreeSubmitDeal.updateThreeWarningSubmitStatus(SerialNo=${SerialNo},Status=1)
+				</property>
+				<property name="PostScript">com.amarsoft.app.als.afterloan.action.RiskWarningThreeSubmitDeal.updateThreeWarningSubmitStatus(SerialNo=${SerialNo},Status=2)
+				</property>
+				<property name="FunctionID">RiskWarningCancelInfo</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0001</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="zong_warn_identify" />
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">zong_warn_identify</property>
+				<property name="PhaseType">0170</property>
+				<property name="PhaseName">总行预警信号解除认定</property>
+				<property name="PhaseDescribe">PLBS0040(风险管理部负责人)+9900(常量)</property>
+				<property name="PreScript"></property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">RiskWarningManageInfo01</property>
+				<property name="OpnTemplateNo">RiskWarningOpinionInfo01</property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0040</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<parameters>
+					<parameter>
+						<property name="PARAMETERNAME">approve</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.al.RISK_WARNING_SIGNAL.PHASEACTIONTYPE
+						</property>
+					</parameter>
+				</parameters>
+				<nextphases>
+					<nextphase filter="approve='1'">
+						<phaseno id="pass">
+						</phaseno>
+					</nextphase>
+					<nextphase filter="approve='0'">
+						<phaseno id="reject">
+						</phaseno>
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">pass</property>
+				<property name="PhaseType">1000</property>
+				<property name="PhaseName">审批通过</property>
+				<property name="PhaseDescribe">审批通过</property>
+				<property name="PreScript">com.amarsoft.app.als.afterloan.action.RiskWarningThreeSubmitDeal.updateRWSStatus(SerialNo=${SerialNo});com.amarsoft.app.als.afterloan.action.RiskWarningThreeSubmitDeal.updateCustomerInfoCSTLevel(SerialNo=${SerialNo},Flag=2);com.amarsoft.app.als.afterloan.action.RiskWarningThreeSubmitDeal.updateThreeWarningSubmitStatus(SerialNo=${SerialNo},Status=3)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">RiskWarningManageInfo</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">reject</property>
+				<property name="PhaseType">2000</property>
+				<property name="PhaseName">审批拒绝</property>
+				<property name="PhaseDescribe">审批拒绝</property>
+				<property name="PreScript">com.amarsoft.app.als.afterloan.action.RiskWarningThreeSubmitDeal.updateThreeWarningSubmitStatus(SerialNo=${SerialNo},Status=4)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">RiskWarningManageInfo</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+				<nextphases>
+					<nextphase>
+
+					</nextphase>
+				</nextphases>
+			</phase>
+		</phases>
+	</flow>
+	
+	<!-- ckxu添加的零售商准入申请的流程 -->
+	<flow>
+		<property name="FlowNo">MarketCustomerFlow</property>
+		<property name="FlowVersion">V1.0</property>
+		<property name="FlowName">零售商准入申请流程</property>
+		<property name="FlowDescribe">零售商准入申请流程</property>
+		<property name="Default">true</property>
+		<property name="DefaultPhaseNo">accept</property>
+		<property name="BusinessTable">jbo.flow.FLOW_BUSINESSINFO</property>
+		<property name="FlowType">0140</property>
+		<property name="FlowFinishScript">com.amarsoft.app.als.credit.apply.action.UpdateMarketCustomerInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},CustomerID=${CustomerID},FlowStatus=${BPMFlowStatus})
+		</property>
+		<parameters>
+			<parameter>
+				<property name="PARAMETERNAME">CERTTYPE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.customer.CUSTOMER_INFO.CertType</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CUSTOMERNAME</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.customer.CUSTOMER_INFO.CustomerName
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">CERTID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.customer.CUSTOMER_INFO.CertID</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">ORGID</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.customer.CUSTOMER_INFO.INPUTORGID
+				</property>
+			</parameter>
+			<parameter>
+				<property name="PARAMETERNAME">LISTTYPE</property>
+				<property name="DATATYPE">1</property>
+				<property name="METHODTYPE">Expression</property>
+				<property name="METHOD">jbo.customer.CUSTOMER_LIST.LISTTYPE
+				</property>
+			</parameter>
+		</parameters>
+		<phases>
+			<phase>
+				<property name="PhaseNo">accept</property>
+				<property name="PhaseType">0010</property>
+				<property name="PhaseName">零售商准入申请</property>
+				<property name="PhaseDescribe">零售商准入申请</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateMarketCustomerInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},CustomerID=${CustomerID},FlowStatus=1)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">MarketCustomerApply</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="RoleID">PLBS0001</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<nextphases>
+					<nextphase filter="1=1">
+						<phaseno id="singlereg" />
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">singlereg</property>
+				<property name="PhaseType">0330</property>
+				<property name="PhaseName">零售商准入审核</property>
+				<property name="PhaseDescribe">零售商准入审核</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateMarketCustomerInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},FlowStatus=2)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">MarketCustomerDataEntry</property>
+				<property name="OpnTemplateNo">CreditApproveInfo03</property>
+				<property name="ParticipantFilterScript">
+				</property>
+				<property name="RoleID">PLBS0007</property>
+				<property name="OrgLevel">3</property>
+				<property name="ParticipantScript">com.amarsoft.app.workflow.pcp.FlowUserPcp
+				</property>
+				<parameters>
+					<parameter>
+						<property name="PARAMETERNAME">approve</property>
+						<property name="DATATYPE">1</property>
+						<property name="METHODTYPE">Expression</property>
+						<property name="METHOD">jbo.customer.CUSTOMER_INFO.PhaseActionType
+						</property>
+					</parameter>
+				</parameters>
+				<nextphases>
+					<nextphase filter="approve='1'">
+						<phaseno id="pass">
+						</phaseno>
+					</nextphase>
+					<nextphase filter="approve='0'">
+						<phaseno id="reject">
+						</phaseno>
+					</nextphase>
+				</nextphases>
+			</phase>
+			<phase>
+				<property name="PhaseNo">pass</property>
+				<property name="PhaseType">1000</property>
+				<property name="PhaseName">审批通过</property>
+				<property name="PhaseDescribe">审批通过</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateMarketCustomerInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},FlowStatus=3)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">MarketCustomerDataEntry</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+			</phase>
+			<phase>
+				<property name="PhaseNo">reject</property>
+				<property name="PhaseType">2000</property>
+				<property name="PhaseName">审批拒绝</property>
+				<property name="PhaseDescribe">审批拒绝</property>
+				<property name="PreScript">com.amarsoft.app.als.credit.apply.action.UpdateApplyInfo.update(UserID=${CurUserID},OrgID=${CurOrgID},ApplySerialNo=${ObjectNo},FlowStatus=0)
+				</property>
+				<property name="PostScript"></property>
+				<property name="FunctionID">MarketCustomerDataEntry</property>
+				<property name="OpnTemplateNo"></property>
+				<property name="ParticipantFilterScript"></property>
+				<property name="ParticipantScript"></property>
+			</phase>
+		</phases>
+	</flow>
+	
+</flows>

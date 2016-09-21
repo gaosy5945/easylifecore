@@ -1,0 +1,8 @@
+@charset "gb2312";
+.nextLab{font-size: 12px;position: relative;float:right;width:37px;cursor: pointer;background-color:rgb(175, 190, 255)}
+.lastLab{font-size: 12px;position: relative;float:left;width:37px;cursor: pointer;background-color:rgb(175, 190, 255)}
+.msg_num{font-size: 12px;position: relative;float:left;	width: 15px;margin-left: 50px;}
+.msg_div{font-size: 12px;margin-bottom: 15px;height: 78%;margin-top: 5px;}
+.msg_title{background-color: #70a87f;}
+.msg_main_div{border: 1px solid #70a87f;width: 200px;height:150px;position: absolute;top:99%;left:99%;margin-left: -210px;margin-top: -155px;display:none;}
+.msg_all{border: 1px solid #70a87f;width:500px;height:300px;position:absolute;top:40%;left:30%;}

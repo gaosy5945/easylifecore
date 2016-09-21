@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jbo> 
+  <package name="jbo.guaranty"> 
+ 	<class name="CLTR_CHECK_LOG" label="押品重复申请检验日志" keyAttributes="SERIALNO">
+		<attributes>
+			<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+			<attribute name="CLRSERIALNO" label="押品系统押品编号" type="STRING" length="40"/>
+			<attribute name="ASSETTYPE" label="押品类型（CodeNo:AssetType）" type="STRING" length="20"/>
+			<attribute name="ASSETNAME" label="押品名称" type="STRING" length="80"/>
+			<attribute name="CONTRACTSERIALNO" label="合同编号" type="STRING" length="40"/>
+			<attribute name="DUEBILLSERIALNO" label="借据编号" type="STRING" length="40"/>
+			<attribute name="INPUTDATE" label="录入日期" type="STRING" length="10"/>
+			<attribute name="INPUTTIME" label="录入时间" type="STRING" length="10"/>
+		</attributes>
+		<manager>
+			<managerProperties>
+				<property name="table" value="CLTR_CHECK_LOG" />
+				<property name="createKey" value="true" />
+			</managerProperties>
+		</manager>
+	</class>
+    <class name="CLR_MARGIN_INFO" label="保证金缴存方案" keyAttributes="SERIALNO"> 
+      <attributes> 
+        <attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>  
+        <attribute name="CONTRACTAMOUNT" label="应缴金额" type="DOUBLE" length="24" scale="2"/>  
+        <attribute name="PREPAYAMOUNT" label="预收金额" type="DOUBLE" length="24" scale="2"/>  
+        <attribute name="STATUS" label="状态(CodeNo:IsInUse)" type="STRING" length="10"/>  
+        <attribute name="REMARK" label="备注" type="STRING" length="400"/>  
+        <attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>  
+        <attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>  
+        <attribute name="INPUTDATE" label="登记时间" type="STRING" length="10"/>  
+        <attribute name="UPDATEUSERID" label="更新人" type="STRING" length="32"/>  
+        <attribute name="UPDATEORGID" label="更新机构" type="STRING" length="32"/>  
+        <attribute name="UPDATEDATE" label="更新时间" type="STRING" length="10"/>  
+        <attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>  
+        <attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>  
+        <attribute name="CURRENCY" label="币种(CodeNo:Currency)" type="STRING" length="10"/>  
+        <attribute name="PREPAYCALMETHOD" label="预收金额计算方式(CodeNo:MarginPrepayCalMethod)" type="STRING" length="10"/>  
+        <attribute name="PREPAYPERCENT" label="预收比例" type="DOUBLE" length="12" scale="8"/>  
+        <attribute name="MARGINCONTRACTTYPE" label="保证金协议类型(CodeNo:MarginContractType)" type="STRING" length="10"/>  
+        <attribute name="INDIVIDUALPERCENT" label="单笔业务保证金缴纳比例" type="DOUBLE" length="12" scale="8"/>  
+        <attribute name="INDIVIDUALAMOUNT" label="单笔业务保证金缴纳金额" type="DOUBLE" length="24" scale="2"/>  
+        <attribute name="INDIVIDUALCALMETHOD" label="单笔保证金计算方式(CodeNo:IndividualCalMethod)" type="STRING" length="10"/>  
+        <attribute name="PRECONDITION" label="保证金缴纳条件（CodeNo:MarginPrecondition）" type="STRING" length="10"/>  
+        <attribute name="RELEASETERMTYPE" label="保证金释放条件（CodeNo:MarginReleaseTermType）" type="STRING" length="10"/> 
+        <attribute name="MARGINPAYMENTWAY" label="保证金缴纳方式（CodeNo:MarginPaymentWay）" type="STRING" length="10"/>  
+      </attributes>  
+      <manager> 
+        <managerProperties> 
+          <property name="table" value="CLR_MARGIN_INFO"/>  
+          <property name="createKey" value="true"/> 
+        </managerProperties> 
+      </manager> 
+    </class>  
+    <class name="CLR_MARGIN_WASTEBOOK" label="保证金流水信息" keyAttributes="SERIALNO"> 
+      <attributes> 
+        <attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>  
+        <attribute name="ACCOUNTNO" label="保证金账号" type="STRING" length="40"/>  
+        <attribute name="TRANSACTIONCODE" label="发生类型（CodeNo:MarginTransactionCode）" type="STRING" length="10"/>  
+        <attribute name="AMOUNT" label="发生金额" type="DOUBLE" length="24" scale="2"/>  
+        <attribute name="CURRENCY" label="币种(CodeNo:Currency)" type="STRING" length="10"/>  
+        <attribute name="OCCURDATE" label="发生日期" type="STRING" length="10"/>  
+        <attribute name="STATUS" label="状态(CodeNo:TransactionCode)" type="STRING" length="10"/>  
+        <attribute name="REMARK" label="备注" type="STRING" length="200"/>  
+        <attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>  
+        <attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>  
+        <attribute name="MEMO" label="发生摘要" type="STRING" length="400"/>  
+        <attribute name="ACCOUNTINGDATE" label="记账日期" type="STRING" length="10"/> 
+        <attribute name="MARGINSERIALNO" label="保证金缴存方案编号" type="STRING" length="40"/> 
+      </attributes>  
+      <manager> 
+        <managerProperties> 
+          <property name="table" value="CLR_MARGIN_WASTEBOOK"/>  
+          <property name="createKey" value="true"/> 
+        </managerProperties> 
+      </manager> 
+    </class>  
+    <class name="GUARANTY_CONTRACT" label="担保合同信息" keyAttributes="SERIALNO"> 
+      <attributes> 
+        <attribute name="SERIALNO" label="担保信息编号" type="STRING" length="40"/>  
+        <attribute name="CONTRACTTYPE" label="担保类型(CodeNo:GuarantyContractType)" type="STRING" length="10"/>  
+        <attribute name="GUARANTYTYPE" label="担保方式(CodeNo:GuarantyType)" type="STRING" length="10"/>  
+        <attribute name="CONTRACTSTATUS" label="合同状态(CodeNo:GuarantyContractStatus)" type="STRING" length="10"/>  
+        <attribute name="CONTRACTNO" label="担保合同号" type="STRING" length="40"/>  
+        <attribute name="SIGNDATE" label="合同签订日" type="STRING" length="10"/>  
+        <attribute name="CONTRACTDATE" label="起始日期" type="STRING" length="10"/>  
+        <attribute name="MATURITYDATE" label="到期日期" type="STRING" length="10"/>  
+        <attribute name="GUARANTORID" label="担保人编号" type="STRING" length="400"/>  
+        <attribute name="GUARANTORNAME" label="担保人名称" type="STRING" length="800"/>  
+        <attribute name="GUARANTYCURRENCY" label="币种（CodeNo:Currency）" type="STRING" length="10"/>  
+        <attribute name="GUARANTYVALUE" label="担保总金额" type="DOUBLE" length="24" scale="2"/>  
+        <attribute name="OTHERDESCRIBE" label="其它特别约定" type="STRING" length="400"/>  
+        <attribute name="GUARANTYCHECKER" label="核保人" type="STRING" length="80"/>  
+        <attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>  
+        <attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>  
+        <attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>  
+        <attribute name="UPDATEUSERID" label="更新用户" type="STRING" length="32"/>  
+        <attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>  
+        <attribute name="REMARK" label="备注" type="STRING" length="400"/>  
+        <attribute name="GUARANTEETYPE" label="保证担保形式(CodeNo:GuaranteeType)" type="STRING" length="10"/>  
+        <attribute name="GUARANTYPERIODFLAG" label="担保到期条件（CodeNo:GuarantyPeriodFlag）" type="STRING" length="10"/>  
+        <attribute name="PROJECTSERIALNO" label="合作项目流水号" type="STRING" length="40"/>  
+        <attribute name="GUARANTORGRADE" label="担保人等级（CodeNo:GuarantorGrade）" type="STRING" length="10"/> 
+        <attribute name="GUARANTYTERMTYPE" label="担保期限类型(CodeNo:GuarantyTermType)" type="STRING" length="10"/> 
+      </attributes>  
+      <manager> 
+        <managerProperties> 
+          <property name="table" value="GUARANTY_CONTRACT"/>  
+          <property name="createKey" value="true"/> 
+        </managerProperties> 
+      </manager> 
+    </class> 
+   	<class name="GUARANTY_CONTRACT_CHANGE" label="担保合同信息" keyAttributes="SERIALNO">
+		<attributes>
+			<attribute name="SERIALNO" label="担保变更编号" type="STRING" length="40"/>
+			<attribute name="CONTRACTTYPE" label="担保类型(CodeNo:GuarantyContractType)" type="STRING" length="10"/>
+			<attribute name="GUARANTYTYPE" label="担保方式(CodeNo:GuarantyType)" type="STRING" length="10"/>
+			<attribute name="CONTRACTSTATUS" label="合同状态(CodeNo:GuarantyContractStatus)" type="STRING" length="10"/>
+			<attribute name="CONTRACTNO" label="担保合同号" type="STRING" length="40"/>
+			<attribute name="SIGNDATE" label="合同签订日" type="STRING" length="10"/>
+			<attribute name="CONTRACTDATE" label="起始日期" type="STRING" length="10"/>
+			<attribute name="MATURITYDATE" label="到期日期" type="STRING" length="10"/>
+			<attribute name="GUARANTORID" label="担保人编号" type="STRING" length="400"/>
+			<attribute name="GUARANTORNAME" label="担保人名称" type="STRING" length="800"/>
+			<attribute name="GUARANTYCURRENCY" label="币种（CodeNo:Currency）" type="STRING" length="10"/>
+			<attribute name="GUARANTYVALUE" label="担保总金额" type="DOUBLE" length="24" scale="2"/>
+			<attribute name="OTHERDESCRIBE" label="其它特别约定" type="STRING" length="400"/>
+			<attribute name="GUARANTYCHECKER" label="核保人" type="STRING" length="80"/>
+			<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+			<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+			<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+			<attribute name="UPDATEUSERID" label="更新用户" type="STRING" length="32"/>
+			<attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>
+			<attribute name="REMARK" label="备注" type="STRING" length="400"/>
+			<attribute name="GUARANTEETYPE" label="保证担保形式(CodeNo:GuaranteeType)" type="STRING" length="10"/>
+			<attribute name="GUARANTYPERIODFLAG" label="担保到期条件（CodeNo:GuarantyPeriodFlag）" type="STRING" length="10"/>
+			<attribute name="PROJECTSERIALNO" label="合作项目流水号" type="STRING" length="40"/>
+			<attribute name="GUARANTORGRADE" label="担保人等级（CodeNo:GuarantorGrade）" type="STRING" length="10"/>
+			<attribute name="GUARANTYTERMTYPE" label="担保期限类型(CodeNo:GuarantyTermType)" type="STRING" length="10"/>
+			<attribute name="CHANGEFLAG" label="押品变更状态,(CodeNo:ChangeFlag)" type="STRING" length="10"/>
+        	<attribute name="RelativeGCSerialNo" label="变更关联原担保合同流水号" type="STRING" length="40"/>
+        	<attribute name="APPROVEORGID" label="变更执行机构" type="STRING" length="32"/>
+			<attribute name="APPROVEUSERID" label="变更执行人" type="STRING" length="32"/>
+		</attributes>
+		<manager>
+			<managerProperties>
+				<property name="table" value="GUARANTY_CONTRACT_CHANGE" />
+				<property name="createKey" value="true" />
+			</managerProperties>
+		</manager>
+	</class> 
+    <class name="GUARANTY_RELATIVE" label="担保关联信息" keyAttributes="SERIALNO"> 
+      <attributes> 
+        <attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>  
+        <attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>  
+        <attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>  
+        <attribute name="GCSERIALNO" label="担保合同编号" type="STRING" length="40"/>  
+        <attribute name="ASSETSERIALNO" label="抵押资产编号" type="STRING" length="40"/>  
+        <attribute name="STATUS" label="状态(CodeNo:GuarantyStatus)" type="STRING" length="10"/>  
+        <attribute name="GUARANTYAMOUNT" label="担保金额" type="DOUBLE" length="24" scale="2"/>  
+        <attribute name="CURRENCY" label="币种(CodeNo:Currency)" type="STRING" length="10"/>  
+        <attribute name="GUARANTYPERCENT" label="担保比例" type="DOUBLE" length="12" scale="8"/>  
+        <attribute name="GUARANTYINDICATOR" label="担保？？？？？" type="STRING" length="10"/> 
+        <attribute name="CMISSERIALNO" label="押品系统登记编号" type="STRING" length="40"/>
+      </attributes>  
+      <manager> 
+        <managerProperties> 
+          <property name="table" value="GUARANTY_RELATIVE"/>  
+          <property name="createKey" value="true"/> 
+        </managerProperties> 
+      </manager> 
+    </class> 
+    <class name="GUARANTY_RELATIVE_CHANGE" label="担保关联信息-变更" keyAttributes="SERIALNO"> 
+      <attributes> 
+        <attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>  
+        <attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>  
+        <attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>  
+        <attribute name="GCSERIALNO" label="担保合同编号" type="STRING" length="40"/>  
+        <attribute name="ASSETSERIALNO" label="抵押资产编号" type="STRING" length="40"/>  
+        <attribute name="STATUS" label="状态(CodeNo:GuarantyStatus)" type="STRING" length="10"/>  
+        <attribute name="GUARANTYAMOUNT" label="担保金额" type="DOUBLE" length="24" scale="2"/>  
+        <attribute name="CURRENCY" label="币种(CodeNo:Currency)" type="STRING" length="10"/>  
+        <attribute name="GUARANTYPERCENT" label="担保比例" type="DOUBLE" length="12" scale="8"/>  
+        <attribute name="GUARANTYINDICATOR" label="担保？？？？？" type="STRING" length="10"/> 
+        <attribute name="CMISSERIALNO" label="押品系统登记编号" type="STRING" length="40"/>
+        <attribute name="CHANGEFLAG" label="押品变更状态,(CodeNo:ChangeFlag)" type="STRING" length="10"/>
+        <attribute name="RelativeGRSerialNo" label="变更关联原押品关联关系流水号" type="STRING" length="40"/>
+      </attributes>  
+      <manager> 
+        <managerProperties> 
+          <property name="table" value="GUARANTY_RELATIVE_CHANGE"/>  
+          <property name="createKey" value="true"/> 
+        </managerProperties> 
+      </manager> 
+    </class>
+    <class name="ASSET_FINANCE" label="金融类质押品" keyAttributes="ASSETSERIALNO">
+			<attributes>
+				<attribute name="ASSETSERIALNO" label="押品编号" type="STRING" length="32"/>
+				<attribute name="DEPCTFNO" label="存单号码" type="STRING" length="40"/>
+				<attribute name="SAVINGMODE" label="储蓄方式" type="STRING" length="2"/>
+				<attribute name="SAVEDATE" label="存入日期" type="STRING" length="10"/>
+				<attribute name="DRAWMODE" label="存单支取方式" type="STRING" length="2"/>
+				<attribute name="PASSBOOKCARDNO" label="存折卡号" type="STRING" length="32"/>
+				<attribute name="OPENDATE" label="开户日期" type="STRING" length="10"/>
+				<attribute name="BAILCOMESOURCE" label="保证金来源" type="STRING" length="10"/>
+				<attribute name="ACCOUNTTYPE" label="账户类型/上市类型" type="STRING" length="10"/>
+				<attribute name="ACCOUNTNO" label="账号/资金帐号/收款人账号/股票账户/基金持有人的资金账号/保费缴纳账号" type="STRING" length="40"/>
+				<attribute name="ACCOUNTNAME" label="户名" type="STRING" length="80"/>
+				<attribute name="OPENBANKNO" label="开户银行行号" type="STRING" length="32"/>
+				<attribute name="OPENBANKNAME" label="开户行名称/债券发行人/收款人开户银行" type="STRING" length="80"/>
+				<attribute name="DATEOFVALUE" label="起息日期/债券开户日/发行日/出票日期/保单生效日" type="STRING" length="10"/>
+				<attribute name="MATURITYDATE" label="到期日期/债券到期日/到期日期/保单到期日期" type="STRING" length="10"/>
+				<attribute name="CASHDEVTYPE" label="存单类型/债券市场类型/票据类型/基金投资类型/保险种类" type="STRING" length="2"/>
+				<attribute name="BALANCE" label="余额/最近一个交易日市价（净值）/保险承保金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="TRANAGRMNO" label="贵金属交易合约号/汇票交易合同号码/保险合同号" type="STRING" length="32"/>
+				<attribute name="GOLDACCOUNTNUMBER" label="黄金交易账户编码/股东代码/贵金属交易账号" type="STRING" length="32"/>
+				<attribute name="TRANNO" label="交易号" type="STRING" length="32"/>
+				<attribute name="NOBELMETALTYPE" label="贵金属品种" type="STRING" length="6"/>
+				<attribute name="NOBLEMETALNORMS" label="贵金属规格" type="STRING" length="80"/>
+				<attribute name="NOBELMETALQUANTITY" label="贵金属数量/持有股票数量/持有基金份数" type="INT"/>
+				<attribute name="PURCHASEDATE" label="贵金属购入日期/债券购入日期/签发日期/最近一个交易日日期" type="STRING" length="10"/>
+				<attribute name="PURCHASEVALUE" label="贵金属购入价值/最近一年（净值）均价" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CURRPRICE" label="贵金属当前市场价格/保险价值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CURRPRICEEVALDATE" label="贵金属市场价格评估日期" type="STRING" length="10"/>
+				<attribute name="BILLNO" label="债券券号/票据号/股票代码/基金代码" type="STRING" length="32"/>
+				<attribute name="BILLNAME" label="债券名称/股票名称/基金名称/保险机构名称" type="STRING" length="80"/>
+				<attribute name="OWNER" label="债券持有人/持票人/未上市股票的托管单位/被保险人/基金持有人" type="STRING" length="80"/>
+				<attribute name="INTERESTPAYTYPE" label="利息支付方式" type="STRING" length="10"/>
+				<attribute name="INCOMERATE" label="债券到期收益率/市净率(P/B)" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="CALCCIRCLE" label="计息周期" type="STRING" length="10"/>
+				<attribute name="BILLVALUE" label="债券票面价值/票面金额/保险费用" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="BONDPOXYPUBLISHER" label="债券代理发行人/出票人/公司名称/基金发行公司名称/投保人" type="STRING" length="80"/>
+				<attribute name="BONDCREDITLEVEL" label="债券信用等级" type="STRING" length="120"/>
+				<attribute name="BILLPAYEE" label="收款人/受益人" type="STRING" length="80"/>
+				<attribute name="ISSUERACCOUNTNO" label="出票人账号" type="STRING" length="32"/>
+				<attribute name="ACCEPTORNAME" label="承兑人名称" type="STRING" length="80"/>
+				<attribute name="ACCEPTORBANKNAME" label="承兑行名称" type="STRING" length="80"/>
+				<attribute name="ACCEPTORBANKNO" label="承兑行行号" type="STRING" length="32"/>
+				<attribute name="DRAWEEBANKNO" label="付款行行号" type="STRING" length="32"/>
+				<attribute name="DRAWEEBANK" label="汇票付款行" type="STRING" length="80"/>
+				<attribute name="BILLUSAGE" label="票据用途" type="STRING" length="200"/>
+				<attribute name="TRADABLECOUNT" label="流通数量" type="DOUBLE" length="12" scale="0"/>
+				<attribute name="PERATIO" label="市盈率(P/E)" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="STOCKHOLDERTYPE" label="股权/股票持有者类型/基金契约类型/缴费方式" type="STRING" length="10"/>
+				<attribute name="NAVPS" label="每股净资产" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="PAYMENTSTARTDATE" label="交费起始日期" type="STRING" length="10"/>
+				<attribute name="PAYMENTENDDATE" label="交费终止日期" type="STRING" length="10"/>
+				<attribute name="ABOUTBONUS" label="分红情况" type="STRING" length="200"/>
+				<attribute name="INTERESTRATE" label="利率" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="CURRENCY" label="币种" type="STRING" length="6"/>
+				<attribute name="TRANTYPE" label="交易类型" type="STRING" length="2"/>
+				<attribute name="HOLDPERIOD" label="持有期" type="INT"/>
+				<attribute name="MTMDAYS" label="盯市天数" type="INT"/>
+				<attribute name="BONDFLAG01" label="是否为通过总行认定的政策性金融债、其他金融债、企业债或公司债/是否已提交汇票/票据凭证" type="STRING" length="2"/>
+				<attribute name="BONDFLAG02" label="是否经中国人民银行批准可在全国银行间债券市场上市、流通、用作回购交易/是否已提交保费缴纳存折卡" type="STRING" length="2"/>
+				<attribute name="BONDFLAG03" label="是否是记名债券/是否已提交证券账户卡/是否已提交保险合同" type="STRING" length="2"/>
+				<attribute name="BONDFLAG04" label="是否需要办理止付/是否已提交证券资金卡/是否已提交保单凭证" type="STRING" length="2"/>
+				<attribute name="BONDFLAG05" label="是否未作储蓄国债（电子式）余额证明冻结/是否已提交其他相关股权凭证" type="STRING" length="2"/>
+				<attribute name="BONDFLAG06" label="是否为集中公开交易的债券/是否已提交票据相关的商品发运单据/是否已提交保险公司出具的相关证明" type="STRING" length="2"/>
+				<attribute name="BONDFLAG07" label="是否已提交债券凭证/是否已提交票据相关的增值税发票（依据法律规定没有增值税发票的，可提交其他发票）" type="STRING" length="2"/>
+				<attribute name="BONDFLAG08" label="是否已提交相关债券评级证书/是否已提交票据相关的商品交易合同/是否为集中公开交易的债券" type="STRING" length="2"/>
+				<attribute name="BONDFLAG09" label="是否已提交债券募集说明书/是否已提交境外法人需提供经认证或公证的有效商业登记证明文件" type="STRING" length="2"/>
+				<attribute name="NOBLEMETALFLAG1" label="是否已提交贵金属购买合约" type="STRING" length="2"/>
+				<attribute name="NOBLEMETALFLAG2" label="是否已提交黄金交易账户卡" type="STRING" length="2"/>
+				<attribute name="NOBLEMETALFLAG3" label="是否已提交金交所托管合约" type="STRING" length="2"/>
+				<attribute name="NOBELMETALFLAG4" label="是否已提交贵金属交易账户凭证" type="STRING" length="2"/>
+				<attribute name="DEPCTFFLAG01" label="是否为借款人公开向不特定的自然人、法人和其他组织募集的个人存单" type="STRING" length="2"/>
+				<attribute name="DEPCTFFLAG02" label="是否已取得存款行出具的个人定期存单真实性确认书，并且存款行已落实登记止付手续" type="STRING" length="2"/>
+				<attribute name="DEPCTFFLAG03" label="是否已提交存单所有人名下所有东方卡号/定期一本通凭证" type="STRING" length="2"/>
+				<attribute name="DEPCTFFLAG04" label="是否已提交“存单凭证”" type="STRING" length="2"/>
+				<attribute name="DEPCTRFFLAG05" label="是否已提交“个人定期存单真实性确认书”" type="STRING" length="2"/>
+				<attribute name="DEPCTFFLAG06" label="是否已提交“单位定期存单确认书”" type="STRING" length="2"/>
+				<attribute name="BAILFLAG01" label="是否子账户" type="STRING" length="2"/>
+				<attribute name="BAILFLAG02" label="是否已提交保证金相关存单凭证" type="STRING" length="2"/>
+				<attribute name="NDEPCTFFLAG01" label="是否已提交存款所有人名下所有东方卡号/定期一本通凭证" type="STRING" length="2"/>
+				<attribute name="NDEPCTFFLAG02" label="是否已提交相关存款证明（如存折）" type="STRING" length="2"/>
+				<attribute name="MARGINLEVEL" label="保证金层级" type="STRING" length="2"/>
+				<attribute name="RELATEDBUSINESSNO" label="对应业务编号" type="STRING" length="32"/>
+				<attribute name="BONDTYPE" label="债券形态" type="STRING" length="6"/>
+				<attribute name="BONDVALUE" label="债券发行价值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="BONDLISTTYPE" label="债券上市类别" type="STRING" length="2"/>
+				<attribute name="BONDRATING" label="债券评级" type="STRING" length="2"/>
+				<attribute name="RATINGAGENCY" label="债券评级机构" type="STRING" length="2"/>
+				<attribute name="DRAWEROPENBANKNAME" label="出票人开户行" type="STRING" length="80"/>
+				<attribute name="SECURITYTYPE" label="证券类型" type="STRING" length="2"/>
+				<attribute name="STOCKHOLDERNAME" label="股票持有人名称/持有人名称/基金持有人名称" type="STRING" length="80"/>
+				<attribute name="BAILACCOUNTNO" label="保证金账户号码" type="STRING" length="32"/>
+				<attribute name="DRAWERACCOUNTNO" label="出票人账号" type="STRING" length="32"/>
+				<attribute name="PROBILLPLACE" label="出票地" type="STRING" length="80"/>
+				<attribute name="PAYPLACE" label="付款地" type="STRING" length="80"/>
+				<attribute name="STOCKHOLDERCODE" label="基金持有人代码/股票持有人代码" type="STRING" length="32"/>
+				<attribute name="CURRTANSDATE" label="当前交易日日期" type="STRING" length="10"/>
+				<attribute name="CURRTRANSPRICE" label="当前交易日市价(净值)" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="AVGPRICE" label="最近一年均价（净值）" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="BONDDENOMINATION" label="债券面额(或数量)" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="HOLDERNAME" label="持有人名称" type="STRING" length="80"/>
+				<attribute name="HOLDERFUNDCODE" label="持有人资金代码" type="STRING" length="32"/>
+				<attribute name="TYPENAME" label="类型名称" type="STRING" length="80"/>
+				<attribute name="CREDITORGSHORT" label="评级机构（短期）" type="STRING" length="32"/>
+				<attribute name="CREDITLEVELSHORT" label="评级等级（短期）" type="STRING" length="32"/>
+				<attribute name="CREDITORGLONG" label="评级机构(长期)" type="STRING" length="32"/>
+				<attribute name="CREDITLEVELLONG" label="评级等级(长期)" type="STRING" length="32"/>
+				<attribute name="PUBLISHERCODE" label="发行人代码" type="STRING" length="32"/>
+				<attribute name="PUBLISHER" label="发行人名称" type="STRING" length="80"/>
+				<attribute name="PUBTRADETYPE" label="发行人交易对手类别" type="STRING" length="32"/>
+				<attribute name="PUBLONGCREDITORG" label="发行人长期评级机构" type="STRING" length="32"/>
+				<attribute name="PUBLONGCREDITLEVEL" label="发行人长期评级等级" type="STRING" length="32"/>
+				<attribute name="PUBCOUNTRY" label="发行人所在国家" type="STRING" length="32"/>
+				<attribute name="ISPROFIG" label="上市公司是否盈利(是否)" type="STRING" length="2"/>
+				<attribute name="FINANCEFLAG01" label="是否具有现金价值" type="STRING" length="2"/>
+				<attribute name="FINANCEFLAG02" label="是否于认可的交易所上交易" type="STRING" length="2"/>
+				<attribute name="FINANCEFLAG03" label="是否主要交易指数成分" type="STRING" length="2"/>
+				<attribute name="STOCKMANAGER" label="股票托管券商" type="STRING" length="80"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ASSET_FINANCE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ASSET_OTHERS_EQUIPMENT" label="交通和机械设备" keyAttributes="ASSETSERIALNO">
+			<attributes>
+				<attribute name="ASSETSERIALNO" label="押品编号" type="STRING" length="32"/>
+				<attribute name="TRANSPORTNAME" label="车辆/船舶/航空器名称" type="STRING" length="80"/>
+				<attribute name="VEHICLETYPE" label="车辆类型" type="STRING" length="6"/>
+				<attribute name="EQUIPMENTNAME" label="设备名称" type="STRING" length="80"/>
+				<attribute name="ENGINENO" label="发动机号" type="STRING" length="60"/>
+				<attribute name="ENGINETYPE" label="航空器、在建航空器的发动机型号" type="STRING" length="80"/>
+				<attribute name="ENGINEPRODUCTIONDATE" label="发动机出厂日期" type="STRING" length="10"/>
+				<attribute name="SHIPTYPE" label="船舶类型" type="STRING" length="2"/>
+				<attribute name="MODELNO" label="设备型号" type="STRING" length="200"/>
+				<attribute name="BRAND" label="品牌型号/品牌" type="STRING" length="80"/>
+				<attribute name="MANUFACTURER" label="生产厂家" type="STRING" length="200"/>
+				<attribute name="ORIGIN" label="生产地" type="STRING" length="80"/>
+				<attribute name="ORIGINCOUNTRY" label="生产国别" type="STRING" length="80"/>
+				<attribute name="SPECIFICATION" label="主要规格/设备规格" type="STRING" length="200"/>
+				<attribute name="COLOR" label="颜色" type="STRING" length="20"/>
+				<attribute name="VIN" label="车架号" type="STRING" length="40"/>
+				<attribute name="LPN" label="车牌号" type="STRING" length="50"/>
+				<attribute name="MAINTAINENCE" label="技术故障及维修状况" type="STRING" length="200"/>
+				<attribute name="SHIPRGISTNO" label="船舶登记号/航空器编号" type="STRING" length="50"/>
+				<attribute name="AIRCRAFTTYPE" label="航空器类型" type="STRING" length="20"/>
+				<attribute name="SHIPRGISHARBOR" label="船籍港" type="STRING" length="80"/>
+				<attribute name="SHIPCLASS" label="船级" type="STRING" length="80"/>
+				<attribute name="NAVIGATINGZONE" label="航区" type="STRING" length="80"/>
+				<attribute name="LENGTH" label="总长" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="MOLDEDBREADTH" label="型宽" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="MOLDEDDEPTH" label="型深" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="LOADCAPCITY" label="总载重量/载重量/汽车载重量" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="LOADDISPLACEMENT" label="满载排水量/载客量" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="MAINENGINEMODELNO" label="主机型号" type="STRING" length="80"/>
+				<attribute name="MAINENGINEPOWER" label="主机功率" type="STRING" length="18"/>
+				<attribute name="MAINENGINETYPE" label="主机类型" type="STRING" length="80"/>
+				<attribute name="COMPLETIONDATE" label="完工日期" type="STRING" length="10"/>
+				<attribute name="ISDELIVERED" label="是否已交付" type="STRING" length="2"/>
+				<attribute name="DEIVERYDATE" label="交付使用日期/航空器、在建航空器的交付使用日期" type="STRING" length="10"/>
+				<attribute name="MARKETDATE" label="市场价格评估日期" type="STRING" length="10"/>
+				<attribute name="HOMEAGRMPRICE" label="国内合同售价/最新参考购置价" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="EXECUTEDTIME" label="已投入运营时间/已行驶公里数" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="SERVICEYSTATED" label="规定使用年限" type="INT"/>
+				<attribute name="SURPLUSSERVICELIFE" label="船舶、在建船舶的剩余使用年限" type="INT"/>
+				<attribute name="SERVICEHSTATED" label="规定总寿命小时/起落" type="INT"/>
+				<attribute name="REBUILDHSTATED" label="翻修（含D检）时限小时/飞行起落" type="INT"/>
+				<attribute name="REBUILDHPASSED" label="翻修（含D检）后已用小时/飞行起落" type="INT"/>
+				<attribute name="REBUILDTIMES" label="翻修（含D检）次数" type="INT"/>
+				<attribute name="FOB" label="离岸合同价（美元）" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CIF" label="到岸合同价（美元）/到手价格" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="TARIFFRATE" label="关税税率" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="CURRMARKETVALUE" label="当前市场价格" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="VALUEEXPECTED" label="预计完工后价值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="RUNNEDHOURS" label="船舶、在建船舶的已运转小时数/自开始已用小时/飞行起落" type="INT"/>
+				<attribute name="CONTAINERCOUNT" label="集装箱数" type="INT"/>
+				<attribute name="REASONABLEBUILDPERIOD" label="合理建造期" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="PROGRESSSCHEDULE" label="工程进度估计/航空器、在建航空器的工程进度估计" type="STRING" length="200"/>
+				<attribute name="UNFINISHPOSSIBILITY" label="工程烂尾可能性估计/航空器、在建航空器的工程烂尾可能性估计" type="STRING" length="200"/>
+				<attribute name="RENTING" label="租赁业务情况" type="STRING" length="200"/>
+				<attribute name="TRANSPORTAGRM" label="已有运输业务合同情况" type="STRING" length="200"/>
+				<attribute name="QUANTITY" label="设备数量" type="INT"/>
+				<attribute name="DEPOSITPLACE" label="存放地" type="STRING" length="80"/>
+				<attribute name="AGENCY" label="经销商" type="STRING" length="80"/>
+				<attribute name="USEDETAIL" label="设备用途" type="STRING" length="200"/>
+				<attribute name="PRODUCTIONDATE" label="出厂日期" type="STRING" length="10"/>
+				<attribute name="PURCHASEDATE" label="购置日期" type="STRING" length="10"/>
+				<attribute name="EQUIPMENTTYPE" label="设备类型" type="STRING" length="2"/>
+				<attribute name="EFFICIENCY" label="生产能力" type="STRING" length="200"/>
+				<attribute name="OVERHAULTIMES" label="大修次数" type="INT"/>
+				<attribute name="BILLPRICE" label="发票价格" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="ASSEMBLEFEE" label="设备安装费" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="REASONABLEBUILDPERIOD2" label="合理工期（年）" type="INT"/>
+				<attribute name="SEVICELIFE" label="使用年限" type="INT"/>
+				<attribute name="SURPLUSSERVICELIFE2" label="剩余使用年限" type="INT"/>
+				<attribute name="RUNNEDHOURS2" label="已运转小时数" type="INT"/>
+				<attribute name="ANNUALSURVEY" label="年检情况" type="STRING" length="200"/>
+				<attribute name="TRANSPORTFLAG01" label="是否已提交购置合同与发票" type="STRING" length="2"/>
+				<attribute name="TRANSPORTFLAG02" label="是否已提交相关的行驶证" type="STRING" length="2"/>
+				<attribute name="TRANSPORTFLAG03" label="是否已提交相关的年检记录" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG01" label="是否满足其他认定条件" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG02" label="是否已提交船舶所有权登记证书/是否已提交航空器所有权证明文件" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG03" label="是否已提交船舶检验证书簿" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG04" label="是否已提交船舶船级证书" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG05" label="是否已提交航行日志/是否已提交飞行记录本" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG06" label="是否已提交相关租赁合同" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG07" label="是否已提交船舶适航证书/是否已提交适航证" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG09" label="是否已提交船舶保险单正本（原件）" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG10" label="是否已提交船舶吨位证书" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG11" label="是否已提交船舶建造企业是否书面签署无条件放弃对该船舶留置权的声明合同" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG12" label="是否已提交与船舶、在建船舶相关的当年车船使用税证/是否有当年车船使用税证" type="STRING" length="2"/>
+				<attribute name="SHIPFLAG13" label="是否已提交船舶国籍证书/是否已提交民用航空器国籍登记证书" type="STRING" length="2"/>
+				<attribute name="AIRCRAFTFLAG03" label="是否已提交交付证书" type="STRING" length="2"/>
+				<attribute name="AIRCRAFTFLAG07" label="是否已提交航空器使用手册" type="STRING" length="2"/>
+				<attribute name="VEHICLEFLAG01" label="是否已提交车辆铭牌" type="STRING" length="2"/>
+				<attribute name="VEHICLEFLAG03" label="是否已提交机动车登记证书" type="STRING" length="2"/>
+				<attribute name="VEHICLEFLAG04" label="是否已提交机动车牌证" type="STRING" length="2"/>
+				<attribute name="VEHICLEFLAG05" label="是否有车辆购置附加税证" type="STRING" length="2"/>
+				<attribute name="EQUIPMENTFLAG01" label="同类资产在最近3个月内是否有成交记录" type="STRING" length="2"/>
+				<attribute name="EQUIPMENTFLAG02" label="该机器设备是否为某成套设备中的一部分" type="STRING" length="2"/>
+				<attribute name="EQUIPMENTFLAG03" label="是否已提交同类资产最近3个月内成交记录证明" type="STRING" length="2"/>
+				<attribute name="EQUIPMENTFLAG04" label="是否已提交设备购置合同与发票、产品保修卡" type="STRING" length="2"/>
+				<attribute name="CIFCURRENCY" label="合同建造币种类型" type="STRING" length="6"/>
+				<attribute name="TRANSPORTFLAG04" label="是否有行驶证" type="STRING" length="2"/>
+				<attribute name="CONTRACTCURRENCY" label="合同建造价格币种" type="STRING" length="6"/>
+				<attribute name="LICENCETYPE" label="车牌属地（CodeNo:LicenceType）" type="STRING" length="10"/>
+				<attribute name="VEHICLEOWNERSHIP" label="所购车产权所属（CodeNo:VehicleOwnerShip）" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ASSET_OTHERS_EQUIPMENT" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ASSET_OTHERS_INVENTORY" label="实物存货/货权/出口退税账户" keyAttributes="ASSETSERIALNO">
+			<attributes>
+				<attribute name="ASSETSERIALNO" label="押品编号" type="STRING" length="32"/>
+				<attribute name="INVENTORYID" label="存货编号" type="STRING" length="32"/>
+				<attribute name="WRNO" label="仓单号" type="STRING" length="40"/>
+				<attribute name="REGNUMBER" label="出口退税登记号码" type="STRING" length="32"/>
+				<attribute name="ACCOUNTNAME" label="出口退税账户户名" type="STRING" length="80"/>
+				<attribute name="ACCOUNTBANKNAME" label="出口退税账户开户行" type="STRING" length="80"/>
+				<attribute name="TRANSPORTCONTRACTNO" label="运输合同号码" type="STRING" length="32"/>
+				<attribute name="TRANSPORTCONTRACTNAME" label="运输合同名称" type="STRING" length="80"/>
+				<attribute name="CARRIER" label="承运人" type="STRING" length="80"/>
+				<attribute name="CONSIGNOR" label="托运人" type="STRING" length="80"/>
+				<attribute name="CONSIGNEE" label="收货人" type="STRING" length="80"/>
+				<attribute name="RECIVEPLACE" label="接货地" type="STRING" length="120"/>
+				<attribute name="GETPLACE" label="卸货地" type="STRING" length="80"/>
+				<attribute name="LOADOFPLACE" label="装货地" type="STRING" length="80"/>
+				<attribute name="NOTIFY" label="通知方" type="STRING" length="80"/>
+				<attribute name="ROUGHWEIGHT" label="毛重" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="INVENTORYSIZE" label="尺码" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="SUBPLACE" label="交货地" type="STRING" length="80"/>
+				<attribute name="CARGOTYPE" label="货物类型" type="STRING" length="2"/>
+				<attribute name="CARGONAME" label="货物名称" type="STRING" length="80"/>
+				<attribute name="CARGOQUANTITY" label="货物数量（或重量）/毛重" type="DOUBLE" length="16" scale="2"/>
+				<attribute name="MEASUREUNIT" label="货物计量单位" type="STRING" length="10"/>
+				<attribute name="SPECIFICATION" label="规格" type="STRING" length="120"/>
+				<attribute name="ORIGIN" label="产地" type="STRING" length="80"/>
+				<attribute name="UNITPRICE" label="单价" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="STORAGECONAME" label="仓储公司名称" type="STRING" length="80"/>
+				<attribute name="STORAGESTARTDATE" label="存放起始日期/存储起始日" type="STRING" length="10"/>
+				<attribute name="STORAGEDUEDATE" label="存储到期日" type="STRING" length="10"/>
+				<attribute name="INSURANCE" label="保险情况" type="STRING" length="200"/>
+				<attribute name="CURRMTMPRICE" label="当前市场价格" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="STORINGADDRESS" label="货物存放地" type="STRING" length="80"/>
+				<attribute name="PURCHASEPRICE" label="购入单价" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="LEGALITY" label="未来货权合法性情况" type="STRING" length="200"/>
+				<attribute name="WRDUEDATE" label="仓单到期日" type="STRING" length="10"/>
+				<attribute name="MTMPRICETIME" label="市场价格采用时间" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MTMPRICEINFOSOURCE" label="采用价格信息来源" type="STRING" length="80"/>
+				<attribute name="TITLETYPE" label="埃森哲数据标准中的“押品类型”:01 标准仓单02 非标准仓单03 提单04 其他在浦发管理办法中通过押品类型区分" type="STRING" length="2"/>
+				<attribute name="TITLENO" label="入库验收报告单号/提单号" type="STRING" length="32"/>
+				<attribute name="MEMBERID" label="会员号" type="STRING" length="32"/>
+				<attribute name="ISSUER" label="填发人/签发人" type="STRING" length="80"/>
+				<attribute name="ISSUEPLACE" label="填发地/签发地点" type="STRING" length="80"/>
+				<attribute name="ISSUEDATE" label="填发日期/签发日期" type="STRING" length="10"/>
+				<attribute name="WRNOEFFECTIVEDATE" label="仓单生效日" type="STRING" length="10"/>
+				<attribute name="COMMODITYFUTURE" label="所属商品期货交易所" type="STRING" length="2"/>
+				<attribute name="HOLDLINGLOT" label="持有手数" type="STRING" length="80"/>
+				<attribute name="HOLDINGLOTCOUNT" label="持有手数数量/签发份数" type="INT"/>
+				<attribute name="WRAPTYPE" label="货物包装种类" type="STRING" length="120"/>
+				<attribute name="TRANSFEEPAYTYPE" label="运费支付类型" type="STRING" length="6"/>
+				<attribute name="TRANSFEE" label="运费金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="BIZCERTID" label="出口退税账户相关营业执照编号" type="STRING" length="32"/>
+				<attribute name="ETRANO" label="出口退税账号" type="STRING" length="32"/>
+				<attribute name="ETRAGRADE" label="企业退税等级" type="STRING" length="2"/>
+				<attribute name="ETRARATE" label="出口退税率" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="TOACCOUNTTIME" label="到账时间" type="STRING" length="10"/>
+				<attribute name="REBATEMETHOD" label="退付办法" type="STRING" length="200"/>
+				<attribute name="COMMODITYNAME" label="商品名称" type="STRING" length="80"/>
+				<attribute name="COMMODITYPRICE" label="商品单价" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="EXPORTVOLUME" label="出口量" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="SOLDTO" label="产品销往地" type="STRING" length="80"/>
+				<attribute name="COMMITYFLAG01" label="是否已提交商品买卖合同" type="STRING" length="2"/>
+				<attribute name="INVENTORYFLAG06" label="是否已提交商品交易发票" type="STRING" length="2"/>
+				<attribute name="INVENTORYFLAG09" label="是否已提交相关保险证明" type="STRING" length="2"/>
+				<attribute name="INVENTORYFLAG01" label="是否为法律和行规法规禁止流通的货物" type="STRING" length="2"/>
+				<attribute name="INVENTORYFLAG02" label="是否已提交质检单" type="STRING" length="2"/>
+				<attribute name="INVENTORYFLAG03" label="是否已提交合格证" type="STRING" length="2"/>
+				<attribute name="INVENTORYFLAG04" label="是否已提交商检证明" type="STRING" length="2"/>
+				<attribute name="INVENTORYFLAG07" label="是否已提交货物存放证明" type="STRING" length="2"/>
+				<attribute name="INVENTORYFLAG08" label="是否已提交货运合同" type="STRING" length="2"/>
+				<attribute name="INVENTORYFLAG10" label="是否已提交由托管机构指定仓库提供的出质人名下的贵金属的证明文件" type="STRING" length="2"/>
+				<attribute name="INVENTORYFLAG11" label="是否已提交信用证项下的货物、权利凭证" type="STRING" length="2"/>
+				<attribute name="TITLEFLAG01" label="是否已提交仓单凭证/提单凭证" type="STRING" length="2"/>
+				<attribute name="TITLEFLAG02" label="是否已提交原产地证" type="STRING" length="2"/>
+				<attribute name="TITLEFLAG03" label="是否已提交付款凭证" type="STRING" length="2"/>
+				<attribute name="TITLEFLAG04" label="是否已提交运输单据" type="STRING" length="2"/>
+				<attribute name="TITLEFLAG05" label="是否已提交质量和重量检验证明" type="STRING" length="2"/>
+				<attribute name="ETRA01" label="是否已提交出口货物报关单（出口退税联）" type="STRING" length="2"/>
+				<attribute name="ETRA02" label="是否已提交与出口退税账户相关的企业法人营业执照" type="STRING" length="2"/>
+				<attribute name="ETRA03" label="是否已提交外汇核销单" type="STRING" length="2"/>
+				<attribute name="ETRA04" label="是否已提交出口收汇税单" type="STRING" length="2"/>
+				<attribute name="ETRA05" label="是否已提交增值税专用发票" type="STRING" length="2"/>
+				<attribute name="ETRA06" label="是否已提交税收（出口货物专用）缴款书" type="STRING" length="2"/>
+				<attribute name="ETRA07" label="是否已提交商品出口协议" type="STRING" length="2"/>
+				<attribute name="ETRA08" label="是否已提交国税局签发的未退税金额情况证明" type="STRING" length="2"/>
+				<attribute name="ETRA09" label="是否已提交外经贸委签发的未退税额证明" type="STRING" length="2"/>
+				<attribute name="ETRA10" label="是否已提交借款人应退未退税款数额的相应稽核证明" type="STRING" length="2"/>
+				<attribute name="ETRA11" label="是否已提交出口退税账号相关存折或凭证" type="STRING" length="2"/>
+				<attribute name="ETRA12" label="市价是否由独立的价值评估者所估计" type="STRING" length="2"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ASSET_OTHERS_INVENTORY" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ASSET_OTHERS_RESOURCE" label="资源资产" keyAttributes="ASSETSERIALNO">
+			<attributes>
+				<attribute name="ASSETSERIALNO" label="押品编号" type="STRING" length="32"/>
+				<attribute name="LEGALREPRESENTATIVE" label="法定代表人/森林或林木所有权权利人" type="STRING" length="80"/>
+				<attribute name="FORESTLANDUSAGETYPE" label="林地用途类型" type="STRING" length="2"/>
+				<attribute name="RESOURCERIGHTTYPE" label="林地资源权属类型" type="STRING" length="2"/>
+				<attribute name="FOURBOUNDARY" label="四至/荒地四至" type="STRING" length="120"/>
+				<attribute name="FORESTCATEGORY" label="林地林种" type="STRING" length="80"/>
+				<attribute name="TREESPECY" label="林地树种" type="STRING" length="80"/>
+				<attribute name="TREEAGE" label="林地树龄" type="INT"/>
+				<attribute name="FORESTAGE" label="林地林龄" type="INT"/>
+				<attribute name="TREEAMOUNT" label="林地株数" type="INT"/>
+				<attribute name="SAVEUP" label="林地蓄积" type="INT"/>
+				<attribute name="DOMINANTSHAREHOLDER" label="控股股东" type="STRING" length="80"/>
+				<attribute name="MINENAME" label="矿山名称/项目名称" type="STRING" length="80"/>
+				<attribute name="MINERALTYPE" label="矿产种类" type="STRING" length="120"/>
+				<attribute name="MRSTARTDATE" label="采矿权起始日" type="STRING" length="10"/>
+				<attribute name="MRDUEDATE" label="采矿权到期日" type="STRING" length="10"/>
+				<attribute name="MININGMETHOD" label="开采方式" type="STRING" length="80"/>
+				<attribute name="RETAINEDRESERVES" label="保有资源储量" type="STRING" length="200"/>
+				<attribute name="MINERALGRADE" label="矿产品位" type="STRING" length="200"/>
+				<attribute name="VERIFIEDRESERVES" label="探明的经济基础储量" type="STRING" length="200"/>
+				<attribute name="EXPLIOTEDRESERVES" label="其中已开采消耗储量" type="STRING" length="200"/>
+				<attribute name="CONTROLLEDRESERVES" label="控制的经济基础储量" type="STRING" length="200"/>
+				<attribute name="INFERREDRESERVES" label="推断内蕴经济资源量" type="STRING" length="200"/>
+				<attribute name="RECOVERYRATE" label="回采率" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="PRODUCTIONSCALE" label="生产规模能力" type="STRING" length="200"/>
+				<attribute name="PRODUCTONTIMEPASSED" label="已投入采矿生产时间" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="PRODUCTIONTIMEREMAINED" label="预计剩余可生产时间" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="ANNUALOUTPUT" label="年产量" type="STRING" length="200"/>
+				<attribute name="PRODUCTIONPRICE" label="产品价格" type="STRING" length="200"/>
+				<attribute name="DSHEXPERIENCE" label="控股股东从事矿业开采从业时间" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="MININGATT01" label="采矿权使用费及采矿权价款缴纳情况" type="STRING" length="200"/>
+				<attribute name="MININGATT02" label="矿产资源补偿费缴纳情况" type="STRING" length="200"/>
+				<attribute name="MININGATT03" label="资源税缴纳情况" type="STRING" length="200"/>
+				<attribute name="MININGATT04" label="安全评估情况" type="STRING" length="200"/>
+				<attribute name="MININGATT05" label="年度审查情况" type="STRING" length="200"/>
+				<attribute name="MININGFLAG01" label="是否需要申请项目融资" type="STRING" length="200"/>
+				<attribute name="LUR02OBLIGEE" label="林地所有权权利人" type="STRING" length="80"/>
+				<attribute name="FORESTOBLIGEE" label="森林或林木所有权权利人" type="STRING" length="80"/>
+				<attribute name="LANDTYPEGRADE2" label="林地二级地类" type="STRING" length="2"/>
+				<attribute name="NATURALCALAMITY" label="自然灾害发生情况" type="STRING" length="200"/>
+				<attribute name="ROWSPACING" label="株行距情况" type="STRING" length="200"/>
+				<attribute name="RCP" label="轮伐期" type="INT"/>
+				<attribute name="OTHERVEGETATION" label="其他植被情况" type="STRING" length="200"/>
+				<attribute name="WOODANNUALOUTPUT" label="林木年产量情况" type="STRING" length="200"/>
+				<attribute name="WOODPRICEMEMO" label="木材价格描述" type="STRING" length="200"/>
+				<attribute name="MECHANIZATIONLEVEL" label="机械化水平/农业技术水平" type="STRING" length="200"/>
+				<attribute name="USAGEPERIOD" label="林地使用期" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="TIMEPASSED" label="林地已使用时间" type="INT"/>
+				<attribute name="LUR02DUEDATE" label="林地使用权终止日期" type="STRING" length="10"/>
+				<attribute name="TRAFFICCONDITON" label="交通条件" type="STRING" length="200"/>
+				<attribute name="NATIONPOLICY" label="国家政策" type="STRING" length="200"/>
+				<attribute name="LANDRENTINCOME" label="土地租金年收入" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MININGFLAG02" label="采矿权是否符合转让条件" type="STRING" length="2"/>
+				<attribute name="MININGFLAG03" label="采矿权是否已出租" type="STRING" length="2"/>
+				<attribute name="RESOURCERIGHTNO" label="采矿权权证号/海域使用权登记号" type="STRING" length="50"/>
+				<attribute name="BOUNDARY" label="海域界址" type="STRING" length="120"/>
+				<attribute name="GNTWATERSAREA" label="宗海面积" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="ANNUALSURVEY" label="海域使用权的年度审查情况" type="STRING" length="200"/>
+				<attribute name="WATERSGRADE" label="海域等级" type="STRING" length="200"/>
+				<attribute name="USAGETYPE" label="用海类型" type="STRING" length="2"/>
+				<attribute name="ASSIGNMENTFEE" label="海域出让金/海域转让金" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="USAGESTARTDATE" label="海域使用权批准使用起始日期" type="STRING" length="10"/>
+				<attribute name="USAGEDUEDATE" label="海域使用权批准使用终止日期" type="STRING" length="10"/>
+				<attribute name="WASTELANDCONTRACTNO" label="荒地承包合同编号" type="STRING" length="32"/>
+				<attribute name="LUR03CERTTID" label="荒地所属土地使用权证号" type="STRING" length="50"/>
+				<attribute name="LUR03DUEDATE" label="荒地所属土地使用权到期日" type="STRING" length="10"/>
+				<attribute name="WASTELANDUSAGE" label="荒地用途" type="STRING" length="2"/>
+				<attribute name="CONTRACTPERIOD" label="荒地承包期限" type="INT"/>
+				<attribute name="CONTRACTSUM" label="荒地承包金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="LUR03ATT01" label="合同终止时地上附着物处置方式" type="STRING" length="200"/>
+				<attribute name="LUR03ATT02" label="荒地地貌" type="STRING" length="200"/>
+				<attribute name="LUR03ATT03" label="荒地所属土地流转情况" type="STRING" length="200"/>
+				<attribute name="OWNERNAME" label="权利人名称" type="STRING" length="32"/>
+				<attribute name="APPROVEORG" label="权利批准机关" type="STRING" length="32"/>
+				<attribute name="LUR03FLAG01" label="荒地可否续期" type="STRING" length="2"/>
+				<attribute name="LUR03FLAG02" label="是否已提交荒地所属土地使用权证" type="STRING" length="2"/>
+				<attribute name="LUR03FLAG03" label="是否已提交四荒地承包合同" type="STRING" length="2"/>
+				<attribute name="LUR03FLAG04" label="是否已提交农村土地承包经营权证书" type="STRING" length="2"/>
+				<attribute name="MININGFLAG04" label="矿山是否已经按要求关闭或被列入关闭计划" type="STRING" length="2"/>
+				<attribute name="MININGFLAG05" label="是否已提交采矿权许可证" type="STRING" length="2"/>
+				<attribute name="MININGFLAG06" label="是否已提交与采矿权相关的企业法人营业执照" type="STRING" length="2"/>
+				<attribute name="MININGFLAG07" label="是否已提交企业财务会计报表" type="STRING" length="2"/>
+				<attribute name="MININGFLAG08" label="是否已提交资源储量核实报告" type="STRING" length="2"/>
+				<attribute name="MININGFLAG09" label="是否已提交地质勘查报告" type="STRING" length="2"/>
+				<attribute name="MININGFLAG10" label="是否已提交（预）可行性研究报告" type="STRING" length="2"/>
+				<attribute name="MININGFLAG11" label="是否已提交矿产资源开发利用方案" type="STRING" length="2"/>
+				<attribute name="MININGFLAG12" label="是否已提交矿山设计（初步设计、生产设计等）" type="STRING" length="2"/>
+				<attribute name="MININGFLAG13" label="是否已提交采矿权评估报告确认书" type="STRING" length="2"/>
+				<attribute name="MININGFLAG14" label="是否已提交矿山环境影响评价报告书" type="STRING" length="2"/>
+				<attribute name="MININGFLAG15" label="是否已提交地震安全评价或地质环境影响评价报告及保护方案" type="STRING" length="2"/>
+				<attribute name="MININGFLAG16" label="是否已提交矿山企业主管部门的许可或得到国有资产管理部门的批准文件" type="STRING" length="2"/>
+				<attribute name="MININGFLAG17" label="是否已提交矿山建设安全设施设计审查批准意见书" type="STRING" length="2"/>
+				<attribute name="MININGFLAG18" label="是否已提交国土资源厅关于资源储量报告的审查意见函" type="STRING" length="2"/>
+				<attribute name="MININGFLAG19" label="是否已提交储量动用报告" type="STRING" length="2"/>
+				<attribute name="MININGFLAG20" label="是否已提交增值税发票" type="STRING" length="2"/>
+				<attribute name="MININGFLAG21" label="是否已提交采矿权评估报告（如有）" type="STRING" length="2"/>
+				<attribute name="MININGFLAG22" label="是否已提交由矿产资源补偿费征收管理机关出具的有关矿产资源补偿费缴纳情况的证明材料" type="STRING" length="2"/>
+				<attribute name="MININGFLAG23" label="是否已提交由资源税征收管理机关出具的有关资源税缴纳情况的证明材料" type="STRING" length="2"/>
+				<attribute name="FORESTFLAG01" label="是否已提交林地相关的林权证" type="STRING" length="2"/>
+				<attribute name="LUR02FLAG02" label="是否已提交相关租让合同" type="STRING" length="2"/>
+				<attribute name="WATERSFLAG01" label="是否已提交海域使用权证书" type="STRING" length="2"/>
+				<attribute name="WATERSFLAG02" label="是否已提交海域出让合同/海域转让合同" type="STRING" length="2"/>
+				<attribute name="FOREST01FLAG02" label="是否已提交森林和林木所属的土地使用权证" type="STRING" length="2"/>
+				<attribute name="WOODLANDDESCRIPTION" label="林地相关描述" type="STRING" length="200"/>
+				<attribute name="ACREAGE" label="面积" type="DOUBLE" length="10" scale="2"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ASSET_OTHERS_RESOURCE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ASSET_OTHERS_SBC" label="特殊建筑构造物" keyAttributes="ASSETSERIALNO">
+			<attributes>
+				<attribute name="ASSETSERIALNO" label="押品编号" type="STRING" length="32"/>
+				<attribute name="REFTOLLRIGHTOWNER" label="相关收费权所有人" type="STRING" length="80"/>
+				<attribute name="SBCNAME" label="构造物名称" type="STRING" length="80"/>
+				<attribute name="SBCHOLDER" label="构造物持有人" type="STRING" length="80"/>
+				<attribute name="SBCLOCATION" label="构造物的坐落位置/范围" type="STRING" length="120"/>
+				<attribute name="SBCDEVELOPER" label="构造物开发商名称" type="STRING" length="80"/>
+				<attribute name="ZIPCODE" label="邮政编码" type="STRING" length="10"/>
+				<attribute name="PARCELNO" label="构造物所属土地地号" type="STRING" length="32"/>
+				<attribute name="LUROWNER" label="构造物所属土地使用权人" type="STRING" length="80"/>
+				<attribute name="LURCERTID" label="构造物所属土地使用权证号" type="STRING" length="32"/>
+				<attribute name="SBCTYPE" label="构造物类型" type="STRING" length="2"/>
+				<attribute name="SBCRIGHTSOURCE" label="构造物权属来源" type="STRING" length="2"/>
+				<attribute name="SBCGRADE" label="构造物等级" type="STRING" length="120"/>
+				<attribute name="LURAREA" label="构造物所属土地使用权面积" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="LURTYPE" label="构造物所属土地使用权类型" type="STRING" length="2"/>
+				<attribute name="LURREALTYLANDLEVEL" label="构造物所属土地分级" type="STRING" length="120"/>
+				<attribute name="LURACQUISITIONCOST" label="构造物所属土地使用权取得价格" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="COMPLETIONDATE" label="构造物竣工日期" type="STRING" length="10"/>
+				<attribute name="RUNNEDPERIOD" label="构造物已运营时间" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="RUNNINGSCALE" label="构造物运营规模" type="STRING" length="200"/>
+				<attribute name="ANNUALINCOME" label="构造物年平均运营收入" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="ANCILLARYFACILITY" label="构造物配套设施设备" type="STRING" length="200"/>
+				<attribute name="ANCILLARYBUILDING" label="构造物配套建筑" type="STRING" length="200"/>
+				<attribute name="INFRASTRUCTURE" label="构造物基础设施情况描述" type="STRING" length="200"/>
+				<attribute name="URBANPLANNING" label="当前或未来设计押品所在区域的城市规划计划或特殊政策" type="STRING" length="500"/>
+				<attribute name="VACANCYPERIOD" label="构造物空置时间" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="SURPLUSUSAGEYEARS" label="构造物所属土地剩余使用年限" type="INT"/>
+				<attribute name="SBCRENTTYPE" label="构造物租赁形式" type="STRING" length="2"/>
+				<attribute name="LEASEMENTSTARTDATE" label="构造物租赁合同生效日" type="STRING" length="10"/>
+				<attribute name="LEASEMENTDUEDATE" label="构造物租赁合同到期日" type="STRING" length="10"/>
+				<attribute name="STANDARDUSEYEARS" label="所属土地使用权年限" type="INT"/>
+				<attribute name="LANDUSEDUEDATE" label="所属土地使用权到期日" type="STRING" length="10"/>
+				<attribute name="SBCDETIAL" label="房屋状况" type="STRING" length="200"/>
+				<attribute name="SBCFLAG01" label="构造物是否已办妥独立产权证或能办理独立产权证" type="STRING" length="2"/>
+				<attribute name="SBCFLAG02" label="构造物是否为国家财产" type="STRING" length="2"/>
+				<attribute name="SBCFLAG03" label="构造物是否包含被列为文物保护的古建筑或是有重要纪念意义的建筑物" type="STRING" length="2"/>
+				<attribute name="SBCFLAG04" label="构造物是否包含已依法公告在国家建设征用拆迁范围内的房地产" type="STRING" length="2"/>
+				<attribute name="SBCFLAG05" label="构造物是否为违法、违章建筑物或依法被查封、扣押、监管或采用其他强制性措施的财产" type="STRING" length="2"/>
+				<attribute name="SBCFLAG06" label="构造物是否已竣工验收并通过最近一次年检" type="STRING" length="2"/>
+				<attribute name="SBCFLAG07" label="是否已提交构造物相关权属证明" type="STRING" length="2"/>
+				<attribute name="SBCFLAG08" label="是否已提交构造物相关的出租合同与相关登记证明" type="STRING" length="2"/>
+				<attribute name="SBCFLAG09" label="是否已提交构造物相关的企业财务报表" type="STRING" length="2"/>
+				<attribute name="SBCFLAG10" label="是否已提交构造物相关的土地使用权证" type="STRING" length="2"/>
+				<attribute name="SBCFLAG11" label="是否已提交构造物相关的土地使用权出让合同" type="STRING" length="2"/>
+				<attribute name="SBCFLAG12" label="是否已提交构造物相关的年检材料" type="STRING" length="2"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ASSET_OTHERS_SBC" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ASSET_OTHERS_TLPR" label="可转让知识产权中的财产权" keyAttributes="ASSETSERIALNO">
+			<attributes>
+				<attribute name="ASSETSERIALNO" label="押品编号" type="STRING" length="32"/>
+				<attribute name="PATENTNAME" label="专利名称" type="STRING" length="80"/>
+				<attribute name="COPYRIGHTRGSTNO" label="著作权登记号/专利号/商标注册证号" type="STRING" length="50"/>
+				<attribute name="AUTHOR" label="作者/专利设计人" type="STRING" length="80"/>
+				<attribute name="RIGHTOWNER" label="专利权人/著作权人" type="STRING" length="80"/>
+				<attribute name="PUBLICAITONSERAILNO" label="出版物序列号" type="STRING" length="6"/>
+				<attribute name="COMPLETIONDATE" label="作品创作完成时间" type="STRING" length="10"/>
+				<attribute name="INITIALISSUEDATE" label="首次发表时间" type="STRING" length="10"/>
+				<attribute name="OWNERSHIP" label="著作权所有关系" type="STRING" length="200"/>
+				<attribute name="COPYRIGHTSOURCE" label="著作权取得方式" type="STRING" length="6"/>
+				<attribute name="COPYRIGHTRATIO" label="著作权享有比例" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="WORKSTITLE" label="作品名称" type="STRING" length="80"/>
+				<attribute name="CONTENT" label="内容" type="STRING" length="200"/>
+				<attribute name="USEDETAIL" label="使用情况" type="STRING" length="200"/>
+				<attribute name="COPYRIGHTTYPE" label="著作权类型/专利权客体类型" type="STRING" length="24"/>
+				<attribute name="WORKSTYPE" label="作品类别" type="STRING" length="2"/>
+				<attribute name="WORKSCREATIONMODE" label="作品创作形式" type="STRING" length="2"/>
+				<attribute name="HISTORIALTRANEVAL" label="以往评估交易情况" type="STRING" length="200"/>
+				<attribute name="TLPREFFECTIVEDATE" label="生效日" type="STRING" length="10"/>
+				<attribute name="TLPRDUEDATE" label="到期日" type="STRING" length="10"/>
+				<attribute name="PROTECTIONTERMREMAINED" label="专利距离保护期届满的期间" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="LEGALLIFE" label="专利法定寿命" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="ACQUISITIONCOST" label="专利取得成本" type="STRING" length="2000"/>
+				<attribute name="INCOMEPV" label="专利收入现值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="APPLICATIONFEE" label="专利申请费/每年维权打假费用" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="ANNUALFEE" label="年费/每年广告宣传费用" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="PATENTOBJECT" label="专利权客体" type="STRING" length="80"/>
+				<attribute name="PATENTAPPLSTATUS" label="专利申请状态" type="STRING" length="2"/>
+				<attribute name="AWARDINGCOUNTRY" label="专利授予国" type="STRING" length="20"/>
+				<attribute name="SUBORDINATIONINFO" label="专利从属信息" type="STRING" length="200"/>
+				<attribute name="ASSIGNMENTINFO" label="使用权转让情况" type="STRING" length="200"/>
+				<attribute name="COVERINGGOODS" label="核定使用商品" type="STRING" length="80"/>
+				<attribute name="REGISTRANT" label="注册人" type="STRING" length="80"/>
+				<attribute name="ENTERPRISETYPE" label="企业类型" type="STRING" length="6"/>
+				<attribute name="BUSINESSSCOPE" label="公司经营范围" type="STRING" length="120"/>
+				<attribute name="TRADEMARKTYPE" label="商标类型" type="STRING" length="2"/>
+				<attribute name="TRADEMARKREPUTAITON" label="商标信誉" type="STRING" length="2"/>
+				<attribute name="GOODSQUALITY" label="商品质量" type="STRING" length="200"/>
+				<attribute name="AFERSERVICE" label="售后服务" type="STRING" length="200"/>
+				<attribute name="SELLINGNETWORK" label="销售网络" type="STRING" length="200"/>
+				<attribute name="GOODSORIENTATION" label="商品定位" type="STRING" length="200"/>
+				<attribute name="GOODSFUNCTION" label="产品功能" type="STRING" length="200"/>
+				<attribute name="MARKETSHARE" label="市场占有率" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="ANNUALSALE" label="年销售额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CIRCULATEDPERIOD" label="产品实际流通时间" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="INVENTIONTYPE" label="专利发明创造类别" type="STRING" length="6"/>
+				<attribute name="AUTHORIZATIONPROCLAMATIONDATE" label="专利授权公告日" type="STRING" length="10"/>
+				<attribute name="APPROVINGAGENCY" label="商标注册机构/专利批准机构/著作权登记机构" type="STRING" length="80"/>
+				<attribute name="TRADEMARKFLAG01" label="是否已提交商标注册证" type="STRING" length="2"/>
+				<attribute name="TRADEMARKFLAG02" label="是否已提交与注册商标专用权相关的企业法人营业执照" type="STRING" length="2"/>
+				<attribute name="TRADEMARKFLAG03" label="是否已提交与注册商标专用权相关的企业财务报表" type="STRING" length="2"/>
+				<attribute name="TRADEMARKFLAG04" label="是否已提交表明商标等级的相关证书" type="STRING" length="2"/>
+				<attribute name="TRADEMARKFLAG05" label="是否已提交产品说明书" type="STRING" length="2"/>
+				<attribute name="COPYRIGHTFLAG01" label="是否已提交著作权相关转让协议" type="STRING" length="2"/>
+				<attribute name="COPYRIGHTFLAG02" label="是否已提交著作权登记证书" type="STRING" length="2"/>
+				<attribute name="COPYRIGHTFLAG03" label="是否已提交著作权客体作品" type="STRING" length="2"/>
+				<attribute name="COPYRIGHTFLAG04" label="是否已提交著作权相关交易证明" type="STRING" length="2"/>
+				<attribute name="PATENTFLAG01" label="是否已提交专利证书" type="STRING" length="2"/>
+				<attribute name="PATENTFLAG02" label="是否已提交专利说明书" type="STRING" length="2"/>
+				<attribute name="PATENTFLAG03" label="是否已提交专利技术检测报告" type="STRING" length="2"/>
+				<attribute name="PATENTFLAG04" label="是否已提交科学技术成果鉴定证书" type="STRING" length="2"/>
+				<attribute name="PATENTFLAG05" label="是否已提交年费缴纳记录" type="STRING" length="2"/>
+				<attribute name="PATENTFLAG06" label="是否已提交与专利权相关的企业财务报表" type="STRING" length="2"/>
+				<attribute name="ANNUALFEEPAYDESCRIPTION" label="专利年费缴纳情况" type="STRING" length="320"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ASSET_OTHERS_TLPR" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ASSET_REALTY" label="房地产/土地使用权/在建工程" keyAttributes="ASSETSERIALNO">
+			<attributes>
+				<attribute name="ASSETSERIALNO" label="押品编号" type="STRING" length="32"/>
+				<attribute name="REALESTATEID" label="楼盘编号" type="STRING" length="32"/>
+				<attribute name="REALESTATENAME" label="楼盘名称" type="STRING" length="80"/>
+				<attribute name="LANDLEVEL" label="土地分级" type="STRING" length="6"/>
+				<attribute name="LANDNAME" label="土地名称" type="STRING" length="80"/>
+				<attribute name="LANDPURPOSE" label="土地用途" type="STRING" length="2"/>
+				<attribute name="REALTYPRESALECONTRACTNO" label="房屋预售合同号" type="STRING" length="32"/>
+				<attribute name="REALTYCERTID" label="房产证编号/在建类房产证编号" type="STRING" length="50"/>
+				<attribute name="REALTYDEVELOPERNAME" label="房产开发商名称/地上附着物名称/在建类房产开发商名称" type="STRING" length="200"/>
+				<attribute name="REALTYZIPCODE" label="房产邮政编码/在建类房产的邮政编码" type="STRING" length="20"/>
+				<attribute name="REALTYLANDNO" label="房产地号/宗地编号/在建类房产的地号" type="STRING" length="40"/>
+				<attribute name="PROJECTNAME" label="房产开发项目名称" type="STRING" length="80"/>
+				<attribute name="LANDUSER" label="土地使用权人/使用权所有人/房产持有者/使用权所有人" type="STRING" length="80"/>
+				<attribute name="LANDCERTID" label="土地使用权证号/在建类房产土地使用权证编号" type="STRING" length="40"/>
+				<attribute name="BUILDINGLANDUSER" label="在建类房产所属土地使用权人" type="STRING" length="80"/>
+				<attribute name="RIGHTSOURCE" label="房产所有权来源/土地取得方式" type="STRING" length="6"/>
+				<attribute name="HOUSESHARE" label="占用房屋份额/在建类房产的占用房屋份额" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="FLOORAREA" label="建筑面积/土地面积" type="DOUBLE" length="16" scale="2"/>
+				<attribute name="USEAREA" label="使用面积/土地/在建工程使用权面积" type="DOUBLE" length="18" scale="2"/>
+				<attribute name="LANDATTAREA" label="地上附着物面积" type="DOUBLE" length="16" scale="2"/>
+				<attribute name="ABOVEGROUNDAREA" label="地上建筑总面积（m2）" type="DOUBLE" length="18" scale="2"/>
+				<attribute name="UNDERGROUNDAREA" label="地下建筑总面积（m2）" type="DOUBLE" length="18" scale="2"/>
+				<attribute name="LANDUSETYPE" label="所属土地使用权类型" type="STRING" length="2"/>
+				<attribute name="REALTYTYPE" label="房产类型/工业房地产类别" type="STRING" length="6"/>
+				<attribute name="REMAININGUSEYEARS" label="所在土地的剩余使用年限(计算)/土地剩余使用年限/在建类房产所属土地的剩余使用年限" type="INT"/>
+				<attribute name="BUILDINGYEARS" label="建筑物年限" type="INT"/>
+				<attribute name="LANDUSEDUEDATE" label="土地使用权到期日" type="STRING" length="10"/>
+				<attribute name="STANDARDUSEYEARS" label="标准使用权年限/土地法定使用年限/房产合理工期(年)" type="INT"/>
+				<attribute name="COMPLETIONDATE" label="竣工日期/土地使用起始日/购入日期" type="STRING" length="10"/>
+				<attribute name="DELIVERYDATE" label="交房日期" type="STRING" length="10"/>
+				<attribute name="BUILDINGDENSITY" label="建筑密度/在建类房产建筑密度" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="PLOTRATIO" label="容积率/在建类房产容积率" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="ANCILLARYFACILITY" label="配套设施设备/在建类房产项目用途" type="STRING" length="200"/>
+				<attribute name="INFRASTRUCTURE" label="基础设施情况描述" type="STRING" length="200"/>
+				<attribute name="VACANCYTIME" label="房产空置时间/土地闲置时间" type="INT"/>
+				<attribute name="URBANPLANNING" label="所在区域当前或未来的城市规划计划或特殊政策/(土地)当前或未来押品所在区域的城市规划计划或特殊政策" type="STRING" length="200"/>
+				<attribute name="LURAREA" label="房产的土地使用权面积(商办/工业)" type="DOUBLE" length="18" scale="2"/>
+				<attribute name="LURPRICE" label="房产所在土地使用权取得价格(商办/工业)/土地出让价值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="LANDPRICE" label="所属土地使用权购入价值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="FLOORLOADBEARING" label="房产楼层承重(商办/工业)" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="ELECVOLUME" label="房产的电容量(商办/工业)" type="DOUBLE" length="10" scale="2"/>
+				<attribute name="ANCILLARYBUILDING" label="房产的配套建筑(商办/工业)" type="STRING" length="200"/>
+				<attribute name="RENTTYPE" label="房产租赁形式(商办/工业)" type="STRING" length="2"/>
+				<attribute name="RENTAGRMEFFDATE" label="房产的租赁合同生效日(商办/工业)" type="STRING" length="10"/>
+				<attribute name="RENTAGRMEXPIRYDATE" label="房产的租赁合同到期日(商办/工业)" type="STRING" length="10"/>
+				<attribute name="INDUSTRIALPARKLEVEL" label="工业园区等级" type="STRING" length="20"/>
+				<attribute name="INDUSTRYPOSITION" label="产业定位" type="STRING" length="200"/>
+				<attribute name="DEVMODEL" label="工业房产开发模式" type="STRING" length="10"/>
+				<attribute name="PROFITMODEL" label="工业房产盈利模式" type="STRING" length="10"/>
+				<attribute name="INDEPENDENCE" label="工业用房产独立性" type="STRING" length="10"/>
+				<attribute name="ISSTANDARD" label="是否满足所处行业厂房设计标准" type="STRING" length="2"/>
+				<attribute name="FOOTFALL" label="客流量(商办)" type="DOUBLE" length="10" scale="0"/>
+				<attribute name="YEARTAKING" label="年营业收入(商办)/预计完工后房产价值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="FLOORHEIGHT" label="层高(商办)" type="STRING" length="2"/>
+				<attribute name="AVAILABLECARPORT" label="可用停车场车位数" type="DOUBLE" length="10" scale="0"/>
+				<attribute name="RENTAL" label="租金收入/工程预算值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CURRENTVACANCYRATE" label="当前空置率" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="REALTYHOLDER" label="房产持有者/使用权所有人" type="STRING" length="255"/>
+				<attribute name="HOUSESTATUS" label="房屋状态/土地现状" type="STRING" length="2"/>
+				<attribute name="REALTYUNITPRICE" label="房屋单价（元）" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="FITMENTLEVEL" label="装修程度" type="STRING" length="2"/>
+				<attribute name="FITMENTDETAIL" label="装修情况" type="STRING" length="200"/>
+				<attribute name="REFPRICE" label="同类房产参考价格/已投入工程款" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="REFPRICEBASETIME" label="房产参考价格基准时间" type="STRING" length="10"/>
+				<attribute name="REFPRICEINFOSOURCE" label="房产参考价格信息来源" type="STRING" length="80"/>
+				<attribute name="STRUCTURETYPE" label="建筑形式/建设用地使用权类型" type="STRING" length="2"/>
+				<attribute name="PLANELAYOUT" label="平面布置" type="STRING" length="2"/>
+				<attribute name="STOREYHEIGHTT" label="总层数" type="INT"/>
+				<attribute name="REASONABLEDURATION" label="合理工期（年）" type="INT"/>
+				<attribute name="USEDETAIL" label="使用情况" type="STRING" length="10"/>
+				<attribute name="PARKCONDITION" label="泊车条件" type="STRING" length="2"/>
+				<attribute name="FRONTAGE" label="居住/商办用房产临街情况" type="STRING" length="2"/>
+				<attribute name="NEARBYCONDITION" label="居住/商办用房产附近的大型厂房或潜在环境污染源" type="STRING" length="200"/>
+				<attribute name="TAXPAY" label="纳税情况" type="STRING" length="200"/>
+				<attribute name="RENTING" label="租赁情况综述" type="STRING" length="200"/>
+				<attribute name="PARCELTERRAIN" label="宗地地形" type="STRING" length="200"/>
+				<attribute name="LANDATT" label="地上附着物情况" type="STRING" length="200"/>
+				<attribute name="TOPOGRAPHICSLOPE" label="地形坡度" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="GEOLOGICALCONDITIONS" label="地质条件" type="STRING" length="200"/>
+				<attribute name="PLANLIMITCONDITION" label="规划限制条件" type="STRING" length="500"/>
+				<attribute name="RECEIVINGBANK" label="销售回款账户所在银行" type="STRING" length="80"/>
+				<attribute name="PROJECTPLAN" label="房产工程进度估计" type="STRING" length="200"/>
+				<attribute name="BADPOSSIBILITY" label="房产工程烂尾可能性估计" type="STRING" length="200"/>
+				<attribute name="PLANDEVLEVEL" label="预计开发程度" type="STRING" length="200"/>
+				<attribute name="LANDTRANSFEES" label="已交纳土地使用权出让金" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="PROJECTTYPE" label="在建工程类型" type="STRING" length="6"/>
+				<attribute name="LANDTRANSFEESSTATUS" label="在建类房产所属土地出让金缴纳状态" type="STRING" length="10"/>
+				<attribute name="BUILDINGPLANNINGNUMBER" label="建设工程规划许可证编号" type="STRING" length="32"/>
+				<attribute name="LANDPLANNINGNUMBER" label="建设用地规划许可证编号" type="STRING" length="32"/>
+				<attribute name="CONSTRUCTIONPLANNINGNUMBER" label="建筑工程规划许可证编号" type="STRING" length="32"/>
+				<attribute name="REALTYDETAIL" label="房屋状况" type="STRING" length="200"/>
+				<attribute name="LOANPURPOSE" label="工业用房产申请贷款用途/在建类房产贷款用途" type="STRING" length="200"/>
+				<attribute name="RRSFLAG13" label="是否已提交国有资产管理部门或上级主管部门同意办理抵押的批准文件" type="STRING" length="2"/>
+				<attribute name="RRSFLAG14" label="是否已提交地价评估及确认报告/是否已提交在建类房产相关的营业执照或法人登记证" type="STRING" length="2"/>
+				<attribute name="RRSFLAG15" label="是否已提交同意抵押的职代会决议文件" type="STRING" length="2"/>
+				<attribute name="RRSFLAG16" label="是否已提交在建类房产相关的土地使用权出让合同" type="STRING" length="2"/>
+				<attribute name="RRSFLAG17" label="是否已提交建设工程规划许可证" type="STRING" length="2"/>
+				<attribute name="RRSFLAG18" label="是否已提交建筑工程施工许可证" type="STRING" length="2"/>
+				<attribute name="RRSFLAG19" label="是否已提交建设用地批准书" type="STRING" length="2"/>
+				<attribute name="RRSFLAG20" label="是否已提交商品房预售许可证" type="STRING" length="2"/>
+				<attribute name="RRSFLAG21" label="是否已提交建筑工程开工报告" type="STRING" length="2"/>
+				<attribute name="RRSFLAG22" label="是否已提交建筑工程规划图纸" type="STRING" length="2"/>
+				<attribute name="RRSFLAG23" label="是否已提交建设工程承包合同" type="STRING" length="2"/>
+				<attribute name="RRSFLAG24" label="完工程度是否达90%以上" type="STRING" length="2"/>
+				<attribute name="RSFLAG01" label="是否为国家机关财产/地上有无附着物" type="STRING" length="2"/>
+				<attribute name="RSFLAG02" label="是否为列为文物保护的古建筑或是有重要纪念意义的建筑物/是否交清地价" type="STRING" length="2"/>
+				<attribute name="RSFLAG03" label="是否为已依法公告在国家建设征用拆迁范围内的房地产" type="STRING" length="2"/>
+				<attribute name="RSFLAG04" label="是否已提交房地产权证书/是否已提交房屋所有权证" type="STRING" length="2"/>
+				<attribute name="RSFLAG05" label="是否已提交房产的土地使用权证/是否已提交土地使用权证/是否已提交在建类房产相关的国有土地使用权证" type="STRING" length="2"/>
+				<attribute name="RSFLAG06" label="是否已提交房产的出租合同与相关登记证明/是否已提交开发资质证书" type="STRING" length="2"/>
+				<attribute name="RSFLAG07" label="是否已提交房产的土地使用权出让合同/是否已提交土地使用权出让合同/是否已提交建设工程的总承包合同或者施工总承包合同" type="STRING" length="2"/>
+				<attribute name="RRSFLAG01" label="是否已存在售出的预告登记/是否已提交销售回款账户相关证明" type="STRING" length="2"/>
+				<attribute name="RRSFLAG02" label="是否为政策性住房/是否已提交主债权合同" type="STRING" length="2"/>
+				<attribute name="RRSFLAG03" label="是否已提交商品房预购（售）合同/是否取得集体通过决议书面证明" type="STRING" length="2"/>
+				<attribute name="RRSFLAG04" label="是否已提交房型图复印件/是否取得建设用地规划许可证/是否已提交在建类房产相关的建设用地规划许可证" type="STRING" length="2"/>
+				<attribute name="RRSFLAG05" label="是否已提交抵押物共有人出具的同意抵押的书面授权文件" type="STRING" length="2"/>
+				<attribute name="RRSFLAG06" label="是否已提交房屋租赁合同/是否已提交集体土地所有者同意抵押的证明" type="STRING" length="2"/>
+				<attribute name="RRSFLAG07" label="是否已投入商业运营/(土地)是否为列入国土资源部、国家发展和改革委员会以及地方政府《禁止用地项目目录》的建设项目及其用地" type="STRING" length="2"/>
+				<attribute name="RRSFLAG08" label="是否已提交独立产权证明/是否为纳入土地利用年度计划的新增建设用地" type="STRING" length="2"/>
+				<attribute name="RRSFLAG09" label="商办/工业用房产是否为违法、违章建筑物或依法被查封、扣押、监管或采用其他强制性措施的财产" type="STRING" length="2"/>
+				<attribute name="RRSFLAG10" label="商办用房产是否已办妥独立产权证或能办理独立产权证2" type="STRING" length="2"/>
+				<attribute name="RRSFLAG11" label="工业用房产内是否可进行商品化交易/是否为乡（镇）、村企业的厂房等建筑物及其占用范围内的集体土地使用权同时抵押" type="STRING" length="2"/>
+				<attribute name="RRSFLAG12" label="工业用房产是否已竣工验收" type="STRING" length="2"/>
+				<attribute name="RRSFLAG25" label="四证是否齐全" type="STRING" length="2"/>
+				<attribute name="WORKPERMITNUMBER" label="建设工程施工许可证编号" type="STRING" length="32"/>
+				<attribute name="REALTYHEIGHT" label="房屋所在楼层" type="INT"/>
+				<attribute name="REALTYMATERIAL" label="房屋结构（CodeNo:RealtyMaterial）" type="STRING" length="10"/>
+				<attribute name="OWNERSHIP" label="房屋性质（Code:RealtyOwnerShip）" type="STRING" length="10"/>
+				<attribute name="MARKET" label="市场性质（Code:Market）" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ASSET_REALTY" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ASSET_RECEIVABLE" label="应收账款(交易和收费权)" keyAttributes="ASSETSERIALNO">
+			<attributes>
+				<attribute name="ASSETSERIALNO" label="押品编号" type="STRING" length="32"/>
+				<attribute name="BUSINESSLICENSENO" label="营业执照编号" type="STRING" length="32"/>
+				<attribute name="INVOICENO" label="发票号" type="STRING" length="32"/>
+				<attribute name="AGRMNAME" label="合同或订单名称" type="STRING" length="80"/>
+				<attribute name="AGRMNO" label="合同编号" type="STRING" length="32"/>
+				<attribute name="PAYEE" label="应收账款收款人" type="STRING" length="80"/>
+				<attribute name="DRAWEE" label="应收账款付款人" type="STRING" length="80"/>
+				<attribute name="RCVRGSTINFO" label="应收账款登记信息" type="STRING" length="200"/>
+				<attribute name="RCVCONTENT" label="应收账款内容" type="STRING" length="200"/>
+				<attribute name="TR03TYPE" label="收费权类型" type="STRING" length="2"/>
+				<attribute name="SPECIALACCOUNTNAME" label="收费权专用账户户名/专用账户户名/收费权专用账户户名" type="STRING" length="80"/>
+				<attribute name="SPECIALACCOUNTNO" label="收费权专用账户账号/专用账户账号/收费权专用账户账号" type="STRING" length="32"/>
+				<attribute name="SPECIALACCOUNTBANK" label="收费权专用账户开户行/专用账户开户行/收费权专用账户开户行" type="STRING" length="80"/>
+				<attribute name="CURRENCY" label="币种" type="STRING" length="6"/>
+				<attribute name="RCVAMOUNT" label="交易类应收账款金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="RCVAGE" label="交易类应收账款账龄" type="INT"/>
+				<attribute name="RCVACPTMEMO" label="应收帐款承兑情况" type="STRING" length="200"/>
+				<attribute name="BUSINESSUNREST" label="商业纠纷记录" type="STRING" length="200"/>
+				<attribute name="ROADNAME" label="公路名称" type="STRING" length="80"/>
+				<attribute name="TOLLSTATION" label="公路段所属收费站" type="STRING" length="80"/>
+				<attribute name="TOLLSTARTTIME" label="收费起始时间" type="STRING" length="10"/>
+				<attribute name="TOLLRIGHTATTR" label="公路收费权属性" type="STRING" length="2"/>
+				<attribute name="ROADTYPE" label="公路类别" type="STRING" length="2"/>
+				<attribute name="BUSINESSSCOPE" label="公路收费权经营范围" type="STRING" length="200"/>
+				<attribute name="RBLENGTH" label="路桥长度" type="INT"/>
+				<attribute name="TIMETRAFFICOPENED" label="公路已通车时间" type="INT"/>
+				<attribute name="ROADLEVEL" label="公路等级" type="STRING" length="2"/>
+				<attribute name="TRAFFICAMOUNT" label="交通量" type="STRING" length="200"/>
+				<attribute name="TOLLINCOME" label="收费收入情况" type="STRING" length="200"/>
+				<attribute name="PLANNING" label="近期或未来涉及所在公路的规划或特殊政策" type="STRING" length="200"/>
+				<attribute name="LOANUSE" label="贷款用途" type="STRING" length="200"/>
+				<attribute name="TOLLORG" label="收费单位" type="STRING" length="80"/>
+				<attribute name="LICENSEAPPROVALORG" label="收费权许可证批文单位" type="STRING" length="80"/>
+				<attribute name="LICENSENO" label="收费权许可证号" type="STRING" length="80"/>
+				<attribute name="TOLLPROJECTNAME" label="收费项目名称" type="STRING" length="32"/>
+				<attribute name="TOLLSCOPE" label="收费权适用范围" type="STRING" length="80"/>
+				<attribute name="FEESCALE" label="收费标准" type="STRING" length="200"/>
+				<attribute name="SALEDELECVOLUME" label="已销售电量" type="INT"/>
+				<attribute name="CURRELECPRICE" label="当前销售电价" type="INT"/>
+				<attribute name="CURREPBASICTIME" label="当前电价基准时间" type="STRING" length="10"/>
+				<attribute name="TRTRANSFERMEMO" label="收费权转让情况" type="STRING" length="200"/>
+				<attribute name="RCVSTARTDATE" label="应收账款和收费权起始时间" type="STRING" length="10"/>
+				<attribute name="RCVENDDATE" label="应收账款和收费权终止时间" type="STRING" length="10"/>
+				<attribute name="PLEDGESTARTDATE" label="质押期起始时间(交易类应收账款不适用)" type="STRING" length="10"/>
+				<attribute name="PLEDGEENDDATE" label="质押期终止时间(交易类应收账款不适用)" type="STRING" length="10"/>
+				<attribute name="TOLLCHARGEMEMO" label="通信、网络、有限电视收费权收费收入情况" type="STRING" length="200"/>
+				<attribute name="TR01FLAG01" label="是否已提交公路建设经营项目立项、评估和批准开工的批文（已建成的除外）" type="STRING" length="2"/>
+				<attribute name="TR01FLAG02" label="是否已提交省级人民政府及其职能部门批准的公路收费文件（包括省级人民政府或国务院交通主管部门依法出具的关于公路收费站数量、站点的批文，省级人民政府交通主管部门会同同级物价行政主管部门出具的公路收费标准批文）" type="STRING" length="2"/>
+				<attribute name="TR01FLAG03" label="是否已提交省级人民政府对征用土地、按比例承担出资和备用资金的书面承诺（已建成的除外）" type="STRING" length="2"/>
+				<attribute name="TR01FLAG04" label="是否已提交公路建设经营项目各投资人同意公路收费权质押的书面决议" type="STRING" length="2"/>
+				<attribute name="TR01FLAG05" label="是否已提交公路建设经营项目成立项目公司的，应提供公司董事会或股东会、股东大会依公司章程作出的同意提供公司收费权质押的书面决议" type="STRING" length="2"/>
+				<attribute name="TR01FLAG06" label="是否已提交企业法人营业执照" type="STRING" length="2"/>
+				<attribute name="TR01FLAG07" label="是否已提交企业财务报表" type="STRING" length="2"/>
+				<attribute name="TR01FLAG08" label="是否已提交账户开户相关证明材料" type="STRING" length="2"/>
+				<attribute name="RCVTRADEFLAG01" label="是否有转让、质押、冻结、查封情况或被采取其他限制性措施" type="STRING" length="2"/>
+				<attribute name="RCVTRADEFLAG02" label="是否提交对应本笔应收账款的销售合同" type="STRING" length="2"/>
+				<attribute name="RCVTRADEFLAG03" label="是否提交企业法人营业执照" type="STRING" length="2"/>
+				<attribute name="RCVTRADEFLAG04" label="是否提交企业财务报表" type="STRING" length="2"/>
+				<attribute name="RCVTRADEFLAG05" label="是否提交应收账款开户相关证明" type="STRING" length="2"/>
+				<attribute name="RCVTRADEFLAG06" label="是否提交历史收费单据或发票" type="STRING" length="2"/>
+				<attribute name="RCVTRADEFLAG07" label="是否提交福费廷业务相关证明" type="STRING" length="2"/>
+				<attribute name="TR03FLAG01" label="是否已提交收费许可证或批准文件" type="STRING" length="2"/>
+				<attribute name="TR03FLAG02" label="是否已提交和通信、网络、有限电视收费权相关的相关账户开户证明" type="STRING" length="2"/>
+				<attribute name="TR03FLAG03" label="是否已提交和通信、网络、有限电视收费权相关的企业财务报表" type="STRING" length="2"/>
+				<attribute name="TR03FLAG04" label="是否已提交企业营业执照" type="STRING" length="2"/>
+				<attribute name="TR02FLAG01" label="是否已提交销售合同" type="STRING" length="2"/>
+				<attribute name="TR02FLAG02" label="是否已提交营业执照" type="STRING" length="2"/>
+				<attribute name="TR02FLAG03" label="是否已提交电网经营许可证及有关电费收费权的批准文件" type="STRING" length="2"/>
+				<attribute name="TR02FLAG04" label="是否已提交和农村电网建设与改造工程电费收费权相关的省级人民政府对征用土地、按比例承担出资和备用资金的书面承诺（已建成的除外）" type="STRING" length="2"/>
+				<attribute name="TR02FLAG05" label="是否已提交和农村电网建设与改造工程电费收费权相关的企业财务报表" type="STRING" length="2"/>
+				<attribute name="TR02FLAG06" label="是否已提交相关账户开户证明" type="STRING" length="2"/>
+				<attribute name="TR02FLAG07" label="损害保险" type="STRING" length="2"/>
+				<attribute name="REGCODE" label="应收账款初始登记号" type="STRING" length="32"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="ASSET_RECEIVABLE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+    </package> 
+</jbo>

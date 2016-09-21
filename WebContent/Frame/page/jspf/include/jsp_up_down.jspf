@@ -1,0 +1,10 @@
+<%@ include file="/Frame/page/jspf/include/jsp_frame_lrud.jspf"%>
+<script type="text/javascript">
+	var mytoptd = {};
+	setTimeout(function(){
+		if(!isNaN(mytoptd.height))
+			changeLayout(isLeftRight(),mytoptd.height/($(document.body).height()-mytoptd.height));
+	},1);
+	Layout.initRegionName("rightup", self.name, Layout.getRegionName("FirstFrame"));
+	Layout.initRegionName("rightdown", self.name, Layout.getRegionName("SecondFrame"));
+</script>

@@ -1,0 +1,61 @@
+<%
+	//打印javascript引入资源
+	List<BusinessObject> list = functionInstance.getFunctionItemList(functionItemID, FunctionInstance.FUNCTION_ITEM_TYPE_JSFILE);
+	for(BusinessObject functionItem:list){
+		String filePath=functionItem.getString("URL");
+		String functionItemRightType=functionItem.getString("RightType");
+		if(functionItemRightType.equalsIgnoreCase("hide")) continue;
+		out.println("<script type=\"text/javascript\" src=\""+sWebRootPath+""+filePath+"\"></script>\n");
+	}
+%>
+
+<script type="text/javascript">
+var FunctionLibraryFunctions={};
+FunctionLibraryFunctions.functionParameterArray=new Array();
+FunctionLibraryFunctions.outputParameterArray=new Array();
+<%
+	//打印参数信息
+	Map<String, Object> map = functionInstance.getAllFunctionParameter().convertToMap();
+	for(Iterator<String> it=map.keySet().iterator();it.hasNext();){
+		String key=it.next();
+		if(map.get(key)==null) continue;
+			Object obj=map.get(key);  
+			String value=SpecialTools.real2Amarsoft(String.valueOf(obj));//需要将一些特殊符号进行转化，如换行符、& 等 SpecialTools.amarsoft2Real()可进行
+			out.println("FunctionLibraryFunctions.functionParameterArray[\""+key+"\"]=\""+value+"\";\n");
+	}
+%>	
+	//设置快捷键
+	$(document).keydown(function(event){
+	 	if(event.altKey && event.keyCode == 81){ // alt+q
+	 		AsControl.PopComp("/AppConfig/FunctionManage/FunctionCatalogInfo.jsp","RightType=All&FunctionID=<%=functionID%>",'','');
+		}
+		 
+	});
+
+
+/**
+ * 获得参数值
+ */
+FunctionLibraryFunctions.getFunctionParameter=function(parameterName){
+	var parameterValue=FunctionLibraryFunctions.functionParameterArray[parameterName];
+	if(!parameterValue){
+		parameterValue=FunctionLibraryFunctions.functionParameterArray[parameterName.toUpperCase()];
+	}
+	return parameterValue;
+};
+
+	$(document).ready(function(){ 
+	
+	<%
+		//打印javascript引入资源
+		list = functionInstance.getFunctionItemList(functionItemID, FunctionInstance.FUNCTION_ITEM_TYPE_JAVASCRIPTFILE);
+		for(BusinessObject functionItem:list){
+			String javascript=functionItem.getString("URL");
+			String functionItemRightType=functionItem.getString("RightType");
+			if(functionItemRightType.equalsIgnoreCase("hide")) continue;
+			out.println(javascript+";\n");
+		}
+	%>
+	});
+
+</script>

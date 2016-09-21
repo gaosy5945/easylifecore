@@ -1,0 +1,10 @@
+<%
+	ButtonItem[] _items = ItemHelp.getButtonItemArray(CurUser,sButtons,CurComp.getAttribute("RightType",10),request.getRequestURI().substring(request.getRequestURI().indexOf(sWebRootPath)+sWebRootPath.length()));
+	if(_items != null){
+		for(ButtonItem _item : _items) out.write(new Button(_item).getHtmlText());
+		if("true".equals(CurConfig.getParameter("ShowDwHelpButton")))
+			out.write(new Button("帮助", "查看本页面的内容", "AsDebug.showHelp()", "", "btn_icon_help", "").getHtmlText());
+		if("true".equals(CurConfig.getParameter("ShowDwEditHelpButton")))
+			out.write(new Button("编辑帮助", "编辑本页面的内容", "AsDebug.editHelp()", "", "btn_icon_help", "").getHtmlText());
+	}
+%>

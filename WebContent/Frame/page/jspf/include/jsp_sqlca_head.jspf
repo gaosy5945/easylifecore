@@ -1,0 +1,21 @@
+<%  
+Transaction Sqlca = null;
+Transaction SqlcaRepository = null;
+String sCurRunMode=CurConfig.getConfigure("RunMode");
+try{
+    Sqlca = new Transaction(CurConfig.getDataSource());
+    SqlcaRepository = Sqlca;
+    ComponentSession CurCompSession = CurARC.getCompSession();
+    Component CurComp = CurCompSession.lookUp(sCompClientID);
+    Page CurPage = new Page(CurComp);
+    CurPage.setRequestAttribute((HttpServletRequest)request);
+    
+    ASResultSet rssssssyy = Sqlca.getASResultSet("select * from SYSTEM_SETUP");
+    if(rssssssyy.next())
+    {
+    	String businessDate = rssssssyy.getString("BusinessDate");
+    	
+    	com.amarsoft.app.base.util.DateHelper.setBusinessDate(businessDate);
+    }
+    rssssssyy.close();
+%>

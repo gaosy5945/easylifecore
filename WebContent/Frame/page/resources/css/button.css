@@ -1,0 +1,156 @@
+/*norm*/
+.inline_button {
+	display: inline-block;
+	height: 21px;
+	line-height: 21px;
+	white-space: nowrap;
+	margin: 2px 5px 0px 5px;
+}
+a.inline_button, a:link.inline_button, a:visited.inline_button {
+	text-decoration: none;
+	outline: none;
+	color: #6c3d3d;
+	font-family:"ËÎÌו";
+	font-size:13px;
+}
+a:hover.inline_button {
+	color: #000;
+	text-decoration: none;
+}
+a.inline_button.unable {
+	color:#6c3d3d
+}
+.inline_button * {
+	display: inline-block;
+	cursor: pointer;
+}
+.inline_button .left {
+	width: 7px;
+	background: url(../images/button/button_bg.png) no-repeat 0 0;
+}
+.inline_button .center {
+	width: auto;
+	background: url(../images/button/button_bg.png) no-repeat -14px 0;
+}
+.inline_button .right {
+	width: 7px;
+	background: url(../images/button/button_bg.png) no-repeat -7px 0;
+}
+a:hover.inline_button .left {
+	background: url(../images/button/button_bg.png) no-repeat 0 -21px;
+}
+a:hover.inline_button .center {
+	background: url(../images/button/button_bg.png) no-repeat -14px -21px;
+}
+a:hover.inline_button .right {
+	background: url(../images/button/button_bg.png) no-repeat -7px -21px;
+}
+a:active.inline_button .left {
+	background: url(../images/button/button_bg.png) no-repeat 0 -42px;
+}
+a:active.inline_button .center {
+	background: url(../images/button/button_bg.png) no-repeat -14px -42px;
+}
+a:active.inline_button .right {
+	background: url(../images/button/button_bg.png) no-repeat -7px -42px;
+}
+/*button icon BEGIN*/
+.btn_icon {
+	height: 100%;
+	display: none;
+}
+.btn_icon_help,
+.btn_icon_close,
+.btn_icon_refresh,
+.btn_icon_add,
+.btn_icon_delete,
+.btn_icon_save,
+.btn_icon_home,
+.btn_icon_workflow,
+.btn_icon_modifypwd,
+.btn_icon_othersys,
+.btn_icon_exit,
+.btn_icon_information,
+.btn_icon_detail,
+.btn_icon_submit,
+.btn_icon_up,
+.btn_icon_down,
+.btn_icon_left,
+.btn_icon_right,
+.btn_icon_edit,
+.btn_icon_check,
+.btn_icon_search{
+	display: inline-block;
+	margin-right:5px;
+	width:16px;
+}
+.btn_icon_help{
+	background:url('../images/main/icons/help.png') no-repeat center;
+}
+.btn_icon_close{
+	background:url('../images/main/icons/close.png') no-repeat center;
+}
+.btn_icon_refresh{
+	background:url('../images/main/icons/refresh.png') no-repeat center;
+}
+.btn_icon_add{
+	background:url('../images/main/icons/add.png') no-repeat center;
+}
+.btn_icon_delete{
+	background:url('../images/main/icons/delete.png') no-repeat center;
+}
+.btn_icon_save{
+	background:url('../images/main/icons/save.png') no-repeat center;
+}
+.btn_icon_home{
+	background:url('../images/main/icons/home.png') no-repeat center;
+}
+.btn_icon_workflow{
+	background:url('../images/main/icons/workflow.png') no-repeat center;
+}
+.btn_icon_modifypwd{
+	background:url('../images/main/icons/modifypwd.png') no-repeat center;
+}
+.btn_icon_othersys{
+	background:url('../images/main/icons/othersys.png') no-repeat center;
+}
+.btn_icon_exit{
+	background:url('../images/main/icons/exit.png') no-repeat center;
+}
+.btn_icon_information{
+	background:url('../images/main/icons/information.png') no-repeat center;
+}
+.btn_icon_detail{
+	background:url('../images/main/icons/detail.png') no-repeat center;
+}
+.btn_icon_submit{
+	background:url('../images/main/icons/submit.png') no-repeat center;
+}
+.btn_icon_up{
+	background:url('../images/main/icons/arrow_up.png') no-repeat center;
+	}
+.btn_icon_down{
+	background:url('../images/main/icons/arrow_down.png') no-repeat center;
+	}
+.btn_icon_left{
+	background:url('../images/main/icons/arrow_left.png') no-repeat center;
+	}
+.btn_icon_right{
+	background:url('../images/main/icons/arrow_right.png') no-repeat center;
+	}
+.btn_icon_edit{
+	background:url('../images/main/icons/edit.png') no-repeat center;
+}
+.btn_icon_check{
+	background:url('../images/main/icons/check.png') no-repeat center;
+}
+.btn_icon_search{
+	background:url('../images/main/icons/search.png') no-repeat center;
+}
+/*button icon END*/
+
+.infodw_buttonarea_td{
+	width:99%;
+	float: left;
+	display: inline;
+}

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- 系统联机接口配置文件 -->
+<Configuration Description="实时接口定义" >
+	<!-- 开发人员可以在此定义接口总体参数 -->
+	<Properties>
+		<!-- 客户端接口日志是否记录在文本文件中 -->
+		<Property name="ClientFileLogFlag" value="true"/>
+		<!-- 客户端接口日志是否记录在数据库日志表中 -->
+		<Property name="ClientDBLogFlag" value="true"/>
+		<!-- 服务端接口日志是否记录在文本文件中 -->
+		<Property name="ServiceFileLogFlag" value="true"/>
+		<!-- 服务端接口日志是否记录在数据库日志表中 -->
+		<Property name="ServiceDBLogFlag" value="true"/>
+		<!-- 报文采用字符集，如果交易层面未定义字符集，便采用此处配置 -->
+		<Property name="CharSet" value="GBK"/>  
+		<!-- 接口是否联机，如果为false则不联机，直接返回默认结果 -->
+		<Property name="IsInUse" value="true"/>
+		<!-- 日志文件存放路径 -->
+		<Property name="LogPath" value="/"/>
+		<!-- 征信单笔报文路径 -->
+		<Property name="CrqsSinPath" value="/lsxd/ICRFile/single/"/>
+		<Property name="CrqsBacPath" value="/lsxd/ICRFile/batch/"/>
+		<Property name="CrqsUpPath" value="/lsxd/ICRFile/up/"/>
+		<Property name="CrqsQuerOrgcode" value="B11512900H0001" />
+		<Property name="RuleEngineURL" value="http://localhost:9002/ruleservice"/>
+	</Properties>
+	
+	<!-- 定义外围系统id、名称、接入方式 ：WebService、Socket等，开发人员可以根据不同的接入方式定义传输需要的参数信息。
+		如：使用Socket传输，则需要定义ip和port两个参数
+		注：系统id不可重复
+	 -->
+	<Connections>
+		<Connection id="esb" name="ESB企业总线" type="WebService">
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ESBParser"/>
+			<Property name="Requester" value="com.amarsoft.app.oci.comm.impl.client.WSRequester"/>
+			<Property name="Responser" value="com.amarsoft.app.oci.comm.impl.server.WSResponser"/>
+			<Property name="ConsumerId" value="0215"/>
+			<Property name="Mac" value="0000000000000000"/>
+			<Property name="MacOrgId" value="8201"/>
+			<namespaces>
+	   			<namespace name = "SOAP-ENV" value = "http://schemas.xmlsoap.org/soap/envelope/"/>
+	   			<namespace name = "xsd" value = "http://www.w3.org/2001/XMLSchema"/>
+	   			<namespace name = "d" value = "http://esb.spdbbiz.com/metadata"/>
+	   			<namespace name = "SOAP-ENC" value = "http://schemas.xmlsoap.org/soap/encoding/"/>
+	   			<namespace name = "xsi" value = "http://www.w3.org/2001/XMLSchema"/>
+	   		</namespaces>
+		</Connection>
+		
+		<!-- ckxu 添加-->
+		<Connection id="dataclientrqs" name="客户端数据查询" type="WebService">
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.DataClientParser"/>
+			<Property name="Requester" value="com.amarsoft.app.oci.comm.impl.client.DataClientRequester"/>
+			<property name = "versionNo" value = "1"/>
+			<property name = "toEncrypt" value = "0"/>
+			<property name = "commCode" value = "500001"/>
+			<property name = "commType" value = "1"/>
+			<property name = "senderId" value = "AmarAccount"/>
+			<namespaces>
+	   			<namespace name = "gateway" value = "http://www.amardata.com/GDBGateway"/>
+	   			<namespace name = "xsd" value = "http://www.w3.org/2001/XMLSchema"/>
+	   			<namespace name = "soapenv" value = "http://schemas.xmlsoap.org/soap/envelope/"/>
+	   			<namespace name = "xsi" value = "http://www.w3.org/2001/XMLSchema-instance"/>
+	   		</namespaces>
+		</Connection>
+		
+		<Connection id="crqs" name="征信查询系统" type="WebService">
+			<Property name="EndPoint" value="http://10.112.11.230:7001/BQSWeb/services/WebService.WebServiceHttpSoap12Endpoint/"/>
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ImageParser"/>
+			<Property name="Requester" value="com.amarsoft.app.oci.comm.impl.client.CRQSRequester"/>
+		</Connection>
+		
+		<Connection id="decision" name="评分卡系统" type="WebService">
+			<Property name="EndPoint" value="http://10.112.19.134:8006/rdso/DecisionWebService"/>
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ImageParser"/>
+			<Property name="Requester" value="com.amarsoft.app.oci.comm.impl.client.DecisionRequester"/>
+		</Connection>
+		
+		<Connection id="nosend" name="不发送连接（查看报文）" type="WebService">
+			<Property name="EndPoint" value=""/>
+			<Property name="Parser" value="com.amarsoft.app.oci.parser.impl.ImageParser"/>
+			<Property name="Requester" value="com.amarsoft.app.oci.comm.impl.client.NoSendRequester"/>
+		</Connection>
+	</Connections>
+	
+	
+	<!-- 具体接口定义在下列文件中定义，开发人员可以根据外围系统或功能模块进行合理配置 -->
+	<!-- 文件中定义的message id 都是全局信息，各个文件中该id不能出现重复
+		   文件中定义的transaction ClientID和ServerID都是全局信息，各个文件中也不能出现重复信息 
+	 -->
+	<OCIDefines>
+		<OCIDefine filename="public_msg_cfg.xml" enable="true"/>
+		<OCIDefine filename="crqs_msg_cfg.xml" enable="true"/>
+	    <OCIDefine filename="decision_msg_cfg.xml" enable="true"/>
+	    <OCIDefine filename="zhipp_msg_cfg.xml" enable="true"/>
+		<!-- ckxu添加，用于个人身份认证  -->
+	    <OCIDefine filename="ind_msg_cfg.xml" enable="true"/>
+	    <OCIDefine filename="cresx_msg_cfg.xml" enable="true"/>
+	    <OCIDefine filename="education_msg_cfg.xml" enable="true"/>
+	</OCIDefines>
+	
+</Configuration>

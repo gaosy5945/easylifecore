@@ -1,0 +1,104 @@
+<script type="text/javascript">
+    function ModifyPass(){
+ 		PopPage("/AppMain/ModifyPassword.jsp","","dialogHeight=480px;dialogWidth=800px;resizable=no;scrollbars=no;status:yes;maximize:no;help:no;");
+    }
+
+ 	function sessionOut(){
+ 		if(confirm("确认退出本系统吗？"))
+ 			OpenComp("SignOut","/AppMain/SignOut.jsp","","_top","");
+	}
+
+ 	function goHome(){
+		OpenComp("Main","/Main.jsp","ToDestroyAllComponent=Y","_top","");
+	}
+ 	
+ 	function saveSkin(path){
+ 		var sReturn = AsControl.RunJsp("/AppConfig/OrgUserManage/ReloadSkin.jsp", "Path="+path);
+ 		if(!sReturn){
+ 			reloadSelf();
+ 		}else{
+ 			alert(sReturn);
+ 		}
+ 	}
+ 	
+ 	$(function(){
+ 		$("#skin_bar, #moresys_bar").bind("mouseleave", function(){
+ 			$(this).slideUp(100);
+ 		});
+ 	});
+
+ 	var _time1 = null;
+ 	function showMoreSys(obj){
+ 		$('#moresys_bar').slideDown(100);
+ 		$(obj).unbind("mouseleave").bind("mouseleave", function(){
+ 			_time1 = setTimeout(function(){
+ 				$("#moresys_bar").hide();
+ 			}, 150);
+ 		});
+ 	}
+ 	var _time2 = null;
+ 	function showSkin(obj){
+ 		$('#skin_bar').slideDown(100);
+ 		$(obj).unbind("mouseleave").bind("mouseleave", function(){
+ 			_time2 = setTimeout(function(){
+ 				$("#skin_bar").hide();
+ 			}, 150);
+ 		});
+ 	}
+</script><style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+<%
+	//取系统名称
+	String sImplementationID = CurConfig.getConfigure("ImplementationID");
+	String sImplementationVersion = CurConfig.getConfigure("ImplementationVersion");
+	ArrayList<com.amarsoft.awe.res.model.SkinItem> items = com.amarsoft.awe.res.model.SkinItem.getFixSkins();
+%>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+  <td nowrap class="sys_menu_href">&nbsp;
+  	<a href="javascript:goHome()" class="home">主页</a>&nbsp;&nbsp;
+  	<%if(!sAppID.equals(AppManager.getMainAppID())){%>
+  	<a href="javascript:void(0);" onmouseover="showMoreSys(this)"><span>系统切换</span></a>&nbsp;|
+  	<%}%>
+  	<%if(!items.isEmpty()){%>
+   	<a onmouseover="showSkin(this);" style="background:url(<%=sWebRootPath%><%=CurUser.getSkin().getPath()%>/icon.gif) no-repeat left center;" title="<%=CurUser.getSkin().getRemark()%>" href="javascript:void(0);"><span style="margin-left: 22px;"><%=CurUser.getSkin().getName()%></span></a>&nbsp;|
+   	<%}%>
+   	<a href="javascript:ModifyPass()">修改密码</a>&nbsp;|
+   	<a href="javascript:sessionOut()">退出系统</a>
+  </td>
+  <td nowrap>
+    <span class="pageversion" title="系统版本">&nbsp;&nbsp;|&nbsp;&nbsp;<%=sImplementationID+" "+sImplementationVersion%> &nbsp;&nbsp;</span>
+  </td>
+  <td nowrap width="">
+    <span class="pageversion" >
+    </span>
+  </td>
+</tr>
+</table>
+<div id="moresys_bar" class="slidedown" onmouseover="clearTimeout(_time1);">
+<%
+ArrayList<com.amarsoft.awe.res.model.AppItem> appItemList = AppManager.getUserAppList(CurUser);
+for (com.amarsoft.awe.res.model.AppItem appItem : appItemList){
+	if(sAppID.equals(appItem.getAppID())) continue;
+	String sStyle = "";
+	if(!com.amarsoft.are.lang.StringX.isSpace(appItem.getMiniIcon()))
+		sStyle = " style=\"background-image:url("+sWebRootPath+appItem.getMiniIcon()+");\"";
+%>
+<a<%=sStyle%> href="javascript:AsControl.OpenComp('/AppMain/CommonEntry.jsp', 'AppID=<%=appItem.getAppID()%>', '_top');"><span><%=appItem.getAppName()%></span></a>
+<%}%>
+</div>
+<div id="skin_bar" class="slidedown" onmouseover="clearTimeout(_time2);">
+<%for(int _item_index = 0; _item_index < items.size(); _item_index++){
+	com.amarsoft.awe.res.model.SkinItem item = items.get(_item_index);
+	if(item.getPath().equals(CurUser.getSkin().getPath())) continue;
+%><a style="background-image:url(<%=sWebRootPath%><%=item.getPath()%>/icon.gif);" title="<%=item.getRemark()%>" href="javascript:saveSkin('<%=item.getPath()%>');"><span><%=item.getName()%></span></a>
+<%}%>
+</div>

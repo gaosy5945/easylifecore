@@ -1,0 +1,31 @@
+body {
+	background: url(../images/welcome/welcome_bg.jpg);
+}
+.panel .title {
+	background: url(../images/welcome/title-icon.png) no-repeat 8px center #f9f9f9;
+}
+#panel0 .container span a.quick {
+	background: url(../images/welcome/qk_bg.gif) no-repeat 0 0;
+}
+#panel0 .container span a:hover.quick {
+	background: url(../images/welcome/qk_bg.gif) no-repeat 0 -35px;
+}
+#panel0 .container span a:active.quick {
+	background: url(../images/welcome/qk_bg.gif) no-repeat 0 -70px;
+}
+#panel0 .container span a.close {
+	background: url(../images/welcome/close.gif) no-repeat center;
+}
+#panel0 .container span a:hover.close {
+	background: url(../images/welcome/close2.gif) no-repeat center;
+}
+#panel0 .container span a.change {
+	background: url(../images/welcome/change.png) no-repeat center;
+}
+#panel1 .title div {
+	background: url(../images/welcome/tab_panel_bg.png) no-repeat center;
+}
+#panel1 .title a {
+	background: url(../images/welcome/tab_panel_act.png) no-repeat left center;
+	color: #fff;
+}

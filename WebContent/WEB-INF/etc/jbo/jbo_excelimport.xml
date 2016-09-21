@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbo>
+	<managers>
+		<manager id="dataGridImport" managerClass="com.amarsoft.proj.nbcb.dataimport.DataGridExcelImportManager">
+			<describe>DataGrid格式的Excel数据导入</describe>
+			<managerProperties>
+				<property name="database" value="als" />
+			</managerProperties>
+		</manager>
+		<manager id="MineImport" managerClass="com.amarsoft.app.als.dataimport.xlsimport.MineImportManager">
+			<describe>自定义类数据格式导入</describe>
+				<managerProperties>
+					<property name="database" value="als" />
+				</managerProperties>
+		</manager>
+	</managers>
+	<package name="jbo.import.excel"> 
+		<class name="test" label="导入测试" keyAttributes="CUSTOMERNAME,INPUTDATE">
+	      <attributes>
+		        <attribute name="CUSTOMERNAME" label="客户名称" type="STRING" length="40" >
+		        	<extendProperties>
+								<property name="excelCol" value="A" />
+					</extendProperties>
+		        </attribute>
+		        <attribute name="CERTID" label="证件编号" type="STRING" length="80" >
+		        	<extendProperties>
+								<property name="excelCol" value="B" />
+					</extendProperties>
+		        </attribute> 
+	      </attributes>
+		      <manager id="MineImport">
+		         <managerProperties>
+			        	 <property name="table" value="CDS_INFO" />
+				         <property name="startAddress" value="A2" />
+						 <property name="createKey" value="true" />
+						  <property name="importClass" value="com.amarsoft.app.als.dataimport.bill.TestReader"/>
+			        </managerProperties>
+		      </manager> 
+		</class>
+		
+	<class name="BILL_IMPORT" label="票据导入" keyAttributes="SERIALNO">
+      <attributes>
+        <attribute name="SERIALNO" label="流水号" type="STRING" length="16" />
+        <attribute name="ISLOCALBILL" label="是否本行号码" type="STRING" length="2" >
+        	<extendProperties>
+					<property name="excelCol" value="A" />
+					<property name="codeMap" value="YesNo" />
+			</extendProperties>
+        </attribute>
+        <attribute name="BILLNO" label="票据号码" type="STRING" length="40" >
+        	<extendProperties>
+					<property name="excelCol" value="B" />
+			</extendProperties>
+        </attribute>
+         <attribute name="BILLSUM" label="票面金额" type="DOUBLE" length="24" scale="6" >
+        	<extendProperties>
+						<property name="excelCol" value="C" />
+			</extendProperties>
+        </attribute>
+        <attribute name="WRITEDATE" label="票据签发日期" type="STRING" length="10" >
+	        <extendProperties>
+							<property name="excelCol" value="D" />
+			</extendProperties>
+		</attribute>
+		<attribute name="MATURITY" label="票据到期日" type="STRING" length="10" >
+	        <extendProperties>
+							<property name="excelCol" value="E" />
+			</extendProperties>
+		</attribute>
+		<attribute name="FINISHDATE" label="贴现日期" type="STRING" length="10" >
+	        <extendProperties>
+							<property name="excelCol" value="F" />
+			</extendProperties>
+		</attribute>
+        <attribute name="BEGINDATE" label="票据查询回复日期"  type="STRING" length="10" >
+        	<extendProperties>
+				<property name="excelCol" value="G" />
+			</extendProperties>
+        </attribute>
+        <attribute name="HOLDERID" label="票据来源"  type="STRING" length="2" >
+        	<extendProperties>
+				<property name="excelCol" value="H" />
+				<property name="codeMap" value="BillResource" />
+			</extendProperties>
+        </attribute>
+        <attribute name="ENDORSETIMES" label="调整天数" type="DOUBLE" length="24" scale="6">
+	        <extendProperties>
+							<property name="excelCol" value="I" />
+			</extendProperties>
+		</attribute>
+		<attribute name="RATE" label="贴现月利率"  type="DOUBLE" length="24" scale="6">
+	        <extendProperties>
+							<property name="excelCol" value="J" />
+			</extendProperties>
+		</attribute>
+		<attribute name="AcceptorID" label="承兑行行号" type="STRING" length="32" >
+	        <extendProperties>
+							<property name="excelCol" value="K" />
+			</extendProperties>
+		</attribute>
+		<attribute name="DEDUCTACCNO" label="放款账号" type="STRING" length="32" >
+	        <extendProperties>
+							<property name="excelCol" value="L" />
+			</extendProperties>
+		</attribute>
+      </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="createKey" value="true" />
+          <property name="table" value="BILL_INFO" />
+          <property name="startAddress" value="A3" />
+		  <property name="finishAddress" value="O10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.dataimport.bill.BillExcelImport"/>
+		   <property name="excelPath" value="/AppConfig/FileImport/doc/BankAcceptorBill.xls" />
+        </managerProperties>
+      </manager>
+    </class>
+    
+    <class name="SPECIALCUST_IMPORT" label="特殊客户导入" keyAttributes="SERIALNO">
+     	 <attributes>
+     	 	<attribute name="SERIALNO" label="流水号" type="STRING" length="18" />
+			<attribute name="CUSTOMERNAME" label="客户名称" type="STRING" length="80">
+				<extendProperties>
+					<property name="excelCol" value="B" />
+				</extendProperties>
+			</attribute>
+        	<attribute name="CERTID" label="证件号" type="STRING" length="32" >
+        		<extendProperties>
+					<property name="excelCol" value="C" />
+				</extendProperties>
+        	</attribute>
+        	<attribute name="CERTTYPE" label="证件类型" type="STRING" length="18" >
+        		<extendProperties>
+					<property name="excelCol" value="D" />
+				</extendProperties>
+        	</attribute>
+           <attribute name="REMARK" label="备注" type="STRING" length="200" >
+        		<extendProperties>
+					<property name="excelCol" value="E" />
+				</extendProperties>
+        	</attribute>
+        	<attribute name="INLISTSTATUS" label="是否有效" type="STRING" length="12" />
+       		<attribute name="INPUTUSERID" label="录入人ID" type="STRING" length="20" />
+       		<attribute name="USERNAME" label="录入人" type="STRING" length="40" />
+        	<attribute name="INPUTDATE" label="录入日期" type="DATE" length="10" />
+        	<attribute name="INPUTORGID" label="录入机构ID" type="STRING" length="20" />
+        	<attribute name="ORGNAME" label="录入机构" type="STRING" length="40" />>
+		</attributes>
+     	 
+		<manager id="MineImport">
+	        <managerProperties>
+	          <property name="createKey" value="true" />
+	          <property name="table" value="CUSTOMER_SPECIAL" />
+	          <property name="startAddress" value="B2" />
+			  <property name="finishAddress" value="E10000" />
+			  <property name="excelPath" value="/AppConfig/FileImport/doc/SpecialCustomer_import.xls" />
+			  <property name="importClass" value="com.amarsoft.app.als.dataimport.xlsimport.SpecialCustomerImport"/>
+	        </managerProperties>
+      	</manager>
+     </class>
+     
+     <class name="BANKSTAFF_IMPORT" label="员工信息导入" keyAttributes="SERIALNO">
+     	 <attributes>
+     	 	<attribute name="SERIALNO" label="流水号" type="STRING" length="18" />
+     	 <attribute name="CUSTOMERNAME" label="客户名称" type="STRING" length="80">
+				<extendProperties>
+					<property name="excelCol" value="B" />
+				</extendProperties>
+			</attribute>
+        	<attribute name="CERTID" label="证件号" type="STRING" length="32" >
+        		<extendProperties>
+					<property name="excelCol" value="C" />
+				</extendProperties>
+        	</attribute>
+        	<attribute name="CERTTYPE" label="证件类型" type="STRING" length="18" >
+        		<extendProperties>
+					<property name="excelCol" value="D" />
+				</extendProperties>
+        	</attribute>
+        	<attribute name="GENDER" label="性别" type="STRING" length="18" >
+        		<extendProperties>
+					<property name="excelCol" value="E" />
+				</extendProperties>
+        	</attribute>
+        	<attribute name="MOBILETEL" label="手机号码" type="STRING" length="32" >
+        		<extendProperties>
+					<property name="excelCol" value="F" />
+				</extendProperties>
+        	</attribute>
+        	<attribute name="EMAIL" label="电子邮件" type="STRING" length="80" >
+        		<extendProperties>
+					<property name="excelCol" value="G" />
+				</extendProperties>
+        	</attribute>
+           <attribute name="REMARK" label="备注" type="STRING" length="250" >
+        		<extendProperties>
+					<property name="excelCol" value="H" />
+				</extendProperties>
+        	</attribute>
+        	<attribute name="INLISTSTATUS" label="是否有效" type="STRING" length="12" />
+       		<attribute name="INPUTUSERID" label="录入人ID" type="STRING" length="20" />
+       		<attribute name="USERNAME" label="录入人" type="STRING" length="40" />
+        	<attribute name="INPUTDATE" label="录入日期" type="DATE" length="10" />
+        	<attribute name="INPUTORGID" label="录入机构ID" type="STRING" length="20" />
+        	<attribute name="ORGNAME" label="录入机构" type="STRING" length="40" />>
+		</attributes>
+     	 
+		<manager id="MineImport">
+	        <managerProperties>
+	          <property name="createKey" value="true" />
+	          <property name="table" value="CUSTOMER_SPECIAL" />
+	          <property name="startAddress" value="B2" />
+			  <property name="finishAddress" value="H10000" />
+			  <property name="excelPath" value="/AppConfig/FileImport/doc/BankStaff_import.xls" />
+			  <property name="importClass" value="com.amarsoft.app.als.dataimport.xlsimport.BankStaffImport"/>
+	        </managerProperties>
+      	</manager>
+     </class>
+     
+     <class name="ASSET_IMPORT" label="资产导入" keyAttributes="SERIALNO">
+      <attributes>
+        <attribute name="BDSERIALNO" label="关联借据编号" type="STRING" length="50" >
+        	<extendProperties>
+					<property name="excelCol" value="A" />
+			</extendProperties>
+        </attribute>
+       </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="createKey" value="true" />
+          <property name="startAddress" value="A3" />
+		  <property name="finishAddress" value="O10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.assetTransfer.action.AssetExcelImport"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/ProjectAssetImport.xls" />
+        </managerProperties>
+      </manager>
+    </class> 
+     
+     
+    <class name="BUILDING_IMPORT" label="楼盘导入" keyAttributes="SERIALNO">
+      <attributes>
+        <attribute name="BUILDINGNAME" label="楼盘名称" type="STRING" length="80" >
+        	<extendProperties>
+					<property name="excelCol" value="A" />
+			</extendProperties>
+        </attribute>
+         <attribute name="STATUS" label="楼盘状态" type="STRING" length="10" >
+        	<extendProperties>
+					<property name="excelCol" value="B" />
+			</extendProperties>
+        </attribute>
+        <attribute name="CUSTOMERNAME" label="开发商名称" type="STRING" length="80" >
+        	<extendProperties>
+					<property name="excelCol" value="C" />
+			</extendProperties>
+        </attribute>
+        <attribute name="CUSTOMERID" label="开发商编号" type="STRING" length="40" >
+        	<extendProperties>
+					<property name="excelCol" value="D" />
+			</extendProperties>
+        </attribute>
+        <attribute name="INPUTUSERID" label="登记人" type="STRING" length="32" >
+        	<extendProperties>
+					<property name="excelCol" value="E" />
+			</extendProperties>
+        </attribute>
+        <attribute name="INPUTORGID" label="登记机构" type="STRING" length="32" >
+        	<extendProperties>
+					<property name="excelCol" value="F" />
+			</extendProperties>
+        </attribute>
+        <attribute name="INPUTDATE" label="登记日期" type="STRING" length="10" >
+        	<extendProperties>
+					<property name="excelCol" value="G" />
+			</extendProperties>
+        </attribute>
+      </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="createKey" value="true" />
+          <property name="startAddress" value="A2" />
+		  <property name="finishAddress" value="O10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.project.BuildingExcelImport"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/BuidlingsImportModel.xls" />
+        </managerProperties>
+      </manager>
+
+    </class> 
+    
+      
+     <class name="OUT_COLL_IMPORT" label=" 外包催收结果导入" >
+      <attributes>
+         <attribute name="TASKBATCHNO" label="任务批次" type="STRING"	 length="40"><extendProperties><property name="excelCol" value="A"/></extendProperties></attribute>	
+		 <attribute name="OBJECTNO" label="借据编号" TYPE="STRING" length="40"><extendProperties><property name="excelCol" value="B"	 /></extendProperties></attribute>	
+		 <attribute name="CUSTOMERNAME" label="客户姓名" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="C"	 /></extendProperties></attribute>	
+		 <!-- 
+		 <attribute name="CERTTYPE" label="证件类型" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="D"	 /></extendProperties></attribute>	
+		 <attribute name="CERTNO" label="证件号码" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="E"	 /></extendProperties></attribute>	
+		 --> 
+		 <attribute name="BUSINESSTYPE" label="业务品种" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="D"	 /></extendProperties></attribute>	
+		 <attribute name="PROCESSDATE" label="催收日期" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="E"	 /></extendProperties></attribute>	
+		 <attribute name="COLLECTIONMETHOD" label="催收方式" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="F"	 /></extendProperties></attribute>	
+		 <attribute name="CONTACTORNAME" label="催收对象" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="G"	 /></extendProperties></attribute>	
+		 <attribute name="CONTACTTELNO" label="催收电话" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="H"	 /></extendProperties></attribute>		
+		 <attribute name="CONTACTRESULT" label="催收结果" TYPE="STRING" length="100"	 ><extendProperties><property name="excelCol" value="I"	 /></extendProperties></attribute>	
+		 <attribute name="EXPLANATIONCODE" label="客户解释" TYPE="STRING" length="100"	 ><extendProperties><property name="excelCol" value="J"	 /></extendProperties></attribute>	
+		 <attribute name="REMARK" label="备注" TYPE="STRING" length="400"><extendProperties><property name="excelCol" value="K"	 /></extendProperties></attribute>	
+		 <attribute name="OPERATEDATE" label="委案日期" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="L"	 /></extendProperties></attribute>	
+		 <attribute name="ACTUALFINISHDATE" label="结案日期" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="M"	 /></extendProperties></attribute>	
+      </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="startAddress" value="A4" />
+		  <property name="finishAddress" value="O10000" />
+		  <property name="importClass" value="com.amarsoft.app.urge.OutCollExcelImportAction"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/CollRegistrateImport-1.0.xls" />
+        </managerProperties>
+      </manager>
+    </class> 
+     
+     <class name="TEL_COLL_IMPORT" label="总行电话催收结果导入" >
+      <attributes>
+		 <attribute name="OBJECTNO" label="借据编号" TYPE="STRING" length="40"><extendProperties><property name="excelCol" value="A"	 /></extendProperties></attribute>	
+		 <attribute name="OPERATEDATE" label="催收时间" TYPE="STRING" length="10"	 ><extendProperties><property name="excelCol" value="B"	 /></extendProperties></attribute>	
+		 <attribute name="COLLECTIONMETHOD" label="催收方式" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="C"	 /></extendProperties></attribute>	
+		 <attribute name="CONTACTORTYPE" label="催收对象" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="D"	 /></extendProperties></attribute>	
+		 <attribute name="CONTACTTELNO" label="催收电话" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="E"	 /></extendProperties></attribute>		
+		 <attribute name="EXPLANATIONCODE" label="客户解释" TYPE="STRING" length="100"	 ><extendProperties><property name="excelCol" value="F"	 /></extendProperties></attribute>	
+		 <attribute name="CONTACTRESULT" label="催收结果" TYPE="STRING" length="100"	 ><extendProperties><property name="excelCol" value="G"	 /></extendProperties></attribute>	
+		 <attribute name="REMARK" label="备注" TYPE="STRING" length="400"><extendProperties><property name="excelCol" value="H"	 /></extendProperties></attribute>	
+      </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="startAddress" value="A4" />
+		  <property name="finishAddress" value="O10000" />
+		  <property name="importClass" value="com.amarsoft.app.urge.TelCollExcelImportAction"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/TelCollRegistrateImport-1.0.xls" />
+        </managerProperties>
+      </manager>
+    </class> 
+     
+      <class name="CADRE_IMPORT" label="直属干部名单导入" keyAttributes="SERIALNO">
+      <attributes>
+        <attribute name="CUSTOMERID" label="直管干部编号" type="STRING" length="40" >
+        	<extendProperties>
+					<property name="excelCol" value="A" />
+			</extendProperties>
+        </attribute>
+         <attribute name="CUSTOMERNAME" label="直管干部名称" type="STRING" length="80" >
+        	<extendProperties>
+					<property name="excelCol" value="B" />
+			</extendProperties>
+        </attribute>
+        <attribute name="CERTTYPE" label="证件类型" type="STRING" length="10" >
+        	<extendProperties>
+					<property name="excelCol" value="C" />
+			</extendProperties>
+        </attribute>
+        <attribute name="CERTID" label="证件号码" type="STRING" length="40" >
+        	<extendProperties>
+					<property name="excelCol" value="D" />
+			</extendProperties>
+        </attribute>
+        <attribute name="DESCRIPTION1" label="所属机构" type="STRING" length="400" >
+        	<extendProperties>
+					<property name="excelCol" value="E" />
+			</extendProperties>
+        </attribute>
+        <attribute name="DESCRIPTION2" label="岗位" type="STRING" length="400" >
+        	<extendProperties>
+					<property name="excelCol" value="F" />
+			</extendProperties>
+        </attribute>
+        <attribute name="DESCRIPTION3" label="职级" type="STRING" length="400" >
+        	<extendProperties>
+					<property name="excelCol" value="G" />
+			</extendProperties>
+        </attribute>
+        <attribute name="REMARK" label="备注" type="STRING" length="400" >
+        	<extendProperties>
+					<property name="excelCol" value="H" />
+			</extendProperties>
+        </attribute>
+      </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="createKey" value="true" />
+          <property name="startAddress" value="A2" />
+		  <property name="finishAddress" value="O10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.customer.action.CadResExcelImport"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/CadResImportModel.xls" />
+        </managerProperties>
+      </manager>
+
+    </class> 
+     
+    <class name="CREDIT_LOAN" label="业务受理导入" >
+      <attributes>
+		 <attribute name="PRODUCTNAME" label="方案产品名称" TYPE="STRING" length="40"><extendProperties><property name="excelCol" value="A"	 /></extendProperties></attribute>	
+		 <attribute name="BUSINESSTYPENAME" label="基础产品名称" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="B"	 /></extendProperties></attribute>
+		 <attribute name="CUSTOMERNAME" label="客户姓名" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="C"	 /></extendProperties></attribute>	
+		 <attribute name="CERTTYPE" label="证件类型" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="D"	 /></extendProperties></attribute>		
+		 <attribute name="CERTID" label="证件编号" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="E"	 /></extendProperties></attribute>		
+		 <attribute name="ISSUECOUNTRY" label="证件签发国家" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="F"	 /></extendProperties></attribute>		
+		 <attribute name="BUSINESSCURRENCY" label="币种" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="G"	 /></extendProperties></attribute>		
+		 <attribute name="BUSINESSSUM" label="贷款金额" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="H"	 /></extendProperties></attribute>		
+		 <attribute name="BUSINESSTERMYEAR" label="贷款期限（年）" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="I"	 /></extendProperties></attribute>		
+		 <attribute name="BUSINESSTERMMONTH" label="贷款期限（月）" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="J"	 /></extendProperties></attribute>		
+		 <attribute name="BUSINESSTERMDAY" label="贷款期限（天）" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="K"	 /></extendProperties></attribute>	
+		 <attribute name="BUSINESSPRIORITY" label="业务优先级" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="L"	 /></extendProperties></attribute>	
+		 <attribute name="NONSTDINDICATOR" label="特殊业务标示" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="M"	 /></extendProperties></attribute>	
+		 <attribute name="ACCOUNTINGORGID" label="入账机构" TYPE="STRING" length="32"	 ><extendProperties><property name="excelCol" value="N"	 /></extendProperties></attribute>		
+      </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="startAddress" value="A3" />
+		  <property name="finishAddress" value="O10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.credit.common.action.CreditLoanImportAction"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/CreditLoanImport.xls" />
+        </managerProperties>
+      </manager>
+    </class> 
+    
+    
+    <class name="CREDIT_PUTOUT" label="业务出账" >
+      <attributes>
+		 <attribute name="CONTRACTSERIALNO" label="合同编号" TYPE="STRING" length="40"><extendProperties><property name="excelCol" value="A"	 /></extendProperties></attribute>	
+		 <attribute name="CUSTOMERNAME" label="客户姓名" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="B"	 /></extendProperties></attribute>	
+		 <attribute name="CERTID" label="身份证号" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="C"	 /></extendProperties></attribute>	
+		 <attribute name="BusinessSum" label="金额" TYPE="DOUBLE" length="24"	 scale="2" ><extendProperties><property name="excelCol" value="D"	 /></extendProperties></attribute>		
+		 <attribute name="BusinessTerm" label="期限月" TYPE="INT"  ><extendProperties><property name="excelCol" value="E"	 /></extendProperties></attribute>	
+		 <attribute name="PHONE" label="手机号" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="F"	 /></extendProperties></attribute>	
+      </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="startAddress" value="A3" />
+		  <property name="finishAddress" value="G10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.credit.common.action.CreditPutoutImportAction"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/CreditPutOutImport.xls" />
+        </managerProperties>
+      </manager>
+    </class> 
+    
+    <class name="CREDIT_PAYMENT" label="业务还款" >
+      <attributes>
+		 <attribute name="LoanSerialNo" label="贷款账号" TYPE="STRING" length="40"><extendProperties><property name="excelCol" value="A"	 /></extendProperties></attribute>	
+		 <attribute name="CUSTOMERNAME" label="客户姓名" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="B"	 /></extendProperties></attribute>	
+		 <attribute name="PHONE" label="手机号" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="C"	 /></extendProperties></attribute>	
+		 <attribute name="PAYMENTAMT" label="还款金额" TYPE="DOUBLE" length="24"	 scale="2" ><extendProperties><property name="excelCol" value="D"	 /></extendProperties></attribute>		
+	  </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="startAddress" value="A3" />
+		  <property name="finishAddress" value="D10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.credit.common.action.CreditPaymentImportAction"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/CreditPaymentImport.xls" />
+        </managerProperties>
+      </manager>
+    </class> 
+    
+    
+    <class name="CREDIT_CL_INFO" label="授信额度申请导入" >
+      <attributes>
+     	 <attribute name="ISFIRSTLOAN" label="是否发起首笔贷款" TYPE="STRING" length="40"><extendProperties><property name="excelCol" value="A"	 /></extendProperties></attribute>	
+		 <attribute name="PRODUCTNAME" label="方案产品名称" TYPE="STRING" length="40"><extendProperties><property name="excelCol" value="B"	 /></extendProperties></attribute>	
+		 <attribute name="BUSINESSTYPENAME" label="基础产品名称" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="C"	 /></extendProperties></attribute>
+		 <attribute name="CUSTOMERNAME" label="客户姓名" TYPE="STRING" length="40"	 ><extendProperties><property name="excelCol" value="D"	 /></extendProperties></attribute>	
+		 <attribute name="CERTTYPE" label="证件类型" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="E"	 /></extendProperties></attribute>		
+		 <attribute name="CERTID" label="证件编号" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="F"	 /></extendProperties></attribute>		
+		 <attribute name="ISSUECOUNTRY" label="证件签发国家" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="G"	 /></extendProperties></attribute>		
+		 <attribute name="BUSINESSCURRENCY" label="币种" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="H"	 /></extendProperties></attribute>		
+		 <attribute name="BUSINESSSUM" label="授信额度" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="I"	 /></extendProperties></attribute>		
+		 <attribute name="BUSINESSPRIORITY" label="业务优先级" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="J"	 /></extendProperties></attribute>	
+		 <attribute name="NONSTDINDICATOR" label="特殊业务标示" TYPE="STRING" length="80"	 ><extendProperties><property name="excelCol" value="K"	 /></extendProperties></attribute>	
+		 <attribute name="ACCOUNTINGORGID" label="入账机构" TYPE="STRING" length="32"	 ><extendProperties><property name="excelCol" value="L"	 /></extendProperties></attribute>		
+      </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="startAddress" value="A3" />
+		  <property name="finishAddress" value="O10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.credit.common.action.CreditCLInfoImportAction"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/CreditCLInfoImport.xls" />
+        </managerProperties>
+      </manager>
+    </class> 
+    
+          <class name="SPECIAL_IMPORT" label="特殊客户名单导入" keyAttributes="SERIALNO">
+      <attributes>
+        <attribute name="CUSTOMERID" label="客户编号" type="STRING" length="40" >
+        	<extendProperties>
+					<property name="excelCol" value="A" />
+			</extendProperties>
+        </attribute>
+         <attribute name="CUSTOMERNAME" label="客户名称" type="STRING" length="80" >
+        	<extendProperties>
+					<property name="excelCol" value="B" />
+			</extendProperties>
+        </attribute>
+        <attribute name="CERTTYPE" label="证件类型" type="STRING" length="10" >
+        	<extendProperties>
+					<property name="excelCol" value="C" />
+			</extendProperties>
+        </attribute>
+        <attribute name="CERTID" label="证件号码" type="STRING" length="40" >
+        	<extendProperties>
+					<property name="excelCol" value="D" />
+			</extendProperties>
+        </attribute>
+        <attribute name="REMARK" label="特殊客户原因" type="STRING" length="1600" >
+        	<extendProperties>
+					<property name="excelCol" value="E" />
+			</extendProperties>
+        </attribute>
+      </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="createKey" value="true" />
+          <property name="startAddress" value="A2" />
+		  <property name="finishAddress" value="O10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.customer.action.SpecialExcelImport"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/SpecialCustomerImportModel.xls" />
+        </managerProperties>
+      </manager>
+
+    </class> 
+    
+    <class name="CUSTOMERAPPROVALINFO_HOUSE" label="房产客群大类预审批表样" keyAttributes="SERIALNO">
+      <attributes>
+        <attribute name="CERTID" label="身份证号" type="STRING" length="40" ><extendProperties><property name="excelCol" value="A" /></extendProperties></attribute>
+		<attribute name="RATEFLOATRATIOSHORT" label="短期利率浮动比例"  type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="B" /></extendProperties></attribute>
+		<attribute name="RATEFLOATRATIOMID" label="中期利率浮动比例" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="C" /></extendProperties></attribute>
+		<attribute name="RATEFLOATRATIOLONG" label="长期利率浮动比例" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="D" /></extendProperties></attribute>
+		<attribute name="BUSINESSSENDDATE" label="额度到期日" type="STRING" length="10" ><extendProperties><property name="excelCol" value="E" /></extendProperties></attribute>
+		<attribute name="AGE" label="当前客户年龄" type="INT" ><extendProperties><property name="excelCol" value="F" /></extendProperties></attribute>
+		<attribute name="REALTYTOTAL" label="房屋总价" type="DOUBLE" length="24" scale="6" ><extendProperties><property name="excelCol" value="G" /></extendProperties></attribute>
+		<attribute name="CONTRACTNO" label="房贷合同号" type="STRING" length="20" ><extendProperties><property name="excelCol" value="H" /></extendProperties></attribute>
+		<attribute name="PUTOUTDATE" label="放款时间" type="STRING" length="10" ><extendProperties><property name="excelCol" value="I" /></extendProperties></attribute>
+		<attribute name="FINISHSTATUS" label="结清状态" type="STRING" length="10" ><extendProperties><property name="excelCol" value="J" /></extendProperties></attribute>
+		<attribute name="REGISTERSTATUS" label="抵押登记状态" type="STRING" length="10" ><extendProperties><property name="excelCol" value="K" /></extendProperties></attribute>
+		<attribute name="BUSINESSSUM" label="房贷金额" type="DOUBLE" length="24" scale="6" ><extendProperties><property name="excelCol" value="L" /></extendProperties></attribute>
+		<attribute name="BUSINESSBALANCE" label="房贷余额" type="DOUBLE" length="24" scale="6" ><extendProperties><property name="excelCol" value="M" /></extendProperties></attribute>
+		<attribute name="BUSINESSRATE" label="房贷当期执行利率" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="N" /></extendProperties></attribute>
+		<attribute name="TOTALPERIOD" label="房贷借款期数" type="STRING" length="3" ><extendProperties><property name="excelCol" value="O" /></extendProperties></attribute>
+		<attribute name="MONTHSERVICE" label="房贷等额本息月供" type="DOUBLE" length="24" scale="6" ><extendProperties><property name="excelCol" value="P" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTA" label="调整系数A" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="Q" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTB" label="调整系数B" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="R" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTC" label="调整系数C" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="S" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTF" label="调整系数D" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="T" /></extendProperties></attribute>
+		<attribute name="ATT01" label="预留1" type="STRING" length="200" ><extendProperties><property name="excelCol" value="U" /></extendProperties></attribute>
+		<attribute name="ATT02" label="预留2" type="STRING" length="200" ><extendProperties><property name="excelCol" value="V" /></extendProperties></attribute>
+		<attribute name="ATT03" label="预留3" type="STRING" length="200" ><extendProperties><property name="excelCol" value="W" /></extendProperties></attribute>
+		<attribute name="ACTIVECREDITTOTAL" label="主动授信总额度" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="X" /></extendProperties></attribute>
+      	<attribute name="CUSTOMERLISTFLAG" label="是否白名单客户" type="STRING" length="1" ><extendProperties><property name="excelCol" value="Y" /></extendProperties></attribute>
+      </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="createKey" value="true" />
+          <property name="startAddress" value="A2" />
+		  <property name="finishAddress" value="Y10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.activeCredit.customerBase.CAMHouseExcelImport"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/CustomerApprovalModel_House.xls" />
+        </managerProperties>
+      </manager>
+    </class> 
+    
+    <class name="CUSTOMERAPPROVALINFO_FINANCE" label="金融资产客户大类预审批表样" keyAttributes="SERIALNO">
+      <attributes>
+    	<attribute name="CERTID" label="身份证号" type="STRING" length="40" ><extendProperties><property name="excelCol" value="A" /></extendProperties></attribute>
+		<attribute name="RATEFLOATRATIOSHORT" label="短期利率浮动比例" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="B" /></extendProperties></attribute>
+		<attribute name="RATEFLOATRATIOMID" label="中期利率浮动比例" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="C" /></extendProperties></attribute>
+		<attribute name="RATEFLOATRATIOLONG" label="长期利率浮动比例" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="D" /></extendProperties></attribute>
+		<attribute name="BUSINESSSENDDATE" label="额度到期日" type="STRING" length="10" ><extendProperties><property name="excelCol" value="E" /></extendProperties></attribute>
+		<attribute name="AGE" label="当前客户年龄" type="INT" ><extendProperties><property name="excelCol" value="F" /></extendProperties></attribute>
+		<attribute name="ADDCUTOMERFLAG" label="是否为过去12个月内新增客户" type="STRING" length="1" ><extendProperties><property name="excelCol" value="G" /></extendProperties></attribute>
+		<attribute name="FINANCEASSETDAILYOLD" label="过去12个月金融资产月日均" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="H" /></extendProperties></attribute>
+		<attribute name="FINANCEASSETDAILY" label="金融资产上月月日均" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="I" /></extendProperties></attribute>
+		<attribute name="FINANCEASSETDAILYFIXED" label="上月固定期限金融资产月日均" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="J" /></extendProperties></attribute>
+		<attribute name="FINANCEASSETDAILYFLOAT" label="上月高流动性金融资产月日均" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="K" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTA" label="调整系数A" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="L" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTB" label="调整系数B" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="M" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTC" label="调整系数C" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="N" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTF" label="调整系数D" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="O" /></extendProperties></attribute>
+		<attribute name="ATT01" label="预留1" type="STRING" length="200" ><extendProperties><property name="excelCol" value="P" /></extendProperties></attribute>
+		<attribute name="ATT02" label="预留2" type="STRING" length="200" ><extendProperties><property name="excelCol" value="Q" /></extendProperties></attribute>
+		<attribute name="ATT03" label="预留3" type="STRING" length="200" ><extendProperties><property name="excelCol" value="R" /></extendProperties></attribute>
+		<attribute name="ACTIVECREDITTOTAL" label="主动授信总额度" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="S" /></extendProperties></attribute>
+        <attribute name="CUSTOMERLISTFLAG" label="是否白名单客户" type="STRING" length="1" ><extendProperties><property name="excelCol" value="T" /></extendProperties></attribute>
+     </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="createKey" value="true" />
+          <property name="startAddress" value="A2" />
+		  <property name="finishAddress" value="T10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.activeCredit.customerBase.CAMFinanceExcelImport"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/CustomerApprovalModel_Finance.xls" />
+        </managerProperties>
+      </manager>
+    </class> 
+    
+    <class name="CUSTOMERAPPROVALINFO_INCOME" label="收入客户大类预审批表样" keyAttributes="SERIALNO">
+    <attributes>
+        <attribute name="CERTID" label="身份证号" type="STRING" length="40" ><extendProperties><property name="excelCol" value="A" /></extendProperties></attribute>
+		<attribute name="RATEFLOATRATIOSHORT" label="短期利率浮动比例" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="B" /></extendProperties></attribute>
+		<attribute name="RATEFLOATRATIOMID" label="中期利率浮动比例" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="C" /></extendProperties></attribute>
+		<attribute name="RATEFLOATRATIOLONG" label="长期利率浮动比例" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="D" /></extendProperties></attribute>
+		<attribute name="BUSINESSSENDDATE" label="额度到期日" type="STRING" length="10" ><extendProperties><property name="excelCol" value="E" /></extendProperties></attribute>
+		<attribute name="AGE" label="当前客户年龄" type="INT" ><extendProperties><property name="excelCol" value="F" /></extendProperties></attribute>
+		<attribute name="PAYROLLDATE" label="已代发时间" type="STRING" length="10" ><extendProperties><property name="excelCol" value="G" /></extendProperties></attribute>
+		<attribute name="PAYROLLENTLEVEL" label="代发企业等级" type="STRING" length="10" ><extendProperties><property name="excelCol" value="H" /></extendProperties></attribute>
+		<attribute name="POSITION" label="员工职级" type="STRING" length="250" ><extendProperties><property name="excelCol" value="I" /></extendProperties></attribute>
+		<attribute name="PAYROLLTOTAL" label="累计代发年限" type="INT" ><extendProperties><property name="excelCol" value="J" /></extendProperties></attribute>
+		<attribute name="MIDDEPOSITMONEY" label="过去一年月均工资额" type="DOUBLE" length="24" scale="6" ><extendProperties><property name="excelCol" value="K" /></extendProperties></attribute>
+		<attribute name="MINDEPOSITMONEY" label="过去一年单月最低工资"  type="DOUBLE" length="24" scale="6" ><extendProperties><property name="excelCol" value="L" /></extendProperties></attribute>
+		<attribute name="DEPOSITMONTHS" label="过去一年有工资的月份数" type="STRING" length="13" ><extendProperties><property name="excelCol" value="M" /></extendProperties></attribute>
+		<attribute name="ACCUMULATEDEPOSITSUM" label="过去一年月均公积金缴存额" type="DOUBLE" length="24" scale="6" ><extendProperties><property name="excelCol" value="N" /></extendProperties></attribute>
+		<attribute name="ACCUMULATEDEPOSITLIFE" label="累计缴存公积金年限" type="INT" ><extendProperties><property name="excelCol" value="O" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTA" label="调整系数A" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="P" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTB" label="调整系数B" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="Q" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTC" label="调整系数C" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="R" /></extendProperties></attribute>
+		<attribute name="ADJUSTMENTF" label="调整系数D" type="DOUBLE" length="5" scale="3" ><extendProperties><property name="excelCol" value="S" /></extendProperties></attribute>
+		<attribute name="ATT01" label="预留1" type="STRING" length="200" ><extendProperties><property name="excelCol" value="T" /></extendProperties></attribute>
+		<attribute name="ATT02" label="预留2" type="STRING" length="200" ><extendProperties><property name="excelCol" value="U" /></extendProperties></attribute>
+		<attribute name="ATT03" label="预留3" type="STRING" length="200" ><extendProperties><property name="excelCol" value="V" /></extendProperties></attribute>
+		<attribute name="ACTIVECREDITTOTAL" label="主动授信总额度" type="DOUBLE" length="10" scale="6" ><extendProperties><property name="excelCol" value="W" /></extendProperties></attribute>
+        <attribute name="CUSTOMERLISTFLAG" label="是否白名单客户" type="STRING" length="1" ><extendProperties><property name="excelCol" value="X" /></extendProperties></attribute>
+     </attributes>
+     <manager id="MineImport">
+       <managerProperties>
+          <property name="createKey" value="true" />
+          <property name="startAddress" value="A2" />
+		  <property name="finishAddress" value="X10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.activeCredit.customerBase.CAMIncomeExcelImport"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/CustomerApprovalModel_Income.xls" />
+       </managerProperties>
+     </manager>
+    </class> 
+    
+    <!-- ckxu 零售商合作协议的导入 -->
+    <class name="MERCHANDISE_LIST" label="合作协议批量导入" >
+      <attributes>
+     	 <attribute name="MERCHANDISETYPE" label="产品类型" TYPE="STRING" length="20"><extendProperties><property name="excelCol" value="A" /></extendProperties></attribute>	
+		 <attribute name="BRANDMODEL" label="型号" TYPE="STRING" length="80"><extendProperties><property name="excelCol" value="B" /></extendProperties></attribute>
+		 <attribute name="MERCHANDISEBRAND" label="产品品牌" TYPE="STRING" length="80"><extendProperties><property name="excelCol" value="D" /></extendProperties></attribute>
+		 <attribute name="MERCHANDISEPRICE" label="产品价格" type="DOUBLE" length="24" scale="2"><extendProperties><property name="excelCol" value="E"	 /></extendProperties></attribute>
+		 <attribute name="MERCHANDISEPRI" label="优先级顺序" TYPE="STRING" length="10"><extendProperties><property name="excelCol" value="F"/></extendProperties></attribute>
+		 <attribute name="ATTRIBUTE3" label="合作运营商" type="STRING" length="40"><extendProperties><property name="excelCol" value="G"	/></extendProperties></attribute>
+		 <attribute name="PROVINCE" label="省" type="STRING" length="80"><extendProperties><property name="excelCol" value="H"/></extendProperties></attribute>
+		 <attribute name="CITY" label="市" type="STRING" length="80"><extendProperties><property name="excelCol" value="I"/></extendProperties></attribute>
+		 <attribute name="ATTRIBUTE1" label="套餐金额" type="DOUBLE" length="24" scale="2"><extendProperties><property name="excelCol" value="J"	 /></extendProperties></attribute>	
+		 <attribute name="PROJECTREVENUESHARE" label="分成比例" type="DOUBLE" length="12" scale="2"><extendProperties><property name="excelCol" value="K"	 /></extendProperties></attribute>
+		 <attribute name="ATTRIBUTE2" label="期数" type="INTEGER"><extendProperties><property name="excelCol" value="L"	 /></extendProperties></attribute>	
+		 <attribute name="RELATIVEAMOUNT" label="首付金额" type="DOUBLE" length="24" scale="2"><extendProperties><property name="excelCol" value="M"	 /></extendProperties></attribute>
+		 <attribute name="REMARK" label="备注" type="STRING" length="400" ><extendProperties><property name="excelCol" value="N"	 /></extendProperties></attribute>		
+      </attributes>
+      <manager id="MineImport">
+        <managerProperties>
+          <property name="startAddress" value="A3" />
+		  <property name="finishAddress" value="O10000" />
+		  <property name="importClass" value="com.amarsoft.app.als.prd.merchandise.MerchandiseImport"/>
+		  <property name="excelPath" value="/AppConfig/FileImport/doc/ProjectAgreeList.xls" />
+        </managerProperties>
+      </manager>
+    </class> 
+    
+    
+	</package>
+</jbo>   

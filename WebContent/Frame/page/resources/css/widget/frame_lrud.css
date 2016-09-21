@@ -1,0 +1,135 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body, .body {
+	overflow: hidden;
+	display: block;
+	height: 100%;
+	width: 100%;
+	-moz-user-select:none;
+}
+.body {
+	position: relative;
+}
+#Board {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0; top: 0;
+	background: #eee;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+#IBorder {
+	display: none;
+	position: absolute;
+	left: 0; top: 0;
+	border: 0 dotted #9cb5cf;
+}
+.leftright #IBorder {
+	border-left-width: 2px;
+}
+.updown #IBorder {
+	border-top-width: 2px;
+}
+#Border {
+	position: relative;
+	width: 10px;
+}
+#Border span {
+	position: absolute;
+	display: block;
+}
+#Border a {
+	background: #aaa;
+	display: inline-block;
+	outline: none;
+}
+#Border a,
+#Border a:link,
+#Border a:visited {
+	text-decoration: none;
+}
+.title {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	overflow: hidden;
+}
+.title span {
+	display: block;
+	height: 100%;
+	margin-left: 10px;
+	line-height: 30px;
+}
+.leftright #Border,
+.leftright #Board,
+.leftright #IBorder {
+	cursor: ew-resize;
+	_cursor: w-resize;
+}
+#FirstFrame, #SecondFrame {
+	overflow: hidden;
+}
+.leftright #FirstFrame {
+	float: left;
+	display: inline-block;
+}
+.leftright #Border {
+	float: left;
+	display: inline-block;
+	border-left: 1px solid #9cb5cf;
+}
+.leftright #Border span {
+	top: 38%;
+	left: 0;
+}
+.leftright #Border a {
+	width: 10px;
+	height: 19px;
+}
+.leftright #Border a.firsta {
+	background: url(../../images/widget/framelrud/left.png) no-repeat center;
+}
+.leftright #Border a.centera {
+	background: url(../../images/widget/framelrud/center1.png) no-repeat center;
+}
+.leftright #Border a.seconda {
+	background: url(../../images/widget/framelrud/right.png) no-repeat center;
+}
+.leftright #SecondFrame {
+	float: left;
+	display: inline-block;
+}
+.updown #Border {
+	border-top: 1px solid #9cb5cf;
+}
+.updown #Border span {
+	top: 0;
+	left: 50%;
+}
+.updown #Border a {
+	width: 19px;
+	height: 10px;
+	line-height: 10px;
+}
+.updown #Border a.firsta {
+	background: url(../../images/widget/framelrud/up.png) no-repeat center;
+}
+.updown #Border a.centera {
+	background: url(../../images/widget/framelrud/center2.png) no-repeat center;
+}
+.updown #Border a.seconda {
+	background: url(../../images/widget/framelrud/down.png) no-repeat center;
+}
+.updown #Border,
+.updown #Board,
+.updown #IBorder {
+	cursor: ns-resize;
+	_cursor: n-resize;
+}

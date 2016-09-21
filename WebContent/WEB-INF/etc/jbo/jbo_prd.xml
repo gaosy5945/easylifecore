@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.prd" >
+		<class name="PRD_EVALUATION_INDEX" label="产品评价指标" keyAttributes="">
+			<attributes>
+				<attribute name="PRODUCTID" label="产品编号" type="STRING" length="40"/>
+				<attribute name="SPECIFICSERIALNO" label="规格编号" type="STRING" length="40"/>
+				<attribute name="ITEMNO" label="指标编号(CodeNo:PrdEvaluationItem)" type="STRING" length="40"/>
+				<attribute name="ITEMNAME" label="指标名称" type="STRING" length="80"/>
+				<attribute name="DIMENSIONNO" label="维度编号" type="STRING" length="40"/>
+				<attribute name="STANDARDVALUE" label="标准值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MAXIMUMVALUE" label="最大值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MINVALUE" label="最小值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="ACTUALVALUE" label="实际值" type="DOUBLE" length="24" scale="2"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRD_EVALUATION_INDEX" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRD_PRODUCT_CONTROL" label="产品控制信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="PRODUCTID" label="产品编号" type="STRING" length="40"/>
+				<attribute name="SPECIFICID" label="规格编号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="SCENETYPE" label="场景" type="STRING" length="10"/>
+				<attribute name="SCENENO" label="场景行为" type="STRING" length="10"/>
+				<attribute name="TIPS" label="提示信息" type="STRING" length="200"/>
+				<attribute name="STATUS" label="状态" type="STRING" length="4"/>
+				<attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="CONTROLLEVEL" label="控制级别" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRD_PRODUCT_CONTROL" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRD_PRODUCT_LIBRARY" label="产品库" keyAttributes="PRODUCTID">
+			<attributes>
+				<attribute name="PRODUCTID" label="产品编号" type="STRING" length="32"/>
+				<attribute name="PRODUCTNAME" label="产品名称" type="STRING" length="200"/>
+				<attribute name="STATUS" label="产品状态(CodeNo:IsInUse)" type="STRING" length="10"/>
+				<attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="PRODUCTTYPE1" label="产品类型" type="STRING" length="10"/>
+				<attribute name="PRODUCTTYPE2" label="额度/业务标示" type="STRING" length="10"/>
+				<attribute name="PRODUCTTYPE3" label="产品用途" type="STRING" length="10"/>
+				<attribute name="REMARK" label="产品说明" type="STRING" length="400"/>
+				<attribute name="PRODUCTTYPE4" label="表内表外" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRD_PRODUCT_LIBRARY" />
+					<property name="query.loader" value="com.amarsoft.app.als.prd.web.ProductManager" />
+					<property name="query.creator" value="com.amarsoft.app.als.prd.web.ProductManager" />
+					<property name="query.saver" value="com.amarsoft.app.als.prd.web.ProductManager" />
+					<property name="query.copier" value="com.amarsoft.app.als.prd.web.ProductManager" />
+					<property name="query.deleter" value="com.amarsoft.app.als.prd.web.ProductManager" />
+					<property name="query.xmlimportor" value="com.amarsoft.app.als.prd.web.ProductManager" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRD_PRODUCT_RELATIVE" label="产品关联关系" keyAttributes="OBJECTNO,OBJECTTYPE,PRODUCTID,RELATIVETYPE">
+			<attributes>
+				<attribute name="PRODUCTID" label="产品编号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="RELATIVETYPE" label="关联类型(CodeNo:PrdRelativeType)" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRD_PRODUCT_RELATIVE" />
+					<property name="createKey" value="true" />
+					<property name="query.xmlimportor" value="com.amarsoft.app.als.prd.web.ProductManager" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRD_SPECIFIC_LIBRARY" label="产品规格库" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="SPECIFICID" label="规格编号" type="STRING" length="40"/>
+				<attribute name="SPECIFICNAME" label="规格名称" type="STRING" length="80"/>
+				<attribute name="PRODUCTID" label="产品编号" type="STRING" length="40"/>
+				<attribute name="VERSIONID" label="版本编号" type="STRING" length="40"/>
+				<attribute name="REMARK" label="规格描述" type="STRING" length="500"/>
+				<attribute name="STATUS" label="规格状态(CodeNo:IsInUse)" type="STRING" length="4"/>
+				<attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="EFFECTIVEDATE" label="生效日期" type="STRING" length="10"/>
+				<attribute name="EXPIFYDATE" label="失效日期" type="STRING" length="10"/>
+				<attribute name="SPECIFICFILEPATH" label="规格文件" type="STRING" length="100"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRD_SPECIFIC_LIBRARY" />
+					<property name="createKey" value="true" />
+					<property name="query.configpath" value="{$ARE.PRD_HOME}/etc/app/product/prd" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRD_TRANSACTION" label="产品交易信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="交易流水号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="TRANSNAME" label="交易名称" type="STRING" length="80"/>
+				<attribute name="STATUS" label="交易状态(CodeNo:PrdTransactionStatus)" type="STRING" length="4"/>
+				<attribute name="DESCRIBE" label="交易描述" type="STRING" length="500"/>
+				<attribute name="UPDATEDATE" label="更新日期" type="STRING" length="10"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="TRANSCODE" label="交易编号" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRD_TRANSACTION" />
+					<property name="createKey" value="true" />
+					<property name="query.loader" value="com.amarsoft.app.als.prd.web.ProductTransactionManager" />
+					<property name="query.creator" value="com.amarsoft.app.als.prd.web.ProductTransactionManager" />
+					<property name="query.saver" value="com.amarsoft.app.als.prd.web.ProductTransactionManager" />
+					<property name="query.copier" value="com.amarsoft.app.als.prd.web.ProductTransactionManager" />
+					<property name="query.deleter" value="com.amarsoft.app.als.prd.web.ProductTransactionManager" />
+					<property name="query.TransactionCodeAttributeID" value="TRANSCODE" />
+					<property name="query.TransactionManagerClass" value="com.amarsoft.app.als.prd.web.ProductTransactionManager" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRD_TRANSACTION_RELATIVE" label="产品交易关联信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="交易关联信息流水号" type="STRING" length="40"/>
+				<attribute name="TRANSACTIONSERIALNO" label="交易流水号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="RELATIVETYPE" label="关联信息类型" type="STRING" length="16"/>
+				<attribute name="DATA" label="文本数据" type="STRING" length="2000"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRD_TRANSACTION_RELATIVE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRD_VIEW_CATALOG" label="产品目录结构" keyAttributes="PRODUCTCATALOG,PRODUCTTYPE">
+			<attributes>
+				<attribute name="PRODUCTTYPE" label="产品类型" type="STRING" length="40"/>
+				<attribute name="PRODUCTTYPENAME" label="产品类型名称" type="STRING" length="80"/>
+				<attribute name="PARENTPRODUCTTYPE" label="上层产品类型" type="STRING" length="40"/>
+				<attribute name="PRODUCTCATALOG" label="所属产品目录(CodeNo:ProductCatalog)" type="STRING" length="10"/>
+				<attribute name="SORTNO" label="排序号" type="STRING" length="10"/>
+				<attribute name="MANDATORYCOMPTYPE" label="必须的组件类型(以','分隔)" type="STRING" length="400"/>
+				<attribute name="OPTIONALCOMPTYPE" label="可选的组件类型(以','分隔)" type="STRING" length="400"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRD_VIEW_CATALOG" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRD_VIEW_LIBRARY" label="产品目录信息" keyAttributes="PRODUCTCATALOG,PRODUCTTYPE,PRODUCTID">
+			<attributes>
+				<attribute name="PRODUCTID" label="产品编号" type="STRING" length="40"/>
+				<attribute name="PRODUCTTYPE" label="产品类型" type="STRING" length="40"/>
+				<attribute name="PRODUCTCATALOG" label="产品目录" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRD_VIEW_LIBRARY" />
+					<property name="query.xmlimportor" value="com.amarsoft.app.als.prd.web.ProductManager" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRD_PDKLX" label="核心产品参数" keyAttributes="DAIKLX">
+			<attributes>
+				<attribute name="DAIKLX" label="贷款种类代码（贷款类型）" type="STRING" length="6"/>
+				<attribute name="DKLXMC" label="贷款种类名称（贷款类型名称）" type="STRING" length="62"/>
+				<attribute name="ZDLLZL" label="贷款利率代码" type="STRING" length="3"/>
+				<attribute name="YLYLZL" label="罚息利率代码" type="STRING" length="3"/>
+				<attribute name="LLTZFS" label="利率调整方式" type="STRING" length="1"/>
+				<attribute name="LLTYRS" label="按年调整日期" type="STRING" length="4"/>
+				<attribute name="GDJXFS" label="计息方式" type="STRING" length="1"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="PRD_PDKLX" />
+					<property name="createKey" value="false" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="PRD_MERCHANDISE_LIBRARY" label="商品套餐" keyAttributes="MERCHANDISEID">
+			<attributes>
+				<attribute name="MERCHANDISEID" label="商品编号" type="STRING" length="40"/>
+				<attribute name="MERCHANDISETYPE" label="商品类型(CODE:MerchandiseType)" type="STRING" length="10"/>
+				<attribute name="MERCHANDISEBRAND" label="商品品牌" type="STRING" length="80"/>
+				<attribute name="BRANDMODEL" label="品牌型号" type="STRING" length="80"/>
+				<attribute name="MERCHANDISEPRICE" label="商品价格" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="ATTRIBUTE1" label="属性一" type="STRING" length="80"/>
+				<attribute name="ATTRIBUTE2" label="属性二" type="STRING" length="80"/>
+				<attribute name="ATTRIBUTE3" label="属性三" type="STRING" length="80"/>
+				<attribute name="ATTRIBUTE4" label="属性四" type="STRING" length="80"/>
+				<attribute name="ATTRIBUTE5" label="属性五" type="STRING" length="80"/>
+				<attribute name="REMARK" label="备注" type="STRING" length="400"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="prd_merchandise_library" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+	</package>
+</jbo>
+

@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="GBK"?>
+<TransactionConfigs>
+	<TransactionConfig TransactionCode="0010" TramsactionName="新增产品" ViewTempletNo="PRD_TransInfo_NewProduct" NewFunctionID="PRD_EditTransaction_NewProduct"
+	EditFunctionID="PRD_EditTransaction_NewProduct" approveFunctionID="PRD_ApproveTransaction_NewProduct" ViewFunctionID="PRD_ViewTransaction_NewProduct" 
+	runFunctionID="PRD_RunTransaction_NewProduct" JSFile="/ProductManage/ProductConfig/js/ProductInfo.js">
+	 	<Procedure id="1" type="create" class="com.amarsoft.app.als.prd.transaction.script.newproduct.CreateProduct"/>
+		<Procedure id="2" type="update" class="com.amarsoft.app.als.prd.transaction.script.newproduct.UpdateProduct"/>
+		<Procedure id="3" type="execute" class="com.amarsoft.app.als.prd.transaction.script.newproduct.ExecuteTransaction"/> 
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="0020" TramsactionName="修改产品" ViewTempletNo="PRD_TransInfo_ModifyProduct"  EditFunctionID="PRD_EditTransaction_ModifyProduct" 
+	approveFunctionID="PRD_ApproveTransaction_ModifyProduct" runFunctionID="PRD_RunTransaction_ModifyProduct" ViewFunctionID="PRD_ViewTransaction_ModifyProduct" JSFile="/ProductManage/ProductConfig/js/ProductInfo.js">
+		<Procedure id="1" type="execute" class="com.amarsoft.app.als.prd.transaction.script.modifyproduct.ExecuteTransaction"/>
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="0040" TramsactionName="产品停用" ViewTempletNo="PRD_TransInfo_ChangePrdStatus"  EditFunctionID="PRD_EditTransaction_ModifyProduct" 
+	approveFunctionID="PRD_ApproveTransaction_ModifyProduct" runFunctionID="PRD_RunTransaction_ModifyProduct" ViewFunctionID="PRD_ViewTransaction_ModifyProduct" JSFile="/ProductManage/ProductConfig/js/ProductInfo.js">
+		<Procedure id="1" type="execute" class="com.amarsoft.app.als.prd.transaction.script.changestatus.UpdateProductStatus"/>
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="1001"	TransactionName="贷款发放" 
+		DocumentType="jbo.acct.ACCT_PUTOUT" RelativeObjectType="jbo.acct.ACCT_LOAN" ViewTempletNo="Transaction_1001">
+		<!--贷款发放是对已审核通过的放款申请进行内部入账、资金划转、还款计划计算、计息开始等动作，输入输出字段说明参见接口定义文档-->
+		<Procedure id="1" type="load" class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		
+		<Procedure id="2" type="execute" class="com.amarsoft.app.accounting.trans.script.loan.drawdown.DrawdownScript_CreateLoan"/>
+		<Procedure id="3" type="execute" class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="4" type="execute" class="com.amarsoft.app.accounting.trans.script.common.executor.BookKeepExecutor">
+			<Property name="JournalGroupID" value="Drawdown01" /> 
+		</Procedure>
+		<Procedure id="5" type="execute" class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreatePaymentScheduleExecutor">
+			<Property name="PSType" value="1" /> 
+		</Procedure>
+		<Procedure id="6" type="execute" class="com.amarsoft.app.accounting.trans.script.loan.drawdown.DrawdownScript_InitRepriceDate"/>
+		<Procedure id="7" type="execute" class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreateFeePaymentScheduleExecutor" PSType="3" />
+		<Procedure id="8" type="execute" class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreateIRRPaymentScheduleCreator" PSType="2" />
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="2001"	TransactionName="正常/逾期还/付款" 
+		DocumentType="jbo.acct.ACCT_TRANS_PAYMENT"  RelativeObjectType="jbo.acct.ACCT_LOAN" SelectCode="SelectPayableLoan"   FlowNo="TransactionFlow" 
+		JSFile="/Accounting/js/transaction/transaction_2001.js@/Accounting/js/transaction/payaccount.js"
+		ViewTempletNo="Transaction_2001">
+		<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.repay.PaymentCreator" PayRuleType=""/>
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RATE_SEGMENT" condition="Status='1'"/>
+		<Procedure id="4" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RPT_SEGMENT" condition="Status='1'"/>
+		<Procedure id="5" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.BusinessAccountLoader" condition="Status='1'"/>
+		<Procedure id="6" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentScheduleLoader" condition="Status='1'"/>
+		<Procedure id="7" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="8" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.InterestLogLoader" />
+		<Procedure id="9" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.repay.LoanPayProcedure" PSType="1" />
+		<Procedure id="10" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="11" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.BookKeepExecutor" >
+			<Property name="JournalGroupID" value="Payment01" /> 
+		</Procedure>
+		<Procedure id="12" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.UpdateLoanStatus" />
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="2002"	TransactionName="提前还/付款" 
+		DocumentType="jbo.acct.ACCT_TRANS_PAYMENT" RelativeObjectType="jbo.acct.ACCT_LOAN" SelectCode="SelectPayableLoan1"  FlowNo="TransactionFlow"
+		JSFile="/Accounting/js/transaction/transaction_2002.js@/Accounting/js/transaction/payaccount.js"
+		ViewTempletNo="Transaction_2002">
+		<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.repay.PaymentCreator" PayRuleType=""/>
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RATE_SEGMENT" condition="Status='1'"/>
+		<Procedure id="4" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RPT_SEGMENT" condition="Status='1'"/>
+		<Procedure id="5" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.BusinessAccountLoader" condition="Status='1'"/>
+		<Procedure id="6" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentScheduleLoader" condition="Status='1'"/>
+		<Procedure id="7" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="8" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.InterestLogLoader" />
+		<Procedure id="9" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.repay.PrepayProcedure" PSType="1" />
+		<Procedure id="10" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="11" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.BookKeepExecutor" >
+			<Property name="JournalGroupID" value="Payment01" /> 
+		</Procedure>
+		<Procedure id="12" type="execute" 
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreatePaymentScheduleExecutor">
+			<Property name="PSType" value="1" /> 
+		</Procedure>
+		<Procedure id="13" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.UpdateLoanStatus" />
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="3001"	TransactionName="还款方式变更"
+	DocumentType="jbo.acct.ACCT_LOAN_CHANGE" RelativeObjectType="jbo.acct.ACCT_LOAN" SelectCode="SelectPayableLoan1" FlowNo="TransactionFlow" 
+	JSFile="/Accounting/js/transaction/transaction_3001.js"
+		ViewTempletNo="Transaction_3001">
+		<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.rptchange.RPTChangeCreator" PSType="1" />
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RATE_SEGMENT" condition="Status='1'"/>
+		<Procedure id="4" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RPT_SEGMENT" condition="Status='1'"/>
+		<Procedure id="5" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.BusinessAccountLoader" condition="Status='1'"/>
+		<Procedure id="6" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentScheduleLoader" condition="Status='1'"/>
+		<Procedure id="7" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="8" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.InterestLogLoader" />
+		<Procedure id="9" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RPT_SEGMENT" MainBizClassName="jbo.acct.ACCT_LOAN_CHANGE"  />
+		
+		<Procedure id="10" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.rptchange.RPTChangeExecutor" PSType="1"/>
+		<Procedure id="11" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="12" type="execute" 
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreatePaymentScheduleExecutor">
+			<Property name="PSType" value="1" /> 
+		</Procedure>
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="3002"	TransactionName="利率变更" 
+	DocumentType="jbo.acct.ACCT_LOAN_CHANGE" RelativeObjectType="jbo.acct.ACCT_LOAN" SelectCode="SelectPayableLoan1" FlowNo="TransactionFlow" 
+	JSFile="/Accounting/js/transaction/transaction_3002.js"
+		ViewTempletNo="Transaction_3002">
+		<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.ratechange.RATChangeCreator"/>
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RATE_SEGMENT" condition="Status='1'"/>
+		<Procedure id="4" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RPT_SEGMENT" condition="Status='1'"/>
+		<Procedure id="5" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.BusinessAccountLoader" condition="Status='1'"/>
+		<Procedure id="6" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentScheduleLoader" condition="Status='1'"/>
+		<Procedure id="7" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="8" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.InterestLogLoader" />
+		<Procedure id="9" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RATE_SEGMENT" MainBizClassName="jbo.acct.ACCT_LOAN_CHANGE"  />
+		
+		<Procedure id="10" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.ratechange.RATChangeExecutor" PSType="1"/>
+		<Procedure id="11" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="12" type="execute" 
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreatePaymentScheduleExecutor">
+			<Property name="PSType" value="1" /> 
+		</Procedure>
+		<Procedure id="13" type="execute" class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreateFeePaymentScheduleExecutor" PSType="3" />
+		<Procedure id="14" type="execute" class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreateIRRPaymentScheduleCreator" PSType="2" />
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="3003"	TransactionName="还款账户变更" 
+	DocumentType="jbo.acct.ACCT_LOAN_CHANGE" RelativeObjectType="jbo.acct.ACCT_LOAN" SelectCode="SelectPayableLoan" FlowNo="TransactionFlow" 
+	JSFile="/Accounting/js/transaction/transaction_3003.js"
+		ViewTempletNo="Transaction_3003">
+		<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.accountchange.BusinessAccountChangeCreator" AccountIndicator="00,01,02"/>
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.BusinessAccountLoader" condition="Status='1'"/>
+		<Procedure id="4" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_BUSINESS_ACCOUNT" MainBizClassName="jbo.acct.ACCT_LOAN_CHANGE" condition="Status='0'" />
+	
+		<Procedure id="5" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.accountchange.BusinessAccountChangeExecutor" AccountIndicator="01"/>
+		<Procedure id="6" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="3004"	TransactionName="贷款期限变更"
+	 DocumentType="jbo.acct.ACCT_LOAN_CHANGE" RelativeObjectType="jbo.acct.ACCT_LOAN" SelectCode="SelectPayableLoan1" FlowNo="TransactionFlow" 
+	 JSFile="/Accounting/js/transaction/transaction_3004.js"
+		ViewTempletNo="Transaction_3004">
+		<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.termchange.TermChangeCreator"/>
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RATE_SEGMENT" condition="Status='1'"/>
+		<Procedure id="4" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RPT_SEGMENT" condition="Status='1'"/>
+		<Procedure id="5" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.BusinessAccountLoader" condition="Status='1'"/>
+		<Procedure id="6" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentScheduleLoader" condition="Status='1'"/>
+		<Procedure id="7" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="8" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.InterestLogLoader" />
+		
+		<Procedure id="10" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.termchange.TermChangeExecutor"/>
+		<Procedure id="11" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="12" type="execute" 
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreatePaymentScheduleExecutor">
+			<Property name="PSType" value="1" /> 
+		</Procedure>
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="3005"	TransactionName="默认还款日变更"
+	DocumentType="jbo.acct.ACCT_LOAN_CHANGE" RelativeObjectType="jbo.acct.ACCT_LOAN" SelectCode="SelectPayableLoan1" FlowNo="TransactionFlow" 
+	JSFile="/Accounting/js/transaction/transaction_3005.js"
+		ViewTempletNo="Transaction_3005">
+		<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.duedaychange.DefaultDueDayChangeCreator"/>
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RATE_SEGMENT" condition="Status='1'"/>
+		<Procedure id="4" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RPT_SEGMENT" condition="Status='1'"/>
+		<Procedure id="5" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.BusinessAccountLoader" condition="Status='1'"/>
+		<Procedure id="6" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentScheduleLoader" condition="Status='1'"/>
+		<Procedure id="7" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="8" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.InterestLogLoader" />
+		<Procedure id="9" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.duedaychange.DefaultDueDayChangeExecutor" PSType="1"/>
+		<Procedure id="10" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="11" type="execute" 
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreatePaymentScheduleExecutor">
+			<Property name="PSType" value="1" /> 
+		</Procedure>
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="3006"	TransactionName="贷款核销"
+	DocumentType="jbo.acct.ACCT_LOAN_CHANGE" RelativeObjectType="jbo.acct.ACCT_LOAN" SelectCode="SelectPayableLoan1" FlowNo="TransactionFlow" 
+	JSFile="/Accounting/js/transaction/transaction_30067.js"
+		ViewTempletNo="Transaction_30067">
+		<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.writeoff.WriteOffCreator" />
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="execute" class="com.amarsoft.app.accounting.trans.script.common.executor.BookKeepExecutor">
+			<Property name="JournalGroupID" value="hx01" /> 
+			<!-- 核销分录可根据客户提供分录需求，自行配置 -->
+		</Procedure>
+		<Procedure id="4" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="5" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.writeoff.WriteOffExecutor"/>
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="3007"	TransactionName="贷款售出"
+	DocumentType="jbo.acct.ACCT_LOAN_CHANGE" RelativeObjectType="jbo.acct.ACCT_LOAN" SelectCode="SelectPayableLoan1" FlowNo="TransactionFlow" 
+	JSFile="/Accounting/js/transaction/transaction_30067.js"
+		ViewTempletNo="Transaction_30067">
+		<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.writeoff.WriteOffCreator" />
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="execute" class="com.amarsoft.app.accounting.trans.script.common.executor.BookKeepExecutor">
+			<Property name="JournalGroupID" value="sc01" /> 
+			<!-- 售出分录可根据客户提供分录需求，自行配置 -->
+		</Procedure>
+		<Procedure id="4" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="5" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.writeoff.WriteOffExecutor"/>
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="3008"	TransactionName="本息调整"
+	 DocumentType="jbo.acct.ACCT_PAYMENT_LOG"  RelativeObjectType="jbo.acct.ACCT_LOAN"  SelectCode="SelectPayableLoan" FlowNo="TransactionFlow" 
+	 	 ViewTempletNo="Transaction_3008"
+	 	 JSFile="/Accounting/js/transaction/transaction_3008.js">
+	 	<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.balancechange.PrincipalInterestChangeCreator" />
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="4" type="execute" class="com.amarsoft.app.accounting.trans.script.common.executor.BookKeepExecutor">
+			<Property name="JournalGroupID" value="bxtz01" /> 
+			<!-- 科目调整分录可根据客户提供分录需求，自行配置 -->
+		</Procedure>
+		<Procedure id="5" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.balancechange.PrincipalInterestChangeExecutor"/>
+		<Procedure id="6" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+	</TransactionConfig>
+	<TransactionConfig TransactionCode="3010"	TransactionName="科目调整"
+	 DocumentType="jbo.acct.ACCT_LOAN_CHANGE"  RelativeObjectType="jbo.acct.ACCT_LOAN"  SelectCode="SelectPayableLoan" FlowNo="TransactionFlow" 
+	 	 ViewTempletNo="Transaction_3010"
+	 	 JSFile="/Accounting/js/transaction/transaction_3010.js">
+	 	<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.subject.SubjectChangeCreator" />
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="4" type="execute" class="com.amarsoft.app.accounting.trans.script.common.executor.BookKeepExecutor">
+			<Property name="JournalGroupID" value="kmtz01" /> 
+			<!-- 科目调整分录可根据客户提供分录需求，自行配置 -->
+		</Procedure>
+		<Procedure id="5" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.subject.SubjectChangeExecutor"/>
+		<Procedure id="6" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+	</TransactionConfig>
+	<TransactionConfig TransactionCode="3011"	TransactionName="机构调整"
+	 DocumentType="jbo.acct.ACCT_LOAN_CHANGE"  RelativeObjectType="jbo.acct.ACCT_LOAN"  SelectCode="SelectPayableLoan" FlowNo="TransactionFlow" 
+	 	 ViewTempletNo="Transaction_3011"
+	 	 JSFile="/Accounting/js/transaction/transaction_3011.js">
+	 	<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.orgchange.OrgChangeCreator" />
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="4" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.orgchange.OrgChangeExecutor"/>
+		<Procedure id="5" type="execute" class="com.amarsoft.app.accounting.trans.script.common.executor.BookKeepExecutor">
+			<Property name="JournalGroupID" value="jgtz01" /> 
+			<!-- 机构调整分录可根据客户提供分录需求，自行配置 -->
+		</Procedure>
+		<Procedure id="6" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+	</TransactionConfig>
+	
+	
+	<TransactionConfig TransactionCode="4001" TransactionName="冲放款" 
+	DocumentType="jbo.acct.ACCT_TRANSACTION" RelativeObjectType="jbo.acct.ACCT_LOAN" SelectCode="SelectStrikeTransaction" FlowNo="TransactionFlow" 
+	 ReverseTransactionCode="1001"  ViewTempletNo="Transaction_4000">
+		<Procedure id="1" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RATE_SEGMENT" condition="Status='1'"/>
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RPT_SEGMENT" condition="Status='1'"/>
+		<Procedure id="4" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.BusinessAccountLoader" condition="Status='1'"/>
+		<Procedure id="5" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentScheduleLoader" condition="Status='1'"/>
+		<Procedure id="6" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="7" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.InterestLogLoader" />
+		<Procedure id="8" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.ReverseTransactionLoader" />
+		<Procedure id="9" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.ReverseTransactionExecutor" />
+		<Procedure id="10" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.drawdownreverse.DrawdownReverseExecutor" />
+		<Procedure id="11" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+	</TransactionConfig>
+	
+	
+	<TransactionConfig TransactionCode="4002" TransactionName="冲还款" 
+	DocumentType="jbo.acct.ACCT_TRANSACTION" RelativeObjectType="jbo.acct.ACCT_LOAN"   SelectCode="SelectStrikeTransaction" FlowNo="TransactionFlow"
+	  ReverseTransactionCode="2001" ViewTempletNo="Transaction_4000">
+		<Procedure id="1" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RATE_SEGMENT" condition="Status='1'"/>
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RPT_SEGMENT" condition="Status='1'"/>
+		<Procedure id="4" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.BusinessAccountLoader" condition="Status='1'"/>
+		<Procedure id="5" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentScheduleLoader" condition="Status='1'"/>
+		<Procedure id="6" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="7" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.InterestLogLoader" />
+		<Procedure id="8" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentLogLoader" condition="Status='1'" />
+		<Procedure id="9" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.ReverseTransactionLoader" />
+		<Procedure id="10" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.ReverseTransactionExecutor" />
+		<Procedure id="11" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.repayreverse.PaymentReverseExecutor" />
+		<Procedure id="12" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="13" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.UpdateLoanStatus" />
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="4003"	TransactionName="冲提前还款"
+	 DocumentType="jbo.acct.ACCT_TRANSACTION"  RelativeObjectType="jbo.acct.ACCT_LOAN"  SelectCode="SelectStrikeTransaction" FlowNo="TransactionFlow" 
+	 	 ReverseTransactionCode="2002" ViewTempletNo="Transaction_4000">
+		<Procedure id="1" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RATE_SEGMENT" condition="Status='1'"/>
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RPT_SEGMENT" condition="Status='1'"/>
+		<Procedure id="4" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.BusinessAccountLoader" condition="Status='1'"/>
+		<Procedure id="5" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentScheduleLoader" condition="Status='1'"/>
+		<Procedure id="6" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="7" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.InterestLogLoader" />
+		<Procedure id="8" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentLogLoader" condition="Status='1'" />
+		<Procedure id="9" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.ReverseTransactionLoader" />
+		<Procedure id="10" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.ReverseTransactionExecutor" />
+		<Procedure id="11" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.repayreverse.PrepaymentReverseExecutor" />
+		<Procedure id="12" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="13" type="execute" 
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreatePaymentScheduleExecutor">
+			<Property name="PSType" value="1" /> 
+		</Procedure>
+		<Procedure id="14" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.UpdateLoanStatus" />
+	</TransactionConfig>
+	
+	
+	<TransactionConfig TransactionCode="9070"	TransactionName="人工风险分类"
+	DocumentType="jbo.al.CLASSIFY_RECORD" RelativeObjectType="jbo.acct.ACCT_LOAN" SelectCode="SelectPayableLoan1" FlowNo="TransactionFlow" 
+	JSFile="/Accounting/js/transaction/transaction_9070.js"
+		ViewTempletNo="Transaction_9070">
+		<Procedure id="1" type="create"
+			class="com.amarsoft.app.accounting.trans.script.loan.classify.ClassifyChangeCreator"/>
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="4" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.classify.ClassifyChangeExecutor"/>
+		<Procedure id="5" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="9090"	TransactionName="贷款日终+日初处理">
+		<Procedure id="1" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RATE_SEGMENT" condition="Status='1'"/>
+		<Procedure id="3" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SegmentLoader" BizClassName="jbo.acct.ACCT_RPT_SEGMENT" condition="Status='1'"/>
+		<Procedure id="4" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.PaymentScheduleLoader" condition="Status='1'"/>
+		<Procedure id="5" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.SubledgerLoader" condition="Status='1'"/>
+		<Procedure id="6" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.InterestLogLoader" />
+		<Procedure id="7" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.eod.LoanEOD_Postpone" psType="1"/>
+		<Procedure id="8" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.eod.LoanEOD_ToNextDate"/>
+		<Procedure id="9" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.eod.LoanEOD_Interest" psType="1" AmountCode="30,31"/>
+		<Procedure id="10" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.eod.LoanEOD_Vars" psType="1"/>
+		<Procedure id="11" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.BookKeepExecutor" >
+			<Property name="JournalGroupID" value="EOD_BOD01" /> 
+		</Procedure>
+		<Procedure id="12" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.eod.LoanEOD_Interest" psType="1" AmountCode="02"/>
+		<Procedure id="13" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.BookKeepExecutor" >
+			<Property name="JournalGroupID" value="EOD_BOD02" /> 
+		</Procedure>
+		<Procedure id="14" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.eod.LoanBOD_ResetBalance"/>
+		<Procedure id="15" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.eod.LoanBOD_UpdateRateSegment"/>
+		<Procedure id="16" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.eod.LoanBOD_UpdateRPTSegment" psType="1"/>
+		<Procedure id="17" type="execute" 
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreatePaymentScheduleExecutor">
+			<Property name="PSType" value="1" /> 
+		</Procedure>
+		<Procedure id="18" type="execute" class="com.amarsoft.app.accounting.trans.script.loan.common.executor.CreateFeePaymentScheduleExecutor" PSType="3" />
+		
+		<Procedure id="19" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.UpdateTransactionExecutor" />
+		<Procedure id="21" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.common.executor.UpdateLoanStatus" />
+	</TransactionConfig>
+	
+	
+	<TransactionConfig TransactionCode="7001"	TransactionName="批量出账申请">
+		<Procedure id="1" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="2" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.BusinessAccountLoader" condition="Status='1'"/>
+		<Procedure id="3" type="execute"
+			class="com.amarsoft.app.als.credit.putout.action.BatchDrawdownScript" >
+		</Procedure>
+		<Procedure id="4" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.common.executor.BookKeepExecutor" >
+			<Property name="JournalGroupID" value="PaymentPutout" /> 
+		</Procedure>
+	</TransactionConfig>
+	
+	<TransactionConfig TransactionCode="7002"	TransactionName="批量还款申请">
+		<Procedure id="1" type="load"
+			class="com.amarsoft.app.accounting.trans.script.common.loader.TransactionLoader" />
+		<Procedure id="2" type="execute"
+			class="com.amarsoft.app.accounting.trans.script.loan.repay.BatchLoanPayProcedure" >
+		</Procedure>
+	</TransactionConfig>
+	
+</TransactionConfigs>

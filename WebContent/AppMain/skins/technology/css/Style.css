@@ -1,0 +1,115 @@
+.logo{
+		background-image: url(../images/logo.png);
+	/**+background-image: url(../images/logo.gif);*//*  星号加号 针对IE浏览器的hack 暂不放出*/
+}
+.left_content_title {
+	background: url(../images/panel_title.png);
+	height:30px;
+}
+.left_content_title span {
+	color: #fff;
+}
+.RightContentDiv {
+	background-image: url(../images/panel_title.png);
+}
+.groupboxheader, .pt9white {
+	color: #fff;
+	line-height:30px;
+	height:30px;
+}
+#tabTreeview table {
+	border-color: #dad8d8;
+}
+#tabTreeview td, #tabTreeview td a {
+	color: #333;
+	line-height: 25px;
+	height: 25px;
+}
+.tree_show_in_view .node_hoverCls {
+	background-color:#fff;
+}
+.back_arrow {
+	background-image: url(../images/back_arrow.gif);
+}
+.img-folder {
+	background-image: url(../images/img-folder.gif);
+}
+.img-page {
+	background-image: url(../images/img-page.gif);
+}
+.ListCriteriaTd{
+	/* background:#e8e8e8; */
+}
+.FilterArea {
+	margin-left: 10px;
+}
+.message_bg {
+	background-color: #d8d8d8;
+}
+.message_title {
+	background-color: #2db9a9;
+}
+.button,
+.buttonleftimg,
+.buttonrightimg,
+.buttonHover,
+.buttonleftimgHover,
+.buttonrightimgHover,
+.buttonDown,
+.buttonleftimgDown,
+.buttonrightimgDown{
+   	background-image: url(../images/button_bg.png);
+}
+.tree_show_in_view {
+	background: url(../images/tree_bg.png) repeat-y right #f1f1f1;
+}
+.view_center, .view_center .divDrag {
+	display: none;
+}
+.view_left {
+	width: 250px;
+}
+.minable div {
+	position: relative;
+	width: 100%; height: 100%;
+}
+.minable div a {
+	position: absolute;
+	top: 38%; 
+	right: 0;
+	background: url(../images/tree_hide.png); 
+	display: inline-block;
+	height: 40px; 
+	width: 10px;
+}
+.minable div a, .minable div a:link, .minable div a:visited {
+	outline: none;
+}
+.minable.minstate {
+	width: 0px;
+}
+.minable.minstate table, .minable.minstate iframe {
+	display: none;
+}
+.minable.minstate div a {
+	right: -10px;
+	background: url(../images/tree_show.png); 
+}
+#mytoptd div a {
+	float: left;
+	background: url(../images/topdown_hide.png);
+	left: 50%;
+	top: 100%;
+	margin-top: -10px;
+	width: 40px;
+	height: 10px;
+	font-size: 0px;
+}
+#mytoptd.minstate {
+	height: 1px;
+}
+#mytoptd.minstate div a {
+	margin-top: 0px;
+	background: url(../images/topdown_show.png);
+}
+.ListTitle{background:none}

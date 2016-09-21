@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=GBK" %>
+<link rel="stylesheet" href="<%=sWebRootPath%>/Frame/page/resources/css/widget/frame_lrud.css">
+<link rel="stylesheet" href="<%=sWebRootPath%><%=sSkinPath%>/css/frame_lrud.css">
+<body>
+<div class="body">
+	<div id="FirstFrame"></div>
+	<div id="Border"></div>
+	<div id="SecondFrame"></div>
+	<div id="Board"></div>
+	<div id="IBorder"></div>
+</div>
+</body>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/widget/frame_lrud.js"></script>
+<%if("true".equals(CurPage.getAttribute("HideMinButton"))){%>
+<script type="text/javascript">$("#Border >span").hide();</script><%}%>

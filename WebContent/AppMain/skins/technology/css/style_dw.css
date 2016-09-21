@@ -1,0 +1,63 @@
+.ServerFirstPage {
+	background-image:url(../images/server_first.gif);
+}
+.ServerPrevPage {
+	background-image:url(../images/server_prev.gif);
+}
+.ServerNextPage {
+	background-image:url(../images/server_next.gif);
+}
+.ServerLastPage {
+	background-image:url(../images/server_last.gif);
+}
+.GDTdHeader {
+	border-color: #d9d9d9;
+	background-image: url(../images/table_title_bg.gif);
+	height:30px;
+	color:#333333;
+	*position: relative;
+	_border-right:0px;
+}
+.GDTdHeader_last {
+	border-color: #d9d9d9;
+	background-image: url(../images/table_title_bg.gif);
+	height:30px;
+	color:#333333;
+	*position: relative;
+}
+.GDTdContentInput{height:26px; vertical-align:middle; *padding-top:8px}
+.scrollContent td {
+	border-color: #d9d9d9;
+	vertical-align: middle;
+}
+.GdTdPage{
+height:30px;
+	background: url(../images/page_bg.png) repeat-x;
+}
+.serial_td{
+	background-color: #f1f1f1;
+}
+.corss_walk2 {
+	height:30px;
+	background-color: #f1f1f1;
+	vertical-align: middle;
+}
+.corss_walk1 {
+	height:30px;
+	vertical-align: middle;
+}
+.high_light {
+	background-color: #B4CBFF/*92d4fe*/;
+}
+.sort_down {
+	background-image: url(../images/sort_down.gif);
+}
+.sort_up {
+	background-image: url(../images/sort_up.gif);
+}
+head:first-child+body tbody[class].scrollContent {
+	display: block;
+	height: 100%;
+	overflow: auto;
+	width: 100%
+}

@@ -1,0 +1,16 @@
+<scriptlet id="amarchange">
+
+<implements id="kuku2" type="Behavior" default>
+<event name="onChange"/>
+</implements>
+
+<implements type="Automation">
+<method name="amar_onchange"/>
+</implements>
+
+<script type="text/javascript">
+function amar_onchange(){
+    fireEvent("onChange");
+}
+</script>
+</scriptlet>

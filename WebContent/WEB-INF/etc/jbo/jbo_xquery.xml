@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbo>
+  <package name="jbo.xquery" label="测试灵活查询的jbo配置">
+    <class name="CUSTOMER_INFO" label="客户基本信息" keyAttributes="CUSTOMERID">
+      <attributes>
+        <attribute name="CUSTOMERID" label="客户编号" type="STRING" length="40" />
+        <attribute name="CUSTOMERNAME" label="客户名称" type="STRING" length="80" />
+        <attribute name="CUSTOMERTYPE" label="客户类型" type="STRING" length="20" >
+        	<!-- 注意：sortingSuitable、filterSuitable属性都是反向设置，默认true，不显示时设置为false -->
+        	<uiHints sortingSuitable="true" filterSuitable="true" 
+        			 valueCharacter="Codetable" codeTable="{datasource},{jbo.sys.CODE_LIBRARY,ITEMNO,ITEMNAME,CodeNo='CustomerType'}" >
+        		<!--<customerHints>
+                	<hint name="displayName" value="NameManager.getItemName('CustomerType',%ColumnName%)"/>
+                </customerHints>-->
+            </uiHints>
+        </attribute>
+        <attribute name="CERTTYPE" label="证件类型" type="STRING" length="20" >
+        	<uiHints sortingSuitable="true" filterSuitable="false" 
+        			 valueCharacter="Codetable" 
+        			 codeTable="{datasource},{jbo.sys.CODE_LIBRARY,ITEMNO,ITEMNAME,CodeNo='CertType' and IsInUse='1' 
+        			 and ((ItemNo like 'Ent%' and '%QueryClass%'='jbo.xquery.CUSTOMER_INFO') 
+        			 	or (ItemNo like 'Ind%' and '%QueryClass%'='IndCustomerQuery')) order by SortNo}" >
+        	</uiHints>
+        </attribute>
+        <attribute name="CERTID" label="证件号" type="STRING" length="40" />
+		<attribute name="LOANCARDNO" label="贷款卡编号" type="STRING" length="32" />
+        <attribute name="INPUTORGID" label="登记机构" type="STRING" length="32" >
+        	<uiHints sortingSuitable="true" filterSuitable="true" 
+				valueCharacter="Codetable" codeTable="{datasource},{jbo.sys.ORG_INFO,OrgID,OrgName,Status='1'}" >
+            </uiHints>
+        </attribute>
+        <attribute name="INPUTUSERID" label="登记人" type="STRING" length="32" >
+        	<uiHints sortingSuitable="true" filterSuitable="false" 
+				valueCharacter="Codetable" codeTable="{datasource},{jbo.sys.USER_INFO,UserID,UserName,1=1}" >
+            </uiHints>
+        </attribute>
+        <attribute name="INPUTDATE" label="登记日期" type="DATE" length="10" >
+        	<uiHints>
+                <customerHints>
+                	<hint name="colspan" value="6"/>
+                	<hint name="position" value="FULLROW"/> <!-- FREE、NEWROW、FULLROW -->
+                </customerHints>
+            </uiHints>
+        </attribute>          
+        <attribute name="STATUS" label="状态" type="STRING" length="20" >
+        	<uiHints sortingSuitable="true" filterSuitable="false" />
+        </attribute>
+      </attributes>
+      <manager>
+        <managerProperties>
+          <property name="createKey" value="false" />
+          <property name="table" value="CUSTOMER_INFO" />
+        </managerProperties>
+      </manager>
+      <relatedClasses>
+      	<relatedClass absoluteName="jbo.xquery.ENT_INFO" joinclauses="O.CustomerID=ENT_INFO.CustomerID"/>
+      	<relatedClass absoluteName="jbo.xquery.CUSTOMER_RELATIVE" joinclauses="O.CustomerID=CUSTOMER_RELATIVE.CustomerID"/>
+      </relatedClasses>
+    </class>
+    <class name="CUSTOMER_RELATIVE" label="客户关联信息" keyAttributes="CUSTOMERID,RELATIVEID,RELATIONSHIP">
+      <attributes>
+        <attribute name="CUSTOMERID" label="客户编号" type="STRING" length="32" />
+        <attribute name="RELATIONSHIP" label="关联关系" type="STRING" length="18" >
+        	<uiHints sortingSuitable="true" filterSuitable="true" 
+        			 valueCharacter="Codetable" codeTable="{datasource},{jbo.sys.CODE_LIBRARY,ITEMNO,ITEMNAME,CodeNo='RelationShip'}" >
+        	</uiHints>
+        </attribute>
+        <attribute name="RELATIVEID" label="关联客户编号" type="STRING" length="32" />
+        <attribute name="CUSTOMERNAME" label="关联客户名称" type="STRING" length="80" />
+        <attribute name="CERTID" label="证件号" type="STRING" length="32" />
+      </attributes>
+      <manager>
+        <managerProperties>
+          <property name="createKey" value="false" />
+          <property name="table" value="CUSTOMER_RELATIVE" />
+        </managerProperties>
+      </manager>
+    </class>
+    <class name="ENT_INFO" label="企业基本信息" keyAttributes="CUSTOMERID">
+      <attributes>
+        <attribute name="CUSTOMERID" label="客户编号" type="STRING" length="32" />
+        <attribute name="CORPID" label="法人或组织机构代码" type="STRING" length="32" />
+        <attribute name="ENTERPRISENAME" label="企业名称" type="STRING" length="80" />
+        <attribute name="ENGLISHNAME" label="客户英文名称" type="STRING" length="80" />
+        <attribute name="FICTITIOUSPERSON" label="法人代表" type="STRING" length="80" />
+        <attribute name="SCOPE" label="企业规模" type="STRING" length="18" >
+        	<uiHints sortingSuitable="true" filterSuitable="true" 
+        			 valueCharacter="Codetable" codeTable="{datasource},{jbo.sys.CODE_LIBRARY,ITEMNO,ITEMNAME,CodeNo='Scope' and IsInUse='1' order by SortNo}" />
+        </attribute>
+        <attribute name="ENTERPRISEBELONG" label="企业隶属" type="STRING" length="18" >
+        	<uiHints sortingSuitable="true" filterSuitable="false" />
+        </attribute>
+        <attribute name="INDUSTRYTYPE" label="国标行业分类" type="STRING" length="18" >
+        	<uiHints sortingSuitable="true" filterSuitable="true" 
+        			 valueCharacter="Codetable" codeTable="{datasource},{jbo.sys.CODE_LIBRARY,ITEMNO,ITEMNAME,CodeNo='IndustryType' and length(ItemNo)=1 order by ItemNo}" />
+        </attribute>
+        <attribute name="MOSTBUSINESS" label="主营业务" type="STRING" length="800" >
+        	<uiHints sortingSuitable="true" filterSuitable="false" />
+        </attribute>
+        <attribute name="RCCURRENCY" label="注册资本币种" type="STRING" length="18" >
+        	<uiHints sortingSuitable="true" filterSuitable="true" 
+        			 valueCharacter="Codetable" codeTable="{datasource},{jbo.sys.CODE_LIBRARY,ITEMNO,ITEMNAME,CodeNo='Currency' order by ItemNo}" />
+        </attribute>
+        <attribute name="REGISTERCAPITAL" label="注册资本" type="DOUBLE" length="24" scale="6" />
+        <attribute name="TOTALASSETS" label="总资产" type="DOUBLE" length="24" scale="6" />
+        <attribute name="NETASSETS" label="净资产" type="DOUBLE" length="24" scale="6" />
+        <attribute name="ANNUALINCOME" label="年收入" type="DOUBLE" length="24" scale="6" />
+		<attribute name="EMPLOYEENUMBER" label="员工人数" type="INT" length="20" />
+		<attribute name="CREDITDATE" label="首次建立信贷关系年月" type="DATE" length="10" >
+			<uiHints sortingSuitable="true" filterSuitable="true" >
+				<customerHints>
+                	<hint name="filterType" value="MONTH"/>
+                </customerHints>
+			</uiHints>              
+		</attribute>
+      </attributes>
+      <manager>
+        <managerProperties>
+          <property name="createKey" value="false" />
+          <property name="table" value="ENT_INFO" />
+        </managerProperties>
+      </manager>
+    </class>
+  </package>
+</jbo>

@@ -1,0 +1,27 @@
+.dw_title{
+	background: url(../images/tit-bg.png) #fff repeat-x center top;
+	color: #a00211;
+	padding-bottom:5px;
+	border:none;
+	border:0px;
+	border-color: #d9d9d9;
+	border-top:#d9d9d9
+}
+.info_tr_bg{
+	background-color:#f1f1f1;
+}
+.dw_conacte, .fftdhead, .FFContentTD {
+	border-color: #d9d9d9;
+	color:#333333;
+	vertical-align: middle;
+}
+.dw_title{
+	padding-left:0px;
+}
+.dw_title .icon{
+	background: url(../images/info_collapse.png) no-repeat center;
+	margin-right: 5px; 
+}
+.dw_title .icon.collapse{
+	background: url(../images/info_expand.png) no-repeat center; 
+}

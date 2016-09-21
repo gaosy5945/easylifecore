@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='GB2312'?>
+<!--客户信息查询-->
+<Domain name="DataObject">  
+	<DataObjects>
+		<DataObject name="IND_INFO">
+			<Columns>
+				<Column name="CUSTOMERID" alias="IICUSTOMERID" header="客户编号" dataType="STRING"  tag="" code="" />  
+				<Column name="SEX" alias="IISEX" header="性别" dataType="STRING"  tag="" code="代码取数|Sex" />  
+				<Column name="BIRTHDAY" alias="IIBIRTHDAY" header="出生日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="COUNTRY" alias="IICOUNTRY" header="国家" dataType="STRING"  tag="" code="代码取数|CountryCode" />  
+				<Column name="FOLK" alias="IIFOLK" header="民族" dataType="STRING"  tag="" code="代码取数|Folk" />  
+				<Column name="POLITICALFACE" alias="IIPOLITICALFACE" header="政治面貌" dataType="STRING"  tag="" code="代码取数|PoloticsStatus" />  
+				<Column name="MARRIAGE" alias="IIMARRIAGE" header="婚姻状况" dataType="STRING"  tag="" code="代码取数|MaritalStatus" />  
+				<Column name="OCCUPATION" alias="IIOCCUPATION" header="职业" dataType="STRING"  tag="" code="代码取数|Occupation" />  
+				<Column name="POSITION" alias="IIPOSITION" header="职称" dataType="STRING"  tag="" code="代码取数|ProfessionalTitle" />  
+				<Column name="EDUEXPERIENCE" alias="IIEDUEXPERIENCE" header="最高学历" dataType="STRING"  tag="" code="代码取数|EducationExperience" />  
+				<Column name="EDUDEGREE" alias="IIEDUDEGREE" header="最高学位" dataType="STRING"  tag="" code="代码取数|EducationDegree" />  
+				<Column name="GRADUATEYEAR" alias="IIGRADUATEYEAR" header="毕业年份" dataType="STRING"  tag="" code="" />  
+				<Column name="POPULATION" alias="IIPOPULATION" header="家庭人口数" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="STAFF" alias="IISTAFF" header="是否本行员工" dataType="STRING"  tag="" code="代码取数|YesNo" />  
+				<Column name="INPUTORGID" alias="IIINPUTORGID" header="登记机构" dataType="STRING"  tag="" code="" />  
+				<Column name="INPUTUSERID" alias="IIINPUTUSERID" header="登记人" dataType="STRING"  tag="" code="" />  
+				<Column name="INPUTDATE" alias="IIINPUTDATE" header="登记日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="UPDATEDATE" alias="IIUPDATEDATE" header="更新日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="REMARK" alias="IIREMARK" header="备注" dataType="STRING"  tag="" code="" />  
+				<Column name="UPDATEORGID" alias="IIUPDATEORGID" header="更新机构" dataType="STRING"  tag="" code="" />  
+				<Column name="UPDATEUSERID" alias="IIUPDATEUSERID" header="更新人" dataType="STRING"  tag="" code="" />  
+				<Column name="HEADSHIP" alias="IIHEADSHIP" header="职务" dataType="STRING"  tag="" code="代码取数|HeadShip" />  
+				<Column name="HABITATIONSTATUS" alias="IIHABITATIONSTATUS" header="居住状况" dataType="STRING"  tag="" code="代码取数|HabitationStatus" />  
+				<Column name="TEMPSAVEFLAG" alias="IITEMPSAVEFLAG" header="暂存标志" dataType="STRING"  tag="" code="" />  
+				<Column name="INDUSTRYTYPE" alias="IIINDUSTRYTYPE" header="行业" dataType="STRING"  tag="" code="代码取数|IndustryType" />  
+				<Column name="EMPLOYERSCALE" alias="IIEMPLOYERSCALE" header="工作单位规模" dataType="STRING"  tag="" code="代码取数|EnterpriseScale" />  
+				<Column name="CECUSREGISTERTYPE" alias="IICECUSREGISTERTYPE" header="户籍性质" dataType="STRING"  tag="" code="代码取数|CecusRegisterType" />  
+				<Column name="POLICESTATION" alias="IIPOLICESTATION" header="户籍街道派出所" dataType="STRING"  tag="" code="" />  
+				<Column name="HOUSEHOLD" alias="IIHOUSEHOLD" header="供养人口" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="JOBYEARS" alias="IIJOBYEARS" header="工作年限（年）" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="CUSTOMERGRADE" alias="IICUSTOMERGRADE" header="客户服务等级" dataType="STRING"  tag="" code="代码取数|CustomerGrade" />  
+				<Column name="HAVECHILDREN" alias="IIHAVECHILDREN" header="有无子女" dataType="STRING"  tag="" code="" />  
+				<Column name="JOBMONTHS" alias="IIJOBMONTHS" header="工作年限（月）" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="SMCLIENTTYPE" alias="IISMCLIENTTYPE" header="身份类型" dataType="STRING"  tag="" code="" />  
+				<Column name="DWELLNUM" alias="IIDWELLNUM" header="在境内连续居住年限" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="FIXEDABODEFLAG" alias="IIFIXEDABODEFLAG" header="在本地是否有固定住所" dataType="STRING"  tag="" code="代码取数|YesNo" />  
+			</Columns>
+		</DataObject>
+		
+		<!-- 申请类型的配置 -->
+		<DataObject name="BUSINESS_APPLY">
+			<Columns>
+				<Column name="SERIALNO" alias="BASERIALNO" header="申请流水号" dataType="STRING"  tag="" code="" />  
+				<Column name="OCCURDATE" alias="BAOCCURDATE" header="发生日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="CUSTOMERID" alias="BACUSTOMERID" header="客户编号" dataType="STRING"  tag="" code="" />  
+				<Column name="CUSTOMERNAME" alias="BACUSTOMERNAME" header="客户名称" dataType="STRING"  tag="" code="" />  
+				<Column name="BUSINESSTYPE" alias="BABUSINESSTYPE" header="业务品种" dataType="STRING"  tag="" code="取基础产品|BusinessType" />  
+				<Column name="PRODUCTID" alias="BAPRODUCTID" header="产品编号" dataType="STRING"  tag="" code="取方案产品|ProductID" />  
+				<Column name="SPECIFICSERIALNO" alias="BASPECIFICSERIALNO" header="产品版本流水号" dataType="STRING"  tag="" code="" />  
+				<Column name="BUSINESSSUBTYPE" alias="BABUSINESSSUBTYPE" header="业务分类类型" dataType="STRING"  tag="" code="代码取数|BusinessSubType" />  
+				<Column name="OCCURTYPE" alias="BAOCCURTYPE" header="发生类型" dataType="STRING"  tag="" code="代码取数|CreditOccurType" />  
+				<Column name="OPERATETYPE" alias="BAOPERATETYPE" header="贷款操作方式" dataType="STRING"  tag="" code="代码取数|CreditOperateType" />  
+				<Column name="REVOLVEFLAG" alias="BAREVOLVEFLAG" header="授信循环使用标志" dataType="STRING"  tag="" code="代码取数|CreditRevolveFlag" />  
+				<Column name="CONTRACTSIGNTYPE" alias="BACONTRACTSIGNTYPE" header="签约方式" dataType="STRING"  tag="" code="代码取数|ContractSignType" />  
+				<Column name="CONTRACTARTIFICIALNO" alias="BACONTRACTARTIFICIALNO" header="合同协议编号" dataType="STRING"  tag="" code="" />  
+				<Column name="BUSINESSCURRENCY" alias="BABUSINESSCURRENCY" header="币种" dataType="STRING"  tag="" code="代码取数|Currency" />  
+				<Column name="BUSINESSSUM" alias="BABUSINESSSUM" header="申请金额" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="BUSINESSTERM" alias="BABUSINESSTERM" header="期限" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="BUSINESSTERMUNIT" alias="BABUSINESSTERMUNIT" header="期限单位" dataType="STRING"  tag="" code="代码取数|TermUnit" />  
+				<Column name="MATURITYDATE" alias="BAMATURITYDATE" header="到期日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="DRAWDOWNTYPE" alias="BADRAWDOWNTYPE" header="放款方式" dataType="STRING"  tag="" code="代码取数|DrawdownType" />  
+				<Column name="FIRSTDRAWDOWNDATE" alias="BAFIRSTDRAWDOWNDATE" header="首次提款日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="GRACEPERIOD" alias="BAGRACEPERIOD" header="贷款宽限期" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="DIRECTION" alias="BADIRECTION" header="行业投向" dataType="STRING"  tag="" code="代码取数|IndustryType" />  
+				<Column name="PURPOSETYPE" alias="BAPURPOSETYPE" header="贷款用途" dataType="STRING"  tag="" code="代码取数|CreditPurposeType" />  
+				<Column name="PURPOSEDESCRIPTION" alias="BAPURPOSEDESCRIPTION" header="用途" dataType="STRING"  tag="" code="" />  
+				<Column name="VOUCHTYPE" alias="BAVOUCHTYPE" header="主要担保方式" dataType="STRING"  tag="" code="代码取数|VouchType" />  
+				<Column name="RISKRATE" alias="BARISKRATE" header="综合风险度" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="RISKGRADE" alias="BARISKGRADE" header="风险度" dataType="STRING"  tag="" code="代码取数|BusinessRiskGrade" />  
+				<Column name="APPROVEORGID" alias="BAAPPROVEORGID" header="终批机构编号" dataType="STRING"  tag="" code="" />  
+				<Column name="APPROVEUSERID" alias="BAAPPROVEUSERID" header="终审用户编号" dataType="STRING"  tag="" code="" />  
+				<Column name="APPROVEDATE" alias="BAAPPROVEDATE" header="终审日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="APPROVESTATUS" alias="BAAPPROVESTATUS" header="审批状态" dataType="STRING"  tag="" code="代码取数|BusinessApproveStatus" />  
+				<Column name="OPERATEORGID" alias="BAOPERATEORGID" header="经办机构" dataType="STRING"  tag="" code="" />  
+				<Column name="OPERATEUSERID" alias="BAOPERATEUSERID" header="经办人" dataType="STRING"  tag="" code="" />  
+				<Column name="OPERATEDATE" alias="BAOPERATEDATE" header="经办日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="INPUTORGID" alias="BAINPUTORGID" header="登记机构" dataType="DATETIME"  tag="" code="" />  
+				<Column name="INPUTUSERID" alias="BAINPUTUSERID" header="登记人" dataType="STRING"  tag="" code="" />  
+				<Column name="INPUTDATE" alias="BAINPUTDATE" header="登记日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="UPDATEDATE" alias="BAUPDATEDATE" header="更新日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="REMARK" alias="BAREMARK" header="备注" dataType="STRING"  tag="" code="" />  
+				<Column name="CLASSIFYRESULT" alias="BACLASSIFYRESULT" header="风险分类" dataType="STRING"  tag="" code="代码取数|ClassifyGrade10" />  
+				<Column name="TEMPSAVEFLAG" alias="BATEMPSAVEFLAG" header="暂存标志" dataType="STRING"  tag="" code="" />  
+				<Column name="MARKETCHANNELFLAG" alias="BAMARKETCHANNELFLAG" header="业务受理场所" dataType="STRING"  tag="" code="代码取数|MarketChannelFlag，合作方推荐，自主申请" />  
+				<Column name="SYSTEMCHANNELFLAG" alias="BASYSTEMCHANNELFLAG" header="业务来源" dataType="STRING"  tag="" code="代码取数|SystemChannelFlag，网上银行，电话银行" />  
+				<Column name="RPTTERMID" alias="BARPTTERMID" header="还款组件编号（Term:RPT）" dataType="STRING"  tag="" code="" />  
+				<Column name="LOANRATETERMID" alias="BALOANRATETERMID" header="利率组件编号（Term:RAT）" dataType="STRING"  tag="" code="" />  
+				<Column name="ACCOUNTINGORGID" alias="BAACCOUNTINGORGID" header="入账机构编号" dataType="STRING"  tag="" code="" />  
+				<Column name="PAYMENTTYPE" alias="BAPAYMENTTYPE" header="支付方式" dataType="STRING"  tag="" code="代码取数|PaymentType" />  
+				<Column name="PURPOSESUBTYPE" alias="BAPURPOSESUBTYPE" header="用途子类" dataType="STRING"  tag="" code="代码取数|CreditPurposeSubType" />  
+				<Column name="CLASSIFYMETHOD" alias="BACLASSIFYMETHOD" header="风险分类方式" dataType="STRING"  tag="" code="代码取数|ClassifyMethod" />  
+				<Column name="NONSTDINDICATOR" alias="BANONSTDINDICATOR" header="特殊业务标示" dataType="STRING"  tag="" code="代码取数|NonstandardIndicator" />  
+				<Column name="BUSINESSPRIORITY" alias="BABUSINESSPRIORITY" header="业务优先级" dataType="STRING"  tag="" code="代码取数|BusinessPriority" />  
+				<Column name="BILLMAILFLAG" alias="BABILLMAILFLAG" header="是否寄送账单" dataType="STRING"  tag="" code="代码取数|YesNo" />  
+				<Column name="BILLADDRESSTYPE" alias="BABILLADDRESSTYPE" header="账单寄送地址" dataType="STRING"  tag="" code="代码取数|AddressType" />  
+				<Column name="EXCEPTREASON" alias="BAEXCEPTREASON" header="例外贷款原因" dataType="STRING"  tag="" code="代码取数|ExceptCreditReason" />  
+				<Column name="BUSINESSTERMDAY" alias="BABUSINESSTERMDAY" header="期限（天）" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="RESDERATIONREASONS" alias="BARESDERATIONREASONS" header="贷款复议原因" dataType="STRING"  tag="" code="代码取数|ResderationReasons" />  
+				<Column name="ACCUFUNDREPAYFLAG" alias="BAACCUFUNDREPAYFLAG" header="是否可以用公积金充还标识" dataType="STRING"  tag="" code="代码取数|YesNo" />  
+				<Column name="RESDERATIONREMARK" alias="BARESDERATIONREMARK" header="复议备注" dataType="STRING"  tag="" code="" />  
+				<Column name="FUNDREPAYTYPE" alias="BAFUNDREPAYTYPE" header="公积金冲还贷方式" dataType="STRING"  tag="" code="代码取数|FundRepayType" />  
+				<Column name="FUNDREPAYMONTH" alias="BAFUNDREPAYMONTH" header="公积金冲还贷月份" dataType="STRING"  tag="" code="代码取数|FundRepayMonth" />  
+				<Column name="GUARANTYTYPE" alias="BAGUARANTYTYPE" header="担保类型" dataType="STRING"  tag="" code="" />  
+				<Column name="DUEBILLSERIALNO" alias="BADUEBILLSERIALNO" header="借据编号" dataType="STRING"  tag="" code="" />  
+				<Column name="LOANTYPE" alias="BALOANTYPE" header="核心业务种类" dataType="STRING"  tag="" code="代码取数|BusinessType_Core" />  
+			</Columns>
+		</DataObject>
+		
+		
+		<!-- 合同表 -->
+		<DataObject name="BUSINESS_CONTRACT">
+			<Columns>
+				<Column name="SERIALNO" alias="BCSERIALNO" header="合同流水号" dataType="STRING"  tag="" code="" />  
+				<Column name="APPLYSERIALNO" alias="BCAPPLYSERIALNO" header="申请流水号" dataType="STRING"  tag="" code="" />  
+				<Column name="APPROVESERIALNO" alias="BCAPPROVESERIALNO" header="批复流水号" dataType="STRING"  tag="" code="" />  
+				<Column name="OCCURDATE" alias="BCOCCURDATE" header="申请日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="CUSTOMERID" alias="BCCUSTOMERID" header="客户编号" dataType="STRING"  tag="" code="" />  
+				<Column name="CUSTOMERNAME" alias="BCCUSTOMERNAME" header="客户名称" dataType="STRING"  tag="" code="" />  
+				<Column name="BUSINESSTYPE" alias="BCBUSINESSTYPE" header="业务品种" dataType="STRING"  tag="" code="取基础产品|BusinessType" />  
+				<Column name="PRODUCTID" alias="BCPRODUCTID" header="产品编号" dataType="STRING"  tag="" code="取方案产品|ProductID" />  
+				<Column name="SPECIFICSERIALNO" alias="BCSPECIFICSERIALNO" header="产品版本流水号" dataType="STRING"  tag="" code="" />  
+				<Column name="BUSINESSSUBTYPE" alias="BCBUSINESSSUBTYPE" header="业务分类类型" dataType="STRING"  tag="" code="代码取数|BusinessSubType" />  
+				<Column name="OCCURTYPE" alias="BCOCCURTYPE" header="发生类型" dataType="STRING"  tag="" code="代码取数|CreditOccurType" />  
+				<Column name="OPERATETYPE" alias="BCOPERATETYPE" header="贷款操作方式" dataType="STRING"  tag="" code="代码取数|CreditOperateType" />  
+				<Column name="REVOLVEFLAG" alias="BCREVOLVEFLAG" header="授信循环使用标志" dataType="STRING"  tag="" code="代码取数|CreditRevolveFlag" />  
+				<Column name="CONTRACTSIGNTYPE" alias="BCCONTRACTSIGNTYPE" header="签约方式" dataType="STRING"  tag="" code="代码取数|ContractSignType" />  
+				<Column name="CONTRACTARTIFICIALNO" alias="BCCONTRACTARTIFICIALNO" header="合同协议编号" dataType="STRING"  tag="" code="" />  
+				<Column name="BUSINESSCURRENCY" alias="BCBUSINESSCURRENCY" header="币种" dataType="STRING"  tag="" code="代码取数|Currency" />  
+				<Column name="BUSINESSSUM" alias="BCBUSINESSSUM" header="合同金额" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="BUSINESSTERM" alias="BCBUSINESSTERM" header="期限(月）" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="BUSINESSTERMUNIT" alias="BCBUSINESSTERMUNIT" header="未用-期限单位" dataType="STRING"  tag="" code="代码取数|TermUnit" />  
+				<Column name="DRAWDOWNTYPE" alias="BCDRAWDOWNTYPE" header="放款方式" dataType="STRING"  tag="" code="代码取数|DrawdownType" />  
+				<Column name="FIRSTDRAWDOWNDATE" alias="BCFIRSTDRAWDOWNDATE" header="首次提款日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="GRACEPERIOD" alias="BCGRACEPERIOD" header="贷款宽限期" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="DIRECTION" alias="BCDIRECTION" header="行业投向" dataType="STRING"  tag="" code="代码取数|IndustryType" />  
+				<Column name="PURPOSETYPE" alias="BCPURPOSETYPE" header="贷款用途" dataType="STRING"  tag="" code="代码取数|CreditPurposeType" />  
+				<Column name="PURPOSEDESCRIPTION" alias="BCPURPOSEDESCRIPTION" header="用途" dataType="STRING"  tag="" code="" />  
+				<Column name="VOUCHTYPE" alias="BCVOUCHTYPE" header="主要担保方式" dataType="STRING"  tag="" code="代码取数|VouchType" />  
+				<Column name="RISKRATE" alias="BCRISKRATE" header="综合风险度" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="RISKGRADE" alias="BCRISKGRADE" header="风险度" dataType="STRING"  tag="" code="代码取数|BusinessRiskGrade" />  
+				<Column name="CONTRACTDATE" alias="BCCONTRACTDATE" header="合同生效日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="MATURITYDATE" alias="BCMATURITYDATE" header="合同到期日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="CONTRACTSTATUS" alias="BCCONTRACTSTATUS" header="合同状态" dataType="STRING"  tag="" code="代码取数|BusinessContractStatus" />  
+				<Column name="FINISHDATE" alias="BCFINISHDATE" header="合同终结日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="OPERATEORGID" alias="BCOPERATEORGID" header="经办机构" dataType="STRING"  tag="" code="" />  
+				<Column name="OPERATEUSERID" alias="BCOPERATEUSERID" header="经办人" dataType="STRING"  tag="" code="" />  
+				<Column name="OPERATEDATE" alias="BCOPERATEDATE" header="经办日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="INPUTORGID" alias="BCINPUTORGID" header="登记机构" dataType="STRING"  tag="" code="" />  
+				<Column name="INPUTUSERID" alias="BCINPUTUSERID" header="登记人" dataType="STRING"  tag="" code="" />  
+				<Column name="INPUTDATE" alias="BCINPUTDATE" header="登记日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="UPDATEDATE" alias="BCUPDATEDATE" header="更新日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="REMARK" alias="BCREMARK" header="备注" dataType="STRING"  tag="" code="" />  
+				<Column name="CLASSIFYRESULT" alias="BCCLASSIFYRESULT" header="风险分类" dataType="STRING"  tag="" code="代码取数|ClassifyGrade10" />  
+				<Column name="TEMPSAVEFLAG" alias="BCTEMPSAVEFLAG" header="暂存标志" dataType="STRING"  tag="" code="" />  
+				<Column name="MARKETCHANNELFLAG" alias="BCMARKETCHANNELFLAG" header="业务渠道" dataType="STRING"  tag="" code="代码取数|MarketChannelFlag" />  
+				<Column name="SYSTEMCHANNELFLAG" alias="BCSYSTEMCHANNELFLAG" header="业务来源" dataType="STRING"  tag="" code="代码取数|SystemChannelFlag" />  
+				<Column name="RPTTERMID" alias="BCRPTTERMID" header="还款组件编号（Term:RPT）" dataType="STRING"  tag="" code="" />  
+				<Column name="LOANRATETERMID" alias="BCLOANRATETERMID" header="利率组件编号（Term:RAT）" dataType="STRING"  tag="" code="" />  
+				<Column name="ACCOUNTINGORGID" alias="BCACCOUNTINGORGID" header="入账机构编号" dataType="STRING"  tag="" code="" />  
+				<Column name="PAYMENTTYPE" alias="BCPAYMENTTYPE" header="支付方式" dataType="STRING"  tag="" code="代码取数|PaymentType" />  
+				<Column name="PURPOSESUBTYPE" alias="BCPURPOSESUBTYPE" header="用途子类" dataType="STRING"  tag="" code="代码取数|CreditPurposeSubType" />  
+				<Column name="CLASSIFYMETHOD" alias="BCCLASSIFYMETHOD" header="风险分类方式" dataType="STRING"  tag="" code="代码取数|ClassifyMethod" />  
+				<Column name="NONSTDINDICATOR" alias="BCNONSTDINDICATOR" header="特殊业务标示" dataType="STRING"  tag="" code="代码取数|NonstandardIndicator" />  
+				<Column name="BALANCE" alias="BCBALANCE" header="本金余额" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="PRESERVEORGID" alias="BCPRESERVEORGID" header="保全机构" dataType="STRING"  tag="" code="" />  
+				<Column name="PRESERVEUSERID" alias="BCPRESERVEUSERID" header="保全人" dataType="STRING"  tag="" code="" />  
+				<Column name="EXECUTIVEORGID" alias="BCEXECUTIVEORGID" header="管户机构" dataType="STRING"  tag="" code="" />  
+				<Column name="EXECUTIVEUSERID" alias="BCEXECUTIVEUSERID" header="管户人" dataType="STRING"  tag="" code="" />  
+				<Column name="DATASOURCE" alias="BCDATASOURCE" header="数据移植标示" dataType="STRING"  tag="" code="" />  
+				<Column name="BILLMAILFLAG" alias="BCBILLMAILFLAG" header="是否寄送账单" dataType="STRING"  tag="" code="代码取数|YesNo" />  
+				<Column name="BILLADDRESSTYPE" alias="BCBILLADDRESSTYPE" header="账单寄送地址" dataType="STRING"  tag="" code="代码取数|AddressType" />  
+				<Column name="EXCEPTREASON" alias="BCEXCEPTREASON" header="例外贷款原因" dataType="STRING"  tag="" code="代码取数|ExceptCreditReason" />  
+				<Column name="PUTOUTCLAUSE" alias="BCPUTOUTCLAUSE" header="放款前落实条件" dataType="STRING"  tag="" code="" />  
+				<Column name="AFTERREQUIREMENT" alias="BCAFTERREQUIREMENT" header="贷后管理要求" dataType="STRING"  tag="" code="" />  
+				<Column name="SPECIALARGEEMENT" alias="BCSPECIALARGEEMENT" header="合同特殊条款约定" dataType="STRING"  tag="" code="" />  
+				<Column name="CONTRACTAPPENDIX" alias="BCCONTRACTAPPENDIX" header="合同附件" dataType="STRING"  tag="" code="" />  
+				<Column name="BUSINESSTERMDAY" alias="BCBUSINESSTERMDAY" header="期限（天）" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="CLTRORIGINALVALUE" alias="BCCLTRORIGINALVALUE" header="押品原始评估价值" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="CLTRLASTVALUE" alias="BCCLTRLASTVALUE" header="押品最近评估价值" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="CLTRLASTVALUEDATE" alias="BCCLTRLASTVALUEDATE" header="押品最近评估日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="LASTINSPECTDATE" alias="BCLASTINSPECTDATE" header="上次检查日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="CHECKFREQUENCY" alias="BCCHECKFREQUENCY" header="检查频率(月)" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="CLASSIFYRESULT5" alias="BCCLASSIFYRESULT5" header="五级分类结果" dataType="STRING"  tag="" code="代码取数|ClassifyGrade5" />  
+				<Column name="BUSINESSSTATUS" alias="BCBUSINESSSTATUS" header="业务形态" dataType="STRING"  tag="" code="代码取数|BusinessStatus" />  
+				<Column name="FUNDREPAYTYPE" alias="BCFUNDREPAYTYPE" header="公积金冲还贷方式" dataType="STRING"  tag="" code="代码取数|FundRepayType" />  
+				<Column name="FUNDREPAYMONTH" alias="BCFUNDREPAYMONTH" header="公积金冲还贷月份" dataType="STRING"  tag="" code="代码取数|FundRepayMonth" />  
+				<Column name="LOANTYPE" alias="BCLOANTYPE" header="核心业务种类" dataType="STRING"  tag="" code="代码取数|BusinessType_Core" />  
+				<Column name="MAXODTIMES" alias="BCMAXODTIMES" header="最高逾期期数" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="ACCUFUNDREPAYFLAG" alias="BCACCUFUNDREPAYFLAG" header="是否可以用公积金充还标识" dataType="STRING"  tag="" code="代码取数|YesNo" />  
+				<Column name="GUARANTYTYPE" alias="BCGUARANTYTYPE" header="担保类型(五位：1-信用0-保证0-抵押0-质押0-履约保险)" dataType="STRING"  tag="" code="" />  
+				<Column name="OVERDUEDATE" alias="BCOVERDUEDATE" header="当前最早逾期日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="LCATIMES" alias="BCLCATIMES" header="逾期期数" dataType="NUMBERSCOPE"  tag="" code="" />  
+				<Column name="DUEBILLSERIALNO" alias="BCDUEBILLSERIALNO" header="借据编号" dataType="STRING"  tag="" code="" />  
+			</Columns>
+		</DataObject>
+		
+		
+		<DataObject name="ACCT_LOAN">
+			<Columns>
+				<Column name="SERIALNO" alias="BDSERIALNO" header="贷款账号" dataType="STRING" tag="" code="" />
+				<Column name="ACCOUNTNO" alias="BDACCOUNTNO" header="贷款文本账号" dataType="STRING" tag="" code="" />
+				<Column name="CONTRACTSERIALNO" alias="BDCONTRACTSERIALNO" header="关联合同号" dataType="STRING" tag="" code="" />
+				<Column name="CUSTOMERID" alias="BDCUSTOMERID" header="客户编号" dataType="STRING" tag="" code="" />
+				<Column name="CUSTOMERNAME" alias="BDCUSTOMERNAME" header="客户名称" dataType="STRING" tag="" code="" />
+				<Column name="BUSINESSTYPE" alias="BDBUSINESSTYPE" header="业务品种" dataType="STRING" tag="" code="取基础产品|BusinessType" />
+				<Column name="PRODUCTID" alias="BDPRODUCTID" header="产品编号" dataType="STRING" tag="" code="取方案产品|ProductID" />
+				<Column name="VERSIONID" alias="BDVERSIONID" header="版本编号" dataType="STRING" tag="" code="" />
+				<Column name="CURRENCY" alias="BDCURRENCY" header="贷款币种" dataType="STRING" tag="" code="" />
+				<Column name="BUSINESSSUM" alias="BDBUSINESSSUM" header="贷款金额" dataType="NUMBERSCOPE" length="20" scale="2" />
+				<Column name="PUTOUTDATE" alias="BDPUTOUTDATE" header="贷款发放日期" dataType="DATETIME" tag="" code="" />
+				<Column name="MATURITYDATE" alias="BDMATURITYDATE" header="贷款到期日" dataType="DATETIME" tag="" code="" />
+				<Column name="ORIGINALMATURITYDATE" alias="BDORIGINALMATURITYDATE" header="贷款原始到期日" dataType="DATETIME" tag="" code="" />
+				<Column name="ACCOUNTINGORGID" alias="BDACCOUNTINGORGID" header="贷款入账机构" dataType="STRING" tag="" code="" />
+				<Column name="OPERATEORGID" alias="BDOPERATEORGID" header="经办行号（用做异地支行标识）" dataType="STRING" tag="" code="" />
+				<Column name="LOANSTATUS" alias="BDLOANSTATUS" header="贷款状态（Code:LoanStatus）" dataType="STRING" tag="" code="代码取数|LoanStatus" />
+				<Column name="FINISHDATE" alias="BDFINISHDATE" header="结清日期" dataType="DATETIME" tag="" code="" />
+				<Column name="BUSINESSDATE" alias="BDBUSINESSDATE" header="贷款处理日期" dataType="DATETIME" tag="" code="" />
+				<Column name="LOCKFLAG" alias="BDLOCKFLAG" header="锁定标识" dataType="STRING" tag="" code="" />
+				<Column name="OVERDUEDAYS" alias="BDOVERDUEDAYS" header="逾期天数" dataType="NUMBERSCOPE" />
+				<Column name="CLASSIFYRESULT" alias="BDCLASSIFYRESULT" header="分类结果" dataType="STRING" tag="" code="代码取数|ClassifyResult" />
+				<Column name="PUTOUTSERIALNO" alias="BDPUTOUTSERIALNO" header="出账流水号" dataType="STRING" tag="" code="" />
+				<Column name="APPROVESERIALNO" alias="BDAPPROVESERIALNO" header="审批流水号" dataType="STRING" tag="" code="" />
+				<Column name="APPLYSERIALNO" alias="BDAPPLYSERIALNO" header="申请流水号" dataType="STRING" tag="" code="" />
+				<Column name="BUSINESSSTATUS" alias="BDBUSINESSSTATUS" header="业务状态" dataType="STRING" tag="" code="代码取数|BusinessStatus" />
+			</Columns>
+		</DataObject>
+		
+		<DataObject name="CUSTOMER_INFO">
+			<Columns>
+				<Column name="CUSTOMERID" alias="CICUSTOMERID" header="客户编号" dataType="STRING"  tag="" code="" />  
+				<Column name="CUSTOMERNAME" alias="CICUSTOMERNAME" header="客户名称" dataType="STRING"  tag="" code="" />  
+				<Column name="CUSTOMERTYPE" alias="CICUSTOMERTYPE" header="客户类型" dataType="STRING"  tag="" code="代码取数|CustomerType" />  
+				<Column name="CERTTYPE" alias="CICERTTYPE" header="证件类型" dataType="STRING"  tag="" code="代码取数|CustomerCertType" />  
+				<Column name="CERTID" alias="CICERTID" header="证件号码" dataType="STRING"  tag="" code="" />  
+				<Column name="INPUTORGID" alias="CIINPUTORGID" header="登记机构" dataType="STRING"  tag="" code="" />  
+				<Column name="INPUTUSERID" alias="CIINPUTUSERID" header="登记人" dataType="STRING"  tag="" code="" />  
+				<Column name="INPUTDATE" alias="CIINPUTDATE" header="登记日期" dataType="DATETIME"  tag="" code="" />  
+				<Column name="REMARK" alias="CIREMARK" header="备注" dataType="STRING"  tag="" code="" />  
+				<Column name="MFCUSTOMERID" alias="CIMFCUSTOMERID" header="ECIF客户号" dataType="STRING"  tag="" code="" />  
+				<Column name="STATUS" alias="CISTATUS" header="客户状态" dataType="STRING"  tag="" code="代码取数|CustomerStatus" />  
+				<Column name="ISSUECOUNTRY" alias="CIISSUECOUNTRY" header="证件签发国家" dataType="STRING"  tag="" code="代码取数|Country" />  
+				<Column name="OBJECTNO" alias="CIOBJECTNO" header="对象编号" dataType="STRING"  tag="" code="" />  
+				<Column name="OBJECTTYPE" alias="CIOBJECTTYPE" header="对象类型" dataType="STRING"  tag="" code="" />  
+				<Column name="ENGLISHNAME" alias="CIENGLISHNAME" header="客户英文名称" dataType="STRING"  tag="" code="" />  
+				<Column name="DATASOURCE" alias="CIDATASOURCE" header="数据移植标示" dataType="STRING"  tag="" code="" />  
+				<Column name="SMEMONOPOLYFLAG" alias="CISMEMONOPOLYFLAG" header="是否小微专营客户" dataType="STRING"  tag="" code="代码取数|YesNo" />  
+				<Column name="CSTLEVELTYPE" alias="CICSTLEVELTYPE" header="客户等级类型" dataType="STRING"  tag="" code="" />  
+				<Column name="CSTLEVEL" alias="CICSTLEVEL" header="客户等级" dataType="STRING"  tag="" code="" />  
+				<Column name="CSTRISKLEVEL" alias="CICSTRISKLEVEL" header="客户预警等级" dataType="STRING"  tag="" code="代码取数|RiskWarningLevel" />  
+				<Column name="ISCONSUMECREDIT" alias="CIISCONSUMECREDIT" header="是否消费信贷客户" dataType="STRING"  tag="" code="代码取数|YesNo" />  
+				<Column name="CONSUMECREDITDATE" alias="CICONSUMECREDITDATE" header="消费信贷客户进入时间" dataType="DATETIME"  tag="" code="" />  
+			</Columns>
+		</DataObject>
+   </DataObjects>
+</Domain>
+
+

@@ -1,0 +1,1 @@
+<%@ include file="/Frame/resources/include/include_view.jspf"%>

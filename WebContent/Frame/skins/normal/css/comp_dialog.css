@@ -1,0 +1,24 @@
+body {
+    background: url(../images/compdialog_bg.png) repeat-x scroll 0 0 transparent;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}
+.opencomp_head {
+	background-image: url(../images/pop_bg.png);
+	border-color: #a5a;
+}
+.right_menu a {
+    background:none;
+}
+.right_menu a:hover{
+	/*Ðü¸¡±³¾°Í¼*/
+    background: url(../images/cpd_right_hover.gif) no-repeat center;
+    color: #FFFFFF;
+}
+.right_menu{
+	/*±³¾°Í¼*/
+	background: url(../images/cpd_right_bg.png) no-repeat;
+}

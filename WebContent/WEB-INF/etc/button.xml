@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<button>
+	<icon text="新增" value="btn_icon_add" />
+	<icon text="删除" value="btn_icon_delete" />
+	<icon text="详情" value="btn_icon_detail" />
+	<icon text="编辑" value="btn_icon_edit" /><icon text="填写调查报告" value="btn_icon_edit" />
+	<icon text="保存" value="btn_icon_save" /><icon text="保存并返回" value="btn_icon_save" />
+	<icon text="展开搜索" value="btn_icon_search" />
+<!--
+	<icon text="新增" value="btn_icon_add" />
+	<icon text="删除" value="btn_icon_delete" />
+	<icon text="详情" value="btn_icon_detail" />
+	<icon text="编辑" value="btn_icon_edit" />
+	<icon text="保存" value="btn_icon_save" /> 	
+	<icon text="校验" value="btn_icon_check" />
+	<icon text="提交" value="btn_icon_submit" />
+	<icon text="信息" value="btn_icon_information" />
+	<icon text="退出" value="btn_icon_exit" />
+	<icon text="刷新" value="btn_icon_refresh" />
+	<icon text="关闭" value="btn_icon_close" />
+	<icon text="向上" value="btn_icon_up" />
+	<icon text="向下" value="btn_icon_down" />
+	<icon text="向左" value="btn_icon_left" />
+	<icon text="向右" value="btn_icon_right" />
+	<icon text="流程" value="btn_icon_workflow" />
+	<icon text="搜索" value="btn_icon_search" />
+	<icon text="其他系统" value="btn_icon_othersys" />
+	<icon text="修改密码" value="btn_icon_modifypwd" />
+	<icon text="主页" value="btn_icon_home" />
+	<icon text="帮助" value="btn_icon_help" />
+ -->
+</button>

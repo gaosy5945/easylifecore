@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.rds" >
+		<class name="INMESSAGE" label="" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="请求方代码" type="STRING" length="40" />
+				<attribute name="SystemID" label="请求方代码" type="STRING" length="8" />
+				<attribute name="ALIAS" label="交易码" type="STRING" length="8" />
+				<attribute name="SystemDate" label="交易日期" type="STRING" length="8" />
+				<attribute name="SystemTime" label="交易时间" type="STRING" length="6" />
+				<attribute name="SIGNATURE" label="所调用策略流的签名" type="STRING" length="8" />
+				<attribute name="InputDataArea" label="输入的Physical Layout" type="STRING" length="16" />
+				<attribute name="OutputDataArea" label="输出的Physical Layout" type="STRING" length="16" />
+				<attribute name="TraceLevel" label="调用DA时的日志级别" type="STRING" length="2" />
+				<attribute name="Position" label="调用位置" type="STRING" length="2" />
+				<attribute name="SEQID" label="调用唯一序号" type="STRING" length="40" />
+				<attribute name="InterfaceVer" label="策略接口版本" type="STRING" length="10" />
+				<attribute name="contractno" label="合同号" type="STRING" length="20" />
+				<attribute name="cino" label="借据号" type="STRING" length="16" />
+				<attribute name="custno" label="申请人客户号" type="STRING" length="10" />
+				<attribute name="champLabel" label="冠军/挑战者标签" type="STRING" length="40" />
+				<attribute name="lntype" label="产品大类" type="STRING" length="3" />
+				<attribute name="lnid" label="产品小类" type="STRING" length="6" />
+				<attribute name="guattype" label="担保类型" type="STRING" length="5" />
+				<attribute name="term" label="贷款申请期限" type="STRING" length="6" />
+				<attribute name="lnamt" label="贷款申请金额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="fltintrate" label="贷款申请利率浮动比例" type="DOUBLE" length="12" scale="4" />
+				<attribute name="brcode" label="分行代码" type="STRING" length="4" />
+				<attribute name="monthAmt" label="本次贷款的月还款额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="gjjMonthAmt" label="与本笔贷款关联的公积金贷款月还款额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="gjjLnamt" label="与本笔贷款关联的公积金贷款金额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="highLimit" label="产品最大金额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="lowLimit" label="产品最小金额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="jldLnbal" label="接力贷原贷款当前本金余额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="jldTrm" label="接力贷原贷款当前状态" type="STRING" length="1" />
+				<attribute name="aimAmt" label="标的总价" type="DOUBLE" length="24" scale="2" />
+				<attribute name="autoRefuseFlag" label="曾被系统自动拒绝标识" type="STRING" length="1" />
+				<attribute name="reinitiateReason" label="重新发起原因" type="STRING" length="1" />
+				<attribute name="exceptionLoan" label="例外贷款标志" type="STRING" length="1" />
+				<attribute name="conjunctCreditType" label="共同还款人最差信用等级" type="STRING" length="1" />
+				<attribute name="conjunctFamilyIncome" label="共同还款人家庭全部月收入" type="DOUBLE" length="24" scale="2" />
+				<attribute name="conjunctFamilyDebt" label="共同还款人家庭全部月债务" type="DOUBLE" length="24" scale="2" />
+				<attribute name="paymentfrequency" label="还款频率" type="STRING" length="1" />
+				<attribute name="baseRate" label="基础利率" type="DOUBLE" length="12" scale="4" />
+				<attribute name="conjunctLast12mTotOvdTimes" label="共同还款人过去12个月贷款累计逾期次数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="conjunctLast12mMaxOvdPeri" label="共同还款人过去12个月贷款最长逾期期数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="birthDate" label="申请人出生日期" type="STRING" length="40" />
+				<attribute name="country" label="申请人国籍或所属地区" type="STRING" length="3" />
+				<attribute name="dwellNum" label="在境内连续居住年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="nativeFlag" label="是否本地户籍" type="STRING" length="1" />
+				<attribute name="nativeDwellNum" label="在本地连续居住年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="fixedAbodeFlag" label="在本地是否有固定住所" type="STRING" length="1	" />
+				<attribute name="sex" label="申请人性别" type="STRING" length="1" />
+				<attribute name="eduLevel" label="申请人教育程度" type="STRING" length="1" />
+				<attribute name="marriage" label="申请人婚姻状况" type="STRING" length="1" />
+				<attribute name="trade" label="申请人所在行业" type="STRING" length="2" />
+				<attribute name="liveProperty" label="居住状态" type="STRING" length="1" />
+				<attribute name="indvIncome" label="申请人全部月收入" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mateIndvIncome" label="申请人配偶全部月收入" type="DOUBLE" length="24" scale="2" />
+				<attribute name="totLnbal" label="申请人在我行现有贷款总余额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="totHouseLnbal" label="申请人在我行现有住房贷款总余额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="bizHouseCnt" label="申请人及其配偶在我行已有商房贷款的笔数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="proveFlag" label="非本地居民是否有1年以上当地纳税证明或社会保险缴纳证明" type="STRING" length="1" />
+				<attribute name="presentTrmClass" label="申请人在我行现有贷款状态" type="STRING" length="1" />
+				<attribute name="matePresentTrmClass" label="申请人配偶在我行现有贷款状态" type="STRING" length="1" />
+				<attribute name="tyBlackListFlag" label="申请人同业逾期黑名单标识" type="STRING" length="1" />
+				<attribute name="zxBlackListFlag" label="申请人助学贷款黑名单标识" type="STRING" length="1" />
+				<attribute name="hnBlackListFlag" label="申请人行内黑名单客户标识" type="STRING" length="1" />
+				<attribute name="gjjTotPayAmt" label="公积金月缴额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="isspdbvip" label="申请人是否为浦发银行白金卡客户" type="STRING" length="1" />
+				<attribute name="aimMortFlag" label="是否以此标的为抵押" type="STRING" length="1" />
+				<attribute name="houseProperty" label="房屋属性" type="STRING" length="1" />
+				<attribute name="houseType" label="房屋类型" type="STRING" length="1" />
+				<attribute name="policyNum" label="本次贷款实行第几套住房信贷政策" type="DOUBLE" length="24" scale="0" />
+				<attribute name="calcPolicyNum" label="贷款人以及配偶征信累计住房套数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="houseAcreage" label="所购房面积" type="DOUBLE" length="24" scale="2" />
+				<attribute name="houseAge" label="所购房房龄" type="DOUBLE" length="24" scale="0" />
+				<attribute name="housePrice" label="所购房屋交易价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="evaluateValue" label="所购房屋评估价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="landAppUseNum" label="所购房审批土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="landRemainUseNum" label="所购房当前剩余土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="autoOwner" label="所购车产权所属" type="STRING" length="1" />
+				<attribute name="autoHands" label="所购车类型" type="STRING" length="1" />
+				<attribute name="autoProperty" label="所购车产地" type="STRING" length="1" />
+				<attribute name="autoType" label="所购车种类" type="STRING" length="1" />
+				<attribute name="autoUsage" label="所购车用途" type="STRING" length="1" />
+				<attribute name="autoLicense" label="所购车牌照" type="STRING" length="1" />
+				<attribute name="autoPrice" label="所购车价格" type="DOUBLE" length="24" scale="2" />
+				<attribute name="autoBuyDate" label="车辆购置日期" type="STRING" length="40" />
+				<attribute name="houseOweFlag" label="名下有无房产" type="STRING" length="1" />
+				<attribute name="highGradeFlag" label="本行优质客户" type="STRING" length="1" />
+				<attribute name="mortTotNum" label="抵押物数量" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mortType1" label="抵押物类型" type="STRING" length="1" />
+				<attribute name="mortAcreage1" label="抵押房面积" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortFinishDate1" label="抵押房房龄(房屋竣工日期)" type="STRING" length="40" />
+				<attribute name="mortValue1" label="抵押物评估价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortRemainUseNum1" label="抵押房屋当前剩余土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mortRights1" label="抵押物担保主债权" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortType2" label="抵押物类型" type="STRING" length="1" />
+				<attribute name="mortAcreage2" label="抵押房面积" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortFinishDate2" label="抵押房房龄(房屋竣工日期)" type="STRING" length="40" />
+				<attribute name="mortValue2" label="抵押物评估价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortRemainUseNum2" label="抵押房屋当前剩余土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mortRights2" label="抵押物担保主债权" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortType3" label="抵押物类型" type="STRING" length="1" />
+				<attribute name="mortAcreage3" label="抵押房面积" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortFinishDate3" label="抵押房房龄(房屋竣工日期)" type="STRING" length="40" />
+				<attribute name="mortValue3" label="抵押物评估价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortRemainUseNum3" label="抵押房屋当前剩余土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mortRights3" label="抵押物担保主债权" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortType4" label="抵押物类型" type="STRING" length="1" />
+				<attribute name="mortAcreage4" label="抵押房面积" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortFinishDate4" label="抵押房房龄(房屋竣工日期)" type="STRING" length="40" />
+				<attribute name="mortValue4" label="抵押物评估价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortRemainUseNum4" label="抵押房屋当前剩余土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mortRights4" label="抵押物担保主债权" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortType5" label="抵押物类型" type="STRING" length="1" />
+				<attribute name="mortAcreage5" label="抵押房面积" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortFinishDate5" label="抵押房房龄(房屋竣工日期)" type="STRING" length="40" />
+				<attribute name="mortValue5" label="抵押物评估价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortRemainUseNum5" label="抵押房屋当前剩余土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mortRights5" label="抵押物担保主债权" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortType6" label="抵押物类型" type="STRING" length="1" />
+				<attribute name="mortAcreage6" label="抵押房面积" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortFinishDate6" label="抵押房房龄(房屋竣工日期)" type="STRING" length="40" />
+				<attribute name="mortValue6" label="抵押物评估价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortRemainUseNum6" label="抵押房屋当前剩余土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mortRights6" label="抵押物担保主债权" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortType7" label="抵押物类型" type="STRING" length="1" />
+				<attribute name="mortAcreage7" label="抵押房面积" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortFinishDate7" label="抵押房房龄(房屋竣工日期)" type="STRING" length="40" />
+				<attribute name="mortValue7" label="抵押物评估价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortRemainUseNum7" label="抵押房屋当前剩余土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mortRights7" label="抵押物担保主债权" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortType8" label="抵押物类型" type="STRING" length="1" />
+				<attribute name="mortAcreage8" label="抵押房面积" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortFinishDate8" label="抵押房房龄(房屋竣工日期)" type="STRING" length="40" />
+				<attribute name="mortValue8" label="抵押物评估价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortRemainUseNum8" label="抵押房屋当前剩余土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mortRights8" label="抵押物担保主债权" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortType9" label="抵押物类型" type="STRING" length="1" />
+				<attribute name="mortAcreage9" label="抵押房面积" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortFinishDate9" label="抵押房房龄(房屋竣工日期)" type="STRING" length="40" />
+				<attribute name="mortValue9" label="抵押物评估价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortRemainUseNum9" label="抵押房屋当前剩余土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mortRights9" label="抵押物担保主债权" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortType10" label="抵押物类型" type="STRING" length="1" />
+				<attribute name="mortAcreage10" label="抵押房面积" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortFinishDate10" label="抵押房房龄(房屋竣工日期)" type="STRING" length="40" />
+				<attribute name="mortValue10" label="抵押物评估价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mortRemainUseNum10" label="抵押房屋当前剩余土地使用年限" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mortRights10" label="抵押物担保主债权" type="DOUBLE" length="24" scale="2" />
+				<attribute name="impTotNum" label="质押单证数量" type="DOUBLE" length="24" scale="0" />
+				<attribute name="impawnType1" label="质押单证类型" type="STRING" length="1" />
+				<attribute name="impawnCurcd1" label="质押单证币种" type="STRING" length="3" />
+				<attribute name="impawnRmbValue1" label="质押单证票面价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="impawnType2" label="质押单证类型" type="STRING" length="1" />
+				<attribute name="impawnCurcd2" label="质押单证币种" type="STRING" length="3" />
+				<attribute name="impawnRmbValue2" label="质押单证票面价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="impawnType3" label="质押单证类型" type="STRING" length="1" />
+				<attribute name="impawnCurcd3" label="质押单证币种" type="STRING" length="3" />
+				<attribute name="impawnRmbValue3" label="质押单证票面价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="impawnType4" label="质押单证类型" type="STRING" length="1" />
+				<attribute name="impawnCurcd4" label="质押单证币种" type="STRING" length="3" />
+				<attribute name="impawnRmbValue4" label="质押单证票面价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="impawnType5" label="质押单证类型" type="STRING" length="1" />
+				<attribute name="impawnCurcd5" label="质押单证币种" type="STRING" length="3" />
+				<attribute name="impawnRmbValue5" label="质押单证票面价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="impawnType6" label="质押单证类型" type="STRING" length="1" />
+				<attribute name="impawnCurcd6" label="质押单证币种" type="STRING" length="3" />
+				<attribute name="impawnRmbValue6" label="质押单证票面价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="impawnType7" label="质押单证类型" type="STRING" length="1" />
+				<attribute name="impawnCurcd7" label="质押单证币种" type="STRING" length="3" />
+				<attribute name="impawnRmbValue7" label="质押单证票面价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="impawnType8" label="质押单证类型" type="STRING" length="1" />
+				<attribute name="impawnCurcd8" label="质押单证币种" type="STRING" length="3" />
+				<attribute name="impawnRmbValue8" label="质押单证票面价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="impawnType9" label="质押单证类型" type="STRING" length="1" />
+				<attribute name="impawnCurcd9" label="质押单证币种" type="STRING" length="3" />
+				<attribute name="impawnRmbValue9" label="质押单证票面价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="impawnType10" label="质押单证类型" type="STRING" length="1" />
+				<attribute name="impawnCurcd10" label="质押单证币种" type="STRING" length="3" />
+				<attribute name="impawnRmbValue10" label="质押单证票面价值" type="DOUBLE" length="24" scale="2" />
+				<attribute name="haveInfoFlag" label="申请人是否有征信记录标识" type="DOUBLE" length="24" scale="0" />
+				<attribute name="haveGdActnoFlag" label="申请人是否有个贷账户记录" type="DOUBLE" length="24" scale="0" />
+				<attribute name="haveCreditActnoFlag" label="申请人是否有信用卡账户记录" type="DOUBLE" length="24" scale="0" />
+				<attribute name="preTrmClass" label="申请人当前贷款状态" type="DOUBLE" length="24" scale="0" />
+				<attribute name="last12mTotOvdTimes" label="申请人过去12个月贷款累计逾期次数11年6月份查，10年6月份至11年5月是12个的观查期各笔单独计算、取最大非字母的累计次数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="last6mMaxOvdPeri" label="申请人过去6个月贷款最长逾期期数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="last12mMaxOvdPeri" label="申请人过去12个月贷款最长逾期期数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="last24mWorstStat" label="申请人征信报告上过去24个月内贷款的最差还款状态" type="DOUBLE" length="24" scale="0" />
+				<attribute name="totOvdTimes" label="申请人征信报告上贷款累计逾期次数取最大值包括各种非正常状态的记录" type="DOUBLE" length="24" scale="0" />
+				<attribute name="maxOvdPeri" label="申请人征信报告上贷款最高逾期期数包括各种非正常状态的记录" type="DOUBLE" length="24" scale="0" />
+				<attribute name="tillNowMaxOvdPeri" label="过去所有时间所有信贷产品最大的逾期期数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="maxLoginMonths" label="所有贷款帐户最长在册时间（月）" type="DOUBLE" length="24" scale="0" />
+				<attribute name="exp75perCnt" label="信用额度使用率Exposure为75%的信用卡个数大于75%含贷记卡和准贷记卡" type="DOUBLE" length="24" scale="0" />
+				<attribute name="exp30perCnt" label="信用额度使用率Exposure为 30%的信用卡个数大于30%只包含贷记卡" type="DOUBLE" length="24" scale="0" />
+				<attribute name="dkHaveLnbalCnt" label="个人贷款有余额的帐户数量" type="DOUBLE" length="24" scale="0" />
+				<attribute name="last12mCreditQueryCnt" label="过去12个月中信贷审核查询次数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="elseDebtMonth" label="申请人其他债务月偿付额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="presentCreditStat" label="申请人当前信用卡状态只包含贷记卡" type="DOUBLE" length="24" scale="0" />
+				<attribute name="presentCreditOvdamt" label="申请人当前信用卡拖欠金额只包含贷记卡" type="DOUBLE" length="24" scale="2" />
+				<attribute name="last12mCreditLowestCnt" label="申请人征信报告上过去12个月信用卡未还最低还款额的次数只包含贷记卡" type="DOUBLE" length="24" scale="0" />
+				<attribute name="last24mCreditWorstStat" label="申请人征信报告上过去24个月内信用卡的最差还款状态含贷记卡和准贷记卡" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateHaveCreditFlag" label="申请人配偶是否有征信记录标识" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateHaveGdActnoFlag" label="申请人配偶是否有个贷账户记录" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateHaveCreditActnoFlag" label="申请人配偶是否有信用卡账户记录" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateNowTrmClass" label="申请人配偶当前贷款状态" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateLast12mTotOvdTimes" label="申请人配偶过去12个月贷款累计逾期次数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateLast6mMaxOvdPeri" label="申请人配偶过去6个月贷款最长逾期期数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateLast12mMaxOvdPeri" label="申请人配偶过去12个月贷款最长逾期期数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateLast24mWorstStat" label="申请人配偶征信报告上过去24个月内贷款的最差还款状态" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateMaxTotOvdTimes" label="申请人配偶征信报告上贷款最高累计逾期次数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateMaxOvdPeri" label="申请人配偶征信报告上贷款最高连续逾期期数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateElseDebtMonth" label="申请人配偶的其他债务月偿付额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="matePresentCreditStat" label="申请人配偶当前信用卡状态只包含贷记卡" type="DOUBLE" length="24" scale="0" />
+				<attribute name="matePresentCreditOvdamt" label="申请人配偶当前信用卡拖欠金额只包含贷记卡" type="DOUBLE" length="24" scale="2" />
+				<attribute name="mateLast12mCreditLowestCnt" label="申请人配偶征信报告上过去12个月信用卡未还最低还款额的次数只包含贷记卡" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateLast24mCreditWorstStat" label="申请人配偶征信报告上过去24个月内信用卡的最差还款状态含贷记卡和准贷记卡" type="DOUBLE" length="24" scale="0" />
+				<attribute name="last12mAllQueryCnt" label="过去12个月中所有查询次数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="unmonthlyRtnCnt" label="征信报告显示，申请人名下有还款频率为非按月还款的未结清贷款" type="DOUBLE" length="24" scale="0" />
+				<attribute name="last24mTotOvdTimes" label="过去24个月贷款累计逾期次数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateUnmonthlyRtnCnt" label="征信报告显示，申请人配偶名下有还款频率为非按月还款的未结清贷款" type="DOUBLE" length="24" scale="0" />
+				<attribute name="mateLast24mTotOvdTimes" label="过去24个月贷款累计逾期次数" type="DOUBLE" length="24" scale="0" />
+				<attribute name="conjunctUnmonthlyRtnCnt" label="共同还款人有还款频率为非按月还款的未结清贷款" type="DOUBLE" length="24" scale="0" />
+				<attribute name="lowRiskTreasureSum" label="借款人名下低风险资产之和" type="DOUBLE" length="24" scale="2" />
+				<attribute name="compOperatorYear" label="借款人在相关行业的经营年限" type="STRING" length="1" />
+				<attribute name="firstPayIncome" label="可作为第一还款来源的年净收入" type="DOUBLE" length="24" scale="2" />
+				<attribute name="compBusLocation" label="企业的业务定位" type="STRING" length="1" />
+				<attribute name="isBigCompDownstream" label="是否大型企业的上下游行业" type="STRING" length="1" />
+				<attribute name="compSaleValue" label="企业销售增长情况" type="STRING" length="1" />
+				<attribute name="compCompetitionEdge" label="企业的竞争优势" type="STRING" length="1" />
+				<attribute name="compDevelopProspect" label="企业的发展前景" type="STRING" length="1" />
+				<attribute name="compFinanceAudit" label="企业财务报表的审计意见" type="STRING" length="1" />
+				<attribute name="compEstablishDate" label="企业成立日期" type="STRING" length="40" />
+				<attribute name="isCompNative" label="企业的主要经营地点是否在本地" type="STRING" length="1" />
+				<attribute name="spdbIsaccounts" label="浦发银行是否为主要结算行" type="STRING" length="1" />
+				<attribute name="isexistShareholder" label="是否存在多个股东在我行、他行授信" type="STRING" length="1" />
+				<attribute name="collateralIsBranch" label="抵押物是否在分行经营区域内" type="STRING" length="1" />
+				<attribute name="assetsLiabilities" label="借款人综合资产负债比" type="DOUBLE" length="24" scale="0" />
+				<attribute name="isHaveCompInfo" label="是否有企业征信" type="STRING" length="1" />
+				<attribute name="latelyLoanStatus" label="当前贷款状态" type="DOUBLE" length="24" scale="0" />
+				<attribute name="latelyNotwipeLoanAmt" label="当前未结清贷款总余额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="latelyNotwipeBadLoanAmt" label="当前未结清不良贷款余额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="tot_credit_amt" label="授信额度" type="DOUBLE" length="24" scale="2" />
+				<attribute name="consumepool_amt" label="消费额度" type="DOUBLE" length="24" scale="2" />
+				<attribute name="creditpool_amt" label="信用额度" type="DOUBLE" length="24" scale="2" />
+				<attribute name="workingpool_amt" label="经营性额度" type="DOUBLE" length="24" scale="2" />
+				<attribute name="consumepool_bal" label="授信项下消费贷款余额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="workingpool_bal" label="授信项下经营贷款余额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="creditpool_bal" label="授信项下信用贷款余额" type="DOUBLE" length="24" scale="2" />
+				<attribute name="unicredit_flag" label="是否授信支用申请" type="STRING" length="1" />
+				<attribute name="current_job_year" label="申请人在职工作时长" type="DOUBLE" length="24" scale="0" />
+				<attribute name="objectType" label="对象类型" type="STRING" length="40" />
+				<attribute name="objectNo" label="对象编号" type="STRING" length="40" />
+				<attribute name="decisionFlg" label="调用类型(CodeNo:CallType)" type="STRING" length="10" />
+				<attribute name="impawnOtherLoanBal" label="共用质押品关联的所有贷款余额" type="DOUBLE" length="15" scale="2"/>
+				<attribute name="mortagageOtherLoanBal" label="共用抵押品关联的所有贷款余额" type="DOUBLE" length="15" scale="2"/>
+				<attribute name="YDD_PLAN" label="易贷多业务方案" type="STRING" length="1" />
+				<attribute name="DEBT_RATIO" label="资产负债率" type="STRING" length="1" />
+				<attribute name="LAST2Y_INCOME_RATE" label="近二年销售收入或净利润年增长率" type="STRING" length="1" />
+				<attribute name="MAIN_INCOME_RATIO" label="主营业务收入占总收入比例" type="STRING" length="1" />
+				<attribute name="GUARANTEE_TYPE" label="抵押类类型" type="STRING" length="1" />
+				<attribute name="HOUSE_LEVEL" label="房屋等级" type="STRING" length="1" />
+				<attribute name="RTN_TYPE" label="还款方式" type="STRING" length="1" />
+			</attributes>			
+			<manager>
+				<managerProperties>
+				  <property name="table" value="INTF_RDS_IN_MESSAGE" />
+				  <property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+			
+		<class name="OUTMESSAGE" label="" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="CONTRACTNO" label="合同号" type="STRING" length="20"/>
+				<attribute name="CINO" label="借据号" type="STRING" length="16"/>
+				<attribute name="CUSTNO" label="申请人客户号" type="STRING" length="10"/>
+				<attribute name="RETURNCODE" label="Web Service调用结果" type="STRING" length="2"/>
+				<attribute name="ERRMESSAGE" label="错误说明" type="STRING" length="200"/>
+				<attribute name="SYSTEMID" label="系统ID" type="STRING" length="8"/>
+				<attribute name="EDITION" label="版本" type="STRING" length="4"/>
+				<attribute name="SEQID" label="调用唯一序号" type="STRING" length="40"/>
+				<attribute name="EDITIONDATE" label="版本时间" type="STRING" length="8"/>
+				<attribute name="ERRORCOUNT" label="返回错误代码数量" type="DOUBLE" length="24" scale="0"/>
+				<attribute name="DAERRMSG" label="返回错误代码" type="STRING" length="200"/>
+				<attribute name="DECISION_VERSION" label="策略版本" type="STRING" length="10"/>
+				<attribute name="CHAMPION_LABEL" label="冠军挑战者标签" type="STRING" length="40"/>
+				<attribute name="APPROVE_RESULT" label="正式审批结果(CodeNo:CallApproveResult)" type="STRING" length="2"/>
+				<attribute name="DECISION" label="策略建议" type="STRING" length="2"/>
+				<attribute name="DEC_AMOUNT" label="最终建议金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="DEC_INTRATE" label="建议利率级别" type="STRING" length="2"/>
+				<attribute name="DEC_FLOAT_RATE" label="建议利率浮动比例" type="DOUBLE" length="12" scale="4"/>
+				<attribute name="DEC_FLOAT_MODE" label="建议利率浮动方式" type="STRING" length="1"/>
+				<attribute name="DEC_GUARANTEE" label="担保方式建议" type="STRING" length="4"/>
+				<attribute name="SCORE" label="申请人申请评分" type="STRING" length="4"/>
+				<attribute name="RISK" label="申请人风险级别" type="STRING" length="2"/>
+				<attribute name="CREDIT" label="申请人信用等级" type="STRING" length="2"/>
+				<attribute name="MATE_CREDIT" label="申请人配偶信用等级" type="STRING" length="2"/>
+				<attribute name="TOGETHER_CREDIT" label="共同申请人信用等级" type="STRING" length="2"/>
+				<attribute name="APPLY_AMOUNT" label="客户申请贷款金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="GOVE_AMOUNT" label="政策规定可贷金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="MORT_TOTAL" label="总抵质押价值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CREDIT_LNBAL" label="客户可用信用额度" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="HIGH_LIMIT" label="产品最大金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="LOW_LIMIT" label="产品最小金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="COLLATERAL_TOTAL" label="抵质押物总市值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="LOAN_DTI" label="本笔贷款的DTI" type="DOUBLE" length="12" scale="4"/>
+				<attribute name="DEBT_DTI" label="含其它债务的DTI" type="DOUBLE" length="12" scale="4"/>
+				<attribute name="RISK_MORT" label="基于风险的可抵押价值" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="LOAN_LOWRISKTREASURESUM" label="贷款金额与借款人名下低风险资产之和的比例" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="LOAN_FIRSTPAYINCOME" label="贷款金额与借款人年净收入的比例" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="ASSETSLIABILITIES" label="借款人综合资产负债比" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="PD" label="PD" type="STRING" length="15"/>
+				<attribute name="EAD" label="EAD" type="STRING" length="15"/>
+				<attribute name="LGD" label="LGD" type="STRING" length="15"/>
+				<attribute name="EL" label="EL" type="STRING" length="15"/>
+				<attribute name="UL" label="UL" type="STRING" length="15"/>
+				<attribute name="ECONOMY" label="经济资本" type="STRING" length="15"/>
+				<attribute name="CLR_CLASS" label="EL分类" type="STRING" length="2"/>
+				<attribute name="RWA" label="风险加权权重" type="STRING" length="15"/>
+				<attribute name="RC" label="监管资本" type="STRING" length="15"/>
+				<attribute name="RISK_PRICE" label="风险定价" type="STRING" length="15"/>
+				<attribute name="BASE_PRICE" label="基础定价" type="STRING" length="15"/>
+				<attribute name="ADJUST_PRICE" label="浮动定价" type="STRING" length="15"/>
+				<attribute name="PDG" label="PD分组" type="STRING" length="15"/>
+				<attribute name="LGDG" label="LGD分组" type="STRING" length="15"/>
+				<attribute name="LIMITG" label="组合限额" type="STRING" length="15"/>
+				<attribute name="DEC_REASION" label="触发的策略原因代码" type="STRING" length="80"/>
+				<attribute name="CUSTOMER_RISK" label="CUSTOMER_RISK" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="CALLTYPE" label="调用类型(CodeNo:CallType)" type="STRING" length="10"/>
+				<attribute name="TARGET_PRICE" label="目标定价" type="STRING" length="15" />
+				<attribute name="FLOWSTATUS" label="流程状态(1,正常,2,退回到审查,3,退回到审查之前)" type="STRING" length="2"/>
+				<attribute name="FUNDS_COSTS" label="资金成本" type="DOUBLE" length="15" scale="4" />
+				<attribute name="OPERATING_COSTS" label="运营成本" type="DOUBLE" length="15" scale="4" />
+				<attribute name="CAPITAL_COSTS" label="资本成本" type="DOUBLE" length="15" scale="4" />
+				<attribute name="reinitiateFlag" label="是否终止审批(0-否，1-是)" type="" length="1" />
+			</attributes>			
+			<manager>
+				<managerProperties>
+				  <property name="table" value="INTF_RDS_out_message" />
+				  <property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		
+		<class name="INTF_USER" label="" keyAttributes="">
+			<attributes> 
+				<attribute name="ORGID" label="机构号" type="STRING" length="4" />
+				<attribute name="USERID" label="柜员号" type="STRING" length="8" />
+			</attributes>			
+			<manager>
+				<managerProperties>
+				  <property name="table" value="INTF_USER" />
+				  <property name="createKey" value="false" />
+				</managerProperties>
+			</manager>
+		</class>
+		
+	</package>
+</jbo>

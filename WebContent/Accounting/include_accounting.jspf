@@ -1,0 +1,12 @@
+<%@page import="com.amarsoft.app.base.antlr.*"%>
+<%@page import="com.amarsoft.app.base.businessobject.*"%>
+<%@page import="com.amarsoft.app.base.config.*"%>
+<%@page import="com.amarsoft.app.base.config.impl.*"%>
+<%@page import="com.amarsoft.app.base.exception.*"%>
+<%@page import="com.amarsoft.app.base.script.*"%>
+<%@page import="com.amarsoft.app.base.script.operater.*"%>
+<%@page import="com.amarsoft.app.base.script.operater.impl.*"%>
+<%@page import="com.amarsoft.app.base.trans.*"%>
+<%@page import="com.amarsoft.app.base.util.*"%>
+<%@page import="com.amarsoft.app.accounting.config.impl.*"%>
+<%@page import="com.amarsoft.app.accounting.cashflow.*"%>

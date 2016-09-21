@@ -1,0 +1,100 @@
+.tabs_content{
+	border-color: #b3b3b3;
+	background:#f1f1f1
+}
+.tabs ul li.handle span.tab_inactive_left{
+	*height:30px;
+	width:3px;
+	border-color: #b3b3b3;
+	background:#f1f1f1
+}
+.tabs ul li.handle span.tab_inactive_center{
+	*height:30px;
+	border-color: #b3b3b3;
+	background:#f1f1f1
+}
+.tabs ul li.handle span.tab_inactive_control{
+	*height:30px;
+	border-color: #b3b3b3;
+	background:#f1f1f1
+}
+.tabs ul li.handle span.tab_inactive_right{
+	*height:30px;
+	width:3px;
+	border-color: #b3b3b3;
+	background:#f1f1f1
+}
+
+.tabs ul li.handle span{
+	line-height: 28px;
+	
+	height:28px;
+}
+/*.tabs_button{top:1px}*/
+.tabs ul{
+	background:url(../images/tab_bg.png) repeat-x;
+	height:30px;
+	*height:28px;
+	margin:0px;
+}
+.tabs ul li.handle span.tab_active_left{
+	height: 30px;
+	font-size:14px;
+	width:3px;
+	border:none;
+	border-color: #0c66c2;
+	background-image: url(../images/tabs_active_left.png);
+}
+.tabs ul li.handle span.tab_active_center{
+	height: 30px;
+	border:none;
+	border-color: #0c66c2;
+	background-image: url(../images/tabs_active.png);
+	color:#fff;
+}
+.tabs ul li.handle span.tab_active_center a {
+	color:#333335;
+	outline:none;
+}
+.tabs ul li.handle span.tab_active_control{
+	border:none;
+	border-color: #0c66c2;
+	width:0px;
+	font-size:0px;
+	/*background-image: url(../images/tabs_active.png);
+	background-color: #0f85ff;
+	height:30px*/
+}
+.tabs ul li.handle span.tab_active_right{
+	height: 30px;
+	border:none;
+	width:3px;
+	border-color: #0c66c2;
+	background-image: url(../images/tabs_active_right.png);
+}
+.tabs ul li.handle span.tab_over_left{
+	*height:30px;
+	width:3px;
+	border-color: #b3b3b3;
+	background-image: url(../images/tabs_hover.png);
+	background-color: #fff;
+}
+.tabs ul li.handle span.tab_over_center{
+	*height:30px;
+	border-color: #b3b3b3;
+	background-image: url(../images/tabs_hover.png);
+	background-color: #fff;
+}
+.tabs ul li.handle span.tab_over_control{
+	*height:30px;
+	border-color: #b3b3b3;
+	background-image: url(../images/tabs_hover.png);
+	background-color: #fff;
+}
+.tabs ul li.handle span.tab_over_right{
+	*height:30px;
+	width:3px;
+	border-color: #b3b3b3;
+	background-image: url(../images/tabs_hover.png);
+	background-color: #fff;
+}

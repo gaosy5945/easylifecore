@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.acct" >
+		<class name="ACCT_BUSINESS_ACCOUNT" label="业务账号信息" keyAttributes="SERIALNO">
+		<attributes>
+			<attribute name="SERIALNO" lable="流水号" type="STRING" length="32" />
+			<attribute name="OBJECTNO" lable="对象编号" type="STRING" length="32" />
+			<attribute name="OBJECTTYPE" lable="对象类型" type="STRING" length="32" />
+			<attribute name="ACCOUNTINDICATOR" lable="账户性质（系统内使用）（Code:AccountIndicator）" type="STRING" length="10" />
+			<attribute name="PRIORITYFLAG" lable="优先级（Code:PRI）" type="STRING" length="10" />
+			<attribute name="ACCOUNTFLAG" lable="存款账户标示（多存款系统使用）" type="STRING" length="10" />
+			<attribute name="ACCOUNTTYPE" lable="存款账户类型(Code:AccountType)" type="STRING" length="10" />
+			<attribute name="ACCOUNTNO" lable="存款账户账号" type="STRING" length="40" />
+			<attribute name="ACCOUNTCURRENCY" lable="存款账户币种" type="STRING" length="10" />
+			<attribute name="ACCOUNTNAME" lable="存款账户名称" type="STRING" length="80" />
+			<attribute name="ACCOUNTORGID" lable="存款账号核心机构号" type="STRING" length="32" />
+			<attribute name="STATUS" lable="状态（0:无效,1:有效）" type="STRING" length="10" />
+		</attributes>
+		<manager>
+			<managerProperties>
+			  <property name="table" value="ACCT_BUSINESS_ACCOUNT" />
+			  <property name="createKey" value="true" />
+			  <property name="query.InitNum" value="2000" />
+			</managerProperties>
+		</manager>
+	</class>
+
+	<class name="ACCT_GENERAL_LEDGER" label="总帐信息" keyAttributes="SERIALNO">
+		<attributes>
+			<attribute name="SERIALNO" lable="流水号" type="STRING" length="40" />
+			<attribute name="BOOKDATE" lable="日期" type="STRING" length="10" />
+			<attribute name="BOOKTYPE" lable="帐套（Code:AccountBookType）" type="STRING" length="10" />
+			<attribute name="ACCOUNTCODENO" lable="科目号" type="STRING" length="32" />
+			<attribute name="CURRENCY" lable="币种" type="STRING" length="10" />
+			<attribute name="ORGID" lable="机构" type="STRING" length="32" />
+			<attribute name="DEBITBALANCE" label="借方余额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="CREDITBALANCE" label="贷方余额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="DEBITAMTDAY" label="借方当日发生额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="CREDITAMTDAY" label="贷方当日发生额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="ITEM1" lable="扩展属性" type="STRING" length="10" />
+			<attribute name="ITEM2" lable="扩展属性" type="STRING" length="10" />
+			<attribute name="ITEM3" lable="扩展属性" type="STRING" length="10" />
+			<attribute name="ITEM4" lable="扩展属性" type="STRING" length="10" />
+		</attributes>
+		<manager>
+			<managerProperties>
+				<property name="table" value="ACCT_GENERAL_LEDGER" />
+			  <property name="createKey" value="true" />
+			</managerProperties>
+		</manager>
+	</class>
+	
+	<class name="ACCT_INTEREST_LOG" label="" keyAttributes="SERIALNO"  >
+	  <attributes>
+		<attribute name="SERIALNO" lable="流水号" type="STRING" length="40" />
+		<attribute name="NEXTSERIALNO" lable="下一个流水号" type="STRING" length="40" />
+		<attribute name="OBJECTTYPE" lable="计息对象" type="STRING" length="40" />
+		<attribute name="OBJECTNO" lable="计息对象" type="STRING" length="40" />
+		<attribute name="RELATIVEOBJECTTYPE" lable="关联业务类型" type="STRING" length="40" />
+		<attribute name="RELATIVEOBJECTNO" lable="关联业务流水号" type="STRING" length="40" />
+		<attribute name="TRANSSERIALNO" lable="交易流水号" type="STRING" length="40" />
+		<attribute name="INTERESTTYPE" lable="利息类型" type="STRING" length="10" />
+		<attribute name="RATETYPE" lable="利率类型" type="STRING" length="40"  />
+		<attribute name="INTERESTDATE" lable="起息日" type="STRING" length="10" />
+		<attribute name="SETTLEDATE" lable="结息日" type="STRING" length="10" />
+		<attribute name="BASEAMOUNT" lable="利息计算基础金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="INTERESTAMT" lable="当期计算利息金额" type="DOUBLE" length="24" scale="6" />
+		<attribute name="INTERESTSUSPENSE" lable="暂挂利息金额" type="DOUBLE" length="24" scale="6" />
+		<attribute name="INTERESTTOTAL" lable="总利息金额" type="DOUBLE" length="24" scale="6" />
+		<attribute name="LOG" lable="详细信息" type="STRING" length="200" />
+	  </attributes>
+	  <manager>
+		<managerProperties>
+		  <property name="table" value="ACCT_INTEREST_LOG" />
+		  <property name="createKey" value="true" />
+		  <property name="query.InitNum" value="5000" />
+		</managerProperties>
+	  </manager>
+	</class>
+	
+	<class name="ACCT_LOAN" label="贷款-贷款信息" keyAttributes="SERIALNO">
+		<attributes>
+			<attribute name="SERIALNO" lable="贷款账号" type="STRING" length="40" />
+			<attribute name="ACCOUNTNO" lable="贷款文本账号" type="STRING" length="40" />
+			<attribute name="CONTRACTSERIALNO" lable="关联合同号" type="STRING" length="40" />
+			<attribute name="CUSTOMERID" lable="客户编号" type="STRING" length="40" />
+			<attribute name="CUSTOMERNAME" lable="客户名称" type="STRING" length="80" />
+			<attribute name="BUSINESSTYPE" lable="业务品种" type="STRING" length="40" />
+			<attribute name="PRODUCTID" lable="产品编号" type="STRING" length="40" />
+			<attribute name="VERSIONID" lable="版本编号" type="STRING" length="40" />
+			<attribute name="CURRENCY" lable="贷款币种" type="STRING" length="10" />
+			<attribute name="BUSINESSSUM" label="贷款金额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="PUTOUTDATE" lable="贷款发放日期" type="STRING" length="10" />
+			<attribute name="MATURITYDATE" lable="贷款到期日" type="STRING" length="10" />
+			<attribute name="ORIGINALMATURITYDATE" lable="贷款原始到期日" type="STRING" length="10" />
+			<attribute name="ACCOUNTINGORGID" lable="贷款入账机构" type="STRING" length="32" />
+			<attribute name="OPERATEORGID" lable="经办行号（用做异地支行标识）" type="STRING" length="40" />
+			<attribute name="LOANSTATUS" lable="贷款状态（Code:LoanStatus）" type="STRING" length="10" />
+			<attribute name="FINISHDATE" lable="结清日期" type="STRING" length="10" />
+			<attribute name="BUSINESSDATE" lable="贷款处理日期" type="STRING" length="10" />
+			<attribute name="LOCKFLAG" lable="锁定标识" type="STRING" length="10" />
+			<attribute name="OVERDUEDAYS" lable="逾期天数" type="INTEGER" />
+			<attribute name="CLASSIFYRESULT" lable="分类结果" type="STRING" length="10" />
+			<attribute name="PUTOUTSERIALNO" lable="出账流水号" type="STRING" length="40" />
+			<attribute name="APPROVESERIALNO" lable="审批流水号" type="STRING" length="40" />
+			<attribute name="APPLYSERIALNO" lable="申请流水号" type="STRING" length="40" />
+			<attribute name="BUSINESSSTATUS" lable="业务状态（Code:LoanBusinessStatus）" type="STRING" length="10" />
+	    </attributes>
+		<manager>
+			<managerProperties>
+			  <property name="table" value="ACCT_LOAN" />
+			  <property name="createKey" value="true" />
+			  <property name="query.InitNum" value="500" />
+			</managerProperties>
+		</manager>
+	</class>
+	
+	<class name="ACCT_LOAN_CHANGE" label="贷款-变更交易单据信息" keyAttributes="SERIALNO">
+		<attributes>
+			<attribute name="SERIALNO" lable="流水号" type="STRING" length="40" />
+			<attribute name="OBJECTTYPE" lable="对象类型" type="STRING" length="40" />
+			<attribute name="OBJECTNO" lable="对象编号" type="STRING" length="40" />
+			<attribute name="MATURITYDATE" lable="新贷款到期日" type="STRING" length="10" />
+			<attribute name="OLDMATURITYDATE" lable="原贷款到期日" type="STRING" length="10" />
+			<attribute name="LOANTERM" lable="新贷款期限" type="INTEGER" />
+			<attribute name="LOANTERMUNIT" lable="新贷款期限单位(Code:TermUnit)" type="STRING" length="10" />
+			<attribute name="OLDLOANTERM" lable="原贷款期限" type="INTEGER" />
+			<attribute name="OLDLOANTERMUNIT" lable="原贷款期限单位(Code:TermUnit)" type="STRING" length="10" />
+			<attribute name="ACCOUNTINGORGID" lable="新贷款账务机构" type="STRING" length="40" />
+			<attribute name="OLDACCOUNTINGORGID" lable="旧贷款账务机构" type="STRING" length="40" />
+			<attribute name="REMARK" lable="备注" type="STRING" length="400" />
+			<attribute name="DEFAULTDUEDAY" lable="默认还款日" type="STRING" length="2"  />
+			<attribute name="OLDRPTTERMID" lable="原还款方式" type="STRING" length="10"  />
+			<attribute name="RPTTERMID" lable="新还款方式" type="STRING" length="10"  />
+			<attribute name="OLDLOANRATETERMID" lable="原利率类型" type="STRING" length="10"  />
+			<attribute name="LOANRATETERMID" lable="利率类型" type="STRING" length="10"  />
+		</attributes>
+	<manager>
+		<managerProperties>
+		  <property name="table" value="ACCT_LOAN_CHANGE" />
+		  <property name="createKey" value="true" />
+		  <property name="query.InitNum" value="2000" />
+		</managerProperties>
+	</manager>
+	</class>
+	
+	<class name="ACCT_PAYMENT_LOG" label="贷款-还款日志" keyAttributes="SERIALNO" >
+	  <attributes>
+		<attribute name="SERIALNO" lable="流水号" type="STRING" length="40" />
+		<attribute name="TRANSSERIALNO" lable="还款单据流水号" type="STRING" length="40"/>
+		<attribute name="RELATIVEOBJECTTYPE" lable="还款主体对象类型" type="STRING" length="40"  />
+		<attribute name="RELATIVEOBJECTNO" lable="还款主体对象编号" type="STRING" length="40"  />
+		<attribute name="OBJECTTYPE" lable="还款日志关联对象类型" type="STRING" length="40"  />
+		<attribute name="OBJECTNO" lable="还款日志关联对象编号" type="STRING" length="40"  />
+		
+		<attribute name="PSTYPE" lable="偿付类型" type="STRING" length="2"  />
+		<attribute name="PAYDATE" lable="应还日期" type="STRING" length="10" />
+		<attribute name="ACTUALPAYDATE" lable="实还日期" type="STRING" length="10" />
+		<attribute name="CURRENCY" lable="币种" type="STRING" length="10" />
+		
+		<attribute name="PAYPRINCIPALAMT" lable="应还本金" type="DOUBLE" length="20" scale="2" />
+		<attribute name="ACTUALPAYPRINCIPALAMT" lable="实还本金 " type="DOUBLE" length="20" scale="2" />
+		<attribute name="WAIVEPRINCIPALAMT" lable="减免本金金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="PRINCIPALBALANCE" lable="剩余本金余额" type="DOUBLE" length="20" scale="2" />
+		
+		<attribute name="PAYINTERESTAMT" lable="应还利息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="ACTUALPAYINTERESTAMT" lable="实还利息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="WAIVEINTERESTAMT" lable="减免利息金额" type="DOUBLE" length="20" scale="2" />
+		
+		<attribute name="PAYPRINCIPALPENALTYAMT" lable="应还本金罚息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="ACTUALPAYPRINCIPALPENALTYAMT" lable="实还本金罚息" type="DOUBLE" length="20" scale="2"  />
+		<attribute name="WAIVEPRINCIPALPENALTYAMT" lable="减免本金罚息" type="DOUBLE" length="20" scale="2" />
+		
+		<attribute name="PAYINTERESTPENALTYAMT" lable="应还利息罚息" type="DOUBLE" length="20" scale="2"  />
+		<attribute name="ACTUALPAYINTERESTPENALTYAMT" lable="实还利息罚息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="WAIVEINTERESTPENALTYAMT" lable="减免利息罚息" type="DOUBLE" length="20" scale="2"  />
+		<attribute name="STATUS" lable="状态" type="STRING" length="10" />
+	  </attributes>
+	  <manager>
+		<managerProperties>
+		  <property name="table" value="ACCT_PAYMENT_LOG" />
+		  <property name="createKey" value="true" />
+		  <property name="query.InitNum" value="5000" />
+		</managerProperties>
+	  </manager>
+	</class>
+	
+	<class name="ACCT_PAYMENT_SCHEDULE" label="贷款-还款日志" keyAttributes="SERIALNO" >
+	  <attributes>
+		<attribute name="SERIALNO" lable="流水号" type="STRING" length="40" />
+		<attribute name="PARENTSERIALNO" lable="父还款计划流水号" type="STRING" length="40" />
+		<attribute name="RELATIVEOBJECTTYPE" lable="还款主体对象类型" type="STRING" length="40"  />
+		<attribute name="RELATIVEOBJECTNO" lable="还款主体对象编号" type="STRING" length="40"  />
+		<attribute name="OBJECTTYPE" lable="还款日志关联对象类型" type="STRING" length="32"  />
+		<attribute name="OBJECTNO" lable="还款日志关联对象编号" type="STRING" length="40"  />
+		<attribute name="DIRECTION" lable="收付方向" type="STRING" length="10"  />
+		<attribute name="PSTYPE" lable="偿付类型" type="STRING" length="10"  />
+		<attribute name="PAYITEMCODE" lable="还款项目" type="STRING" length="20"  />
+		<attribute name="PERIODNO" lable="期次" type="INTEGER" />
+		<attribute name="PAYDATE" lable="应还日期" type="STRING" length="10" />
+		
+		<attribute name="INTEDATE" lable="节假日及宽限期顺延后的还款日期" type="STRING" length="10"/>
+		<attribute name="HOLIDAYINTEDATE" lable="节假日顺延后的还款日" type="STRING" length="10"/>
+		<attribute name="GRACEINTEDATE" lable="宽限期顺延后的还款日期（开始计算罚息的日期）" type="STRING" length="10"/>
+		<attribute name="AUTOPAYFLAG" lable="自动扣款标识" type="STRING" length="10" />
+		<attribute name="CURRENCY" lable="币种" type="STRING" length="10" />
+		
+		<attribute name="FIXPAYPRINCIPALAMT" lable="手工指定当期还款额" type="DOUBLE" length="20" scale="2" />
+	  	<attribute name="FIXPAYINSTALMENTAMT" lable="手工指定当期本金还款额" type="DOUBLE" length="20" scale="2" />
+	  	
+		<attribute name="PAYPRINCIPALAMT" lable="应还本金" type="DOUBLE" length="20" scale="2" />
+		<attribute name="ACTUALPAYPRINCIPALAMT" lable="实还本金 " type="DOUBLE" length="20" scale="2" />
+		<attribute name="WAIVEPRINCIPALAMT" lable="减免本金金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="PRINCIPALBALANCE" lable="剩余本金余额" type="DOUBLE" length="20" scale="2" />
+		
+		<attribute name="PAYINTERESTAMT" lable="应还利息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="ACTUALPAYINTERESTAMT" lable="实还利息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="WAIVEINTERESTAMT" lable="减免利息金额" type="DOUBLE" length="20" scale="2" />
+		
+		<attribute name="PAYPRINCIPALPENALTYAMT" lable="应还本金罚息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="ACTUALPAYPRINCIPALPENALTYAMT" lable="实还本金罚息" type="DOUBLE" length="20" scale="2"  />
+		<attribute name="WAIVEPRINCIPALPENALTYAMT" lable="减免本金罚息" type="DOUBLE" length="20" scale="2" />
+		
+		<attribute name="PAYINTERESTPENALTYAMT" lable="应还利息罚息" type="DOUBLE" length="20" scale="2"  />
+		<attribute name="ACTUALPAYINTERESTPENALTYAMT" lable="实还利息罚息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="WAIVEINTERESTPENALTYAMT" lable="减免利息罚息" type="DOUBLE" length="20" scale="2"  />
+		<attribute name="STATUS" lable="状态" type="STRING" length="10" />
+		<attribute name="FINISHDATE" lable="结清日期" type="STRING" length="10" />
+		<attribute name="REMARK" lable="备注" type="STRING" length="400" />
+	  </attributes>
+	  <manager>
+		<managerProperties>
+		  <property name="table" value="ACCT_PAYMENT_SCHEDULE" />
+		  <property name="createKey" value="true" />
+		  <property name="query.InitNum" value="5000" />
+		</managerProperties>
+	  </manager>
+	</class>
+	
+	<class name="ACCT_PUTOUT" label="贷款-放款信息" keyAttributes="SERIALNO">
+		<attributes>
+			<attribute name="SERIALNO" lable="贷款账号" type="STRING" length="40" />
+			<attribute name="LOANSERIALNO" lable="贷款流水号" type="STRING" length="40" />
+			<attribute name="CONTRACTSERIALNO" lable="关联合同号" type="STRING" length="40" />
+			<attribute name="CUSTOMERID" lable="客户编号" type="STRING" length="40" />
+			<attribute name="CUSTOMERNAME" lable="客户名称" type="STRING" length="80" />
+			<attribute name="BUSINESSTYPE" lable="业务品种" type="STRING" length="40" />
+			<attribute name="PRODUCTID" lable="产品编号" type="STRING" length="40" />
+			<attribute name="VERSIONID" lable="版本编号" type="STRING" length="40" />
+			<attribute name="CURRENCY" lable="贷款币种" type="STRING" length="10" />
+			<attribute name="BUSINESSSUM" label="贷款金额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="PUTOUTDATE" lable="贷款发放日期" type="STRING" length="10" />
+			<attribute name="MATURITYDATE" lable="贷款到期日" type="STRING" length="10" />
+			<attribute name="TERMYEAR" lable="期限年" type="INTEGER" />
+			<attribute name="TERMMONTH" lable="期限月" type="INTEGER" />
+			<attribute name="TERMDAY" lable="期限日" type="INTEGER" />
+			<attribute name="ACCOUNTINGORGID" lable="贷款入账机构" type="STRING" length="32" />
+			<attribute name="OPERATEORGID" lable="经办行号（用做异地支行标识）" type="STRING" length="40" />
+			<attribute name="PUTOUTSERIALNO" lable="出账流水号" type="STRING" length="40" />
+			<attribute name="APPROVESERIALNO" lable="审批流水号" type="STRING" length="40" />
+			<attribute name="APPLYSERIALNO" lable="申请流水号" type="STRING" length="40" />
+	    </attributes>
+		<manager>
+			<managerProperties>
+			  <property name="table" value="ACCT_PUTOUT" />
+			  <property name="createKey" value="true" />
+			  <property name="query.InitNum" value="500" />
+			</managerProperties>
+		</manager>
+	</class>
+	
+	<class name="ACCT_RATE_SEGMENT" label="贷款-利率区段表" keyAttributes="SERIALNO"  >
+	  <attributes>
+		<attribute name="SERIALNO" lable="流水号" type="STRING" length="40" />
+		<attribute name="OBJECTTYPE" lable="对象类型" type="STRING" length="40"  />
+		<attribute name="OBJECTNO" lable="对象编号" type="STRING" length="40" />
+		<attribute name="TERMID" lable="组件编号" type="STRING" length="20" />
+		<attribute name="SEGTERMID" lable="组件编号" type="STRING" length="20" />
+		<attribute name="SEGNO" lable="区段序号" type="INTEGER" />
+		<attribute name="SEGNAME" lable="区段名称" type="STRING" length="120" />
+		<attribute name="SEGFROMDATE" lable="区段生效日期" type="STRING" length="10"  />
+		<attribute name="SEGTODATE" lable="区段结束日期" type="String" length="10"/>
+		<attribute name="SEGFROMSTAGE" lable="区段生效期次" type="INTEGER"  />
+		<attribute name="SEGTOSTAGE" lable="区段结束期次" type="INTEGER"  />
+		<attribute name="SEGSTAGES" lable="区段持续期次" type="INTEGER" />
+		<attribute name="STATUS" lable="状态（Code:FeeStatus）" type="STRING" length="10" />
+		<attribute name="REMARK" lable="备注" type="STRING" length="400" />
+		
+		<attribute name="RATETYPE" lable="利率类型" type="STRING" length="20" />
+		<attribute name="RATEUNIT" lable="利率单位" type="STRING" length="10" />
+		<attribute name="BASERATETYPE" lable="基准利率类型" type="STRING" length="10" />
+		<attribute name="BASERATEGRADE" lable="基准利率档次（Table:rate_info）" type="STRING" length="10" />
+		<attribute name="BASERATE" lable="基准利率" type="DOUBLE" length="12" scale="8" />
+		
+		<attribute name="RATEFLOATTYPE" lable="利率浮动类型" type="STRING" length="10" />
+		<attribute name="RATEFLOAT" lable="浮动幅度" type="DOUBLE" length="10" scale="6" />
+		<attribute name="BUSINESSRATE" lable="执行利率" type="DOUBLE" length="12" scale="8" />
+		
+		<attribute name="REPRICETYPE" lable="利率调整方式" type="STRING" length="4" />
+		<attribute name="REPRICETERMUNIT" lable="利率调整周期单位" type="STRING" length="10"  />
+		<attribute name="REPRICETERM" lable="利率调整周期" type="INTEGER"/>
+		<attribute name="DEFAULTREPRICEDATE" lable="指定利率调整日期" type="STRING" length="10" />
+		<attribute name="LASTREPRICEDATE" lable="上次利率调整日期" type="STRING" length="10" />
+		<attribute name="NEXTREPRICEDATE" lable="下次利率调整日期" type="STRING" length="10" />
+	  </attributes>
+	  <manager>
+		<managerProperties>
+		  <property name="table" value="ACCT_RATE_SEGMENT" />
+		  <property name="createKey" value="true" />
+		  <property name="query.InitNum" value="500" />
+		</managerProperties>
+	  </manager>
+	</class>
+	
+	<class name="ACCT_RPT_SEGMENT" label="贷款-组合还款区段表"  keyAttributes="SERIALNO" >
+	  <attributes>
+		<attribute name="SERIALNO" lable="流水号" type="STRING" length="40" />
+		<attribute name="OBJECTTYPE" lable="对象类型" type="STRING" length="40"  />
+		<attribute name="OBJECTNO" lable="对象编号" type="STRING" length="40" />
+		<attribute name="TERMID" lable="组件编号" type="STRING" length="20" />
+		<attribute name="TERMRULEID" lable="组件编号" type="STRING" length="20" />
+		<attribute name="SEGTERMID" lable="组件编号" type="STRING" length="20" />
+		<attribute name="SEGNO" lable="区段序号" type="INTEGER" />
+		<attribute name="SEGNAME" lable="区段名称" type="STRING" length="120" />
+		<attribute name="SEGFROMDATE" lable="区段生效日期" type="STRING" length="10"  />
+		<attribute name="SEGTODATE" lable="区段结束日期" type="String" length="10"/>
+		<attribute name="SEGFROMSTAGE" lable="区段生效期次" type="INTEGER"  />
+		<attribute name="SEGTOSTAGE" lable="区段结束期次" type="INTEGER"  />
+		<attribute name="SEGSTAGES" lable="区段持续期次" type="INTEGER" />
+		<attribute name="STATUS" lable="状态（Code:FeeStatus）" type="STRING" length="10" />
+		<attribute name="REMARK" lable="备注" type="STRING" length="400" />
+		
+		<attribute name="PSTYPE" lable="还款计划类型" type="STRING" length="10"  />
+		<attribute name="SEGTERMFLAG" lable="区段期限标志" type="STRING" length="10"  />
+		<attribute name="SEGTERMUNIT" lable="指定区段期限单位，默认为月M" type="STRING" length="10" />
+		<attribute name="SEGTERM" lable="指定区段期限" type="INTEGER" />
+		<attribute name="FIRSTDUEDATE" lable="首次还款日" type="STRING" length="10" />
+		<attribute name="DEFAULTDUEDAY" lable="默认还款日" type="STRING" length="2"  />
+		<attribute name="LASTDUEDATE" lable="上次还款日" type="STRING" length="10" />
+		<attribute name="NEXTDUEDATE" lable="下次还款日" type="STRING" length="10" />
+		
+		<attribute name="TOTALPERIOD" lable="总期次" type="INTEGER" />
+		<attribute name="CURRENTPERIOD" lable="当前期次" type="INTEGER" />
+		<attribute name="GAINCYC" lable="递变周期" type="INTEGER" />
+		<attribute name="GAINAMOUNT" lable="递变幅度" type="DOUBLE" length="20" scale="2" />
+		<attribute name="PAYFREQUENCYTYPE" lable="还款周期:PayFrequencyType" type="STRING" length="10" />
+		<attribute name="PAYFREQUENCYUNIT" lable="指定还款周期单位" type="STRING" length="10" />
+		<attribute name="PAYFREQUENCY" lable="指定还款周期" type="INTEGER"/>
+		
+		<attribute name="SEGRPTAMOUNTFLAG" lable="指定区段金额标志" type="STRING" length="20" />
+		<attribute name="SEGRPTPERCENT" lable="指定区段拟还本金比例" type="DOUBLE" length="5" scale="2"   />
+		<attribute name="SEGRPTAMOUNT" lable="指定区段拟还本金金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="SEGINSTALMENTAMT" lable="期供金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="SEGRPTBALANCE" lable="本区段剩余待归还本金" type="DOUBLE" length="20" scale="2"   />
+		
+		<attribute name="FIRSTINSTALMENTFLAG" lable="首次还款金额标识" type="STRING" length="10"  />
+		<attribute name="FINALINSTALMENTFLAG" lable="末次还款金额标识" type="STRING" length="10"  />
+		<attribute name="PSRESTRUCTUREFLAG" lable="更新期供标示(0 不生成还款计划也不重算期供，1 只算还款计划不计算期供，2 还款计划期供都算)" type="STRING" length="10"  />
+	  	<attribute name="GRACEDAYS" lable="宽限期天数" type="INTEGER"/>
+		<attribute name="AUTOPAYFLAG" lable="自动扣款标识" type="STRING" length="10"  />
+		<attribute name="POSTPONERULE" lable="逾期延期规则" type="STRING" length="200"  />
+	  </attributes>
+	  <manager>
+		<managerProperties>
+		  <property name="table" value="ACCT_RPT_SEGMENT" />
+		  <property name="createKey" value="true" />
+		  <property name="query.InitNum" value="500" />
+		</managerProperties>
+	  </manager>
+	</class>
+	
+	<class name="ACCT_SUBLEDGER_DETAIL" label="帐务-会计分录表" keyAttributes="SERIALNO">
+		<attributes>
+			<attribute name="SERIALNO" lable="流水号" type="STRING" length="40" />
+			<attribute name="PARENTSERIALNO" lable="父分录流水号" type="STRING" length="40" />
+			<attribute name="TRANSSERIALNO" lable="交易流水号" type="STRING" length="40" />
+			<attribute name="SORTNO" lable="排序号" type="String" length="10" />
+			<attribute name="SUBLEDGERSERIALNO" lable="分账流水号" type="STRING" length="40" />
+			<attribute name="OBJECTTYPE" lable="对象类型" type="STRING" length="40" />
+			<attribute name="OBJECTNO" lable="对象编号" type="STRING" length="40" />
+			<attribute name="RELATIVEOBJECTTYPE" lable="对象类型" type="STRING" length="40" />
+			<attribute name="RELATIVEOBJECTNO" lable="对象编号" type="STRING" length="40" />
+			<attribute name="BOOKTYPE" lable="帐套（Code:AccountBookType）" type="STRING" length="10" />
+			<attribute name="ACCOUNTINGORGID" lable="账务核算机构" type="STRING" length="20" />
+			<attribute name="BOOKDATE" lable="发生日期" type="STRING" length="10" />
+			<attribute name="ACCOUNTCODENO" lable="会计科目" type="STRING" length="20" />
+			<attribute name="DIRECTION" lable="方向" type="String" length="10" />
+			<attribute name="CURRENCY" lable="交易原币种" type="STRING" length="10" />
+			<attribute name="AMOUNT" label="发生额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="DEBITBALANCE" label="变化后借方余额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="CREDITBALANCE" label="变化后贷方余额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="ODEBITBALANCE" label="变化前借方余额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="OCREDITBALANCE" label="变化前贷方余额" type="DOUBLE" length="20" scale="2" />
+			
+			<attribute name="ITEM1" lable="扩展属性1" type="String" length="120" />
+			<attribute name="ITEM2" lable="扩展属性2" type="String" length="120" />
+			<attribute name="ITEM3" lable="扩展属性3" type="String" length="120" />
+			<attribute name="ITEM4" lable="扩展属性4" type="String" length="120" />
+			<attribute name="STATUS" lable="状态(Code:YesNo)" type="STRING" length="20" />
+			<attribute name="REMARK" lable="描述" type="STRING" length="400" />
+			<attribute name="EXBOOKTYPE" lable="扩展账套" type="STRING" length="10" />
+			<attribute name="EXACCOUNTCODENO" lable="扩展会计科目" type="STRING" length="20" />
+		</attributes>
+		<manager>
+			<managerProperties>
+			  <property name="table" value="ACCT_SUBLEDGER_DETAIL" />
+			  <property name="createKey" value="true" />
+			  <property name="query.InitNum" value="5000" />
+			</managerProperties>
+		</manager>
+	</class>
+	
+	<class name="ACCT_SUBSIDIARY_LEDGER" label="帐务-分户帐表" keyAttributes="SERIALNO">
+		<attributes>
+			<attribute name="SERIALNO" lable="账户流水号" type="STRING" length="40" />
+			<attribute name="PARENTSERIALNO" lable="父分录流水号" type="STRING" length="40" />
+			<attribute name="OBJECTTYPE" lable="对象类型" type="STRING" length="40" />
+			<attribute name="OBJECTNO" lable="对象编号" type="STRING" length="40" />
+			<attribute name="RELATIVEOBJECTTYPE" lable="对象类型" type="STRING" length="40" />
+			<attribute name="RELATIVEOBJECTNO" lable="对象编号" type="STRING" length="40" />
+			<attribute name="BOOKTYPE" lable="帐套（Code:AccountBookType）" type="STRING" length="10" />
+			<attribute name="ACCOUNTINGORGID" lable="账务核算机构" type="STRING" length="40" />
+			
+			<attribute name="DIRECTION" lable="余额方向" type="STRING" length="10" />
+			<attribute name="ACCOUNTCODENO" lable="会计科目" type="STRING" length="40" />
+			<attribute name="CURRENCY" lable="账户币种" type="STRING" length="10" />
+			<attribute name="DEBITBALANCE" lable="借方余额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="CREDITBALANCE" label="贷方余额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="DEBITAMTDAY" label="当日借方发生额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="CREDITAMTDAY" label="当日贷方发生额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="DEBITAMTMONTH" label="当月借方发生额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="CREDITAMTMONTH" label="当月贷方发生额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="DEBITAMTYEAR" label="当年借方发生额" type="DOUBLE" length="20" scale="2" />
+			<attribute name="CREDITAMTYEAR" label="当年贷方发生额" type="DOUBLE" length="20" scale="2" />
+			
+			<attribute name="STATUS" lable="账户状态（0无效\1有效）" type="STRING" length="10" />
+			<attribute name="CREATEDATE" lable="开户日期" type="STRING" length="10" />
+			<attribute name="UPDATEDATE" lable="更新日期" type="STRING" length="10" />
+			<attribute name="CLOSEDATE" lable="销户日期" type="STRING" length="10" />
+			<attribute name="ITEM1" lable="扩展属性1" type="String" length="120" />
+			<attribute name="ITEM2" lable="扩展属性2" type="String" length="120" />
+			<attribute name="ITEM3" lable="扩展属性3" type="String" length="120" />
+			<attribute name="ITEM4" lable="扩展属性4" type="String" length="120" />
+			<attribute name="EXBOOKTYPE" lable="扩展账套" type="STRING" length="10" />
+			<attribute name="EXACCOUNTCODENO" lable="扩展会计科目" type="STRING" length="20" />
+		</attributes>
+		<manager>
+			<managerProperties>
+			  <property name="table" value="ACCT_SUBSIDIARY_LEDGER" />
+			  <property name="createKey" value="true" />
+			  <property name="query.InitNum" value="5000" />
+			</managerProperties>
+		</manager>
+	</class>
+	
+	<class name="ACCT_SYSTEM_ACCOUNT" label="系统账户表" keyAttributes="SERIALNO">
+	  <attributes>
+			<attribute name="SERIALNO" lable="流水号" type="STRING" length="32" />
+			<attribute name="ACCOUNTINDICATOR" lable="账户性质（系统内使用）（Code:AccountIndicator）" type="STRING" length="10" />
+			<attribute name="ACCOUNTTYPE" lable="存款账户类型" type="STRING" length="10" />
+			<attribute name="ACCOUNTNO" lable="存款账户账号" type="STRING" length="40" />
+			<attribute name="ACCOUNTCURRENCY" lable="存款账户币种" type="STRING" length="10" />
+			<attribute name="ACCOUNTNAME" lable="存款账户名称" type="STRING" length="80" />
+			<attribute name="ACCOUNTORGID" lable="存款账号核心机构号" type="STRING" length="32" />
+			<attribute name="STATUS" lable="状态（Code:EffStatus）" type="STRING" length="10" />
+	  </attributes>
+	  <manager>
+		<managerProperties>
+		  <property name="table" value="ACCT_SYSTEM_ACCOUNT" />
+		  <property name="createKey" value="false" />
+		</managerProperties>
+	  </manager>
+	</class>
+	
+	<class name="ACCT_TRANS_PAYMENT" label="贷款-还款交易单据信息" keyAttributes="SERIALNO">
+	  <attributes>
+		<attribute name="SERIALNO" lable="单据号" type="STRING" length="40" />
+		<attribute name="OBJECTTYPE" lable="关联对象类型" type="STRING" length="40" />
+		<attribute name="OBJECTNO" lable="关联对象编号（贷款账号、费用流水、表外业务借据号……）" type="STRING" length="40" />
+		<attribute name="ACTUALPAYDATE" lable="记账日期" type="STRING" length="10" />
+		
+		<attribute name="CURRENCY" lable="币种（Code:Currency）" type="STRING" length="10" />
+		<attribute name="PAYAMT" lable="应还总金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="ACTUALPAYAMT" lable="实还总金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="WAIVEAMT" lable="减免金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="ACTUALWAIVEAMT" lable="实际减免金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="SUSPENSEAMT" lable="溢缴金额" type="DOUBLE" length="20" scale="2" />
+		
+		<attribute name="PREPAYTYPE" lable="提前还款方式" type="STRING" length="10" />
+		<attribute name="PREPAYINTERESTBASEFLAG" lable="提前还款计息基础（Code:PrepayInterestBaseFlag）" type="STRING" length="10" />
+		<attribute name="PREPAYINTERESTDAYSFLAG" lable="提前还款计息模式（Code:PrepayInterestDaysFlag）" type="STRING" length="10" />
+		
+		<attribute name="PREPAYAMTFLAG" lable="提前还款金额类型" type="STRING" length="10" />
+		<attribute name="PREPAYAMT" lable="提前还款金额"  type="DOUBLE" length="20" scale="2" />
+		<attribute name="PREPAYPRINCIPALAMT" lable="提前还本金金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="PREPAYINTERESTAMT" lable="提前还利息金额" type="DOUBLE" length="20" scale="2" />
+		
+		<attribute name="PAYPRINCIPALAMT" lable="应还本金金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="ACTUALPAYPRINCIPALAMT" lable="实还本金金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="WAIVEPRINCIPALAMT" lable="减免本金金额" type="DOUBLE" length="20" scale="2"  />
+		
+		<attribute name="PAYINTERESTAMT" lable="应还正常利息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="ACTUALPAYINTERESTAMT" lable="实还正常利息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="WAIVEINTERESTAMT" lable="减免利息金额" type="DOUBLE" length="20" scale="2"  />
+
+		<attribute name="PAYPRINCIPALPENALTYAMT" lable="应还本金罚息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="ACTUALPAYPRINCIPALPENALTYAMT" lable="实还本金罚息" type="DOUBLE" length="20" scale="2"  />
+		<attribute name="WAIVEPRINCIPALPENALTYAMT" lable="减免本金罚息" type="DOUBLE" length="20" scale="2" />
+		
+		<attribute name="PAYINTERESTPENALTYAMT" lable="应还利息罚息" type="DOUBLE" length="20" scale="2"  />
+		<attribute name="ACTUALPAYINTERESTPENALTYAMT" lable="实还利息罚息" type="DOUBLE" length="20" scale="2" />
+		<attribute name="WAIVEINTERESTPENALTYAMT" lable="减免利息罚息" type="DOUBLE" length="20" scale="2"  />
+		
+		<attribute name="ACCOUNTINGORGID" lable="贷款所属机构" type="STRING" length="40" />
+		<attribute name="AUTOPAYFLAG" lable="是否在线支付（Code:YesNo）" type="STRING" length="10" />
+		<attribute name="PAYACCOUNTFLAG" lable="还款账户标志" type="STRING" length="10" />
+		<attribute name="PAYACCOUNTTYPE" lable="还款账户类型(Code:AccountType)" type="STRING" length="10" />
+		<attribute name="PAYACCOUNTNO" lable="还款账户账号" type="STRING" length="40" />
+		<attribute name="PAYACCOUNTNAME" lable="还款账户户名" type="STRING" length="80" />
+		<attribute name="PAYACCOUNTORGID" lable="还款账户机构" type="STRING" length="32" />
+		<attribute name="PAYACCOUNTCURRENCY" lable="还款账户币种（Code:Currency）" type="STRING" length="10" />
+		<attribute name="PAYRULETYPE" lable="还款顺序" type="STRING" length="10" />
+		<attribute name="REMARK" lable="摘要" type="STRING" length="300" />
+	  </attributes>
+	  <manager>
+		<managerProperties>
+		  <property name="table" value="ACCT_TRANS_PAYMENT" />
+		  <property name="createKey" value="true" />
+		  <property name="query.InitNum" value="2000" />
+		</managerProperties>
+	  </manager>
+	</class>
+	
+	<class name="ACCT_TRANSACTION" label="帐务-交易信息"  keyAttributes="SERIALNO">
+	  <attributes>
+		<attribute name="SERIALNO" lable="交易流水号" type="STRING" length="40" />
+		<attribute name="PARENTTRANSSERIALNO" lable="关联交易流水号" type="STRING" length="32" />
+		<attribute name="TRANSCODE" lable="交易代码(Transaction-Config.xml)" type="STRING" length="10"  />
+		<attribute name="DOCUMENTTYPE" lable="单据类型" type="STRING" length="40" />
+		<attribute name="DOCUMENTNO" lable="单据流水号" type="STRING" length="32" />
+		<attribute name="RELATIVEOBJECTTYPE" lable="关联对象类型 " type="STRING" length="40" />
+		<attribute name="RELATIVEOBJECTNO" lable="关联对象编号" type="STRING" length="40" />
+		
+		<attribute name="CHANNELID" lable="交易渠道" type="STRING" length="10" />
+		<attribute name="TRANSDATE" lable="交易日期" type="STRING" length="10"  />
+		<attribute name="OCCURDATE" lable="交易操作日期 " type="STRING" length="10" />
+		<attribute name="OCCURTIME" lable="交易时间" type="STRING" length="20" />
+		<attribute name="TRANSSTATUS" lable="交易状态" type="STRING" length="10" />
+		<attribute name="INPUTORGID" lable="录入机构" type="STRING" length="40" />
+		<attribute name="INPUTUSERID" lable="录入人" type="STRING" length="40" />
+		<attribute name="INPUTTIME" lable="录入时间 " type="STRING" length="20" />
+		<attribute name="REMARK" lable="描述" type="STRING" length="400" />
+		<attribute name="LOG" lable="其他日志" type="STRING" length="400" />
+	  </attributes>
+	  <manager>
+		<managerProperties>
+		  <property name="table" value="ACCT_TRANSACTION" />
+		  <property name="createKey" value="true" />
+		  <property name="query.InitNum" value="5000" />
+		</managerProperties>
+	  </manager>
+	</class>
+		
+	<class name="ACCT_WAIVE_SEGMENT" label="贷款-减免信息区段表"  keyAttributes="SERIALNO" >
+	  <attributes>
+		<attribute name="SERIALNO" lable="流水号" type="STRING" length="40" />
+		<attribute name="OBJECTTYPE" lable="对象类型" type="STRING" length="40"  />
+		<attribute name="OBJECTNO" lable="对象编号" type="STRING" length="40" />
+		<attribute name="TERMID" lable="组件编号" type="STRING" length="20" />
+		<attribute name="TERMRULEID" lable="组件编号" type="STRING" length="20" />
+		<attribute name="SEGTERMID" lable="组件编号" type="STRING" length="20" />
+		<attribute name="SEGNO" lable="区段序号" type="INTEGER" />
+		<attribute name="SEGNAME" lable="区段名称" type="STRING" length="120" />
+		<attribute name="SEGFROMDATE" lable="区段生效日期" type="STRING" length="10"  />
+		<attribute name="SEGTODATE" lable="区段结束日期" type="String" length="10"/>
+		<attribute name="SEGFROMSTAGE" lable="区段生效期次" type="INTEGER"  />
+		<attribute name="SEGTOSTAGE" lable="区段结束期次" type="INTEGER"  />
+		<attribute name="SEGSTAGES" lable="区段持续期次" type="INTEGER" />
+		<attribute name="STATUS" lable="状态（Code:FeeStatus）" type="STRING" length="10" />
+		<attribute name="REMARK" lable="备注" type="STRING" length="400" />
+		
+		<attribute name="WAIVETYPE" lable="减免类型" type="STRING" length="10"  />
+		<attribute name="WAIVEAMT" lable="减免金额" type="DOUBLE" length="20" scale="2" />
+		<attribute name="WAIVEPERCENT" lable="减免比例" type="DOUBLE" length="20" scale="2" />
+	  </attributes>
+	  <manager>
+		<managerProperties>
+		  <property name="table" value="ACCT_WAIVE_SEGMENT" />
+		  <property name="createKey" value="true" />
+		  <property name="query.InitNum" value="500" />
+		</managerProperties>
+	  </manager>
+	</class>
+		<class name="ACCT_INVOICE_DETAIL" label="" keyAttributes="serialno">
+			<attributes>
+				<attribute name="serialno" label="流水号" type="STRING" length="40"/>
+				<attribute name="invoiceserialno" label="票登记薄流水" type="STRING" length="40"/>
+				<attribute name="invoicecontent" label="开票内容" type="STRING" length="400"/>
+				<attribute name="contenttype" label="内容规格" type="STRING" length="100"/>
+				<attribute name="invoicenumber" label="数量" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="invoiceunit" label="单位" type="STRING" length="10"/>
+				<attribute name="invoiceunitprice" label="单价" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="invoiceamount" label="金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="taxrate" label="税率" type="DOUBLE" length="16" scale="4"/>
+				<attribute name="taxamount" label="税额" type="DOUBLE" length="24" scale="2"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="acct_invoice_detail" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ACCT_INVOICE_REGISTER" label="" keyAttributes="serialno">
+			<attributes>
+				<attribute name="serialno" label="流水号" type="STRING" length="40"/>
+				<attribute name="direction" label="方向" type="STRING" length="10"/>
+				<attribute name="purpose" label="发票用途" type="STRING" length="10"/>
+				<attribute name="invoicetype" label="发票类型" type="STRING" length="10"/>
+				<attribute name="billingmode" label="开票方式" type="STRING" length="10"/>
+				<attribute name="invoiceobject" label="开票对象" type="STRING" length="10"/>
+				<attribute name="companyname" label="企业名称" type="STRING" length="80"/>
+				<attribute name="taxnumber" label="税号" type="STRING" length="40"/>
+				<attribute name="address" label="地址" type="STRING" length="400"/>
+				<attribute name="telephone" label="电话" type="STRING" length="20"/>
+				<attribute name="bank" label="开户行" type="STRING" length="80"/>
+				<attribute name="accountno" label="账号" type="STRING" length="40"/>
+				<attribute name="invoiceamount" label="票面金额总计" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="taxamount" label="税额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="invoiceno" label="票据号" type="STRING" length="40"/>
+				<attribute name="occurdate" label="人员开票日期" type="STRING" length="10"/>
+				<attribute name="status" label="状态" type="STRING" length="10"/>
+				<attribute name="remark" label="备注" type="STRING" length="400"/>
+				<attribute name="inputuserid" label="录入人" type="STRING" length="32"/>
+				<attribute name="inputorgid" label="录入机构" type="STRING" length="32"/>
+				<attribute name="inputtime" label="录入时间" type="STRING" length="20"/>
+				<attribute name="POSTCOMPANY" label="快递公司" type="STRING" length="40"/>
+				<attribute name="POSTNO" label="快递单号" type="STRING" length="40"/>
+				<attribute name="POSTMANID" label="快递员编号" type="STRING" length="40"/>
+				<attribute name="POSTMANNAME" label="快递员姓名" type="STRING" length="40"/>
+				<attribute name="POSTMANPHONE" label="快递员电话" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="acct_invoice_register" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="ACCT_INVOICE_RELATIVE" label="" keyAttributes="serialno">
+			<attributes>
+				<attribute name="serialno" label="流水号" type="STRING" length="40"/>
+				<attribute name="invoiceserialno" label="票据流水号" type="STRING" length="40"/>
+				<attribute name="objecttype" label="对象类型" type="STRING" length="40"/>
+				<attribute name="objectno" label="对象编号" type="STRING" length="40"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="acct_invoice_relative" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+	</package>
+</jbo>

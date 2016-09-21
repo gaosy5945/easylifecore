@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="GBK" ?>
+<ScriptConfig>
+	<ExpressionOperators>
+		<ExpressionOperator id="=" class="com.amarsoft.app.base.script.operater.impl.Equals"/>
+		<ExpressionOperator id="&gt;" class="com.amarsoft.app.base.script.operater.impl.GreaterThan"/>
+		<ExpressionOperator id="&gt;=" class="com.amarsoft.app.base.script.operater.impl.GreaterThanOrEquals"/>
+		<ExpressionOperator id="&lt;" class="com.amarsoft.app.base.script.operater.impl.LessThan"/>
+		<ExpressionOperator id="&lt;=" class="com.amarsoft.app.base.script.operater.impl.LessThanOrEquals"/>
+		<ExpressionOperator id="&lt;&gt;" class="com.amarsoft.app.base.script.operater.impl.NotEquals"/>
+		<ExpressionOperator id="like" class="com.amarsoft.app.base.script.operater.impl.Like"/>
+	</ExpressionOperators>
+</ScriptConfig>

@@ -1,0 +1,243 @@
+body {
+	background: #eee;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+#apps {
+	background: #fff;
+	position: absolute;
+	left: 20px; top: 20px;
+	width: 220px;
+	overflow: hidden;
+	border: 1px solid #cfd4d7;
+}
+#worktip {
+	background: #fff;
+	position: absolute;
+	left: 260px; top: 20px;
+	height: 270px;
+	border: 1px solid #cfd4d7;
+}
+#notice {
+	background: #fff;
+	position: absolute;
+	left: 260px; top: 310px;
+	overflow: hidden;
+	border: 1px solid #cfd4d7;
+}
+#quick {
+	background: #fff;
+	position: absolute;
+	top: 310px;
+	overflow: hidden;
+	border: 1px solid #cfd4d7;
+}
+.title {
+	width: 100%;
+	height: 38px;
+	line-height: 38px;
+	font-size: 14px;
+	border-bottom: 1px solid #cfd4d7;
+	background: url(../images/title-icon.png) #f9f9f9 8px 50% no-repeat;
+}
+.title span {
+	margin-left: 28px;
+	float: left;
+	display: inline-block;
+}
+.title a {
+	float: right;
+	display: inline-block;
+	margin-right: 5px;
+	white-space: nowrap;
+}
+.title a, .title a:link, .title a:visited {
+	text-decoration: none;
+	outline: none;
+	font-size: 12px;
+}
+.body {
+	width: 100%;
+}
+#apps .body {
+	overflow: hidden;
+}
+#apps .body a {
+	display: inline-block;
+	width: 90px;
+	height: 100px;
+	margin-top: 10px;
+	margin-left: 10px;
+	overflow: hidden;
+	line-height: 180px;
+	text-align: center;
+	white-space: nowrap;
+	background-position: 7px 10px;
+	background-repeat: no-repeat;
+	font-size: 12px;
+}
+#apps .body a, #apps .body a:link, #apps .body a:visited {
+	text-decoration: none;
+	outline: none;
+	color: #333;
+	border: 1px solid #fff;
+}
+#apps .body a:hover {
+	text-decoration: none;
+	outline: none;
+	color: #f75950;
+	border-color: #cfd4d7;
+	background-color: #f2f2f2;
+}
+#apps .body div {
+	width: 110px;
+	height: 100%;
+	float: left;
+	display: inline-block;
+}
+#worktip .body {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#worktip .body ul, #worktip .body li {
+	padding: 0;
+	margin-left: 0;
+}
+#worktip .body li.close ul {
+	display: none;
+}
+#worktip .body a {
+	display: inline-block;
+	width: 100%;
+	font-size: 12px;
+	height: 20px;
+	line-height: 20px;
+	white-space: nowrap;
+}
+#worktip .body a, #worktip .body a:link, #worktip .body a:visited {
+	text-decoration: none;
+	outline: none;
+	color: #333;
+}
+#worktip .body a:hover {
+	text-decoration: none;
+	outline: none;
+	color: #0e86ff;
+	background: #eee;
+}
+#worktip .body span {
+	display: inline-block;
+	width: 20px;
+}
+#worktip .body span.left {
+	width: auto;
+	float: left;
+}
+#worktip .body span.right {
+	width: auto;
+	float: right;
+}
+#worktip .body span.date {
+	width: auto;
+	color: #f45a52;
+}
+#worktip .title a {
+	display: inline-block;
+	padding-left: 15px;
+	padding-right: 15px;
+	text-align: center;
+	color: #898989;
+}
+#worktip .title a:hover {
+	background: url(../images/worktip-a.png) repeat-x bottom;
+	color:#333
+}
+#worktip .title a.click,
+#worktip .title a:hover.click {
+	color: #fff;
+	background: url(../images/worktip-select.png) repeat-x bottom;
+}
+#notice .body {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#notice .body .space {
+	height: 100%;
+}
+#notice .body a {
+	display: block;
+	margin-left: 20px;
+	margin-top: 2px;
+	font-size: 12px;
+}
+#notice .body a, #notice .body a:link, #notice .body a:visited {
+	text-decoration: none;
+	outline: none;
+	color: #333;
+}
+#notice .body a:hover {
+	text-decoration: none;
+	outline: none;
+	color: #0e86ff;
+	background: #eee;
+}
+#notice .body a span {
+	display: inline-block;
+	width: 30px;
+}
+#notice .body a img {
+	border: none;
+}
+#quick a {
+	margin-right: 5px;
+}
+#quick .title a {
+	color:#f45a52;
+}
+#quick .title a:hover {
+	color:#d9160d;
+}
+#quick .body {
+	overflow-x: hidden; overflow-y: auto;
+}
+#quick .body span {
+	font-size: 12px;
+	float: left;
+	display: inline-block;
+	margin: 10px;
+	white-space: nowrap;
+}
+#quick .body span.quick_over {
+	background-color: #eee;
+}
+#quick .body a, #quick .body a:link, #quick .body a:visited {
+	text-decoration: none;
+	outline: none;
+	color: #333;
+}
+#quick .body a.edit, #quick .body a:link.edit, #quick .body a:visited.edit {
+	color: #09f;
+}
+#quick .body a:hover {
+	text-decoration: none;
+	outline: none;
+	color: #0e86ff;
+}
+#quick .body a:hover.edit {
+	color: #00f;
+}
+#quick .edit {
+	display: none;
+}
+#quick.edit .title a {
+	display: none;
+}
+#quick.edit .title a.edit {
+	display: inline-block;
+}
+#quick.edit .body a.edit {
+	display: inline-block;
+}

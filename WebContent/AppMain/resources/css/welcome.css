@@ -1,0 +1,145 @@
+body {
+	overflow: hidden;
+	height: 100%;
+	background: #eee;
+	font-size: 12px;
+	background: #eee;
+}
+.panel {
+	margin: 10px 0 0 10px;
+	float: left;
+	display: inline-block;
+	border: 1px solid #cfd4d7;
+	border-radius: 5px;
+	width: 10px; height: 10px;
+	background: url(../images/welcome/80.png) repeat;
+	overflow: hidden;
+}
+.panel a, .panel a:active, .panel a:link {
+	text-decoration: none;
+	outline: none;
+}
+.panel .title {
+	width: 100%;
+	height: 38px;
+	line-height: 38px;
+	overflow: hidden;
+	white-space: nowrap;
+	border-bottom: 1px solid #cfd4d7;
+	background: url(../images/welcome/title-bg.png) no-repeat 8px center #f9f9f9;
+}
+.panel .title span {
+	font-size: 14px;
+	margin-left: 20px;
+	float: left;
+}
+.panel .title a {
+	float: right;
+}
+.panel .title div {
+	float: right;
+}
+.panel .container {
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.quicker {
+	overflow-y: auto;
+	padding-left: 8px;}
+.calendar {
+	border-top: 1px solid #cfd4d7;
+	width: 100%;
+	height: 182px;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 99;
+}
+#panel0 {
+	width: 236px;
+}
+#panel0 .title a {
+	color: #f45a52;
+	margin: 0 5px;
+}
+#panel0 .container {
+	position: relative;
+}
+#panel0 .container span {
+	display: inline-block;
+	float: left;
+	width: 96px;
+	height: 35px;
+	line-height: 35px;
+	margin: 5px 0 5px 8px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: center;
+	position: relative;
+}
+#panel0 .container span.seat {
+	border: 1px solid #aaa;
+	border-radius: 5px;
+}
+#panel0 .container span a.quick {
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: #323335;
+	background: url(../images/welcome/quick_bg.gif) no-repeat 0 0;
+}
+#panel0 .container span a:hover.quick {
+	background: url(../images/welcome/quick_bg.gif) no-repeat 0 -35px;
+}
+#panel0 .container span a:active.quick {
+	background: url(../images/welcome/quick_bg.gif) no-repeat 0 -70px;
+}
+#panel0 .container span a.close,
+#panel0 .container span a.change {
+	position: absolute;
+	top: 2px;
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	border-radius: 100%;
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+#panel0 .container span a.close {
+	right: 2px;
+	background: url(../images/welcome/close.gif) no-repeat center;
+}
+#panel0 .container span a:hover.close {
+	background: url(../images/welcome/close2.gif) no-repeat center;
+}
+#panel0 .container span a.change {
+	right: 14px;
+	background: url(../images/welcome/change.png) no-repeat center;
+}
+#panel0.edit .show {
+	display: none;
+}
+#panel0.show .edit {
+	display: none;
+}
+#panel1 .title div {
+	width: 204px;
+	margin-right: 5px;
+	background: url(../images/welcome/tab_panel_bg.png) no-repeat center;
+}
+#panel1 .title em {
+	font-weight: bold;
+}
+#panel1 .title a {
+	background: url(../images/welcome/tab_panel_act.png) no-repeat left center;
+	color: #fff;
+}
+#panel1 .title a span {
+	width: 68px;
+	margin: 0;
+	text-align: center;
+	font-size: 12px;
+	cursor: pointer;
+	overflow: hidden;
+}

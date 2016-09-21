@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.finasys">
+		<class name="CUSTOMER_FSRECORD" label="客户财务报表记录" keyAttributes="RECORDNO,CUSTOMERID">
+			<attributes>
+				<attribute name="CUSTOMERID" lable="客户编号" type="STRING " length="32"/>
+				<attribute name="RECORDNO" lable="记录编号" type="STRING " length="32"/>
+				<attribute name="REPORTDATE" lable="报表截至日期" type="STRING " length="10"/>
+				<attribute name="REPORTSCOPE" lable="报表口径" type="STRING " length="18"/>
+				<attribute name="REPORTPERIOD" lable="报表周期" type="STRING " length="18"/>
+				<attribute name="REPORTCURRENCY" lable="报表币种" type="STRING " length="18"/>
+				<attribute name="REPORTUNIT" lable="报表单位" type="STRING " length="18"/>
+				<attribute name="REPORTSTATUS" lable="报表状态" type="STRING " length="18"/>
+				<attribute name="REPORTFLAG" lable="报表检查标志" type="STRING " length="1"/>
+				<attribute name="REPORTOPINION" lable="报表注释" type="STRING " length="200"/>
+				<attribute name="AUDITFLAG" lable="审计标志" type="STRING " length="1"/>
+				<attribute name="AUDITOFFICE" lable="审计单位" type="STRING " length="80"/>
+				<attribute name="AUDITOPINION" lable="审计意见" type="STRING " length="80"/>
+				<attribute name="INPUTDATE" lable="登记日期" type="STRING " length="20"/>
+				<attribute name="ORGID" lable="登记机构" type="STRING " length="32"/>
+				<attribute name="USERID" lable="登记人编号" type="STRING " length="32"/>
+				<attribute name="UPDATEDATE" lable="修改日期" type="STRING " length="10"/>
+				<attribute name="REMARK" lable="备注" type="STRING " length="200"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="CUSTOMER_FSRECORD" />
+					<property name="createKey" value="true" />
+					<property name="keyDatePrefix" value="'CFS'yyyyMMdd"/>
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="FINANCE_CATALOG" label="财务报表目录" keyAttributes="">
+			<attributes>
+				<attribute name="REPORTTYPE" label="报表类型" type="STRING" length="18" />
+				<attribute name="REPORTNO" label="报表编号" type="STRING" length="32" />
+				<attribute name="REPORTNAME" label="报表名称" type="STRING" length="80" />
+				<attribute name="REPORTDESCRIBE" label="报表描述" type="STRING" length="250" />
+				<attribute name="BELONGINDUSTRY" label="报表分类" type="STRING" length="18" />
+				<attribute name="REPORTABBR" label="报表缩写" type="STRING" length="80" />
+				<attribute name="HEADERMETHOD" label="表头描述" type="STRING" length="250" />
+				<attribute name="DISPLAYMETHOD" label="显示方法" type="STRING" length="250" />
+				<attribute name="DELETEFLAG" label="删除标志" type="STRING" length="1" />
+				<attribute name="ATTRIBUTE2" label="属性2" type="STRING" length="18" />
+				<attribute name="ATTRIBUTE1" label="属性1" type="STRING" length="18" />
+				<attribute name="REMARK" label="备注"  type="STRING" length="250" />
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="FINANCE_CATALOG" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="FINANCE_MODEL" label="财务报表模型" keyAttributes="">
+			<attributes>
+				<attribute name="FINANCEBELONG" label="报表类型"  type="STRING" length="18" />
+				<attribute name="MODELCLASS" label="模型分类" type="STRING" length="18" />
+				<attribute name="SORTNO" label="排序号" type="STRING" length="32" />
+				<attribute name="RELATIVEITEMNO" label="相关科目" type="STRING" length="32" />
+				<attribute name="ROWTYPE" label="类型" type="STRING" length="18" />
+				<attribute name="ROWDIMTYPE" label="行量纲类型" type="STRING" length="18" />
+				<attribute name="ITEM1DEF" label="列1定义" type="STRING" length="2000" />
+				<attribute name="ITEM1BASEDEF" label="列1基础定义" type="STRING" length="2000" />
+				<attribute name="ITEM2DEF" label="列2定义" type="STRING" length="2000" />
+				<attribute name="ITEM2BASEDEF" label="列2基础定义" type="STRING" length="2000" />
+				<attribute name="DELETEFLAG" label="删除标志" type="STRING" length="1" />
+				<attribute name="LISTNO" label="显示次序" type="STRING" length="32" />
+				<attribute name="REPORTNO" label="报表编号" type="STRING" length="32" />
+				<attribute name="ITEMATTRIBUTE" label="行属性" type="STRING" length="250" />
+				<attribute name="DISPLAYNAME" label="显示名称" type="STRING" length="80" />
+				<attribute name="DISPLAYNO" label="显示编号" type="STRING" length="32" />
+				<attribute name="FINANCEITEMNO" label="对应科目" type="STRING" length="32" />
+				<attribute name="ROWSUBJECTNOTE" label="科目" type="STRING" length="500" />
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="FINANCE_MODEL" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="FINANCE_DATA" label="财务报表数据" keyAttributes="">
+			<attributes>
+				<attribute name="CUSTOMERID" label="客户编号"  type="STRING" length="32" />
+				<attribute name="ACCOUNTMONTH" label="报表月份" type="STRING" length="18" />
+				<attribute name="MODELNO" label="模型编号" type="STRING" length="32" />
+				<attribute name="REPORTNO" label="报表编号" type="STRING" length="32" />
+				<attribute name="SCOPE" label="报表口径" type="STRING" length="18" />
+				<attribute name="AUDITFLAG" label="审计标志" type="STRING" length="2" />
+				<attribute name="REPORTPERIOD" label="报表周期" type="STRING" length="18" />
+				<attribute name="SORTNO" label="排序号" type="STRING" length="32" />
+				<attribute name="RELATIVEITEMNO" label="相关科目" type="STRING" length="32" />
+				<attribute name="ROWTYPE" label="类型" type="STRING" length="18" />
+				<attribute name="FINANCEITEMNO" label="对应科目" type="STRING" length="32" />
+				<attribute name="ITEM1VALUE" label="列1值" type="DOUBLE" length="24" scale="6" />
+				<attribute name="ITEM2VALUE" label="列2值" type="DOUBLE" length="24" scale="6" />
+				<attribute name="ITEM1BASEVALUE" label="列1基本值" type="DOUBLE" length="24" scale="6" />
+				<attribute name="ITEM2BASEVALUE" label="列2基本值" type="DOUBLE" length="24" scale="6" />
+				<attribute name="STANDARDVALUE" label="标准值" type="DOUBLE" length="24" scale="6" />
+				<attribute name="DISPLAYORDER" label="显示次序" type="STRING" length="32" />
+				<attribute name="ITEMATTRIBUTE" label="行属性" type="STRING" length="250" />
+				<attribute name="DISPLAYNAME" label="显示名称" type="STRING" length="80" />
+				<attribute name="DISPLAYNO" label="显示编号" type="STRING" length="32" />
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="FINANCE_DATA" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="FINANCE_RECORD" label="财务报表记录" keyAttributes="REPORTNO">
+			<attributes>
+				<attribute name="REPORTNO" lable="报表编号" type="STRING" length="32"/>
+				<attribute name="OBJECTTYPE" lable="对象类型" type="STRING" length="18"/>
+				<attribute name="OBJECTNO" lable="对象编号" type="STRING" length="32"/>
+				<attribute name="REPORTSCOPE" lable="报表口径" type="STRING" length="18"/>
+				<attribute name="MODELNO" lable="模型编号" type="STRING" length="32"/>
+				<attribute name="REPORTNAME" lable="报表名称" type="STRING" length="80"/>
+				<attribute name="REPORTDATE" lable="报表期次" type="STRING" length="10"/>
+				<attribute name="ORGID" lable="登记机构" type="STRING" length="32"/>
+				<attribute name="USERID" lable="登记人" type="STRING" length="32"/>
+				<attribute name="UPDATETIME" lable="更新日期" type="STRING" length="20"/>
+				<attribute name="INPUTTIME" lable="登记日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="REPORT_RECORD" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="FINANCE_ITEM" label="财务报表指标" keyAttributes="ITEMNO">
+			<attributes>
+				<attribute name="ITEMNO" label="指标编号"  type="STRING" length="32" />
+				<attribute name="ITEMNAME" label="指标名称" type="STRING" length="80" />
+				<attribute name="ITEMATTRIBUTE" label="指标属性" type="STRING" length="250" />
+				<attribute name="ITEMDESCRIBE" label="指标描述" type="STRING" length="250" />
+				<attribute name="DELETEFLAG" label="状态" type="STRING" length="1" />
+				<attribute name="REMARK" label="备注" type="STRING" length="250" />
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="FINANCE_ITEM" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="REPORT_CATALOG" label="报表模型目录" keyAttributes="MODELNO">
+			<attributes>
+				<attribute name="MODELNO" label="模型编号" type="STRING" length="32" />
+				<attribute name="MODELNAME" label="模型名称" type="STRING" length="80" />
+				<attribute name="MODELTYPE" label="模型类型" type="STRING" length="18" />
+				<attribute name="MODELDESCRIBE" label="模型描述" type="STRING" length="250" />
+				<attribute name="MODELABBR" label="模型缩写" type="STRING" length="80" />
+				<attribute name="MODELCLASS" label="模型分类" type="STRING" length="18" />
+				<attribute name="ATTRIBUTE1" label="模型属性1" type="STRING" length="18" />
+				<attribute name="ATTRIBUTE2" label="模型属性2" type="STRING" length="18" />
+				<attribute name="DISPLAYMETHOD" label="显示方法" type="STRING" length="250" />
+				<attribute name="HEADERMETHOD" label="表头描述" type="STRING" length="250" />
+				<attribute name="DELETEFLAG" label="删除标志" type="STRING" length="1" />
+				<attribute name="REMARK" label="备注" type="STRING" length="250" />
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="REPORT_CATALOG" />
+					<property name="createKey" value="false" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="REPORT_MODEL" label="报表模型" keyAttributes="MODELNO,ROWNO">
+			<attributes>
+				<attribute name="MODELNO" label="模型编号" type="STRING" length="32" />
+				<attribute name="ROWNO" label="行编号" type="STRING" length="32" />
+				<attribute name="ROWNAME" label="行名称" type="STRING" length="80" />
+				<attribute name="ROWSUBJECT" label="对应科目" type="STRING" length="32" />
+				<attribute name="DISPLAYORDER" label="显示次序" type="STRING" length="32" />
+				<attribute name="ROWDIMTYPE" label="行量纲类型" type="STRING" length="18" />
+				<attribute name="ROWATTRIBUTE" label="行属性" type="STRING" length="250" />
+				<attribute name="COL1DEF" label="列1定义" type="STRING" length="2000" />
+				<attribute name="COL2DEF" label="列2定义" type="STRING" length="2000" />
+				<attribute name="COL3DEF" label="列3定义" type="STRING" length="2000" />
+				<attribute name="COL4DEF" label="列4定义" type="STRING" length="2000" />
+				<attribute name="STANDARDVALUE" label="标准值" type="DOUBLE" length="24" scale="6" />
+				<attribute name="DELETEFLAG" label="删除标志" type="STRING" length="1" />
+				<attribute name="FORMULAEXP1" label="公式解释1" type="STRING" length="2000" />
+				<attribute name="FORMULAEXP2" label="公式解释2" type="STRING" length="2000" />
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="createKey" value="false" />
+					<property name="table" value="REPORT_MODEL" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="REPORT_DATA" label="报表数据" keyAttributes="REPORTNO,ROWNO">
+			<attributes>
+				<attribute name="REPORTNO" lable="报表编号" type="STRING" length="32"/>		
+				<attribute name="ROWNO" lable="财报科目编号" type="STRING" length="32"/>		
+				<attribute name="ROWNAME" lable="财报科目名称" type="STRING" length="80"/>		
+				<attribute name="ROWSUBJECT" lable="对应科目" type="STRING" length="32"/>		
+				<attribute name="DISPLAYORDER" lable="显示次序" type="STRING" length="32"/>		
+				<attribute name="ROWDIMTYPE" lable="行量纲类型" type="STRING" length="18"/>		
+				<attribute name="ROWATTRIBUTE" lable="格式" type="STRING" length="250"/>		
+				<attribute name="COL1VALUE" lable="期初值" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="COL2VALUE" lable="期末值" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="COL3VALUE" lable="上一期期初值" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="COL4VALUE" lable="待扩展字段" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="STANDARDVALUE" lable="行业值" type="DOUBLE" length="24" scale="6"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="createKey" value="false" />
+					<property name="table" value="REPORT_DATA" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="REPORT_RECORD" label="报表记录" keyAttributes="REPORTNO">
+			<attributes>
+				<attribute name="REPORTNO" lable="报表编号" type="STRING" length="32"/>
+				<attribute name="OBJECTTYPE" lable="对象类型" type="STRING" length="18"/>
+				<attribute name="OBJECTNO" lable="对象编号" type="STRING" length="32"/>
+				<attribute name="REPORTSCOPE" lable="报表口径" type="STRING" length="18"/>
+				<attribute name="MODELNO" lable="模型编号" type="STRING" length="32"/>
+				<attribute name="REPORTNAME" lable="报表名称" type="STRING" length="80"/>
+				<attribute name="REPORTDATE" lable="报表期次" type="STRING" length="10"/>
+				<attribute name="ORGID" lable="登记机构" type="STRING" length="32"/>
+				<attribute name="USERID" lable="登记人" type="STRING" length="32"/>
+				<attribute name="UPDATETIME" lable="更新日期" type="STRING" length="20"/>
+				<attribute name="INPUTTIME" lable="登记日期" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="createKey" value="true" />
+					<property name="table" value="REPORT_RECORD" />
+				</managerProperties>
+			</manager>
+		</class>
+	</package>
+</jbo>

@@ -1,0 +1,7 @@
+<!-- 项目应用扩展 -->
+<%@page import="com.amarsoft.app.als.sys.tools.WebTools"%>
+<script type="text/javascript">
+ 	<%
+ 		out.print(WebTools.getPageEndScript(session,request));
+ 	%>
+</script>

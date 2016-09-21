@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="GB2312"?>
+<CacheConfig dbname="als" Version="1.0.0.0">
+	<cache name="代码表" loadClass="com.amarsoft.dict.als.cache.loader.CodeLoader"/>
+    <cache name="菜单" loadClass="com.amarsoft.dict.als.cache.loader.AWEMenuLoader"/>
+    <cache name="子系统" loadClass="com.amarsoft.dict.als.cache.loader.AWEAppLoader"/>
+    <cache name="URL控制表" loadClass="com.amarsoft.dict.als.cache.loader.AWEHrefLoader"/>
+    <cache name="功能点URL控制表" loadClass="com.amarsoft.dict.als.cache.loader.AWEFuncHrefLoader"/>
+	<cache name="角色" loadClass="com.amarsoft.dict.als.cache.loader.AWERoleLoader"/>
+    <cache name="名称对照" loadClass="com.amarsoft.dict.als.cache.loader.NameLoader" size="1000" expireTime="600"/>
+    <cache name="错误代码信息" loadClass="com.amarsoft.dict.als.cache.loader.ErrMsgLoader"/>
+    <cache name="ObjectWindow缓存" loadClass="com.amarsoft.dict.als.cache.loader.AWEDataWindowLoader" size="50" expireTime="1200"/> 
+    
+    <!-- ALS 应用级系统缓存 -->
+    <cache name="系统功能定义缓存" loadClass="com.amarsoft.app.als.sys.function.config.SysFunctionLoader" size="50" expireTime="1200"/> 
+    
+    <!-- ALS 业务功能模块缓存 -->
+    <cache name="产品参数" loadClass="com.amarsoft.app.als.prd.config.loader.ProductConfigLoader"/>
+    <cache name="核算定义" loadClass="com.amarsoft.app.als.sys.SystemConfigLoader"/>
+    <cache name="评分卡xml文件缓存" loadClass="com.amarsoft.app.oci.ws.decision.prepare.CmdXMLloader"/>
+    <cache name="接口加载" loadClass="com.amarsoft.app.oci.OCIConfigLoader"/>
+</CacheConfig>

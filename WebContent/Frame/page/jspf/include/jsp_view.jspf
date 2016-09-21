@@ -1,0 +1,63 @@
+<%@ include file="/Frame/page/jspf/include/jsp_frame_lrud.jspf"%>
+<style>
+	.leftright #border {
+		border-left-width: 0;
+	}
+</style>
+<script type="text/javascript">
+	Layout.initRegionName("left", self.name, Layout.getRegionName("FirstFrame"));
+	Layout.initRegionName("right", self.name, Layout.getRegionName("SecondFrame"));
+	var left = frames[Layout.getRegionName("FirstFrame")];
+
+	var myleft={};
+	var _left_width = <%=PG_LEFT_WIDTH%>;
+	myleft.width = _left_width;
+	setLeft();
+	_Tree_Show_In_View = true;
+	setTimeout(setLeft,1);
+	<%if(PG_TITLE!=null){%>setTitle("<%=PG_TITLE%>", true);<%}%>
+	<%if(PG_CONTENT_TITLE!=null){%>setTitle("<%=PG_CONTENT_TITLE%>");<%}%>
+	
+	function setLeft(){
+		if(myleft.width<10){
+			$("#FirstFrame, #Border").hide();
+			changeLayout(true);
+		}else{
+			changeLayout(true,myleft.width/($(document.body).width()-myleft.width));
+		}
+	}
+
+	function checkFrameModified(oFrame){
+		try{
+	    	if(oFrame.bEditHtml && oFrame.bEditHtmlChange )
+				return true;
+		}catch(e){}
+	    
+		if(typeof(oFrame.isModified)!="undefined"){
+			for(var j=0;j<oFrame.frames.length;j++){ 	
+				try{
+					if(oFrame.bCheckBeforeUnload==false) continue;
+					if(oFrame.isModified(oFrame.frames[j].name)) return true;
+				}catch(e){}
+			}
+		}
+		try{
+			if(oFrame.as_isPageChanged()) return true;
+		}catch(e){}
+	
+		//检查下级页面
+		if(oFrame.frames.length==0) return false;
+		for(var i=0;i<oFrame.frames.length;i++){
+			if(checkFrameModified(oFrame.frames[i])) return true;
+		}
+		return false;
+	}
+	function BeforeTreeViewOnClick(){
+		if(checkFrameModified(self) && !confirm(sUnloadMessage)){
+			return false;
+		}
+		return true;
+	}
+
+	var checkOpenUrlModified = false;
+</script>

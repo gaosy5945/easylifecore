@@ -1,0 +1,46 @@
+@charset "gb2312";
+/* CSS Document */
+/*border #36a6cf*/
+/*MainAppEntry CSS Begin*/
+body	{margin:0; padding:0;}
+.top	{width:100%; height:85px;background:url(../images/welcome/topbg2.gif) repeat-x;}
+.topline	{background:url(../images/welcome/topline.gif) repeat-x; width:100%; height:9px;}
+.logobox	{height:76px; width:245px; float:left; background:url(../images/welcome/logo.gif);}
+.adbox		{height:76px; width:725px; float:right; background:url(../images/welcome/adbg.gif); }
+
+.dotip					{width:755px; height:14px;}
+.domix,.domax,.doclose	{height:14px; width:17px; float:right; margin-right:12px; margin-top:3px;}
+a.domix					{background:url(../images/welcome/indo.gif);font-size:0px;}
+a.domax					{background:url(../images/welcome/indo.gif) 0px -14px;font-size:0px;}
+a.doclose				{background:url(../images/welcome/indo.gif) 0px -27px;font-size:0px;}
+a:hover.domix			{background:url(../images/welcome/indo.gif) 0px -42px;font-size:0px;}
+a:hover.domax			{background:url(../images/welcome/indo.gif) 0px -56px;font-size:0px;}
+a:hover.doclose			{background:url(../images/welcome/indo.gif) 0px -69px;font-size:0px;}
+
+.dotext			{color:#237fb2;height:20px;width:731px; float:right; text-align:right; font-size:12px; margin-top:10px; margin-right:12px}
+.dotext a		{text-decoration:none; font-size:12px; color:#237fb2; }
+.dotext a:hover	{text-decoration:none; font-size:12px; color:#ff5500; }
+
+.bottom			{background:#88bde5; width:100%;}
+
+.doc			{float:left; display:inline;margin-bottom:9px; margin-left:10px; padding:6px 0 0 0px;}
+.footer			{float:left; display:inline;margin-bottom:3px; height:20px; margin-left:10px; border-top:1px solid #36a6cf; border-bottom:1px solid #36a6cf; background:#fff; color:#586a7d; font-size:12px; padding:6px 0 0 10px;}
+
+.leftdoc,.middoc,.rightdoc	{background:#fff;border-bottom:1px solid #36a6cf;}
+.leftdoc					{float:left; width:172px; height:30px;}/* overflow:hidden; overflow-Y:scroll;*/
+.middoc						{float:left; width:60%;height:30px; margin-left:10px; /*min-width:560px;*/}
+.rightdoc					{float:left;width:240px;height:30px; margin-left:10px}
+
+/*×ó²àÄÚÈÝÇø*/
+.leftdoc a		{font-weight:bold; font-size:12px;float:left; margin-left:10px; margin-top:4px; display:inline; text-decoration:none}
+.ltbg			{background:url(../images/welcome/left-tit-bg.gif) no-repeat; width:172px; height:57px; float:left; display:inline; margin-bottom:10px}
+.userinfo		{font-size:12px; color:#ff6600; padding:22px 0 0 35px; float:left; display:inline; height:44px}
+.userlist		{ padding:15px;width:auto;_width:280px; height:auto; border:1px solid #237fa4; position:absolute; display:none; background: #fff url(../images/welcome/userlistbg.gif) repeat-x;z-index: 99999}
+.userlist a		{font-weight:normal; font-size:12px; float:none; margin: 0px; text-decoration:none}
+.td_nor			{padding:3px; text-align: right;}
+.td_right		{padding:3px; }
+.td_right .usermsg {width: 100px; height: 15px; line-height: 15px; color: #3b6281; background: transparent;float: left}
+.td_right input.usermsg {border: 1px solid; border-color:transparent; _border-color:red; _filter:chroma(color=white);}
+.td_right input.focus {border: 1px solid #b7b7b7; background:#eeeeee}
+.tbl_nor		{font-size:12px;color:#3b6281;border-collapse:collapse;width:100%}
+

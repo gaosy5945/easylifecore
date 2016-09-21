@@ -1,0 +1,102 @@
+.mytop {
+	background: url(../images/main_menu_bg.jpg)  left  no-repeat ;
+	/*border-color: #8b6cbe;*/
+	border:none
+}
+.main_right_btn a, .main_right_btn a:link, .main_right_btn a:visited {
+	color: #fff;
+}
+.bank_menus a, .bank_menus a:active, .bank_menus a:visited {
+	color: #fff;
+}
+.main_right_btn a{
+	background:none;
+}
+.main_right_btn a:hover {
+	background:none;
+	color:#b5dbff
+}
+.bank_menus a:hover {
+	color: #ccc;
+}
+.bank_menus a.assign {
+	background-image: url(../images/assign.gif);
+}
+.bank_menus a.bug {
+	background-image: url(../images/bug.gif);
+}
+.bank_menus a.help {
+	background-image: url(../images/help.gif);
+}
+.bank_menus a.home {
+	background-image: url(../images/home.gif);
+}
+.bank_menus a.mail {
+	background-image: url(../images/mail.gif);
+}
+.bank_menus a.reclaim {
+	background-image: url(../images/reclaim.gif);
+}
+.bank_menus a.tools {
+	background-image: url(../images/tools.gif);
+}
+.menu_bar li{background: url("../images/menu_downarrow.gif") no-repeat scroll right center transparent;}
+.menu_bar li a span {
+	color: #ffffff;
+}
+.menu_bar li li a span {
+	color: #333;
+}
+.menu_sys {
+	background-image: url(../images/menu_nvgbg_left.gif);
+}
+.menu_sys table {
+	background-image: url(../images/menu_nvgbg.gif);
+}
+.sys_menu_href {
+	background-image: url(../images/menu_nvgbg_home.gif);
+}
+.skin_bar {
+	background-color: #faf4dc; /*border-color: #8b47fc;*/
+}
+.menu_bar ul {
+	/*border-color: #8b6cbe;*/
+	border:1px solid #d9d9d9;
+	-moz-box-shadow:0px 2px 4px #000;
+	-webkit-box-shadow:0px 2px 4px #000;
+	box-shadow:0px 2px 4px #000;
+	*+width:153px;
+	*+border:none;
+	*+background:url(../images/list_shadowbg.png)  bottom  no-repeat ;
+}
+.menu_bar li li {
+	background: url(../images/menu.gif) repeat-y #fafafa;
+	*+background:none;
+}
+.menu_bar li a:hover {
+	/*border-color: #92bdfc;*/
+	background:#6375ff;
+	/*background: url(../images/menu_onebg.gif) repeat-x bottom;*/
+}
+.menu_bar li li a:hover {
+	/*border-color: #eee;*/
+	background:#6375ff;
+	/*background: url(../images/menu_hover.gif) repeat-x center;*/
+	color:#fff;
+}
+.othersilidedown{
+	display: none;
+	position:absolute;
+	width: 212px;
+	overflow: hidden;
+	background: none;
+	padding-bottom: 0px;padding-top: 0px;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+	*+background: none;
+} 
+ .tecbg{
+ 	background: url(../images/tecbg.png) no-repeat left;	
+ 	*+background: url(../images/tecbg.gif) no-repeat left;	
+ }

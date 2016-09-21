@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Instance>
+  <Messages> 
+    	<Message ID="I_EducationInfoQry" Tag="NoAS400" NameSpace = "gateway" SelectSQL=""  Description="R614个人学历查询">
+			<Field No="1" FieldTag="identity" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.identity" Description="身份证号"  DataType="STRING" Length="20" IsRequire = "Y"/>
+			<Field No="2" FieldTag="userName" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.userName" Description="客户姓名"  DataType="STRING" Length="40" IsRequire = "Y"/>
+    	</Message>
+ 	    <Message ID="O_EducationInfoQry" Tag="NoAS400" NameSpace = "gateway"  SelectSQL=""  Description="R614个人学历查询">
+			<Field No="1" FieldTag="result" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.result" Description="返回码.0表示查询成功"  DataType="STRING" 	Length="10" IsRequire = "Y"/>
+			<Field No="2" FieldTag="message" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.message" Description="返回信息"  DataType="STRING" 	Length="100" IsRequire = "Y"/>
+			<Field No="3" FieldTag="identity" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.identity" Description="被验证者的身份证号"  DataType="STRING" Length="20" IsRequire = "Y"/>
+			<Field No="4" FieldTag="userName" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.userName" Description="被验证者的真实姓名"  DataType="STRING" Length="40" IsRequire = "Y"/>
+    		<Field No="5" FieldTag="GRADUATE" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.GRADUATE" Description="毕业院校"  DataType="STRING" Length="30" IsRequire = "N"/>
+    		<Field No="6" FieldTag="EDUCATIONDEGREE" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.EDUCATIONDEGREE" Description="学历"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="7" FieldTag="ENROLDATE" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.ENROLDATE" Description="入学年份"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="8" FieldTag="SPECIALITYNAME" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.SPECIALITYNAME" Description="专业"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="9" FieldTag="GRADUATETIME" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.GRADUATETIME" Description="毕业时间"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="10" FieldTag="STUDYRESULT" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.STUDYRESULT" Description="毕业结论"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="11" FieldTag="STUDYSTYLE" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.STUDYSTYLE" Description="学历类型"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="12" FieldTag="PHOTO" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.PHOTO" Description="照片"  DataType="CLOB" IsRequire = "N"/>
+    		<Field No="13" FieldTag="SCHOOLTYPE" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.SCHOOLTYPE" Description="毕业院校类型"  DataType="STRING" Length="10" IsRequire = "N"/>
+    		<Field No="14" FieldTag="SCHOOLCITY" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.SCHOOLCITY" Description="学校所在城市"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="15" FieldTag="SCHOOLTRADE" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.SCHOOLTRADE" Description="学校性质(公办、民办等)"  DataType="STRING" Length="30" IsRequire = "N"/>
+    		<Field No="16" FieldTag="ORGANIZATION" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.ORGANIZATION" Description="学校所属主管单位"  DataType="STRING" Length="30" IsRequire = "N"/>
+    		<Field No="17" FieldTag="SCHOOLNATURE" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.SCHOOLNATURE" Description="学校类型(理工、医药、综合等)"  DataType="STRING" Length="30" IsRequire = "N"/>
+    		<Field No="18" FieldTag="SCHOOLCATEGORY" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.SCHOOLCATEGORY" Description="学校类别(211 工程院校)"  DataType="STRING" Length="30" IsRequire = "N"/>
+    		<Field No="19" FieldTag="EDUCATIONAPPROACH" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.EDUCATIONAPPROACH" Description="办学形式(全日制、函授等)"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="20" FieldTag="SCHOOLLEVEL" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.SCHOOLLEVEL" Description="办学层次"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="21" FieldTag="IS985" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.IS985" Description="是否985"  DataType="STRING" Length="5" IsRequire = "N"/>
+    		<Field No="22" FieldTag="IS211" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.IS211" Description="是否211"  DataType="STRING" Length="5" IsRequire = "N"/>
+    		<Field No="23" FieldTag="CREATEDATE" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.CREATEDATE" Description="学校创建日期"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="24" FieldTag="CREATEYEAR" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.CREATEYEAR" Description="创建年限"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="25" FieldTag="ACADEMICIANNUM" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.ACADEMICIANNUM" Description="学校院士人数"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="26" FieldTag="BSHLDZNUM" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.BSHLDZNUM" Description="博士后流动站数目"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="27" FieldTag="BSDNUM" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.BSDNUM" Description="博士点数目"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="28" FieldTag="SSDNUM" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.SSDNUM" Description="硕士点数目"  DataType="STRING" Length="20" IsRequire = "N"/>
+    		<Field No="29" FieldTag="ZDXKNUM" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.ZDXKNUM" Description="国家重点学科数目"  DataType="STRING" Length="20" IsRequire = "N"/>
+    	</Message>
+     </Messages> 	
+    <Transactions>
+    	<!-- R614个人身份认证 -->
+		<Transaction ClientID="EduInfoQry_Client" ServerID="" Description="R614个人学历查询" ConnectionID="dataclientrqs" Type="CLIENT">
+			<Property name = "EndPoint" value="http://203.156.212.19/dataservice_Amarsoft/getEducation"/>
+			<property name = "tradeCode" value = "R614"/>
+			<property name = "receiverId" value = ""/>
+			<property name = "gwErrorCode" value = ""/>
+			<property name = "Operation" value = "getEducation"/>
+			<!-- 下面的property用于向查询记录表中插入数据 -->
+			<property name = "ServiceAction" value = "getEducation"/>   
+			<property name = "ServiceAdr" value = "http://203.156.212.19/dataservice_Amarsoft/"/>   
+			<property name = "ConsumerId" value = "0215"/>   
+			<property name = "SourceSysId" value = "0201"/>   
+			<IMessages>
+				<message name="SysHeader" value="Req_HeaderType" />
+				<message name="SysBody" value="I_EducationInfoQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="Req_HeaderType" />
+				<message name="SysBody" value="O_EducationInfoQry" />
+			</OMessages>
+		</Transaction>
+    </Transactions>
+</Instance>

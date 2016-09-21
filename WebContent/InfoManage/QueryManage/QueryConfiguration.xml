@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='GB2312'?>
+<Domain name="Query">
+ <Querys>
+	
+	<!-- 定制查询 -->
+	<Query caption="贷款信息查询" name="BDQuery">
+		<RelatedDataObjects>
+			<RelatedDataObject caption="客户基本信息" dataObjectName="IND_INFO" joinType="," name="II"></RelatedDataObject>
+			<RelatedDataObject caption="客户信息" dataObjectName="CUSTOMER_INFO" joinType="," name="CI"></RelatedDataObject>
+			<RelatedDataObject caption="贷款合同信息" dataObjectName="BUSINESS_CONTRACT" joinType="," name="BC"></RelatedDataObject>
+			<RelatedDataObject caption="贷款帐户基础信息" dataObjectName="ACCT_LOAN" joinType="," name="BD"></RelatedDataObject>
+			<RelatedDataObject caption="申请信息" dataObjectName="BUSINESS_APPLY" joinType="," name="BA"></RelatedDataObject>
+		</RelatedDataObjects>
+		
+		<JoinClauses>
+			<JoinClause desColumnName="CUSTOMERID" desRelatedDataObjectName="II" operator="=" srcColumnName="CUSTOMERID" srcRelatedDataObjectName="CI"></JoinClause>
+			<JoinClause desColumnName="CUSTOMERID" desRelatedDataObjectName="BC" operator="=" srcColumnName="CUSTOMERID" srcRelatedDataObjectName="CI"></JoinClause>
+			<JoinClause desColumnName="SERIALNO" desRelatedDataObjectName="BC" operator="=" srcColumnName="ContractSerialNo(+)" srcRelatedDataObjectName="BD"></JoinClause>
+			<JoinClause desColumnName="APPLYSERIALNO" desRelatedDataObjectName="BC" operator="=" srcColumnName="SERIALNO(+)" srcRelatedDataObjectName="BA"></JoinClause>
+		</JoinClauses>
+		
+		<ConditionMaps>
+			<ConditionMap caption="申请信息" defaultColspan="2" defaultColspanForLongType="4" defaultPosition="FREE" totalColumns="4">
+				<ConditionColumns>
+					<ConditionColumn colspan="" columnName="APPROVEUSERID" exceptcolumnName="" position="" relatedDataObject="BA"></ConditionColumn>
+					<ConditionColumn colspan="" columnName="APPROVEDATE" exceptcolumnName="" position="" relatedDataObject="BA"></ConditionColumn>
+					<ConditionColumn colspan="" columnName="APPROVESTATUS" exceptcolumnName="" position="" relatedDataObject="BA"></ConditionColumn>
+				</ConditionColumns>
+			</ConditionMap>
+
+			<ConditionMap caption="合同信息" defaultColspan="2" defaultColspanForLongType="4" defaultPosition="FREE" totalColumns="4">
+				<ConditionColumns>
+					<ConditionColumn colspan="" columnName="PRODUCTID" exceptcolumnName="" position="" relatedDataObject="BC"></ConditionColumn>
+					<ConditionColumn colspan="" columnName="BUSINESSTYPE" exceptcolumnName="" position="" relatedDataObject="BC"></ConditionColumn>
+					<ConditionColumn colspan="" columnName="VOUCHTYPE" exceptcolumnName="" position="" relatedDataObject="BC"></ConditionColumn>
+					<ConditionColumn colspan="" columnName="OCCURDATE" exceptcolumnName="" position="" relatedDataObject="BC"></ConditionColumn>
+				</ConditionColumns>
+			</ConditionMap>
+
+			<ConditionMap caption="贷款信息" defaultColspan="2" defaultColspanForLongType="4" defaultPosition="FREE" totalColumns="4">
+				<ConditionColumns>
+					<!-- <ConditionColumn colspan="" columnName="MFORGID" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn> -->
+					<ConditionColumn colspan="" columnName="OPERATEUSERID" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn>
+					<!-- <ConditionColumn colspan="" columnName="PRODUCTID" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn> -->
+					<!-- <ConditionColumn colspan="" columnName="BUSINESSTYPE" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn> -->
+					<!-- <ConditionColumn colspan="" columnName="LOANTYPE" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn> -->
+					<!-- <ConditionColumn colspan="" columnName="VOUCHTYPE" exceptcolumnName="" position="" relatedDataObject="BC"></ConditionColumn> -->
+					<!-- <ConditionColumn colspan="" columnName="OCCURDATE" exceptcolumnName="" position="" relatedDataObject="BC"></ConditionColumn> -->
+					<ConditionColumn colspan="" columnName="PUTOUTDATE" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn>
+					<ConditionColumn colspan="" columnName="MATURITYDATE" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn>
+					<ConditionColumn colspan="" columnName="BUSINESSSUM" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn>
+					<!-- <ConditionColumn colspan="" columnName="BALANCE" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn>
+					<ConditionColumn colspan="" columnName="OVERDUEBALANCE" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn> -->
+					<!-- <ConditionColumn colspan="" columnName="LCATIMES" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn> -->
+					<!-- <ConditionColumn colspan="" columnName="OVERDUEDATE" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn> -->
+					<ConditionColumn colspan="" columnName="OVERDUEDAYS" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn>
+					<ConditionColumn colspan="" columnName="BUSINESSSTATUS" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn>
+					<ConditionColumn colspan="" columnName="CLASSIFYRESULT" exceptcolumnName="" position="" relatedDataObject="BD"></ConditionColumn>
+				</ConditionColumns>
+			</ConditionMap>
+		</ConditionMaps>
+	
+	 	<AvailableGroupColumns>*</AvailableGroupColumns>
+		<AvailableSummaryColumns>*</AvailableSummaryColumns>
+		<AvailableDisplayColumns>*</AvailableDisplayColumns>
+
+		<DisAvailableGroupColumns></DisAvailableGroupColumns>
+		<DisAvailableSummaryColumns></DisAvailableSummaryColumns>
+		<DisAvailableDisplayColumns></DisAvailableDisplayColumns>
+
+		<Schemes>
+			<Scheme caption="默认" name="default">
+				<DisplayColumns></DisplayColumns>
+				<GroupColumns></GroupColumns>
+				<SummaryColumns></SummaryColumns>
+				<OrderColumns></OrderColumns>
+			</Scheme>
+		</Schemes>
+	</Query>
+
+ </Querys>
+</Domain>

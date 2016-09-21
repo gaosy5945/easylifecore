@@ -1,0 +1,105 @@
+<%@page buffer="64kb" errorPage="/Frame/page/control/ErrorPage.jsp"%><%@
+page import="java.io.*"%><%@
+page import="java.sql.*"%><%@
+page import="java.text.*"%><%@
+page import="java.util.*"%><%@
+page import="com.amarsoft.are.ARE"%><%@
+page import="com.amarsoft.are.lang.*"%><%@
+page import="com.amarsoft.are.jbo.*"%><%@
+page import="com.amarsoft.are.security.*"%><%@
+page import="com.amarsoft.are.util.*"%><%@
+page import="com.amarsoft.amarscript.*"%><%@
+page import="com.amarsoft.context.*"%><%@
+page import="com.amarsoft.awe.*"%><%@
+page import="com.amarsoft.awe.Configure"%><%@
+page import="com.amarsoft.awe.RuntimeContext"%><%@
+page import="com.amarsoft.awe.control.model.*"%><%@
+page import="com.amarsoft.awe.util.*"%><%@
+page import="com.amarsoft.web.ui.*"%><%@
+page import="com.amarsoft.awe.ui.model.*"%><%@
+page import="com.amarsoft.awe.ui.widget.*"%><%@
+page import="com.amarsoft.alert.*"%><%@
+page import="com.amarsoft.web.dw.*"%><%@
+page import="com.amarsoft.web.ui.*"%><%@
+page import="com.amarsoft.awe.res.model.SkinItem"%><%@
+page import="com.amarsoft.app.als.sys.tools.*"%><%
+	response.setHeader("Cache-Control","no-store");
+	response.setHeader("Pragma","no-cache");
+	response.setDateHeader("Expires",0);
+
+	RuntimeContext CurARC = (RuntimeContext)session.getAttribute("CurARC");
+	if(CurARC == null) throw new Exception("------Timeout------");
+
+	Configure CurConfig = Configure.getInstance(application);
+	if(CurConfig ==null) throw new Exception("读取配置文件错误！请检查配置文件");
+	
+	String sDebugMode = CurConfig.getConfigure("DebugMode");
+    String sRunTimeDebugMode = CurConfig.getConfigure("RunTimeDebugMode");
+    String sCurRunMode=CurConfig.getConfigure("RunMode");
+
+    String sWebRootPath = request.getContextPath();
+    if(!CurConfig.getContextPath().equals(sWebRootPath)) CurConfig.setContextPath(sWebRootPath);
+	String sServletURL = request.getServletPath();
+	String sCompClientID = request.getParameter("CompClientID");
+	if(sCompClientID==null) sCompClientID="";
+	
+    ASUser CurUser = CurARC.getUser();
+    ASOrg CurOrg = CurUser.getBelongOrg();
+	ASPreference CurPref = CurARC.getPref();
+	String sSkinPath = CurUser.getSkin().getPath();
+    
+    Transaction SqlcaRepository = null;
+    Transaction Sqlca = null;
+    try{
+        int iPostChange = 1;
+        
+        ComponentSession CurCompSession = CurARC.getCompSession();
+        Component CurComp = CurCompSession.lookUp(sCompClientID);
+        Page CurPage = new Page(CurComp);
+        CurPage.setRequestAttribute((HttpServletRequest)request);
+        
+		String sDataSource = CurConfig.getConfigure("DataSource");
+      	try{
+      		SqlcaRepository = new Transaction(sDataSource);
+      	}catch(Exception ex) {
+      		ex.printStackTrace();
+			throw new Exception("连接数据库失败！连接参数：<br>DataSource:"+sDataSource);
+       	}
+
+        SqlcaRepository.commit();
+        Sqlca = SqlcaRepository;
+%><meta http-equiv=Content-Type content="text/html; charset=GBK">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="<%=sWebRootPath%>/favicon.ico">
+<link rel="stylesheet" href="<%=sWebRootPath%>/Frame/page/resources/css/Style.css">
+<link rel="stylesheet" href="<%=sWebRootPath%>/Frame/page/resources/css/treeview.css">
+<link rel="stylesheet" href="<%=sWebRootPath%>/Frame/page/resources/css/button.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%><%=sSkinPath%>/css/Style.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%><%=sSkinPath%>/css/button.css">
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/Frame/page/resources/css/button_types.css">
+<script type="text/javascript">var sCompClientID="<%=sCompClientID%>";var sWebRootPath="<%=sWebRootPath%>";var sSkinPath="<%=sSkinPath%>";var _editor_url="<%=sWebRootPath%>/Frame/page/resources/htmledit/";</script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/jquery/plugins/jquery.validate.min-1.8.1.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/jquery/plugins/jquery.validate.extend.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/xls.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/as_common.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/as_control.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/as_widget.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/as_webcalendar.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/as_treeview.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/common.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/htmlcontrol.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/message.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/dw/as_dz.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/js/dw/as_dz_middle.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/checkdatavalidity.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/as_autoScan.js"> </script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/chart/json2.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/page/resources/htmledit/as_htmleditor.js"></script>
+<script type="text/javascript" src="<%=sWebRootPath%>/Frame/resources/js/as_formatdoc.js"></script>
+<script type="text/javascript" >
+var businessDate = "<%=com.amarsoft.app.base.util.DateHelper.getBusinessDate()%>"
+window.history.forward(1);
+var AsOne = {SetDefault:function(sURL) {document.write("<iframe name=myform999 src='"+sURL+"' frameborder=0 width=1 height=1 style='display:none'> </iframe>");},AsInit:function() {} };
+top.status="当前机构：<%=CurUser.getOrgID()%>-<%=CurUser.getOrgName()%>  当前用户是：<%=CurUser.getUserID()%>-<%=CurUser.getUserName()%> ";
+</script>

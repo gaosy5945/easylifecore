@@ -1,0 +1,28 @@
+.list_search {
+	position: absolute;
+	left: 10px;
+	top: 35px;
+	padding: 10px;
+	width: 640px;
+	background: #eee;
+	border: solid #aaa;
+	border-width: 1px 3px 3px 1px;
+	z-index: 999;
+	cursor: move;
+}
+.list_search.list_search_nohover {
+	/* opacity: 0.5;
+	filter: alpha(opacity=50); */
+}
+
+.ow_righttop_close {
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	cursor: pointer;
+	color: #f00;
+	height: 16px;
+	line-height: 16px;
+	width: 16px;
+	background: url(../images/widget/objecttree/icon.gif) -314px -472px;
+}

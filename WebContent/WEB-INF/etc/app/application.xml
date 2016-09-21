@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Amarsoft Application Config File-->
+<Application id="AmarCFS">
+	<Property name="cn_name" value="消费金融业务系统"/>
+	<Property name="en_name" value="Amarsoft CFS"/>
+	<Property name="short_name" value="Amarsoft CFS"/>
+	
+	<Property name="functionConfigFiles" value="{$ARE.APP_HOME}/etc/app/function/main_menu.xml
+								,{$ARE.APP_HOME}/etc/app/function/function_config.xml
+								,{$ARE.APP_HOME}/etc/app/function/credit_application.xml
+								,{$ARE.APP_HOME}/etc/app/function/customer_manage.xml
+				"/>
+</Application>

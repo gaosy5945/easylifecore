@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Functions>
+	<Function id="MainMenu" name="主菜单" type="NavigationMenu" module="HomePage">
+		<Parameters>
+		</Parameters>
+		<Items>
+			<Item id="01" name="产品管理" iconCls="fa fa-diamond"/>
+			<Item id="0101" name="产品定义" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="01"/>
+			<Item id="0102" name="产品审核" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="01"/>
+			<Item id="0103" name="产品发布" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="01"/>
+			<Item id="0104" name="产品分析" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="01"/>
+			<Item id="0105" name="基础配置" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="01"/>
+			
+			<Item id="02" name="商户管理" iconCls="fa fa-diamond"/>
+			<Item id="0201" name="商户准入" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="02"/>
+			<Item id="0202" name="商户审核" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="02"/>
+			<Item id="0203" name="商户查询" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="02"/>
+			
+			<Item id="03" name="客户营销" iconCls="fa fa-diamond"/>
+			<Item id="0301" name="我的客户" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=CustomerInputInfo" parentID="03"/>
+			<Item id="0302" name="营销活动" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="03"/>
+			<Item id="0303" name="营销线索" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="03"/>
+			
+			<Item id="04" name="进件管理" iconCls="fa fa-diamond"/>
+			<Item id="0401" name="资料扫描" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=CreditApplicationMain" parentID="04"/>
+			<Item id="0402" name="信息录入" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="04"/>
+			<Item id="0403" name="进度查询" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="04"/>
+			
+			<Item id="05" name="审查审批" iconCls="fa fa-diamond"/>
+			<Item id="0501" name="征信调查" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="05"/>
+			<Item id="0502" name="电话核查" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="05"/>
+			<Item id="0503" name="贷款审批" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="05"/>
+			
+			<Item id="06" name="签约管理" iconCls="fa fa-diamond"/>
+			<Item id="0601" name="合同制作" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="06"/>
+			<Item id="0602" name="远程签约" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="06"/>
+			
+			<Item id="07" name="放款支付" iconCls="fa fa-diamond"/>
+			<Item id="0701" name="提款申请" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="07"/>
+			<Item id="0702" name="放款审核" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="07"/>
+			<Item id="0703" name="支付提现" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="07"/>
+			
+			<Item id="08" name="贷后服务" iconCls="fa fa-diamond"/>
+			<Item id="0801" name="贷款还款" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="08"/>
+			<Item id="0802" name="条款变更" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="08"/>
+			<Item id="0803" name="账单管理" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="08"/>
+			<Item id="0804" name="单证打印" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="08"/>
+			
+			<Item id="09" name="贷后管理" iconCls="fa fa-diamond"/>
+			<Item id="0901" name="催收清单" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="09"/>
+			<Item id="0902" name="电话催收" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="09"/>
+			<Item id="0903" name="委外催收" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="09"/>
+			<Item id="0904" name="诉讼保全" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="09"/>
+			<Item id="0905" name="资产处置" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="09"/>
+			<Item id="0906" name="风险分类" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="09"/>
+			<Item id="0907" name="风险预警" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="09"/>
+			
+			<Item id="10" name="查询统计" iconCls="fa fa-diamond"/>
+			<Item id="1001" name="常用查询" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="10"/>
+			<Item id="1002" name="自定义查询" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="10"/>
+			<Item id="1003" name="报表统计" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="10"/>
+			
+			<Item id="11" name="系统管理" iconCls="fa fa-diamond"/>
+			<Item id="1101" name="系统监控" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="11"/>
+			<Item id="1102" name="系统配置" iconCls="fa fa-chevron-circle-right" type="MenuItem" url="/RunFunction?SYS_FUNCTIONID=ProductDesignMain" parentID="11"/>
+		</Items>
+	</Function>
+</Functions>

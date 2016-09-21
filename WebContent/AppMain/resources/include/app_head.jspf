@@ -1,0 +1,2 @@
+<script type="text/javascript" src="<%=sWebRootPath%>/AppMain/resources/js/as_credit.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=sWebRootPath%>/Frame/page/resources/css/ow/info.css">

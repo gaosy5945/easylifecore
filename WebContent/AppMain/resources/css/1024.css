@@ -1,0 +1,30 @@
+/*1024 top */
+.main_right_btn{
+	line-height: 30px;
+	background-position: center;
+}
+.mytop{
+	height:30px;
+	background-position: bottom;
+} 
+#allmenu_btn{
+	background-position: center;
+}
+.bank_menus{
+	position: absolute;
+    right: -220px;
+    top: -2px;
+}
+.myclassictop {
+    background-position: center -3px;
+ }
+ .slidedown {
+    top: 26px;
+}
+#otherskin {
+    left: 750px;
+    z-index: 999;
+}
+#userinfo {
+    left: 760px;
+}

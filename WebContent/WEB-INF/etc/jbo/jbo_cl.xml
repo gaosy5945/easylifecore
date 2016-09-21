@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.cl" >
+		<class name="CL_GROUP_LIMIT" label="额度限额信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="额度限额流水号" type="STRING" length="40"/>
+				<attribute name="ORGID" label="机构编号" type="STRING" length="800"/>
+				<attribute name="PARAMETERID1" label="额度限额维度1" type="STRING" length="800"/>
+				<attribute name="PARAMETERVALUE1" label="额度限额维度1" type="STRING" length="800"/>
+				<attribute name="PARAMETERID2" label="额度限额维度2" type="STRING" length="800"/>
+				<attribute name="PARAMETERVALUE2" label="额度限额维度2" type="STRING" length="800"/>
+				<attribute name="FROMDATE" label="起始日期" type="STRING" length="10"/>
+				<attribute name="TODATE" label="结束日期" type="STRING" length="10"/>
+				<attribute name="CURRENCY" label="币种（CodeNo:Currency）" type="STRING" length="10"/>
+				<attribute name="LIMITAMOUNT" label="名义限额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="EXPOSUREAMOUNT" label="敞口限额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CONTROLTYPE" label="控制方式（CodeNo:GroupLimitControlType）" type="STRING" length="10"/>
+				<attribute name="STATUS" label="记录状态（CodeNo:IsInUse）" type="STRING" length="10"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="UPDATEDATE" label="维护日期" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="UPDATEUSERID" label="维护人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="UPDATEORGID" label="维护机构" type="STRING" length="32"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="CL_GROUP_LIMIT" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="CL_INFO" label="额度信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="PARENTSERIALNO" label="上级额度流水号" type="STRING" length="40"/>
+				<attribute name="ROOTSERIALNO" label="根节点流水号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="额度所属对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="额度所属对象" type="STRING" length="40"/>
+				<attribute name="BUSINESSAPPAMT" label="批准名义额度金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="EXPOSUREAPPAMT" label="批准敞口额度金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="BUSINESSAVAAMT" label="有效名义额度金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="EXPOSUREAVAAMT" label="有效敞口额度金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="BUSINESSAVABALANCE" label="可用名义额度余额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="EXPOSUREAVABALANCE" label="可用敞口额度余额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="GUARANTYAVAAMT" label="有效担保金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CLTYPE" label="额度类型（CodeNo:CLType）" type="STRING" length="10"/>
+				<attribute name="STARTDATE" label="起始日期" type="STRING" length="10"/>
+				<attribute name="MATURITYDATE" label="到期日期" type="STRING" length="10"/>
+				<attribute name="CURRENCY" label="额度币种（CodeNo:Currency）" type="STRING" length="10"/>
+				<attribute name="CONTROLTYPE" label="额度控制方式 （CodeNo:CLControlType）" type="STRING" length="10"/>
+				<attribute name="REVOLVINGFLAG" label="循环标志（CodeNo:CreditRevolvingFlag）" type="STRING" length="10"/>
+				<attribute name="CALMETHOD" label="最大可用额度计算方式（CodeNo:CLCalMethod）" type="STRING" length="10"/>
+				<attribute name="SHARETYPE" label="共享方式（CodeNo:CLShareType）" type="STRING" length="10"/>
+				<attribute name="DIVIDETYPE" label="额度切分维度（CodeNo:CLDivideType）" type="STRING" length="10"/>
+				<attribute name="BUSINESSTYPE" label="适用产品" type="STRING" length="400"/>
+				<attribute name="ORGID" label="适用机构" type="STRING" length="400"/>
+				<attribute name="BUSINESSCURRENCY" label="适用币种" type="STRING" length="400"/>
+				<attribute name="VOUCHTYPE" label="适用担保方式" type="STRING" length="400"/>
+				<attribute name="STATUS" label="额度状态（CodeNo:CLStatus）" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="REPAYMENTTYPE" label="适用还款方式" type="STRING" length="400"/>
+				<attribute name="FINALDRAWDOWNDATE" label="最晚提款日期" type="STRING" length="10"/>
+				<attribute name="CLUSETYPE" label="额度使用方式（CodeNo:CLUseType）" type="STRING" length="10"/>
+				<attribute name="DRAWDOWNCHANNEL" label="提用渠道(CodeNo:DrawdownChannel)" type="STRING" length="10"/>
+				<attribute name="PURPOSETYPE" label="提用贷款用途(CodeNo:CreditPurposeType)" type="STRING" length="10"/>
+				<attribute name="MAXBUSINESSTERM" label="贷款提用最长期限" type="INT"/>
+				<attribute name="BUSINESSTERMUNIT" label="贷款提用期限单位(CodeNo:TermUnit)" type="STRING" length="10"/>
+				<attribute name="MINBUSINESSTERM" label="贷款提用最短期限" type="INT"/>
+				<attribute name="MAXBUSINESSAMT" label="单笔最高提款限额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="DAILYMAXAMOUNT" label="当日累计最高提款限额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CLUSERFLAG" label="额度使用类型（CodeNo:CLUserType）" type="STRING" length="10"/>
+				<attribute name="SUBCONTRACTFLAG" label="额度下业务是否需要合同(CodeNo:ContractSignType)" type="STRING" length="10"/>
+				<attribute name="MAXLTVRATIO" label="额度项下业务贷款成数????" type="DOUBLE" length="10" scale="6"/>
+				<attribute name="CLTERMUNIT" label="额度期限单位(CodeNo:TermUnit)" type="STRING" length="10"/>
+				<attribute name="FIRSTDRAWDOWNDATE" label="首次提款日期" type="STRING" length="10"/>
+				<attribute name="LOANGENERATETYPE" label="转贷方式(CodeNo:CLLoanGenerateType)" type="STRING" length="10"/>
+				<attribute name="CLCONTRACTNO" label="授信合同号" type="STRING" length="40"/>
+				<attribute name="FREEZEAMT" label="冻结额度（核心同步）" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CASHAMT" label="网上消费占用额度（核心同步）" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="LOANAMT" label="贷款占用额度（核心同步）" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="POSUSEAMT" label="POS消费已用额度" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="POSFREEZEAMT" label="POS预授权已用额度" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CASHBALAMT" label="经营性贷款已用额度" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="PERIODAMT" label="分期付款已用额度" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="CLTERMDAY" label="额度期限(天)" type="INT"/>
+				<attribute name="CLTERM" label="额度期限(月)" type="INT"/>
+				<attribute name="ISOPENDRAW" label="是否开通消贷易提款功能(CodeNo:YesNo)" type ="STRING" length="10" />
+            	<attribute name="DRAWAMT" label="提款额度" type="DOUBLE" length="24" scale="2" />			
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="CL_INFO" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="CL_INFO_LOG" label="额度信息日志" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="日志流水号" type="STRING" length="40"/>
+				<attribute name="CLSERIALNO" label="额度信息流水号" type="STRING" length="40"/>
+				<attribute name="PARENTCLSERIALNO" label="上级额度流水号" type="STRING" length="40"/>
+				<attribute name="ROOTCLSERIALNO" label="根节点流水号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="额度所属对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="额度所属对象" type="STRING" length="40"/>
+				<attribute name="APPROVEBUSINESSSUM" label="批准名义额度金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="APPROVEEXPOSURESUM" label="批准敞口额度金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="BUSINESSSUM" label="有效名义额度金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="EXPOSURESUM" label="有效敞口额度金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="USEBUSINESSSUM" label="已占用名义额度金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="USEEXPOSURESUM" label="已占用敞口额度金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="GUARANTYSUM" label="有效担保总金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="CLTYPE" label="额度类型（CodeNo:CLType）" type="STRING" length="10"/>
+				<attribute name="TERM" label="期限（?）" type="STRING" length="10"/>
+				<attribute name="STARTDATE" label="起始日期" type="STRING" length="10"/>
+				<attribute name="MATURITYDATE" label="到期日期" type="STRING" length="10"/>
+				<attribute name="CURRENCY" label="额度币种（CodeNo:Currency）" type="STRING" length="10"/>
+				<attribute name="CONTROLTYPE" label="额度控制方式 （CodeNo:CLControlType）" type="STRING" length="10"/>
+				<attribute name="CYCLEFLAG" label="循环标志（CodeNo:CLCycleFlag）" type="STRING" length="10"/>
+				<attribute name="CALMETHOD" label="最大可用额度计算方式（CodeNo:CLCalMethod）" type="STRING" length="10"/>
+				<attribute name="SHARETYPE" label="共享方式（CodeNo:CLShareType）" type="STRING" length="10"/>
+				<attribute name="DIVIDETYPE" label="额度切分维度（CodeNo:CLDivType）" type="STRING" length="10"/>
+				<attribute name="BUSINESSTYPE" label="适用产品" type="STRING" length="400"/>
+				<attribute name="ORGID" label="适用机构" type="STRING" length="400"/>
+				<attribute name="BUSINESSCURRENCY" label="适用币种" type="STRING" length="400"/>
+				<attribute name="VOUCHTYPE" label="适用担保方式" type="STRING" length="400"/>
+				<attribute name="STATUS" label="额度状态（CodeNo:CLStatus）" type="STRING" length="10"/>
+				<attribute name="INPUTUSERID" label="登记人" type="STRING" length="32"/>
+				<attribute name="INPUTORGID" label="登记机构" type="STRING" length="32"/>
+				<attribute name="INPUTDATE" label="登记日期" type="STRING" length="10"/>
+				<attribute name="REPAYMENTTYPE" label="适用还款方式" type="STRING" length="10"/>
+				<attribute name="DRAWDOWNDATE" label="最晚提款日期" type="STRING" length="10"/>
+				<attribute name="CLUSETYPE" label="额度使用方式（CodeNo:CLUseType）" type="STRING" length="10"/>
+				<attribute name="OCCURTIME" label="日志记录时间" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="CL_INFO_LOG" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="CL_OPERATE" label="额度操作信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="CLSERIALNO" label="额度流水号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="对象编号" type="STRING" length="40"/>
+				<attribute name="BUSINESSSUM" label="变更前名义金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="EXPOSURESUM" label="变更前敞口金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="OPERATEBUSINESSSUM" label="变更后名义金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="OPERATEEXPOSURESUM" label="变更后敞口金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="STATUS" label="变更前状态（CodeNo:CLStatus）" type="STRING" length="4"/>
+				<attribute name="OPERATIONSTATUS" label="变更后状态（CodeNo:CLStatus）" type="STRING" length="10"/>
+				<attribute name="OPERATETYPE" label="操作类型（CodeNo:CLOperateType）" type="STRING" length="6"/>
+				<attribute name="REASON" label="原因" type="STRING" length="400"/>
+				<attribute name="OPERATEUSERID" label="变更人" type="STRING" length="32"/>
+				<attribute name="OPERATEORGID" label="变更机构" type="STRING" length="32"/>
+				<attribute name="OPERATDATE" label="变更日期" type="STRING" length="10"/>
+				<attribute name="FLOWTODOSTATUS" label="操作流程记录（CodeNo:CLFlowStatus）" type="STRING" length="10"/>
+				<attribute name="PHASEACTION" label="签署意见" type="STRING" length="10"/>
+				<attribute name="PHASEOPINION" label="签署意见备注" type="STRING" length="500"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="CL_OPERATE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="CL_RELATIVE" label="" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="CLSERIALNO" label="额度流水号" type="STRING" length="40"/>
+				<attribute name="OBJECTTYPE" label="关联对象类型" type="STRING" length="40"/>
+				<attribute name="OBJECTNO" label="关联对象编号" type="STRING" length="40"/>
+				<attribute name="RELATIVEAMOUNT" label="关联金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="RELATIVEPERCENT" label="关联比例" type="DOUBLE" length="12" scale="8"/>
+				<attribute name="RELATIVETYPE" label="关联关系(CodeNo:CLRelativeType)" type="STRING" length="10"/>
+				<attribute name="CURRENCY" label="关联金额币种(CodeNo:Currency)" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="CL_RELATIVE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="CL_SHARE_RULE" label="额度串用信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="SHAREDCLSERIALNO" label="共享额度流水号" type="STRING" length="40"/>
+				<attribute name="SHARECLSERIALNO" label="串用额度流水号" type="STRING" length="40"/>
+				<attribute name="SHAREDBUSINESSAMOUNT" label="最大串用名义金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="SHAREDEXPOSUREAMOUNT" label="最大串用敞口金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="USEDBUSINESSSUM" label="已串用名义金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="USEDEXPOSURESUM" label="已串用敞口金额" type="DOUBLE" length="24" scale="6"/>
+				<attribute name="SHARELEVEL" label="串用优先级(CodeNo:CLShareLevel)" type="INT"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="CL_SHARE_RULE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+	</package>
+</jbo>
+

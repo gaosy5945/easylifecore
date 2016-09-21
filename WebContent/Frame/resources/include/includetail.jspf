@@ -1,0 +1,27 @@
+<%
+    }catch(Exception e){
+    	if(SqlcaRepository!=null) SqlcaRepository.rollback();
+    	if(Sqlca!=null) Sqlca.rollback();
+        e.printStackTrace();
+        ARE.getLog().error(e.getMessage(),e);
+        throw e;
+    }finally{
+        if(SqlcaRepository == Sqlca){
+            Sqlca.commit();
+            Sqlca.disConnect();
+            Sqlca = null;
+            SqlcaRepository = null;
+        }else{
+            if(Sqlca!=null){
+                Sqlca.commit();
+                Sqlca.disConnect();
+                Sqlca = null;
+            }
+            if(SqlcaRepository!=null){
+                SqlcaRepository.commit();
+                SqlcaRepository.disConnect();
+                SqlcaRepository = null;
+            }
+        }
+    }
+%>

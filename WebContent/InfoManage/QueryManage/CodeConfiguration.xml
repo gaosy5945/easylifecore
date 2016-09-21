@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='GB2312'?>
+
+<Domain type="Code">
+  <CodeItems>
+	<CodeItem name="代码取数"
+	 type="CreditOperateType|ClassifyResult|LoanStatus|RateFloatType|CustomerStatus|EducationExperience|BusinessSubType|CreditOccurType|BusinessPriority|BaseRateType|Occupation|ProfessionalTitle|EnterpriseScale|FundRepayType|CreditPurposeType|PaymentType|HabitationStatus|ResderationReasons|YesNo|VouchType|NonstandardIndicator|BusinessStatus|CreditRevolveFlag|CreditPurposeSubType|ClassifyGrade5|RepriceType|CountryCode|CustomerCertType|RiskWarningLevel|HeadShip|TermUnit|AddressType|TermUnit(未用|EducationDegree|FundRepayMonth|Currency|BusinessRiskGrade|BusinessApproveStatus|ClassifyGrade10|SystemChannelFlag|ExceptCreditReason|Sex|PoloticsStatus|MaritalStatus|BusinessType_Core|ContractSignType|DrawdownType|IndustryType|MarketChannelFlag|ClassifyMethod|BusinessContractStatus|ClassfiyGrade10|CustomerType|CustomerGrade|Folk|CecusRegisterType"
+	 codeListScript="select ItemNo,ItemName from CODE_LIBRARY where CodeNo='%CodeItemName%' and IsInUse='1' order by SortNo"
+	 tagAfterCodeList=""
+	 codeListInitialCheckedItem=""
+	 displayNameScript="getItemName('%CodeItemName%',%ColumnName%)"
+ 	/>
+ 	 	
+	<CodeItem name="取方案产品"
+		type="ProductID"
+		codeListScript="select ProductID,ProductName from PRD_PRODUCT_LIBRARY where PRODUCTTYPE1 = '02'"
+		tagAfterCodeList=""
+		codeListInitialCheckedItem=""
+		displayNameScript="getBusinessName(%ColumnName%)"
+	/>
+	
+	<CodeItem name="取基础产品"
+		type="BusinessType"
+		codeListScript="select ProductID,ProductName from PRD_PRODUCT_LIBRARY where PRODUCTTYPE1 = '01'"
+		tagAfterCodeList=""
+		codeListInitialCheckedItem=""
+		displayNameScript="getBusinessName(%ColumnName%)"
+	/>
+ 	
+ 	<CodeItem name="取下属机构"
+ 	 type="OrgID"
+		codeListScript="select OrgID,OrgName from ORG_INFO where OrgID in (select BelongOrgID from Org_Belong where OrgID='%EnvironmentOrgID%') order by OrgID"
+		tagAfterCodeList=""
+		codeListInitialCheckedItem="%EnvironmentOrgID%"
+		displayNameScript="getOrgName(%ColumnName%)"
+ 	/>
+ 	
+ </CodeItems>
+  <Parameters>
+	<Parameter type="CodeItemName" value="" caption="" />
+	<Parameter type="ColumnName" value="" caption="" />
+	<Parameter type="ColumnNameWithoutID" value="" caption="" />
+	<Parameter type="RelatedDataObjectName" value="" caption="" />
+	<Parameter type="LeftEmbrace" value="" caption="" />
+	<Parameter type="RightEmbrace" value="" caption="" />
+	<Parameter type="EnvironmentOrgID" value="" caption="" />
+	<Parameter type="QueryType" value="" caption="" />
+  </Parameters>
+</Domain>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Instance>
+  <Messages> 
+    	<Message ID="I_CresxInfoQry" Tag="NoAS400" NameSpace = "gateway" SelectSQL=""  Description="R210个人失信">
+			<Field No="1" FieldTag="PartyCardnum" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.PartyCardnum" Description="身份证号"  DataType="STRING" Length="20" IsRequire = "Y"/>
+			<Field No="2" FieldTag="Pname" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.Pname" Description="客户姓名"  DataType="STRING" Length="20" IsRequire = "Y"/>
+    	</Message>
+ 	    <Message ID="O_CresxInfoQry" Tag="NoAS400" NameSpace = "gateway"  SelectSQL=""  Description="R210个人失信">
+			<Field No="1" FieldTag="CurrentCount" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.CurrentCount" Description="当前页数据总量"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="2" FieldTag="PageIndex" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.PageIndex" Description="页码"  DataType="int" 	Length="10" IsRequire = "Y"/>
+			<Field No="3" FieldTag="PageSize" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.PageSize" Description="每页显示数目"  DataType="int" Length="10" IsRequire = "Y"/>
+			<Field No="4" FieldTag="TotalPage" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.TotalPage" Description="总页数"  DataType="int" Length="10" IsRequire = "Y"/>
+    		<Field No="5" FieldTag="TotalCount" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.TotalCount" Description="数据总量"  DataType="int" Length="10" IsRequire = "Y"/>
+    		<Field No="6" FieldTag="ExecutedBody" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.ExecutedBody" Description="被执行人数据列表"  DataType="object" ObjectName="O_ExecutedDataList"/>
+    	</Message>
+    	<Message ID="O_ExecutedDataList" Tag="ExecutedBody" NameSpace = "gateway"  SelectSQL=""  Description="R210个人失信">
+    		<Field No="1" FieldTag="SerialNo" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.SerialNo" Description="序列号"  DataType="STRING" 	Length="50" IsRequire = "Y"/>
+			<Field No="2" FieldTag="Pname" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.Pname" Description="被执行人姓名/名称"  DataType="STRING" 	Length="100" IsRequire = "Y"/>
+			<Field No="3" FieldTag="CaseCode" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.CaseCode" Description="案号"  DataType="STRING" Length="100" IsRequire = "Y"/>
+			<Field No="4" FieldTag="CaseState" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.CaseState" Description="案件状态"  DataType="STRING" Length="100" IsRequire = "Y"/>
+    		<Field No="5" FieldTag="ExecCourtName" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.ExecCourtName" Description="执行法院"  DataType="STRING" Length="100" IsRequire = "N"/>
+    		<Field No="6" FieldTag="ExecMoney" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.ExecMoney" Description="执行标的,单位：元"  DataType="STRING" Length="100" IsRequire = "N"/>
+    		<Field No="7" FieldTag="CaseCreateTime" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.CaseCreateTime" Description="立案时间"  DataType="STRING" Length="15" IsRequire = "N"/>
+    		<Field No="8" FieldTag="PartyCardNum" NameSpace = "gateway"  ValueSource="Default" TableField="" DefaultValue="#Constants.PartyCardNum" Description="身份证号码/组织机构代码"  DataType="STRING" Length="50" IsRequire = "N"/>
+    	</Message>
+     </Messages> 	
+    <Transactions>
+    	<!-- R210个人失信 -->
+		<Transaction ClientID="CresxInfoQry_Client" ServerID="" Description="R210个人失信" ConnectionID="dataclientrqs" Type="CLIENT">
+			<Property name = "EndPoint" value="http://203.156.212.19/dataservice_Amarsoft/getExecutedInd"/>
+			<property name = "tradeCode" value = "R210"/>
+			<property name = "receiverId" value = ""/>
+			<property name = "gwErrorCode" value = ""/>
+			<property name = "Operation" value = "getExecutedInd"/>
+			<!-- 下面的property用于向查询记录表中插入数据 -->
+			<property name = "ServiceAction" value = "getExecutedInd"/>   
+			<property name = "ServiceAdr" value = "http://203.156.212.19/dataservice_Amarsoft/"/>   
+			<property name = "ConsumerId" value = "0215"/>   
+			<property name = "SourceSysId" value = "0201"/>   
+			<IMessages>
+				<message name="SysHeader" value="Req_HeaderType" />
+				<message name="SysBody" value="I_CresxInfoQry" />
+			</IMessages>
+			<OMessages>
+				<message name="SysHeader" value="Req_HeaderType" />
+				<message name="SysBody" value="O_CresxInfoQry" />
+			</OMessages>
+		</Transaction>
+    </Transactions>
+</Instance>

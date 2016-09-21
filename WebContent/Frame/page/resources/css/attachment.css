@@ -1,0 +1,120 @@
+.attachment_wrap{
+	border-top:1px solid #bbbbbb;
+	overflow: auto;
+	width:100%;
+}
+.attachment_block{
+	position:relative;
+	float:left;
+	display:inline;
+	margin-left:12px;
+	margin-top:15px;
+	height:95px;
+	width:190px;
+}
+.attachment_show{
+	position:absolute;
+	width:180px;
+	height:80px;
+	background-color:#fff;
+	border:1px solid #bbbbbb;
+	z-index:2;
+	top: 0; left: 0;
+}
+.attachment_shadow{
+	position:absolute;
+	margin-left:5px; margin-top:5px;
+	width:180px;
+	height:80px;
+	background-color:#cccccc;
+	z-index:1;
+	top: 0; left: 0;
+}
+.icon{
+	float:left;
+	display:inline;
+	margin-top:16px;
+	margin-left:12px;
+	height:24px;
+	width:32px;
+}
+.icon_compress{
+	background:url(../images/common/download_icon.png);
+}
+.icon_word{
+	background:url(../images/common/icon_word.png);
+}
+.icon_excel{
+	background:url(../images/common/icon_excel.png);
+}
+.icon_ppt{
+	background:url(../images/common/icon_ppt.png);
+}
+.icon_pdf{
+	background:url(../images/common/icon_pdf.png);
+}
+.icon_bmp{
+	background:url(../images/common/icon_bmp.png);
+}
+.icon_gif{
+	background:url(../images/common/icon_gif.png);
+}
+.icon_jpeg{
+	background:url(../images/common/icon_jpeg.png);
+}
+.icon_png{
+	background:url(../images/common/icon_png.png);
+}
+.icon_text{
+	background:url(../images/common/icon_text.png);
+}
+.icon_html{
+	background:url(../images/common/icon_html.png);
+}
+.icon_css{
+	background:url(../images/common/icon_css.png);
+}
+.icon_file{
+	background:url(../images/common/icon_file.png);
+}
+a.attachment_name{
+	float:left;
+	margin-top:18px;
+	margin-left:12px;
+	color:#0076b1;
+	width:100px;
+	height:40px;
+	font-size:14px;
+	text-decoration:underline;
+	word-wrap:break-word;
+	display:inline-block;
+}
+a.attachment_delete {
+	display: inline-block;
+	margin-right: 1px;
+	width:16px;
+	background: url(../images/main/icons/delete.png) no-repeat center;
+}
+a:hover.attachment_name{
+	color:#ffa200;
+	cursor: pointer;
+}
+.attachment_info{
+	float:left;
+	display:inline;
+	margin-left:12px;
+	margin-top:3px;
+	width:150px;
+	height:14px;
+	color:#333;
+	font-size:12px;
+}
+a.attachment_link{
+	color:#0076b1;
+	font-size:12px;
+	text-decoration: underline;
+}
+a:hover.attachment_link{
+	color:#ffa200;
+	text-decoration: underline;
+}

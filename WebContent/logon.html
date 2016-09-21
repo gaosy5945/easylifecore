@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>系统登录窗口</title>
+<link rel="stylesheet" type="text/css" href="AppMain/Logon/logon.css"/>
+<link rel="shortcut icon" href="favicon.ico">
+<script type="text/javascript">
+function over_change(index,src,clrOver){
+	if (!src.contains(event.fromElement)){ 
+ 		src.style.cursor = 'pointer';
+ 		src.background = clrOver;
+	}
+}
+
+function out_change(index,src,clrIn){
+	if (!src.contains(event.toElement)){
+		src.style.cursor = 'default';
+		src.background = clrIn;
+	}
+}
+
+function chkForm(theForm){
+	//防止拼凑用户名的BUG  add by xhgao 2009/04/03
+    if(theForm.LoginID.value.indexOf("=")>0 || theForm.LoginID.value.indexOf("'")>0 || theForm.LoginID.value.indexOf(" ")>0)
+	{
+	   alert("输入用户名错误");
+	   theForm.LoginID.focus();
+	   return false;
+	}
+
+	/*放开下拉选择用户时，此处需注释掉
+    if(theForm.UserID.value.length<1){
+		alert("请输入用户名！");
+		theForm.UserID.focus();
+		return false;
+	}
+	*/
+	if(theForm.Password.value.length<1){
+		alert("请输入密码！");
+		theForm.Password.focus();
+		return false;
+	}
+	writeCookie("LoginID",theForm.LoginID.value, 240); 
+	//writeCookie("LoginIDSelected",theForm.LoginIDSelected.value, 240);
+	return true;
+}
+
+function doSubmit(){
+	//if(chkForm(document.forms("LogonForm"))){
+	var form = document.getElementById("LogonForm");
+	if(chkForm(form)){
+		form.submit();
+        document.getElementById("amarhidden").style.display="";
+        document.getElementById("btn_submit").style.display="none";
+        document.getElementById("btn_reset").style.display="none";
+	}
+}
+
+function doReset(){
+	document.getElementById("LogonForm").LoginID.value="";
+	document.getElementById("LogonForm").Password.value="";
+}
+
+function pressEnter(arg, e){
+	var e = e || window.event;
+	if(e.keyCode==13){
+		if(arg==3){
+			doSubmit();
+			return false;
+		}
+		else if(arg==0){
+			document.getElementById("LogonForm").LoginID.focus();
+		}
+		else if(arg==1){
+			document.getElementById("LogonForm").Password.focus();
+		}
+		else if(arg==2){
+			var checkCode = document.getElementById("LogonForm").CheckCode;
+			if(!checkCode) pressEnter(3, e);
+			else checkCode.focus();
+		}
+	}else{
+		return true;
+	}
+}
+function writeCookie(name, value, hours){
+  var expire = "";
+  if(hours != null){
+    expire = new Date((new Date()).getTime() + hours * 3600000);
+    expire = "; expires=" + expire.toGMTString();
+  }
+  document.cookie = name + "=" + escape(value) + expire;
+}
+function readCookie(name){
+  var cookieValue = "";
+  var search = name + "=";
+  if(document.cookie.length > 0){
+    offset = document.cookie.indexOf(search);
+    if (offset != -1){ 
+      offset += search.length;
+      end = document.cookie.indexOf(";", offset);
+      if (end == -1) end = document.cookie.length;
+      cookieValue = unescape(document.cookie.substring(offset, end))
+    }
+  }
+  return cookieValue;
+}
+
+function myTrim(){
+	var obj = document.getElementById("LogonForm").LoginID;
+	obj.value = obj.value.replace(/(^\s*)|(\s*$)/g, "");
+}
+</script>
+</head>
+<body scroll="no"  class="logon_body">
+<form id="LogonForm" name="LogonForm" method="post" action="Logon.jsp" onsubmit="return chkForm(this);">
+<input type="hidden" name="ScreenWidth" />
+<div class="logon" align="center">
+<div class="logon_mid_center">
+	<!-- 
+	<div class="logon_user">选择用户：
+	<select id="LoginIDSelected" name="LoginIDSelected" onkeypress="javascript:pressEnter(0, event);" class="select_class" >
+	        <option value="11015634" >总行系统管理员&nbsp;</option>
+	</select>
+	</div>
+	 -->
+	<div class="logon_user">用户名ID：<input type="text" name="LoginID" onkeypress="javascript:pressEnter(1, event);" value="" onblur="javascript:myTrim();" class="input_class"/></div>
+	<div class="logon_user">密码：<input type="password" name="Password" value="000000als" onkeypress="javascript:pressEnter(2, event);"  class="input_class"/></div>
+	<!-- <div class="logon_user" style="position: relative;">验证码：<input type="text" name="CheckCode" onKeyPress="javascript:pressEnter(3, event);" class="input_class" style="margin-right: 70px; width: 110px;"/><img style="position: absolute; right: 0; bottom: 0; cursor: pointer;" src="servlet/checkcode" onclick="history.go(0)" title="点击刷新验证码"/></div> -->
+ 	<span id='amarhidden' style='display:none'>正在检查用户请稍等.....</span>
+	<div class="logon_button">
+	<input type="button" class="button_submit" id='btn_submit' onclick="doSubmit()"/>
+	<input type="button" class="button_reset" id='btn_reset' onclick="doReset()"/>
+	</div>
+	<script>
+   	function change(obj){
+   		var style = obj.style;
+		window.status='';
+   	}
+  	</script>
+                   
+    </div>
+    <div class="logo_pic"></div>
+	<div class="logo_slogan">亚太地区领先的风险管理平台提供商</div>
+        </div>	
+<div class="logon_footer">
+   <div>Copyright 2013, Amarsoft Technology,Co., Ltd.</div>
+</div>
+   
+</form>
+<a class="logon_sysstyle" href="javascript:void(0)"></a>
+<script type="text/javascript">
+var LogonForm = document.getElementById("LogonForm");
+LogonForm.LoginID.value=readCookie("LoginID");
+//LogonForm.LoginIDSelected.value=readCookie("LoginIDSelected");
+LogonForm.LoginID.focus();
+LogonForm.ScreenWidth.value=screen.availWidth;
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 异常信息设置，请注意异常代码编码规则
+1、异常信息在核算系统中整体分为两类：
+	a、由于程序问题和数据引发的错误异常（简称错误异常），在这种情况下需通过修改数据或程序来解决，并采用ED开头的编码规则
+	b、由于系统参数配置逻辑冲突或逻辑存在漏洞导致的错误异常（简称配置异常），在这种情况下需系统管理员重新配置，并采用EC开通的编码规则
+2、错误异常在系统中分为三类
+	a、底层公共代码异常，采用ED1开头
+	b、交易类代码异常，采用ED2开头
+	c、其他类代码异常，采用ED3开头
+	d、流程类代码异常，采用ED4开头
+3、配置异常按照系统配置类型分为三类
+	a、jbo相关参数配置，采用EC1开头
+	b、科目类参数配置，采用EC2开头
+	c、计息、费用、还款方式等参数配置，采用EC3开头
+	d、核算交易参数配置，采用EC4开头
+	e、产品参数配置，采用EC5开头
+	f、流程参数配置，采用EC6开头
+	g、其他参数配置，采用EC0开头
+	
+注：异常代码尽可能分类清楚，在程序中严格按照代码定义规则进行使用，以便问题查找和定位
+  异常描述中的变量请按照${i},i=0,1,2,3,4,……格式进行填写，程序使用时注意传入参数个数
+-->
+<ErrorCodes>
+	<!-- 配置异常代码 -->
+	<!-- jbo配置相关 -->
+	
+	<!-- 科目配置相关 -->
+	<ErrorCode code="EC2001" describe="科目【${0}】定义的银行科目代码的映射关系不正确，无法找到对应的科目，可能需要配置新的银行科目，或者在账务方案信息未配置完整。" />
+	<ErrorCode code="EC2002" describe="分录【${0}】未定义，请让系统管理员先配置再使用。" />
+	<ErrorCode code="EC2003" describe="账套【${0}】未定义，请让系统管理员先配置再使用。" />
+	<ErrorCode code="EC2004" describe="账套【${0}】中科目【${1}】未定义，请让系统管理员先配置再使用。" />
+	
+	<!-- 计息、费用、还款方式等参数配置 -->
+	<ErrorCode code="EC3001" describe="年基准天数筛选条件逻辑配置未覆盖到所有情况，请在cashflow-config.xml文件YearBaseDayConfigs标签中修改。" />
+	<ErrorCode code="EC3002" describe="年基准天数筛选条件逻辑配置存在多种结果，请在cashflow-config.xml文件YearBaseDayConfigs标签中修改。" />
+	<ErrorCode code="EC3003" describe="数值保留小数位数筛选条件逻辑配置未覆盖到所有情况，请在cashflow-config.xml文件NumberPrecisionConfigs标签中修改。" />
+	<ErrorCode code="EC3004" describe="数值保留小数位数筛选条件逻辑配置存在多种结果，请在cashflow-config.xml文件NumberPrecisionConfigs标签中修改。" />
+	<ErrorCode code="EC3005" describe="利息类型${0}定义的InterestObjectType属性无效，请在cashflow-config.xml文件InterestConfigs标签中修改。" />
+	<ErrorCode code="EC3006" describe="利息类型【${0}】下利率种类为【${1}】未指定参数{SettleDateScript}，请让系统管理员检查配置信息。"/>
+	<ErrorCode code="EC3007" describe="还款周期【${0}】未定义，请联系系统管理员检查配置信息。"/>
+	<ErrorCode code="EC3008" describe="还款周期【${0}】的期限单位【${0}】定义不正确，请联系系统管理员重新配置。"/>
+	<ErrorCode code="EC3009" describe="还款方式规则参数中必须配置计算利息脚本【InterestCalculatorScript】，请联系系统管理员重新配置。"/>
+	<ErrorCode code="EC3010" describe="一种还款计划类型中，不同的还款方式规则参数中必须配置相同的计算利息脚本【InterestCalculatorScript】，请联系系统管理员修改。"/>
+	<ErrorCode code="EC3011" describe="传入的利率调整方式【${0}】，请确定传入值的正确性。"/>
+	<ErrorCode code="EC3012" describe="传入的利率调整方式【${0}】，未配置处理逻辑类，请联系系统管理员修改。"/>
+	<ErrorCode code="EC3013" describe="还款规则筛选条件逻辑配置未覆盖到所有情况，请在cashflow-config.xml文件PayRuleConfigs标签中修改。" />
+	<ErrorCode code="EC3014" describe="还款规则筛选条件逻辑配置存在多种结果，请在cashflow-config.xml文件PayRuleConfigs标签中修改。" />
+	<ErrorCode code="EC3015" describe="提前还款规则筛选条件逻辑配置未覆盖到所有情况，请在cashflow-config.xml文件PrepayScriptConfigs标签中修改。" />
+	<ErrorCode code="EC3016" describe="提前还款规则筛选条件逻辑配置存在多种结果，请在cashflow-config.xml文件PrepayScriptConfigs标签中修改。" />
+	<ErrorCode code="EC3017" describe="提前还款规则id【${0}】为定义Script，请在cashflow-config.xml文件PrepayScriptConfigs标签中修改。" />
+	<ErrorCode code="EC3018" describe="计息类型【${0}】配置的结息期限单位不正确，请检查并修改配置。"/>
+	<ErrorCode code="EC3019" describe="起息日不得小于上次结息日。"/>
+	<ErrorCode code="EC3020" describe="到期日不得大于下次结息日。"/>
+	<ErrorCode code="EC3021" describe="到期日不得大于起息日。"/>
+	<ErrorCode code="EC3022" describe="多条还款定义信息存在不同的默认还款日。"/>
+	
+	<!-- 交易参数配置 -->
+	<ErrorCode code="EC4001" describe="交易【${0}-${1}】所配置的分录出现借贷不平，请系统管理员检查配置信息。" />
+	<ErrorCode code="EC4002" describe="交易【${0}】未配置属性${1}，请检查程序和配置文件transaction-config.xml。" />
+	<ErrorCode code="EC4003" describe="分录组【${0}】中未配置BookType属性，请检查配置文件accountcode-config.xml。" />
+	<ErrorCode code="EC4004" describe="未找到交易码【${0}】，请确认交易是否定义，或者是否初始化参数配置。" />
+	<ErrorCode code="EC4005" describe="交易码${0}中未定义执行脚本${1}，请确认是否已定义，或者是否初始化参数配置。" />
+	
+	<!-- 产品参数 EC5-->
+	<ErrorCode code="EC5001" describe="产品库中未找到产品${0}，错误的产品编号，或者未初始化环境变量。" />
+	<ErrorCode code="EC5002" describe="产品${0}不存在有效的版本号${1}，错误的产品版本号，或者未初始化环境变量。" />
+	<ErrorCode code="EC5003" describe="产品类型{ProductType1}不能为空值!" />
+	<ErrorCode code="EC5004" describe="产品类型{ProductType1}为方案产品时，关联的基础产品{RELATIVEPRODUCTLIST}不能为空值!" />
+	<ErrorCode code="EC5005" describe="未找到以下产品${0}的版本定义!" />
+	<ErrorCode code="EC5006" describe="保存失败！组件ID${0}-${1}-${2}已经存在！" />
+	<ErrorCode code="EC5007" describe="组件{CompoentID=${0}}中未找到参数${1}!" />
+	<ErrorCode code="EC5008" describe="参数${0}已被有效组件引用，不可删除!" />
+	<ErrorCode code="EC5009" describe="未找到业务参数${0}!错误的参数编号，或者未初始化环境变量!" />
+	<ErrorCode code="EC5010" describe="未找到组件ID${0}!错误的组件ID，或者未初始化环境变量!" />
+	<ErrorCode code="EC5011" describe="未找到功能${0}!错误的功能编号，或者未初始化环境变量!" />
+	<ErrorCode code="EC5012" describe="未找到组件${0}对应的规则信息，或者未初始化环境变量，" />
+	<ErrorCode code="EC5013" describe="组件${0}对应的规则信息存在多个，请检查配置信息或传入参数，" />
+	<!-- 流程相关配置 EC6 -->
+	<ErrorCode code="EC6001" describe="未找到流程${0}默认的版本号，请联系管理员检查配置信息。" />
+	
+	<!-- 其他参数配置 EC0-->
+	<ErrorCode code="EC0001" describe="未初始化节假日参数【${0}-${1}】，请联系系统管理员配置。" />
+	
+	<ErrorCode Code="EC9999" describe="该异常码【${0}】未在errorcode-config.xml中定义，请让系统管理员先配置再使用。"/>
+	<ErrorCode Code="EC9998" describe="该异常码【${0}】在errorcode-config.xml中定义参数和实际传入参数不同，请让系统管理员检查配置信息。"/>
+	<ErrorCode Code="EC9997" describe="表达式语法配置错误。"/>
+	
+	<!-- 底层公共部分的异常代码 -->
+	<ErrorCode code="ED1001" describe="输入的利率单位不正确，值域【${0}】，现值【${1}】。"/>
+	<ErrorCode code="ED1002" describe="不可比较的对象，ClassName=${0}."/>
+	<ErrorCode code="ED1003" describe="账户余额方向为双向的子账户不允许设置其余额，需按照差额单独确定余额方向."/>
+	<ErrorCode code="ED1004" describe="账户余额方向标示不正确，传入值【${0}】，请通过指定静态变量重新传入."/>
+	<ErrorCode code="ED1005" describe="账户余额时间标示不正确，传入值【${0}】，请通过指定静态变量重新传入."/>
+	<ErrorCode code="ED1010" describe="未找到业务对象【${0}-${1}】。"/>
+	<ErrorCode code="ED1011" describe="无效的计息对象【${0}】。"/>
+	<ErrorCode code="ED1012" describe="未传入正确的利率单位【${0}】。"/>
+	<ErrorCode code="ED1013" describe="利息计算起始日【${0}】大于到期日【${1}】，请检查数据问题。"/>
+	<ErrorCode code="ED1014" describe="零头天计息方式【${0}】未定义，请修改传入值。"/>
+	<ErrorCode code="ED1015" describe="计息方式【${0}】未定义，请修改传入值。"/>
+	<ErrorCode code="ED1016" describe="机构信息【${0}】未定义，请修改传入值。"/>
+	<ErrorCode code="ED1017" describe="机构【${0}】账户类型【${1}】币种【${2}】对应的内部账户未找到，请确定传入值是否正确。"/>
+	<ErrorCode code="ED1018" describe="按照传入条件查到多个对象，无法唯一获取，请确认数据错误还是方法使用错误。"/>
+	<ErrorCode code="ED1019" describe="未定义该基准利率类型【${0}】"/>
+	<ErrorCode code="ED1020" describe="利率计算所需参数【利率浮动类型】录入值【${0}】有误，请修改。"/>
+	<ErrorCode code="ED1021" describe="计算所得执行利率不能为负数【${0}】，请修改。"/>
+	<ErrorCode code="ED1022" describe="基准利率类型【${0}】传入值有误，无法取到相应利率数据，请修改。"/>
+	<ErrorCode code="ED1023" describe="贷款账户【${0}】的还款属性SegTermFlag未定义，请检查并修改数据。"/>
+	<ErrorCode code="ED1024" describe="贷款账户【${0}】的还款属性SegRPTAmountFlag未定义，请检查并修改数据。"/>
+	<ErrorCode code="ED1025" describe="自定义调整周期的参数不全，数据如下：首次重定价日期:${0},重定价周期单位:${1},重定价周期:${2}，请检查并修改数据。"/>
+	<ErrorCode code="ED1026" describe="数据比对中，暂不支持的数据类型【${0}】，请检查。"/>
+	<ErrorCode code="ED1027" describe="传入的期限单位【${0}】不正确，请检查程序。"/>
+	<ErrorCode code="ED1028" describe="传入的期限周期不能小于零。"/>
+	<ErrorCode code="ED1029" describe="节假日标志 WorkFlag【${0}】定义错误。"/>
+	<ErrorCode code="ED1030" describe="无效的节假日顺延表达式，请检查程序及数据。"/>
+	<ErrorCode code="ED1031" describe="基准利率类型不存在，请检查输入数据。"/>
+	<ErrorCode code="ED1032" describe="数据删除异常【${0}】，请联系系统管理员。"/>
+	<ErrorCode code="ED1033" describe="数据更新异常【${0}】，请联系系统管理员。"/>
+	<ErrorCode code="ED1034" describe="创建流程时必须采用相同业务对象，请检查传入对象类型。"/>
+	
+	
+	<!-- 交易类代码异常 -->
+	<ErrorCode code="ED2001" describe="节假日顺延标示PostponePaymentFlag值无效。" />
+	<ErrorCode code="ED2002" describe="该笔贷款已发生还款，不能进行放款冲账，请注意。"/>
+	<ErrorCode code="ED2003" describe="新的还款日没有录入，请检查并修改数据。"/>
+	<ErrorCode code="ED2004" describe="贷款账户【${0}】未取到有效的还款定义，请检查并修改数据。"/>
+	<ErrorCode code="ED2005" describe="交易【${0}】加载异常，请联系系统管理员检查数据。"/>
+	<ErrorCode code="ED2006" describe="交易【${0}】创建异常，请联系系统管理员检查数据。"/>
+	<ErrorCode code="ED2007" describe="交易【${0}】执行异常，请联系系统管理员检查数据。"/>
+	<ErrorCode code="ED2008" describe="交易【${0}】已经创建且交易状态不是待生效，不能再次调用交易创建方法。"/>
+	<ErrorCode code="ED2009" describe="系统并未找到交易【${0}】，请检查传入交易流水。"/>
+	<ErrorCode code="ED2010" describe="系统并未找到单据对象【${0}-${1}】，请检查交易单据是否存在。"/>
+	<ErrorCode code="ED2011" describe="交易【${0}】删除异常，请联系系统管理员检查数据。"/>
+	<ErrorCode code="ED2012" describe="交易【${0}】检查异常，请联系系统管理员检查数据。"/>
+	<ErrorCode code="ED2013" describe="提前还款金额不能小于归还余额计算利息金额，请检查输入金额。"/>
+	<ErrorCode code="ED2014" describe="还款明细未找到对应的还款计划，请检查数据完整性。"/>
+	<ErrorCode code="ED2015" describe="提前还款后已有结息动作，不能完成冲回，请了解。"/>
+	<ErrorCode code="ED2016" describe="贷款不能存在相同利率类型且时间重叠多条有效利率，请检查数据。"/>
+	<ErrorCode code="ED2017" describe="贷款利率类型【${0}】不存在，请检查数据。"/>
+	
+	<!-- 其他类错误信息 -->
+	<ErrorCode code="ED3001" describe="业务对象-${0}-${1}-下未找到子账户！" />
+	
+	<!-- 流程类异常信息 -->
+	<ErrorCode code="ED4001" describe="未找到任务【${0}】的上一节点，可能该任务处于起始节点。" />
+
+</ErrorCodes>

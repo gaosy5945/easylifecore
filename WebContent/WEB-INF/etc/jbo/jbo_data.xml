@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="GB18030"?>
+
+<jbo> 
+  <package name="jbo.data"> 
+    <class name="DATA_BANKCARD_UPASCORE" label="银行卡UPA SCORE信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="AccountNo" label="银行卡号" type="STRING" length="40"/>
+				<attribute name="QueryTime" label="查询时间" type="STRING" length="20"/>
+				<attribute name="UPA" label="综合评分" type="STRING" length="20"/>
+				<attribute name="RSK" label="风险预测评分" type="STRING" length="20"/>
+				<attribute name="COT" label="套现评分" type="STRING" length="30"/>
+				<attribute name="DSI" label="消费自由度评分" type="STRING" length="20"/>
+				<attribute name="CNA" label="消费能力评分" type="STRING" length="20"/>
+				<attribute name="CNT" label="消费趋势评分" type="STRING" length="30"/>
+				<attribute name="WLP" label="钱包位置评分" type="STRING" length="20"/>
+				<attribute name="CHV" label="持卡人价值评分" type="STRING" length="20"/>
+				<attribute name="CST" label="卡使用状态评分" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DATA_BANKCARD_UPASCORE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DATA_EDUCATION_INFO" label="学历信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="IDENTITY" label="身份证" type="STRING" length="20"/>
+				<attribute name="QUERYTIME" label="查询时间" type="STRING" length="20"/>
+				<attribute name="USERNAME" label="姓名" type="STRING" length="20"/>
+				<attribute name="GRADUATE" label="毕业院校" type="STRING" length="30"/>
+				<attribute name="EDUCATIONDEGREE" label="学历" type="STRING" length="20"/>
+				<attribute name="ENROLDATE" label="入学年份" type="STRING" length="20"/>
+				<attribute name="SPECIALITYNAME" label="专业" type="STRING" length="30"/>
+				<attribute name="GRADUATETIME" label="毕业时间" type="STRING" length="20"/>
+				<attribute name="STUDYRESULT" label="毕业结论" type="STRING" length="20"/>
+				<attribute name="STUDYSTYLE" label="学历类型" type="STRING" length="20"/>
+				<attribute name="PHOTO" label="照片" type="STRING"/>
+				<attribute name="SCHOOLTYPE" label="毕业院校类型" type="STRING" length="10"/>
+				<attribute name="SCHOOLCITY" label="学校所在城市" type="STRING" length="20"/>
+				<attribute name="SCHOOLTRADE" label="学校性质(公办、民办等)" type="STRING" length="20"/>
+				<attribute name="ORGANIZATION" label="学校所属主管单位" type="STRING" length="50"/>
+				<attribute name="SCHOOLNATURE" label="学校类型(理工、医药、综合等)" type="STRING" length="30"/>
+				<attribute name="SCHOOLCATEGORY" label="学校类别(211 工程院校)" type="STRING" length="30"/>
+				<attribute name="SCHOOLLEVEL" label="办学层次" type="STRING" length="20"/>
+				<attribute name="EDUCATIONAPPROACH" label="办学形式(全日制、函授等)" type="STRING" length="20"/>
+				<attribute name="IS985" label="是否为985" type="STRING" length="5"/>
+				<attribute name="IS211" label="是否为211" type="STRING" length="5"/>
+				<attribute name="CREATEDATE" label="学校创建日期" type="STRING" length="30"/>
+				<attribute name="CREATEYEAR" label="创建年限" type="STRING" length="10"/>
+				<attribute name="ACADEMICIANNUM" label="学校院士人数" type="STRING" length="10"/>
+				<attribute name="BSHLDZNUM" label="博士后流动站数目" type="STRING" length="10"/>
+				<attribute name="BSDNUM" label="博士点数目" type="STRING" length="10"/>
+				<attribute name="SSDNUM" label="硕士点数目" type="STRING" length="10"/>
+				<attribute name="ZDXKNUM" label="国家重点学科数目" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DATA_EDUCATION_INFO" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DATA_EXECUTED_DATA" label="个人被执行人" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="PARTYCARDNUM" label="身份证号码/组织机构代码" type="STRING" length="50"/>
+				<attribute name="QUERYTIME" label="查询时间" type="STRING" length="20"/>
+				<attribute name="PNAME" label="被执行人姓名/名称" type="STRING" length="100"/>
+				<attribute name="CASECODE" label="案号" type="STRING" length="100"/>
+				<attribute name="CASESTATE" label="案件状态" type="STRING" length="100"/>
+				<attribute name="EXECCOURTNAME" label="执行法院" type="STRING" length="100"/>
+				<attribute name="EXECMONEY" label="执行标的" type="STRING" length="100"/>
+				<attribute name="CASECREATETIME" label="立案时间" type="STRING" length="15"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DATA_EXECUTED_DATA" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DATA_FLIGPASSENGER_COUNT" label="乘机人统计" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="IDCARDCODE" label="身份证号" type="STRING" length="18"/>
+				<attribute name="QUERYTIME" label="查询时间" type="STRING" length="20"/>
+				<attribute name="NAME" label="姓名" type="STRING" length="64"/>
+				<attribute name="FLIGHTTIMES" label="1 年中飞行次数" type="STRING" length="3"/>
+				<attribute name="FLIGHTMONTH" label="飞行月份" type="STRING" length="64"/>
+				<attribute name="FLYTIMES" label="最繁忙的月份乘机 x 次数" type="STRING" length="20"/>
+				<attribute name="AVGDISCOUNT" label="1 年内平均折扣" type="STRING" length="5"/>
+				<attribute name="FCABIN" label="商务舱乘机次数" type="STRING" length="3"/>
+				<attribute name="CCABIN" label="公务舱乘机次数" type="STRING" length="3"/>
+				<attribute name="YCABIN" label="经济舱乘机次数" type="STRING" length="3"/>
+				<attribute name="FROMCITY" label="最频繁乘机出发城市" type="STRING" length="20"/>
+				<attribute name="DESTCITY" label="最频繁乘机到达城市" type="STRING" length="20"/>
+				<attribute name="AIRLINE" label="最频繁使用天数" type="STRING" length="20"/>
+				<attribute name="CNCOUNT" label="国内飞行次数" type="STRING" length="3"/>
+				<attribute name="INTERCOUNT" label="国外飞行次数" type="STRING" length="3"/>
+				<attribute name="FREECOUNT" label="免费次数" type="STRING" length="3"/>
+				<attribute name="AVGPRICE" label="平均票价" type="STRING" length="64"/>
+				<attribute name="TSDELAY" label="延误时间" type="STRING" length="10"/>
+				<attribute name="AVGDELAY" label="平均延误时间" type="STRING" length="10"/>
+				<attribute name="AVGTICKETDAY" label="平均提前多少天出票" type="STRING" length="10"/>
+				<attribute name="LASTFLIGHTDATE" label="最后飞行时间" type="STRING" length="10"/>
+				<attribute name="LASTFROMCITY" label="最后起飞城市" type="STRING" length="64"/>
+				<attribute name="LASTDESTCITY" label="最后抵达城市" type="STRING" length="64"/>
+				<attribute name="FLYTOTALTPM" label="飞行的总里程" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DATA_FLIGPASSENGER_COUNT" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DATA_LOSTFAITH_IND" label="个人失信被执行人" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="CARDNNUM" label="身份证号码" type="STRING" length="50"/>
+				<attribute name="QUERYTIME" label="查询时间" type="STRING" length="20"/>
+				<attribute name="INAME" label="姓名" type="STRING" length="50"/>
+				<attribute name="AGE" label="年龄" type="STRING" length="40"/>
+				<attribute name="SEXY" label="性别" type="STRING" length="40"/>
+				<attribute name="CASECODE" label="案号" type="STRING" length="40"/>
+				<attribute name="COURTNAME" label="执行法院" type="STRING" length="100"/>
+				<attribute name="AREANAME" label="省份" type="STRING" length="20"/>
+				<attribute name="GISTID" label="执行依据文号" type="STRING" length="300"/>
+				<attribute name="REGDATE" label="立案时间" type="STRING" length="15"/>
+				<attribute name="GISTUNIT" label="做出执行依据单位" type="STRING" length="100"/>
+				<attribute name="PERFORMANCE" label="被执行人的履行情况" type="STRING" length="100"/>
+				<attribute name="DISRUPTTYPENAME" label="失信被执行人行为具体情形" type="STRING" length="500"/>
+				<attribute name="PUBLISHDATE" label="发布时间" type="STRING" length="15"/>
+				<attribute name="DUTY" label="失信信息详情" type="STRING"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DATA_LOSTFAITH_IND" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DATA_QUALIFIC_CERT" label="职业资格证信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="IDENTITY" label="身份证" type="STRING" length="20"/>
+				<attribute name="QUERYTIME" label="查询时间" type="STRING" length="20"/>
+				<attribute name="USERNAME" label="姓名" type="STRING" length="50"/>
+				<attribute name="CERTIFICATEID" label="证书编号" type="STRING" length="30"/>
+				<attribute name="OCCUPATION" label="证书职业名称" type="STRING" length="100"/>
+				<attribute name="ISSUEDDATE" label="颁证日期" type="STRING" length="30"/>
+				<attribute name="CLEVEL" label="证书级别" type="STRING" length="10"/>
+				<attribute name="SUBMITORGNAME" label="证书上报单位" type="STRING" length="100"/>
+				<attribute name="OPERATIONMARK" label="笔试成绩" type="STRING" length="10"/>
+				<attribute name="TEXTMARK" label="上机成绩" type="STRING" length="10"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DATA_QUALIFIC_CERT" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DATA_TELEPHONE" label="固话" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="CORPTEL" label="固话号" type="STRING" length="20"/>
+				<attribute name="QUERYTIME" label="查询时间" type="STRING" length="20"/>
+				<attribute name="CORPNAME" label="名称" type="STRING" length="60"/>
+				<attribute name="AREACODE" label="地区" type="STRING" length="30"/>
+				<attribute name="CORPADDRESS" label="地址" type="STRING" length="100"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DATA_TELEPHONE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="DATA_MERCHANT_UPASCORE" label="商户UPA SCORE信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="流水号" type="STRING" length="40"/>
+				<attribute name="MERCHANT_CODE" label="商户编号" type="STRING" length="40"/>
+				<attribute name="QUERYTIME" label="查询时间" type="STRING" length="20"/>
+				<attribute name="MERCHANT_NM" label="商户名称" type="STRING" length="40"/>
+				<attribute name="MERCHANT_LOCATION" label="地域" type="STRING" length="80"/>
+				<attribute name="MERCHANT_UPASCORE7" label="经营趋势（同比）" type="STRING" length="25"/>
+				<attribute name="MERCHANT_PER_MONTH_CNT" label="近12个月交易总卡量（张）" type="STRING" length="20"/>
+				<attribute name="MERCHANT_UPASCORE5" label="市场竞争力（销售金额份额）" type="STRING" length="20"/>
+				<attribute name="MERCHANT_UPASCORE6" label="经营趋势（环比）" type="STRING" length="20"/>
+				<attribute name="MERCHANT_UPASCORE3" label="经营状态（消费次数）" type="STRING" length="20"/>
+				<attribute name="MERCHANT_UPASCORE4" label="经营状态（活跃度）" type="STRING" length="20"/>
+				<attribute name="MERCHANT_YEAR_AMT" label="近12个月交易金额（元）" type="STRING" length="20"/>
+				<attribute name="MERCHANT_UPASCORE2" label="经营稳健度" type="STRING" length="20"/>
+				<attribute name="MERCHANT_PER_AMT" label="近12个月笔均金额（元）" type="STRING" length="20"/>
+				<attribute name="MERCHANT_UPASCORE1" label="经营状态（消费金额）" type="STRING" length="20"/>
+				<attribute name="MERCHANT_PER_MONTH_AMT" label="近12个月月均交易笔数（笔）" type="STRING" length="20"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="DATA_MERCHANT_UPASCORE" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+  </package> 
+</jbo>

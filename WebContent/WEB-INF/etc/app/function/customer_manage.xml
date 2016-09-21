@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Functions>
+	<Function id="CustomerInputInfo" type="DefaultDataFormPage" name="客户基本信息" module="CustomerManage">
+		<Parameters>
+		</Parameters>
+		<Items>
+			<Item id="010" type="Button" text="新建申请" iconCls="fa fa-diamond"/>
+			<Item id="020" type="Button" text="打开申请" iconCls="fa fa-diamond"/>
+			<Item id="030" type="Button" text="删除申请" iconCls="fa fa-diamond"/>
+			<Item id="040" type="Button" text="取消申请" iconCls="fa fa-diamond"/>
+			<Item id="050" type="Button" text="提交申请" iconCls="fa fa-diamond"/>
+			<Item id="100" type="SubFunction" subFunctionID="CreditApplicationDataObject" 
+				parameters="" rightType="ReadOnly"/>
+		</Items>
+	</Function>
+	
+	<Function id="CreditApplicationDataObject" type="DataGrid" name="申请列表" module="进件申请">
+		<Parameters>
+			<Parameter id="UserID"/>
+		</Parameters>
+		<Items>
+			<Item id="010" type="DataGridColumn" field="USERID" title="用户号" iconCls="fa fa-diamond"/>
+			<Item id="020" type="DataGridColumn" field="USERNAME" title="用户名" iconCls="fa fa-diamond"/>
+			<Item id="030" type="DataGridColumn" field="BELONGORG" title="机构" iconCls="fa fa-diamond"/>
+			<Item id="040" type="DataGridColumn" field="PASSWORD" title="密码" iconCls="fa fa-diamond"/>
+		</Items>
+		
+		<Processors>
+			<Processor id="1" type="Query" desc="查询数据" bizClass="jbo.sys.USER_INFO" querySql="select * from O "/>
+			<Processor id="2" type="Delete" desc="查询数据" />
+			<Processor id="3" type="Save" desc="查询数据" />
+		</Processors>
+	</Function>
+</Functions>

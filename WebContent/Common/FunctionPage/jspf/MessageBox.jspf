@@ -1,0 +1,15 @@
+<div id="messageBox" class="info_error_edoc" style="display:none;">
+	<div class="ow_righttop_close" onclick="$(this).parent().hide();" ></div>
+    <div class="info_error_rt" onmousedown="AsLink.moveBoxOnDown(event, this.parentNode)"></div>
+    <div class="info_error_eline"></div>
+    <div class="info_error_txt">
+       	<ul class="info_error_ulstyle" id="ul_error_0">
+		</ul>
+	</div>
+	<div class="info_error_txt" id="showpart">
+		<ul class="info_error_ulstyle" id="ul_error_1">
+		</ul>
+	</div>
+	<button class="info_error_mobtn" id="mobtn" name="btn">更多</button>
+    <button class="info_error_mobtn" id="hidbtn" name="btn">收起</button>
+</div>

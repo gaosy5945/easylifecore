@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="GB18030"?>
+<jbo>
+	<package name="jbo.tmp" >
+		<class name="TMP_PL_CEW_OUT" label="预警信息" keyAttributes="CUST_ID">
+			<attributes>
+				<attribute name="DATA_DATE" label="日期" type="STRING" length="10"/>
+				<attribute name="DATA_MONTH" label="月份" type="STRING" length="8"/>
+				<attribute name="BRANCH_ID" label="机构号" type="STRING" length="10"/>
+				<attribute name="MANAGER_ID" label="机构号" type="STRING" length="10"/>
+				<attribute name="CUST_ID" label="客户号" type="STRING" length="40"/>
+				<attribute name="ACCOUNT_ID" label="账户号" type="STRING" length="40"/>
+				<attribute name="CEW_LEVEL" label="预警等级" type="STRING" length="10"/>
+				<attribute name="LAST_CEW_LEVEL" label="上次预警等级" type="STRING" length="10"/>
+				<attribute name="PRODUCT_TYPE" label="产品类型" type="STRING" length="10"/>
+				<attribute name="LN_AMT" label="贷款金额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="ACCOUNT_BAL" label="贷款余额" type="DOUBLE" length="24" scale="2"/>
+				<attribute name="UPDATE_DATE" label="更新日期" type="STRING" length="10"/>
+				<attribute name="IF_NEWCUST" label="是否为新用户" type="STRING" length="10"/>
+				<attribute name="OVERDUE_FLG" label="逾期标识" type="STRING" length="10"/>
+				<attribute name="DEC_REASION1" label="描述1" type="STRING" length="200"/>
+				<attribute name="DEC_REASION2" label="描述2" type="STRING" length="200"/>
+				<attribute name="DEC_REASION3" label="描述3" type="STRING" length="200"/>
+				<attribute name="DEC_REASION4" label="描述4" type="STRING" length="200"/>
+				<attribute name="DEC_REASION5" label="描述5" type="STRING" length="200"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="TMP_PL_CEW_OUT" />
+				</managerProperties>
+			</manager>
+		</class>
+		<class name="TMP_MARKET_ACTIVITY" label="营销活动信息" keyAttributes="SERIALNO">
+			<attributes>
+				<attribute name="SERIALNO" label="活动编号" type="STRING" length="40"/>
+				<attribute name="ACTIVITYNAME" label="活动名称" type="STRING" length="40"/>
+				<attribute name="BEGINDATE" label="开始时间" type="STRING" length="32"/>
+				<attribute name="ENDDATE" label="截止时间" type="STRING" length="32"/>
+				<attribute name="FITPRODUCT" label="适应产品" type="STRING" length="32"/>
+				<attribute name="FITSTORE" label="适应门店" type="STRING" length="32"/>
+				<attribute name="REMARK" label="活动说明" type="STRING" length="400"/>
+				<attribute name="STATUS" label="活动状态" type="STRING" length="10"/>
+				<attribute name="UPDATEUSER" label="输入人" type="STRING" length="32"/>
+				<attribute name="UPDATETIME" label="更新日期" type="STRING" length="32"/>
+			</attributes>
+			<manager>
+				<managerProperties>
+					<property name="table" value="TMP_MARKET_ACTIVITY" />
+					<property name="createKey" value="true" />
+				</managerProperties>
+			</manager>
+		</class>
+	</package>
+</jbo>

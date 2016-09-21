@@ -1,0 +1,20 @@
+package com.amarsoft.app.base.script.operater.impl;
+
+import com.amarsoft.app.base.exception.ALSException;
+import com.amarsoft.app.base.script.operater.CompareOperator;
+
+/**
+ * End Ω·Œ≤ «  ≈–∂œ
+ * @author xjzhao@amarsoft.com
+ */
+public class EndsWith extends CompareOperator {
+	public boolean compare(Object a, Object b,Object... extendedPropoty) throws Exception {
+		if(a==null) a="";
+		if(b==null) b="";
+		if(a instanceof String && b instanceof String){
+			return ((String)a).endsWith((String)b);
+		}
+		else
+			throw new ALSException("ED1026",a.toString());
+	}
+}
